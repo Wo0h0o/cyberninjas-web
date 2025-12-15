@@ -107,11 +107,12 @@ export default function LibraryDetailPage({ params }: LibraryDetailPageProps) {
 
             // Extract unique tags from all prompts
             const tagsSet = new Set<string>()
-            data?.forEach(prompt => {
-                if (prompt.tags && Array.isArray(prompt.tags)) {
-                    prompt.tags.forEach((tag: string) => tagsSet.add(tag))
-                }
-            })
+                // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                ; (data as any[] | null)?.forEach((prompt: { tags?: string[] }) => {
+                    if (prompt.tags && Array.isArray(prompt.tags)) {
+                        prompt.tags.forEach((tag: string) => tagsSet.add(tag))
+                    }
+                })
             setAllTags(Array.from(tagsSet).sort())
         } catch (err) {
             console.error('Error fetching tags:', err)
