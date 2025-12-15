@@ -20,7 +20,7 @@ interface FloatingParticlesProps {
 export function FloatingParticles({ count = 50, className = "" }: FloatingParticlesProps) {
     const canvasRef = useRef<HTMLCanvasElement>(null);
     const particlesRef = useRef<Particle[]>([]);
-    const animationRef = useRef<number>();
+    const animationRef = useRef<number | undefined>(undefined);
 
     useEffect(() => {
         const canvas = canvasRef.current;
