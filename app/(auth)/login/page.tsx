@@ -20,13 +20,20 @@ export default function LoginPage() {
         setLoading(true)
         setError(null)
 
-        const { error } = await signIn(email, password)
+        try {
+            const { error } = await signIn(email, password)
 
-        if (error) {
-            setError(getErrorMessage(error.message))
+            if (error) {
+                setError(getErrorMessage(error.message))
+                setLoading(false)
+            } else {
+                // Use window.location for more reliable redirect
+                window.location.href = '/dashboard'
+            }
+        } catch (err) {
+            console.error('Login error:', err)
+            setError('Възникна грешка. Опитайте отново.')
             setLoading(false)
-        } else {
-            router.push('/dashboard')
         }
     }
 
