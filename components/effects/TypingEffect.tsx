@@ -9,6 +9,7 @@ interface TypingEffectProps {
     speed?: number;
     highlightWords?: string[];
     onComplete?: () => void;
+    slamEffect?: boolean;
 }
 
 export function TypingEffect({
@@ -17,11 +18,13 @@ export function TypingEffect({
     speed = 50,
     highlightWords = [],
     onComplete,
+    slamEffect = false,
 }: TypingEffectProps) {
     const [displayedText, setDisplayedText] = useState("");
     const [currentIndex, setCurrentIndex] = useState(0);
     const [showCursor, setShowCursor] = useState(true);
     const [isComplete, setIsComplete] = useState(false);
+    const [showSlam, setShowSlam] = useState(false);
 
     useEffect(() => {
         if (currentIndex < text.length) {
@@ -32,11 +35,17 @@ export function TypingEffect({
             return () => clearTimeout(timeout);
         } else if (!isComplete) {
             setIsComplete(true);
+            if (slamEffect) {
+                // Trigger slam effect after a brief delay
+                setTimeout(() => {
+                    setShowSlam(true);
+                }, 100);
+            }
             if (onComplete) {
                 onComplete();
             }
         }
-    }, [currentIndex, text, speed, onComplete, isComplete]);
+    }, [currentIndex, text, speed, onComplete, isComplete, slamEffect]);
 
     // Cursor blink
     useEffect(() => {
@@ -72,7 +81,27 @@ export function TypingEffect({
     }, [displayedText, highlightWords]);
 
     return (
-        <span className={className}>
+        <motion.span
+            className={className}
+            animate={
+                showSlam
+                    ? {
+                        scale: [1, 1.05, 1],
+                        y: [0, -5, 0],
+                    }
+                    : {}
+            }
+            transition={{
+                duration: 0.5,
+                ease: [0.34, 1.56, 0.64, 1], // Spring easing
+            }}
+            style={{
+                display: "inline-block",
+                textShadow: showSlam
+                    ? "0 0 30px rgba(168, 85, 247, 0.5)"
+                    : "none",
+            }}
+        >
             {renderedText}
             {!isComplete && (
                 <motion.span
@@ -80,6 +109,6 @@ export function TypingEffect({
                     className="inline-block w-[3px] h-[0.8em] bg-purple-400 ml-1 align-middle"
                 />
             )}
-        </span>
+        </motion.span>
     );
 }

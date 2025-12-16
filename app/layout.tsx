@@ -12,6 +12,9 @@ export const metadata: Metadata = {
   title: "CyberNinjas - AI Образование в България",
   description: "Най-голямата промпт библиотека и образователна платформа за Изкуствен Интелект в България. Безплатни ресурси и практични курсове за AI автоматизация.",
   keywords: ["AI", "изкуствен интелект", "промпти", "курсове", "образование", "България", "ChatGPT"],
+  other: {
+    charset: "UTF-8",
+  },
 };
 
 export default function RootLayout({
