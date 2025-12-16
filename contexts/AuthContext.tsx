@@ -29,9 +29,9 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     const fetchProfile = useCallback(async (userId: string): Promise<void> => {
         console.log('AuthContext: Starting profile fetch for', userId)
 
-        // Create a timeout promise
+        // Increased timeout to 15s to handle slow connections
         const timeoutPromise = new Promise<never>((_, reject) => {
-            setTimeout(() => reject(new Error('Profile fetch timeout after 5s')), 5000)
+            setTimeout(() => reject(new Error('Profile fetch timeout after 15s')), 15000)
         })
 
         try {
@@ -46,6 +46,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
             if (error) {
                 console.error('AuthContext: Profile fetch error:', error)
+                console.warn('Continuing without profile - app will still function')
                 setProfile(null)
                 return
             }
@@ -53,6 +54,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
             setProfile(data)
         } catch (error) {
             console.error('AuthContext: Profile fetch failed:', error)
+            console.warn('Continuing without profile - user can still access app')
             setProfile(null)
         }
     }, [])
@@ -104,7 +106,9 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
                 setUser(session?.user ?? null)
 
                 if (session?.user) {
-                    await fetchProfile(session.user.id)
+                    // Fetch profile without blocking (fire and forget)
+                    fetchProfile(session.user.id)
+                        .catch(err => console.warn('Profile fetch failed, continuing:', err))
                 } else {
                     setProfile(null)
                 }
