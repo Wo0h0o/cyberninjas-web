@@ -25,25 +25,34 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     const [session, setSession] = useState<Session | null>(null)
     const [loading, setLoading] = useState(true)
 
-    // Fetch profile from database
+    // Fetch profile from database with timeout
     const fetchProfile = useCallback(async (userId: string): Promise<void> => {
+        console.log('AuthContext: Starting profile fetch for', userId)
+
+        // Create a timeout promise
+        const timeoutPromise = new Promise<never>((_, reject) => {
+            setTimeout(() => reject(new Error('Profile fetch timeout after 5s')), 5000)
+        })
+
         try {
-            console.log('AuthContext: Fetching profile for', userId)
-            const { data, error } = await supabase
+            const fetchPromise = supabase
                 .from('profiles')
                 .select('*')
                 .eq('id', userId)
                 .single()
+
+            // Race between fetch and timeout
+            const { data, error } = await Promise.race([fetchPromise, timeoutPromise])
 
             if (error) {
                 console.error('AuthContext: Profile fetch error:', error)
                 setProfile(null)
                 return
             }
-            console.log('AuthContext: Profile fetched successfully')
+            console.log('AuthContext: Profile data received:', !!data)
             setProfile(data)
         } catch (error) {
-            console.error('AuthContext: Error fetching profile:', error)
+            console.error('AuthContext: Profile fetch failed:', error)
             setProfile(null)
         }
     }, [])
