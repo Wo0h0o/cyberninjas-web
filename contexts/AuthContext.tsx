@@ -1,6 +1,6 @@
 'use client'
 
-import { createContext, useContext, useEffect, useState, useCallback, useRef } from 'react'
+import { createContext, useContext, useEffect, useState, useCallback } from 'react'
 import { supabase } from '@/lib/supabase'
 import type { User, Session } from '@supabase/supabase-js'
 import type { Profile } from '@/lib/types'
@@ -24,11 +24,11 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     const [profile, setProfile] = useState<Profile | null>(null)
     const [session, setSession] = useState<Session | null>(null)
     const [loading, setLoading] = useState(true)
-    const initAttempted = useRef(false)
 
-    // Fetch profile from database with retry
-    const fetchProfile = useCallback(async (userId: string, retryCount = 0): Promise<void> => {
+    // Fetch profile from database
+    const fetchProfile = useCallback(async (userId: string): Promise<void> => {
         try {
+            console.log('AuthContext: Fetching profile for', userId)
             const { data, error } = await supabase
                 .from('profiles')
                 .select('*')
@@ -36,67 +36,46 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
                 .single()
 
             if (error) {
-                // Retry once on error
-                if (retryCount < 1) {
-                    console.log('AuthContext: Retrying profile fetch...')
-                    await new Promise(r => setTimeout(r, 500))
-                    return fetchProfile(userId, retryCount + 1)
-                }
-                throw error
+                console.error('AuthContext: Profile fetch error:', error)
+                setProfile(null)
+                return
             }
+            console.log('AuthContext: Profile fetched successfully')
             setProfile(data)
         } catch (error) {
-            console.error('Error fetching profile:', error)
+            console.error('AuthContext: Error fetching profile:', error)
             setProfile(null)
         }
     }, [])
 
-    // Initialize auth state - runs once
+    // Initialize auth state - simple version without complex timeouts
     useEffect(() => {
-        // Prevent double initialization in React StrictMode
-        if (initAttempted.current) return
-        initAttempted.current = true
-
         let isMounted = true
-        let safetyTimeoutId: NodeJS.Timeout
 
         const initAuth = async () => {
-            console.log('AuthContext: Starting initAuth...')
-
-            // Safety timeout - if auth takes too long, stop loading anyway
-            safetyTimeoutId = setTimeout(() => {
-                if (isMounted && loading) {
-                    console.warn('AuthContext: Safety timeout triggered after 8s')
-                    setLoading(false)
-                }
-            }, 8000)
+            console.log('AuthContext: Initializing...')
 
             try {
-                // Try to get session from storage first
                 const { data: { session }, error } = await supabase.auth.getSession()
 
-                clearTimeout(safetyTimeoutId)
-
                 if (error) {
-                    console.error('AuthContext: Session error:', error)
+                    console.error('AuthContext: Get session error:', error)
                 }
 
                 if (isMounted) {
-                    console.log('AuthContext: Got session:', !!session)
+                    console.log('AuthContext: Session found:', !!session)
                     setSession(session)
                     setUser(session?.user ?? null)
 
                     if (session?.user) {
-                        console.log('AuthContext: Fetching profile...')
                         await fetchProfile(session.user.id)
-                        console.log('AuthContext: Profile fetched')
                     }
 
                     setLoading(false)
+                    console.log('AuthContext: Init complete')
                 }
             } catch (error) {
-                clearTimeout(safetyTimeoutId)
-                console.error('AuthContext: Error initializing auth:', error)
+                console.error('AuthContext: Init error:', error)
                 if (isMounted) {
                     setLoading(false)
                 }
@@ -109,6 +88,9 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         const { data: { subscription } } = supabase.auth.onAuthStateChange(
             async (event, session) => {
                 console.log('AuthContext: Auth state changed:', event)
+
+                if (!isMounted) return
+
                 setSession(session)
                 setUser(session?.user ?? null)
 
@@ -118,14 +100,12 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
                     setProfile(null)
                 }
 
-                // Ensure loading is false after any auth event
                 setLoading(false)
             }
         )
 
         return () => {
             isMounted = false
-            clearTimeout(safetyTimeoutId)
             subscription.unsubscribe()
         }
     }, [fetchProfile])
