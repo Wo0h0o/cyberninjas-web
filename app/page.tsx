@@ -4,11 +4,9 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import {
   TypingEffect,
-  FloatingParticles,
-  Card3D,
+  CodeRain,
   MouseSpotlight,
   CursorGlow,
-  MagneticButton,
   GlowBorderButton,
   PulseButton,
   StaggerReveal,
@@ -61,14 +59,15 @@ export default function Home() {
         <div className="aurora-blob aurora-blob-3" />
       </div>
 
-      {/* Floating Particles */}
-      <FloatingParticles count={60} />
+      {/* Code Rain Effect */}
+      <CodeRain columns={25} />
 
       {/* Mouse Spotlight */}
       <MouseSpotlight />
 
       {/* Cursor Glow Trail */}
       <CursorGlow />
+
 
       {/* === HEADER === */}
       <header className="header">
@@ -181,7 +180,7 @@ export default function Home() {
         <div className="max-w-6xl mx-auto">
           <StaggerReveal>
             <h2 className="section-title">
-              Какво <span className="gradient-text">предлагаме</span>
+              Какво <span className="gradient-text">ще получиш</span>
             </h2>
           </StaggerReveal>
 
