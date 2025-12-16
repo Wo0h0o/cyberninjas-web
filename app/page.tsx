@@ -75,12 +75,19 @@ export default function Home() {
         <div className="header-inner">
           <motion.a
             href="/"
-            className="text-2xl font-bold tracking-tight"
+            className="flex items-center gap-3"
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
           >
-            Cyber<span className="gradient-text">Ninjas</span>
+            <img
+              src="/landingpage-logo.png"
+              alt="CyberNinjas Logo"
+              className="h-16 w-auto"
+            />
+            <span className="text-2xl font-bold tracking-tight">
+              Cyber<span className="gradient-text">Ninjas</span>
+            </span>
           </motion.a>
 
           <motion.div
@@ -88,9 +95,18 @@ export default function Home() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <a href="/login" className="glow-button">
+            <GlowBorderButton
+              href="/login"
+              icon={
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4" />
+                  <polyline points="10 17 15 12 10 7" />
+                  <line x1="15" y1="12" x2="3" y2="12" />
+                </svg>
+              }
+            >
               Влез в платформата
-            </a>
+            </GlowBorderButton>
           </motion.div>
         </div>
       </header>
