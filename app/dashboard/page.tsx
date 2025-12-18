@@ -5,7 +5,7 @@ import { useCourses } from '@/hooks/useCourses'
 import { usePromptLibraries } from '@/hooks/usePrompts'
 import { useUserProgress } from '@/hooks/useUserProgress'
 import { CourseCard } from '@/components/dashboard'
-import { LevelHeader } from '@/components/gamification'
+import { LevelHeader, AchievementToast } from '@/components/gamification'
 import { useAuth } from '@/contexts/AuthContext'
 import Link from 'next/link'
 import { ArrowRight, Play, CheckCircle2, Clock, Sparkles, BookOpen, Star, Zap, Target } from 'lucide-react'
@@ -141,6 +141,9 @@ export default function DashboardPage() {
 
     return (
         <div className="space-y-8">
+            {/* Achievement Toast */}
+            <AchievementToast />
+
             {/* Level Header */}
             <LevelHeader />
 
