@@ -21,7 +21,7 @@ export function CourseCard({ course, progress }: CourseCardProps) {
     return (
         <Link href={`/dashboard/courses/${course.slug}`}>
             <motion.div
-                className="group relative rounded-2xl overflow-hidden bg-white/[0.03] border border-white/10 cursor-pointer"
+                className="group relative rounded-3xl overflow-hidden bg-white/[0.03] border border-white/10 cursor-pointer"
                 whileHover={{ y: -5, scale: 1.02 }}
                 transition={{ type: 'spring', damping: 20, stiffness: 300 }}
             >
@@ -99,7 +99,7 @@ export function CourseCard({ course, progress }: CourseCardProps) {
 
                 {/* Border glow on hover */}
                 <motion.div
-                    className="absolute inset-0 rounded-2xl pointer-events-none"
+                    className="absolute inset-0 rounded-3xl pointer-events-none"
                     style={{
                         boxShadow: '0 0 0 1px rgba(139, 92, 246, 0)',
                     }}
