@@ -1040,3 +1040,36 @@ CREATE POLICY "Users can insert own resource bookmarks" ON public.resource_bookm
 DROP POLICY IF EXISTS "Users can delete own resource bookmarks" ON public.resource_bookmarks;
 CREATE POLICY "Users can delete own resource bookmarks" ON public.resource_bookmarks
   FOR DELETE USING (auth.uid() = user_id);
+
+-- =====================================================
+-- PLATFORMS TABLE (AI Tools & Resources)
+-- =====================================================
+CREATE TABLE IF NOT EXISTS public.platforms (
+  id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+  name TEXT NOT NULL,
+  description TEXT,
+  category TEXT CHECK (category IN ('text', 'image', 'video', 'audio', 'code', 'research', 'automation', 'productivity', 'other')),
+  type TEXT CHECK (type IN ('website', 'software', 'extension')),
+  url TEXT,
+  icon TEXT, -- Lucide icon name or emoji
+  logo_url TEXT, -- URL to brand logo (e.g., Clearbit API)
+  features TEXT[],
+  is_active BOOLEAN DEFAULT true,
+  is_featured BOOLEAN DEFAULT false,
+  order_index INTEGER DEFAULT 0,
+  created_at TIMESTAMPTZ DEFAULT NOW()
+);
+
+-- Enable RLS
+ALTER TABLE public.platforms ENABLE ROW LEVEL SECURITY;
+
+-- Platforms policies
+DROP POLICY IF EXISTS "Platforms are viewable by everyone" ON public.platforms;
+CREATE POLICY "Platforms are viewable by everyone" ON public.platforms
+  FOR SELECT USING (is_active = true);
+
+DROP POLICY IF EXISTS "Admins can manage platforms" ON public.platforms;
+CREATE POLICY "Admins can manage platforms" ON public.platforms
+  FOR ALL USING (
+    EXISTS (SELECT 1 FROM public.profiles WHERE id = auth.uid() AND role = 'admin')
+  );
