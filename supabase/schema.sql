@@ -1011,3 +1011,32 @@ JOIN public.library_modules m ON c.module_id = m.id
 JOIN public.prompt_libraries l ON m.library_id = l.id
 WHERE l.slug = 'dna-protocol' AND c.title = 'Context Injector'
 ON CONFLICT DO NOTHING;
+
+-- =====================================================
+-- RESOURCE BOOKMARKS TABLE
+-- =====================================================
+CREATE TABLE IF NOT EXISTS public.resource_bookmarks (
+  id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+  user_id UUID REFERENCES public.profiles(id) ON DELETE CASCADE,
+  resource_slug TEXT NOT NULL,
+  page_index INTEGER NOT NULL,
+  page_title TEXT,
+  created_at TIMESTAMPTZ DEFAULT NOW(),
+  UNIQUE(user_id, resource_slug, page_index)
+);
+
+-- Enable RLS
+ALTER TABLE public.resource_bookmarks ENABLE ROW LEVEL SECURITY;
+
+-- Resource bookmarks policies
+DROP POLICY IF EXISTS "Users can view own resource bookmarks" ON public.resource_bookmarks;
+CREATE POLICY "Users can view own resource bookmarks" ON public.resource_bookmarks
+  FOR SELECT USING (auth.uid() = user_id);
+
+DROP POLICY IF EXISTS "Users can insert own resource bookmarks" ON public.resource_bookmarks;
+CREATE POLICY "Users can insert own resource bookmarks" ON public.resource_bookmarks
+  FOR INSERT WITH CHECK (auth.uid() = user_id);
+
+DROP POLICY IF EXISTS "Users can delete own resource bookmarks" ON public.resource_bookmarks;
+CREATE POLICY "Users can delete own resource bookmarks" ON public.resource_bookmarks
+  FOR DELETE USING (auth.uid() = user_id);

@@ -1,54 +1,121 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import ReactMarkdown from 'react-markdown'
-import { ChevronLeft, ChevronRight, BookOpen } from 'lucide-react'
+import { ChevronUp, ChevronDown, BookOpen, Bookmark, BookmarkCheck, ZoomIn, ZoomOut } from 'lucide-react'
+import { useAuth } from '@/contexts/AuthContext'
+import { supabase } from '@/lib/supabase'
+
+const RESOURCE_SLUG = 'ai-terminology'
+
+interface BookmarkData {
+    page_index: number
+    page_title: string | null
+}
 
 export default function ResourcesPage() {
-    const [content, setContent] = useState<string>('')
+    const { user } = useAuth()
     const [sections, setSections] = useState<string[]>([])
     const [currentPage, setCurrentPage] = useState(0)
     const [isFlipping, setIsFlipping] = useState(false)
     const [loading, setLoading] = useState(true)
     const [error, setError] = useState<string | null>(null)
 
+    // Enhanced features
+    const [bookmarks, setBookmarks] = useState<BookmarkData[]>([])
+    const [bookmarksLoading, setBookmarksLoading] = useState(true)
+    const [textZoom, setTextZoom] = useState(100) // 50-150%
+
+    // Fetch bookmarks from Supabase
+    const fetchBookmarks = useCallback(async () => {
+        if (!user) {
+            setBookmarksLoading(false)
+            return
+        }
+
+        try {
+            const { data, error } = await supabase
+                .from('resource_bookmarks')
+                .select('page_index, page_title')
+                .eq('user_id', user.id)
+                .eq('resource_slug', RESOURCE_SLUG)
+                .order('page_index', { ascending: true })
+
+            if (error) throw error
+            setBookmarks(data || [])
+        } catch (err) {
+            console.error('Error fetching bookmarks:', err)
+        } finally {
+            setBookmarksLoading(false)
+        }
+    }, [user])
+
+    // Toggle bookmark for current page
+    const toggleBookmark = async () => {
+        if (!user) return
+
+        const isBookmarked = bookmarks.some(b => b.page_index === currentPage)
+
+        try {
+            if (isBookmarked) {
+                await supabase
+                    .from('resource_bookmarks')
+                    .delete()
+                    .eq('user_id', user.id)
+                    .eq('resource_slug', RESOURCE_SLUG)
+                    .eq('page_index', currentPage)
+
+                setBookmarks(prev => prev.filter(b => b.page_index !== currentPage))
+            } else {
+                const pageTitle = extractPageTitle(sections[currentPage])
+                await supabase
+                    .from('resource_bookmarks')
+                    .insert({
+                        user_id: user.id,
+                        resource_slug: RESOURCE_SLUG,
+                        page_index: currentPage,
+                        page_title: pageTitle
+                    })
+
+                setBookmarks(prev => [...prev, { page_index: currentPage, page_title: pageTitle }].sort((a, b) => a.page_index - b.page_index))
+            }
+        } catch (err) {
+            console.error('Error toggling bookmark:', err)
+        }
+    }
+
+    const extractPageTitle = (text: string): string => {
+        const match = text.match(/^#+\s*(.+)$/m)
+        return match ? match[1].substring(0, 50) : `Страница ${currentPage + 1}`
+    }
+
+    const goToPage = (pageIndex: number) => {
+        if (pageIndex >= 0 && pageIndex < sections.length) {
+            setCurrentPage(pageIndex)
+        }
+    }
+
     useEffect(() => {
-        // Load the markdown content
-        // URL encode the Cyrillic filename
         const filename = encodeURIComponent('ТЕРМИНОЛОГИЯ В ПРАКТИКАТА НА AI.md')
 
         fetch(`/content/${filename}`)
             .then(res => {
-                console.log('Fetch response status:', res.status)
-                console.log('Fetch response headers:', res.headers)
-
-                if (!res.ok) {
-                    throw new Error(`HTTP error! status: ${res.status}`)
-                }
-
+                if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`)
                 return res.text()
             })
             .then(text => {
-                console.log('Fetched content length:', text.length)
-                console.log('First 200 chars:', text.substring(0, 200))
-
-                // Check if it's HTML error page instead of markdown
                 if (text.trim().startsWith('<!DOCTYPE') || text.trim().startsWith('<html')) {
                     throw new Error('Received HTML instead of markdown - file not found')
                 }
 
-                setContent(text)
-                // Split content by phase sections for pagination
                 const parts = text.split(/(?=###\s+\*\*\*🗺️)/g)
                 const splitSections: string[] = []
 
-                // Further split each phase into smaller chunks for better readability
                 parts.forEach(part => {
                     const subsections = part.split(/(?=---\n\n\*\*)/g)
                     subsections.forEach(subsection => {
                         if (subsection.trim().length > 500) {
-                            // Split long sections into ~2000 character chunks
                             const words = subsection.split(' ')
                             let chunk = ''
                             words.forEach(word => {
@@ -76,6 +143,10 @@ export default function ResourcesPage() {
             })
     }, [])
 
+    useEffect(() => {
+        fetchBookmarks()
+    }, [fetchBookmarks])
+
     const nextPage = () => {
         if (currentPage < sections.length - 1 && !isFlipping) {
             setIsFlipping(true)
@@ -96,6 +167,40 @@ export default function ResourcesPage() {
         }
     }
 
+    const isCurrentPageBookmarked = bookmarks.some(b => b.page_index === currentPage)
+
+    // Render bookmarks panel (only for page 0)
+    const renderBookmarksPanel = () => (
+        <div className="flex flex-col items-center justify-center h-full text-center p-8">
+            <Bookmark className="w-16 h-16 text-purple-400 mb-6" />
+            <h2 className="text-3xl font-bold gradient-text mb-8">Вашите отметки</h2>
+
+            {bookmarksLoading ? (
+                <div className="w-8 h-8 border-2 border-purple-500 border-t-transparent rounded-full animate-spin" />
+            ) : bookmarks.length === 0 ? (
+                <p className="text-gray-500 text-lg">Все още няма отметки</p>
+            ) : (
+                <div className="space-y-3 w-full max-w-md">
+                    {bookmarks.map((bookmark) => (
+                        <button
+                            key={bookmark.page_index}
+                            onClick={() => goToPage(bookmark.page_index)}
+                            className="w-full p-4 rounded-xl bg-white/5 border border-white/10 hover:bg-purple-500/20 hover:border-purple-500/30 transition-all duration-300 text-left flex items-center gap-3"
+                        >
+                            <BookmarkCheck className="w-5 h-5 text-purple-400 flex-shrink-0" />
+                            <span className="text-white truncate">
+                                {bookmark.page_title || `Страница ${bookmark.page_index + 1}`}
+                            </span>
+                            <span className="text-gray-500 text-sm ml-auto">
+                                стр. {bookmark.page_index + 1}
+                            </span>
+                        </button>
+                    ))}
+                </div>
+            )}
+        </div>
+    )
+
     if (loading) {
         return (
             <div className="min-h-screen flex items-center justify-center">
@@ -111,19 +216,9 @@ export default function ResourcesPage() {
         return (
             <div className="min-h-screen flex items-center justify-center px-4">
                 <div className="max-w-md text-center">
-                    <div className="mb-6">
-                        <BookOpen className="w-16 h-16 text-red-400 mx-auto mb-4" />
-                        <h2 className="text-2xl font-bold text-white mb-2">Грешка при зареждане</h2>
-                        <p className="text-gray-400 mb-4">{error}</p>
-                        <div className="bg-gray-900/50 border border-white/10 rounded-xl p-4 text-left text-sm text-gray-500">
-                            <p className="mb-2">Възможни причини:</p>
-                            <ul className="list-disc list-inside space-y-1">
-                                <li>Файлът все още се копира в public/content</li>
-                                <li>Проблем с URL encoding на кирилицата</li>
-                                <li>Next.js все още не е презаредил статичните файлове</li>
-                            </ul>
-                        </div>
-                    </div>
+                    <BookOpen className="w-16 h-16 text-red-400 mx-auto mb-4" />
+                    <h2 className="text-2xl font-bold text-white mb-2">Грешка при зареждане</h2>
+                    <p className="text-gray-400 mb-4">{error}</p>
                     <button
                         onClick={() => window.location.reload()}
                         className="px-6 py-3 rounded-xl bg-purple-500 hover:bg-purple-600 text-white font-medium transition-colors"
@@ -140,7 +235,7 @@ export default function ResourcesPage() {
             <div className="min-h-screen flex items-center justify-center px-4">
                 <div className="text-center">
                     <BookOpen className="w-16 h-16 text-gray-600 mx-auto mb-4" />
-                    <p className="text-gray-400">Няма namерено съдържание</p>
+                    <p className="text-gray-400">Няма намерено съдържание</p>
                 </div>
             </div>
         )
@@ -165,6 +260,68 @@ export default function ResourcesPage() {
                         Терминология в практиката на AI - Интерактивна книга
                     </p>
                 </motion.div>
+
+                {/* Controls Bar */}
+                <div className="flex items-center justify-center gap-4 flex-wrap mt-6">
+                    {/* Page Selector */}
+                    <div className="flex items-center gap-2 px-4 py-2 rounded-xl bg-white/5 border border-white/10">
+                        <span className="text-gray-400 text-sm">Страница:</span>
+                        <select
+                            value={currentPage}
+                            onChange={(e) => goToPage(Number(e.target.value))}
+                            className="bg-transparent border-none text-white font-medium focus:outline-none cursor-pointer"
+                        >
+                            {sections.map((_, index) => (
+                                <option key={index} value={index} className="bg-gray-900">
+                                    {index + 1}
+                                </option>
+                            ))}
+                        </select>
+                        <span className="text-gray-500 text-sm">от {sections.length}</span>
+                    </div>
+
+                    {/* Zoom Controls */}
+                    <div className="flex items-center gap-2 px-4 py-2 rounded-xl bg-white/5 border border-white/10">
+                        <button
+                            onClick={() => setTextZoom(prev => Math.max(50, prev - 10))}
+                            disabled={textZoom <= 50}
+                            className="p-1 hover:bg-white/10 rounded disabled:opacity-30 transition-colors"
+                            title="По-малък текст"
+                        >
+                            <ZoomOut className="w-5 h-5" />
+                        </button>
+                        <span className="w-12 text-center text-sm font-medium">{textZoom}%</span>
+                        <button
+                            onClick={() => setTextZoom(prev => Math.min(150, prev + 10))}
+                            disabled={textZoom >= 150}
+                            className="p-1 hover:bg-white/10 rounded disabled:opacity-30 transition-colors"
+                            title="По-голям текст"
+                        >
+                            <ZoomIn className="w-5 h-5" />
+                        </button>
+                    </div>
+
+                    {/* Bookmark Toggle */}
+                    {user && (
+                        <button
+                            onClick={toggleBookmark}
+                            className={`flex items-center gap-2 px-4 py-2 rounded-xl border transition-all duration-300 ${isCurrentPageBookmarked
+                                ? 'bg-purple-500/30 border-purple-500 text-purple-300'
+                                : 'bg-white/5 border-white/10 hover:bg-purple-500/20 hover:border-purple-500/30'
+                                }`}
+                            title={isCurrentPageBookmarked ? 'Премахни отметка' : 'Добави отметка'}
+                        >
+                            {isCurrentPageBookmarked ? (
+                                <BookmarkCheck className="w-5 h-5" />
+                            ) : (
+                                <Bookmark className="w-5 h-5" />
+                            )}
+                            <span className="hidden sm:inline">
+                                {isCurrentPageBookmarked ? 'Отметнато' : 'Отметни'}
+                            </span>
+                        </button>
+                    )}
+                </div>
             </div>
 
             {/* Book Container */}
@@ -172,21 +329,27 @@ export default function ResourcesPage() {
                 <div className="relative" style={{ perspective: '2000px' }}>
                     {/* Book Wrapper */}
                     <div className="relative min-h-[600px] md:min-h-[700px]">
-                        {/* Left Page (Even pages on desktop, hidden on mobile) */}
+                        {/* Left Page */}
                         <div className="hidden md:block absolute left-0 top-0 w-1/2 h-full pr-4">
                             <AnimatePresence mode="wait">
                                 <motion.div
                                     key={`left-${currentPage}`}
-                                    initial={{ rotateY: -90, opacity: 0 }}
-                                    animate={{ rotateY: 0, opacity: 1 }}
-                                    exit={{ rotateY: 90, opacity: 0 }}
-                                    transition={{ duration: 0.6, ease: 'easeInOut' }}
+                                    initial={{ y: -50, opacity: 0 }}
+                                    animate={{ y: 0, opacity: 1 }}
+                                    exit={{ y: 50, opacity: 0 }}
+                                    transition={{ duration: 0.4, ease: 'easeInOut' }}
                                     className="w-full h-full"
-                                    style={{ transformStyle: 'preserve-3d' }}
                                 >
                                     <div className="book-page book-page-left h-full overflow-y-auto p-8 scrollbar-thin scrollbar-thumb-purple-500/50 scrollbar-track-transparent">
-                                        {currentPage > 0 && (
-                                            <div className="prose prose-invert max-w-none">
+                                        {currentPage === 0 ? (
+                                            // Page 1: Show bookmarks panel
+                                            renderBookmarksPanel()
+                                        ) : (
+                                            // Other pages: Show previous page content
+                                            <div
+                                                className="prose prose-invert max-w-none"
+                                                style={{ fontSize: `${textZoom}%` }}
+                                            >
                                                 <ReactMarkdown>
                                                     {sections[currentPage - 1]}
                                                 </ReactMarkdown>
@@ -197,20 +360,22 @@ export default function ResourcesPage() {
                             </AnimatePresence>
                         </div>
 
-                        {/* Right Page (Odd pages / Main page on mobile) */}
+                        {/* Right Page - Shows current content */}
                         <div className="w-full md:w-1/2 md:absolute md:right-0 md:top-0 h-full md:pl-4">
                             <AnimatePresence mode="wait">
                                 <motion.div
                                     key={`right-${currentPage}`}
-                                    initial={{ rotateY: 90, opacity: 0 }}
-                                    animate={{ rotateY: 0, opacity: 1 }}
-                                    exit={{ rotateY: -90, opacity: 0 }}
-                                    transition={{ duration: 0.6, ease: 'easeInOut' }}
+                                    initial={{ y: 50, opacity: 0 }}
+                                    animate={{ y: 0, opacity: 1 }}
+                                    exit={{ y: -50, opacity: 0 }}
+                                    transition={{ duration: 0.4, ease: 'easeInOut' }}
                                     className="w-full h-full"
-                                    style={{ transformStyle: 'preserve-3d' }}
                                 >
-                                    <div className="book-page book-page-right h-full overflow-y-auto p-6 md:p-8 scrollbar-thin scrollbar-thumb-purple-500/50 scrollbar-track-transparent">
-                                        <div className="prose prose-invert max-w-none">
+                                    <div className="book-page book-page-right h-full overflow-y-auto p-6 md:p-8 scrollbar-thin scrollbar-thumb-purple-500/50 scrollbar-track-transparent min-h-[600px] md:min-h-[700px]">
+                                        <div
+                                            className="prose prose-invert max-w-none"
+                                            style={{ fontSize: `${textZoom}%` }}
+                                        >
                                             <ReactMarkdown>
                                                 {sections[currentPage]}
                                             </ReactMarkdown>
@@ -225,11 +390,11 @@ export default function ResourcesPage() {
                             </AnimatePresence>
                         </div>
 
-                        {/* Book Spine (visible on desktop) */}
+                        {/* Book Spine */}
                         <div className="hidden md:block absolute left-1/2 top-0 w-1 h-full -translate-x-1/2 bg-gradient-to-b from-purple-500/20 via-purple-600/30 to-purple-500/20 shadow-lg shadow-purple-500/50" />
                     </div>
 
-                    {/* Navigation Controls */}
+                    {/* Vertical Navigation Controls */}
                     <div className="flex justify-between items-center mt-8 gap-4">
                         <motion.button
                             onClick={prevPage}
@@ -238,7 +403,7 @@ export default function ResourcesPage() {
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.95 }}
                         >
-                            <ChevronLeft className="w-5 h-5" />
+                            <ChevronUp className="w-5 h-5" />
                             <span className="hidden sm:inline">Предишна</span>
                         </motion.button>
 
@@ -265,7 +430,7 @@ export default function ResourcesPage() {
                             whileTap={{ scale: 0.95 }}
                         >
                             <span className="hidden sm:inline">Следваща</span>
-                            <ChevronRight className="w-5 h-5" />
+                            <ChevronDown className="w-5 h-5" />
                         </motion.button>
                     </div>
                 </div>
@@ -310,7 +475,7 @@ export default function ResourcesPage() {
                 }
 
                 .prose-invert h1 {
-                    font-size: 1.875rem;
+                    font-size: 1.875em;
                     margin-bottom: 1rem;
                     background: linear-gradient(135deg, #a855f7 0%, #ec4899 100%);
                     -webkit-background-clip: text;
@@ -319,14 +484,14 @@ export default function ResourcesPage() {
                 }
 
                 .prose-invert h2 {
-                    font-size: 1.5rem;
+                    font-size: 1.5em;
                     margin-top: 2rem;
                     margin-bottom: 0.75rem;
                     color: #a855f7;
                 }
 
                 .prose-invert h3 {
-                    font-size: 1.25rem;
+                    font-size: 1.25em;
                     margin-top: 1.5rem;
                     margin-bottom: 0.5rem;
                 }
@@ -358,7 +523,6 @@ export default function ResourcesPage() {
                     color: #c084fc;
                 }
 
-                /* Custom Scrollbar */
                 .scrollbar-thin::-webkit-scrollbar {
                     width: 6px;
                 }
@@ -374,6 +538,13 @@ export default function ResourcesPage() {
 
                 .scrollbar-thin::-webkit-scrollbar-thumb:hover {
                     background: rgba(168, 85, 247, 0.7);
+                }
+
+                .gradient-text {
+                    background: linear-gradient(135deg, #a855f7 0%, #ec4899 100%);
+                    -webkit-background-clip: text;
+                    -webkit-text-fill-color: transparent;
+                    background-clip: text;
                 }
             `}</style>
         </div>
