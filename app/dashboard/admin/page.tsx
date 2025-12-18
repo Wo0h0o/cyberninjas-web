@@ -1,14 +1,50 @@
 'use client'
 
+import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
+import { supabase } from '@/lib/supabase'
 
 export default function AdminDashboard() {
-    const stats = [
-        { label: 'Библиотеки', value: '1', icon: '📚', href: '/dashboard/admin/libraries' },
-        { label: 'Модули', value: '5', icon: '📦', href: '/dashboard/admin/libraries' },
-        { label: 'Промптове', value: '12', icon: '📝', href: '/dashboard/admin/libraries' },
-    ]
+    const [stats, setStats] = useState([
+        { label: 'Библиотеки', value: '-', icon: '📚', href: '/dashboard/admin/libraries' },
+        { label: 'Модули', value: '-', icon: '📦', href: '/dashboard/admin/libraries' },
+        { label: 'Промптове', value: '-', icon: '📝', href: '/dashboard/admin/libraries' },
+    ])
+    const [loading, setLoading] = useState(true)
+
+    useEffect(() => {
+        async function fetchStats() {
+            try {
+                // Fetch library count
+                const { count: libraryCount } = await supabase
+                    .from('prompt_libraries')
+                    .select('*', { count: 'exact', head: true })
+
+                // Fetch module count
+                const { count: moduleCount } = await supabase
+                    .from('library_modules')
+                    .select('*', { count: 'exact', head: true })
+
+                // Fetch prompt count
+                const { count: promptCount } = await supabase
+                    .from('prompts')
+                    .select('*', { count: 'exact', head: true })
+
+                setStats([
+                    { label: 'Библиотеки', value: String(libraryCount || 0), icon: '📚', href: '/dashboard/admin/libraries' },
+                    { label: 'Модули', value: String(moduleCount || 0), icon: '📦', href: '/dashboard/admin/libraries' },
+                    { label: 'Промптове', value: String(promptCount || 0), icon: '📝', href: '/dashboard/admin/libraries' },
+                ])
+            } catch (error) {
+                console.error('Error fetching stats:', error)
+            } finally {
+                setLoading(false)
+            }
+        }
+
+        fetchStats()
+    }, [])
 
     return (
         <div className="space-y-8">
@@ -35,7 +71,13 @@ export default function AdminDashboard() {
                                     <path d="M9 18l6-6-6-6" />
                                 </svg>
                             </div>
-                            <p className="text-4xl font-bold text-white mb-1">{stat.value}</p>
+                            <p className="text-4xl font-bold text-white mb-1">
+                                {loading ? (
+                                    <span className="inline-block w-8 h-8 border-2 border-purple-500 border-t-transparent rounded-full animate-spin" />
+                                ) : (
+                                    stat.value
+                                )}
+                            </p>
                             <p className="text-gray-400">{stat.label}</p>
                         </motion.div>
                     </Link>
