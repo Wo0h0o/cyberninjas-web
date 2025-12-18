@@ -1,12 +1,12 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { useRouter, useParams } from 'next/navigation'
 import { motion } from 'framer-motion'
 import { supabase } from '@/lib/supabase'
 import {
     Save, ArrowLeft, Eye, EyeOff, Upload, X, Plus,
-    GripVertical, Edit2, Trash2, PlayCircle, FileText
+    GripVertical, Edit2, Trash2, PlayCircle, FileText, Image
 } from 'lucide-react'
 import {
     DndContext,
@@ -48,6 +48,7 @@ export default function CourseEditorPage() {
     const router = useRouter()
     const params = useParams()
     const isNew = params.id === 'new'
+    const fileInputRef = useRef<HTMLInputElement>(null)
 
     // Course metadata
     const [title, setTitle] = useState('')
@@ -56,6 +57,7 @@ export default function CourseEditorPage() {
     const [price, setPrice] = useState(299)
     const [isPublished, setIsPublished] = useState(false)
     const [thumbnailUrl, setThumbnailUrl] = useState('')
+    const [uploadingThumbnail, setUploadingThumbnail] = useState(false)
 
     // Modules and lessons
     const [modules, setModules] = useState<Module[]>([])
@@ -137,6 +139,55 @@ export default function CourseEditorPage() {
         }
     }
 
+    async function uploadThumbnail(file: File) {
+        try {
+            setUploadingThumbnail(true)
+
+            // Create unique filename
+            const fileExt = file.name.split('.').pop()
+            const fileName = `${Math.random().toString(36).substring(2)}.${fileExt}`
+            const filePath = `course-thumbnails/${fileName}`
+
+            // Upload to Supabase Storage
+            const { error: uploadError } = await supabase.storage
+                .from('course-thumbnails')
+                .upload(filePath, file)
+
+            if (uploadError) throw uploadError
+
+            // Get public URL
+            const { data } = supabase.storage
+                .from('course-thumbnails')
+                .getPublicUrl(filePath)
+
+            setThumbnailUrl(data.publicUrl)
+        } catch (error: any) {
+            console.error('Error uploading thumbnail:', error)
+            alert(`Грешка при качване: ${error.message}`)
+        } finally {
+            setUploadingThumbnail(false)
+        }
+    }
+
+    function handleThumbnailChange(e: React.ChangeEvent<HTMLInputElement>) {
+        const file = e.target.files?.[0]
+        if (file) {
+            // Check file size (max 2MB)
+            if (file.size > 2 * 1024 * 1024) {
+                alert('Файлът е твърде голям! Максимум 2MB.')
+                return
+            }
+
+            // Check file type
+            if (!file.type.startsWith('image/')) {
+                alert('Моля качи изображение (JPG, PNG, WebP)')
+                return
+            }
+
+            uploadThumbnail(file)
+        }
+    }
+
     async function saveCourse() {
         if (!title.trim() || !slug.trim()) {
             alert('Моля попълни заглавие и slug')
@@ -197,33 +248,24 @@ export default function CourseEditorPage() {
             return
         }
 
-        const newModule: Module = {
-            id: `temp-${Date.now()}`,
-            title: 'Нов модул',
-            order_index: modules.length,
-            lessons: [],
-        }
-
-        setModules([...modules, newModule])
-
-        // Save to DB
         try {
             const { data, error } = await supabase
                 .from('modules')
                 .insert({
                     course_id: params.id,
-                    title: newModule.title,
-                    order_index: newModule.order_index,
+                    title: 'Нов модул',
+                    order_index: modules.length,
                 })
                 .select()
                 .single()
 
             if (error) throw error
 
-            // Update with real ID
-            setModules(modules.map(m =>
-                m.id === newModule.id ? { ...m, id: data.id } : m
-            ))
+            // Add to state with real ID
+            setModules(prev => [...prev, {
+                ...data,
+                lessons: [],
+            }])
         } catch (error) {
             console.error('Error adding module:', error)
             alert('Грешка при добавяне на модул')
@@ -262,6 +304,82 @@ export default function CourseEditorPage() {
         } catch (error) {
             console.error('Error deleting module:', error)
             alert('Грешка при изтриване на модул')
+        }
+    }
+
+    async function addLesson(moduleId: string) {
+        try {
+            const module = modules.find(m => m.id === moduleId)
+            if (!module) return
+
+            const { data, error } = await supabase
+                .from('lessons')
+                .insert({
+                    module_id: moduleId,
+                    title: 'Нова лекция',
+                    order_index: module.lessons.length,
+                    is_free: false,
+                })
+                .select()
+                .single()
+
+            if (error) throw error
+
+            // Add to state
+            setModules(modules.map(m =>
+                m.id === moduleId
+                    ? { ...m, lessons: [...m.lessons, data] }
+                    : m
+            ))
+        } catch (error) {
+            console.error('Error adding lesson:', error)
+            alert('Грешка при добавяне на лекция')
+        }
+    }
+
+    async function updateLessonTitle(lessonId: string, moduleId: string, newTitle: string) {
+        setModules(modules.map(m =>
+            m.id === moduleId
+                ? {
+                    ...m,
+                    lessons: m.lessons.map(l =>
+                        l.id === lessonId ? { ...l, title: newTitle } : l
+                    )
+                }
+                : m
+        ))
+
+        try {
+            const { error } = await supabase
+                .from('lessons')
+                .update({ title: newTitle })
+                .eq('id', lessonId)
+
+            if (error) throw error
+        } catch (error) {
+            console.error('Error updating lesson:', error)
+        }
+    }
+
+    async function deleteLesson(lessonId: string, moduleId: string) {
+        if (!confirm('Сигурен ли си, че искаш да изтриеш тази лекция?')) return
+
+        try {
+            const { error } = await supabase
+                .from('lessons')
+                .delete()
+                .eq('id', lessonId)
+
+            if (error) throw error
+
+            setModules(modules.map(m =>
+                m.id === moduleId
+                    ? { ...m, lessons: m.lessons.filter(l => l.id !== lessonId) }
+                    : m
+            ))
+        } catch (error) {
+            console.error('Error deleting lesson:', error)
+            alert('Грешка при изтриване на лекция')
         }
     }
 
@@ -413,17 +531,63 @@ export default function CourseEditorPage() {
 
                         <div>
                             <label className="block text-sm font-medium text-gray-400 mb-2">
-                                Thumbnail URL
+                                Thumbnail (препоръчително 750x300px)
                             </label>
+
                             <input
-                                type="text"
-                                value={thumbnailUrl}
-                                onChange={(e) => setThumbnailUrl(e.target.value)}
-                                placeholder="https://..."
-                                className="w-full px-4 py-2 rounded-lg bg-white/5 border border-white/10 text-white placeholder-gray-500 focus:border-purple-500/50 focus:outline-none"
+                                ref={fileInputRef}
+                                type="file"
+                                accept="image/*"
+                                onChange={handleThumbnailChange}
+                                className="hidden"
                             />
+
+                            <div className="space-y-2">
+                                <button
+                                    onClick={() => fileInputRef.current?.click()}
+                                    disabled={uploadingThumbnail}
+                                    className="w-full flex items-center justify-center gap-2 px-4 py-2 rounded-lg bg-purple-500/20 hover:bg-purple-500/30 text-purple-300 transition-colors disabled:opacity-50"
+                                >
+                                    {uploadingThumbnail ? (
+                                        <>
+                                            <div className="w-4 h-4 border-2 border-purple-300 border-t-transparent rounded-full animate-spin" />
+                                            Качва се...
+                                        </>
+                                    ) : (
+                                        <>
+                                            <Upload className="w-4 h-4" />
+                                            Upload изображение
+                                        </>
+                                    )}
+                                </button>
+
+                                <div className="text-xs text-gray-500 text-center">
+                                    или въведи URL
+                                </div>
+
+                                <input
+                                    type="text"
+                                    value={thumbnailUrl}
+                                    onChange={(e) => setThumbnailUrl(e.target.value)}
+                                    placeholder="https://..."
+                                    className="w-full px-4 py-2 rounded-lg bg-white/5 border border-white/10 text-white placeholder-gray-500 focus:border-purple-500/50 focus:outline-none text-sm"
+                                />
+                            </div>
+
                             {thumbnailUrl && (
-                                <img src={thumbnailUrl} alt="Preview" className="mt-2 w-full h-32 object-cover rounded-lg" />
+                                <div className="mt-3 relative group">
+                                    <img
+                                        src={thumbnailUrl}
+                                        alt="Preview"
+                                        className="w-full h-32 object-cover rounded-lg"
+                                    />
+                                    <button
+                                        onClick={() => setThumbnailUrl('')}
+                                        className="absolute top-2 right-2 p-1 rounded-lg bg-red-500/80 hover:bg-red-500 text-white opacity-0 group-hover:opacity-100 transition-opacity"
+                                    >
+                                        <X className="w-4 h-4" />
+                                    </button>
+                                </div>
                             )}
                         </div>
                     </div>
@@ -470,6 +634,9 @@ export default function CourseEditorPage() {
                                             module={module}
                                             onUpdateTitle={updateModuleTitle}
                                             onDelete={deleteModule}
+                                            onAddLesson={addLesson}
+                                            onUpdateLessonTitle={updateLessonTitle}
+                                            onDeleteLesson={deleteLesson}
                                         />
                                     ))}
                                 </div>
@@ -487,13 +654,20 @@ function ModuleCard({
     module,
     onUpdateTitle,
     onDelete,
+    onAddLesson,
+    onUpdateLessonTitle,
+    onDeleteLesson,
 }: {
     module: Module
     onUpdateTitle: (id: string, title: string) => void
     onDelete: (id: string) => void
+    onAddLesson: (moduleId: string) => void
+    onUpdateLessonTitle: (lessonId: string, moduleId: string, title: string) => void
+    onDeleteLesson: (lessonId: string, moduleId: string) => void
 }) {
-    const [isEditing, setIsEditing] = useState(false)
-    const [title, setTitle] = useState(module.title)
+    const [isEditingModule, setIsEditingModule] = useState(false)
+    const [moduleTitle, setModuleTitle] = useState(module.title)
+    const [editingLessonId, setEditingLessonId] = useState<string | null>(null)
 
     const {
         attributes,
@@ -508,9 +682,9 @@ function ModuleCard({
         transition,
     }
 
-    function handleSave() {
-        onUpdateTitle(module.id, title)
-        setIsEditing(false)
+    function handleSaveModule() {
+        onUpdateTitle(module.id, moduleTitle)
+        setIsEditingModule(false)
     }
 
     return (
@@ -524,13 +698,13 @@ function ModuleCard({
                     <GripVertical className="w-5 h-5" />
                 </button>
 
-                {isEditing ? (
+                {isEditingModule ? (
                     <input
                         type="text"
-                        value={title}
-                        onChange={(e) => setTitle(e.target.value)}
-                        onBlur={handleSave}
-                        onKeyDown={(e) => e.key === 'Enter' && handleSave()}
+                        value={moduleTitle}
+                        onChange={(e) => setModuleTitle(e.target.value)}
+                        onBlur={handleSaveModule}
+                        onKeyDown={(e) => e.key === 'Enter' && handleSaveModule()}
                         autoFocus
                         className="flex-1 px-3 py-1 rounded bg-white/10 border border-purple-500/50 text-white focus:outline-none"
                     />
@@ -540,7 +714,7 @@ function ModuleCard({
 
                 <div className="flex items-center gap-2">
                     <button
-                        onClick={() => setIsEditing(!isEditing)}
+                        onClick={() => setIsEditingModule(!isEditingModule)}
                         className="p-2 rounded-lg bg-white/5 hover:bg-white/10 text-gray-400 hover:text-white transition-colors"
                     >
                         <Edit2 className="w-4 h-4" />
@@ -560,26 +734,93 @@ function ModuleCard({
                     <div className="text-sm text-gray-500 italic">Няма лекции</div>
                 ) : (
                     module.lessons.map((lesson) => (
-                        <div key={lesson.id} className="flex items-center gap-2 text-sm">
-                            {lesson.video_url ? (
-                                <PlayCircle className="w-4 h-4 text-purple-400" />
-                            ) : (
-                                <FileText className="w-4 h-4 text-blue-400" />
-                            )}
-                            <span className="text-gray-300">{lesson.title}</span>
-                            {lesson.is_free && (
-                                <span className="px-2 py-0.5 rounded text-xs bg-green-500/20 text-green-300">
-                                    Free
-                                </span>
-                            )}
-                        </div>
+                        <LessonRow
+                            key={lesson.id}
+                            lesson={lesson}
+                            moduleId={module.id}
+                            isEditing={editingLessonId === lesson.id}
+                            onStartEdit={() => setEditingLessonId(lesson.id)}
+                            onSave={(title) => {
+                                onUpdateLessonTitle(lesson.id, module.id, title)
+                                setEditingLessonId(null)
+                            }}
+                            onDelete={() => onDeleteLesson(lesson.id, module.id)}
+                        />
                     ))
                 )}
-                <button className="text-sm text-purple-400 hover:text-purple-300 flex items-center gap-1">
+                <button
+                    onClick={() => onAddLesson(module.id)}
+                    className="text-sm text-purple-400 hover:text-purple-300 flex items-center gap-1"
+                >
                     <Plus className="w-3 h-3" />
                     Добави лекция
                 </button>
             </div>
+        </div>
+    )
+}
+
+// Lesson Row Component
+function LessonRow({
+    lesson,
+    moduleId,
+    isEditing,
+    onStartEdit,
+    onSave,
+    onDelete,
+}: {
+    lesson: Lesson
+    moduleId: string
+    isEditing: boolean
+    onStartEdit: () => void
+    onSave: (title: string) => void
+    onDelete: () => void
+}) {
+    const [title, setTitle] = useState(lesson.title)
+
+    function handleSave() {
+        onSave(title)
+    }
+
+    return (
+        <div className="flex items-center gap-2 text-sm group">
+            {lesson.video_url ? (
+                <PlayCircle className="w-4 h-4 text-purple-400 flex-shrink-0" />
+            ) : (
+                <FileText className="w-4 h-4 text-blue-400 flex-shrink-0" />
+            )}
+
+            {isEditing ? (
+                <input
+                    type="text"
+                    value={title}
+                    onChange={(e) => setTitle(e.target.value)}
+                    onBlur={handleSave}
+                    onKeyDown={(e) => e.key === 'Enter' && handleSave()}
+                    autoFocus
+                    className="flex-1 px-2 py-0.5 rounded bg-white/10 border border-purple-500/50 text-white text-sm focus:outline-none"
+                />
+            ) : (
+                <span
+                    onClick={onStartEdit}
+                    className="text-gray-300 flex-1 cursor-pointer hover:text-white transition-colors"
+                >
+                    {lesson.title}
+                </span>
+            )}
+
+            {lesson.is_free && (
+                <span className="px-2 py-0.5 rounded text-xs bg-green-500/20 text-green-300">
+                    Free
+                </span>
+            )}
+
+            <button
+                onClick={onDelete}
+                className="opacity-0 group-hover:opacity-100 p-1 rounded hover:bg-red-500/20 text-red-400 transition-all"
+            >
+                <Trash2 className="w-3 h-3" />
+            </button>
         </div>
     )
 }
