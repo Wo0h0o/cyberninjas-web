@@ -2,10 +2,11 @@
 
 import { motion } from 'framer-motion'
 import { useCourses } from '@/hooks/useCourses'
+import { usePromptLibraries } from '@/hooks/usePrompts'
 import { CourseCard, ProgressCircle } from '@/components/dashboard'
 import { useAuth } from '@/contexts/AuthContext'
 
-// Stats card component
+// Stats card component - mobile optimized
 function StatCard({
     icon,
     label,
@@ -19,17 +20,17 @@ function StatCard({
 }) {
     return (
         <motion.div
-            className="p-6 rounded-2xl bg-white/[0.03] border border-white/10"
+            className="p-4 sm:p-6 rounded-xl sm:rounded-2xl bg-white/[0.03] border border-white/10"
             whileHover={{ y: -2, borderColor: 'rgba(139, 92, 246, 0.3)' }}
             transition={{ duration: 0.2 }}
         >
-            <div className="flex items-center gap-4">
-                <div className={`w-12 h-12 rounded-xl flex items-center justify-center ${color}`}>
-                    {icon}
+            <div className="flex items-center gap-3 sm:gap-4">
+                <div className={`w-10 h-10 sm:w-12 sm:h-12 rounded-lg sm:rounded-xl flex items-center justify-center flex-shrink-0 ${color}`}>
+                    <div className="scale-75 sm:scale-100">{icon}</div>
                 </div>
-                <div>
-                    <p className="text-2xl font-bold text-white">{value}</p>
-                    <p className="text-sm text-gray-400">{label}</p>
+                <div className="min-w-0">
+                    <p className="text-xl sm:text-2xl font-bold text-white">{value}</p>
+                    <p className="text-xs sm:text-sm text-gray-400 truncate">{label}</p>
                 </div>
             </div>
         </motion.div>
@@ -38,30 +39,31 @@ function StatCard({
 
 export default function DashboardPage() {
     const { courses, loading } = useCourses()
+    const { libraries, loading: librariesLoading } = usePromptLibraries()
     const { profile } = useAuth()
 
     // Get first name for greeting
     const firstName = profile?.name?.split(' ')[0] || 'там'
 
     return (
-        <div className="space-y-10">
+        <div className="space-y-6 sm:space-y-10">
             {/* Welcome Header */}
             <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
             >
-                <h1 className="text-3xl font-bold text-white mb-2">
+                <h1 className="text-2xl sm:text-3xl font-bold text-white mb-1 sm:mb-2">
                     Добре дошъл, {firstName}! 👋
                 </h1>
-                <p className="text-gray-400">
+                <p className="text-sm sm:text-base text-gray-400">
                     Продължи своето обучение и развий AI уменията си.
                 </p>
             </motion.div>
 
             {/* Stats Grid */}
             <motion.div
-                className="grid grid-cols-1 md:grid-cols-3 gap-6"
+                className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.1 }}
@@ -76,6 +78,16 @@ export default function DashboardPage() {
                     label="Курса"
                     value={courses.length}
                     color="bg-purple-500/20"
+                />
+                <StatCard
+                    icon={
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-amber-400">
+                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                        </svg>
+                    }
+                    label="Промпт библиотеки"
+                    value={librariesLoading ? '...' : libraries.length + 1}
+                    color="bg-amber-500/20"
                 />
                 <StatCard
                     icon={
@@ -178,6 +190,30 @@ export default function DashboardPage() {
                             </p>
                         </div>
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="ml-auto text-gray-500 group-hover:text-purple-400 group-hover:translate-x-1 transition-all">
+                            <path d="M5 12h14M12 5l7 7-7 7" />
+                        </svg>
+                    </div>
+                </a>
+
+                <a
+                    href="/dashboard/prompts"
+                    className="group p-6 rounded-2xl bg-gradient-to-br from-amber-500/10 to-orange-500/10 border border-amber-500/20 hover:border-amber-500/40 transition-all"
+                >
+                    <div className="flex items-center gap-4">
+                        <div className="w-12 h-12 rounded-xl bg-amber-500/20 flex items-center justify-center group-hover:scale-110 transition-transform">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-amber-400">
+                                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                            </svg>
+                        </div>
+                        <div>
+                            <h3 className="font-semibold text-white group-hover:text-amber-300 transition-colors">
+                                Промпт библиотеки
+                            </h3>
+                            <p className="text-sm text-gray-400">
+                                Готови промптове за ChatGPT & AI
+                            </p>
+                        </div>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="ml-auto text-gray-500 group-hover:text-amber-400 group-hover:translate-x-1 transition-all">
                             <path d="M5 12h14M12 5l7 7-7 7" />
                         </svg>
                     </div>

@@ -386,6 +386,7 @@ function PromptModal({
 
 export default function LibraryPage({ params }: LibraryPageProps) {
     const resolvedParams = use(params)
+
     const { library, loading, error } = usePromptLibrary(resolvedParams.slug)
     const { isFavorite, toggleFavorite } = useFavorites()
 

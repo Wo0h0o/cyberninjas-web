@@ -1,4 +1,5 @@
 export { Sidebar } from './Sidebar'
+export { BottomNav } from './BottomNav'
 export { CourseCard } from './CourseCard'
 export { ProgressCircle } from './ProgressCircle'
 export { LessonList } from './LessonList'

@@ -50,6 +50,39 @@ const navItems: NavItem[] = [
         ),
     },
     {
+        label: 'Ресурси',
+        href: '/dashboard/resources',
+        icon: (
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" />
+                <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" />
+            </svg>
+        ),
+    },
+    {
+        label: 'Платформи',
+        href: '/dashboard/platforms',
+        icon: (
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <rect x="3" y="3" width="7" height="7" rx="1" />
+                <rect x="14" y="3" width="7" height="7" rx="1" />
+                <rect x="14" y="14" width="7" height="7" rx="1" />
+                <rect x="3" y="14" width="7" height="7" rx="1" />
+            </svg>
+        ),
+    },
+    {
+        label: 'FAQ',
+        href: '/dashboard/faq',
+        icon: (
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <circle cx="12" cy="12" r="10" />
+                <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" />
+                <line x1="12" y1="17" x2="12.01" y2="17" />
+            </svg>
+        ),
+    },
+    {
         label: 'Любими',
         href: '/dashboard/prompts/favorites',
         icon: (
@@ -106,10 +139,10 @@ export function Sidebar() {
 
     return (
         <>
-            {/* Mobile Toggle Button */}
+            {/* Mobile Toggle Button - Only shown on desktop when sidebar is collapsible */}
             <button
                 onClick={() => setIsOpen(!isOpen)}
-                className="lg:hidden fixed top-4 left-4 z-50 p-3 rounded-xl bg-white/5 border border-white/10 backdrop-blur-md"
+                className="hidden lg:block fixed top-4 left-4 z-50 p-3 rounded-xl bg-white/5 border border-white/10 backdrop-blur-md opacity-0 pointer-events-none"
             >
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2">
                     {isOpen ? (
@@ -120,31 +153,30 @@ export function Sidebar() {
                 </svg>
             </button>
 
-            {/* Mobile Overlay */}
+            {/* Mobile Overlay - Not needed since we use bottom nav on mobile */}
             <AnimatePresence>
                 {isOpen && (
                     <motion.div
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
-                        className="lg:hidden fixed inset-0 bg-black/60 backdrop-blur-sm z-40"
+                        className="hidden"
                         onClick={() => setIsOpen(false)}
                     />
                 )}
             </AnimatePresence>
 
-            {/* Sidebar */}
+            {/* Sidebar - Desktop Only (hidden on mobile, replaced by BottomNav) */}
             <motion.aside
                 className={clsx(
+                    'hidden lg:flex',
                     'fixed left-0 top-0 h-screen w-72 z-50',
                     'bg-white/[0.02] backdrop-blur-xl',
                     'border-r border-white/10',
-                    'flex flex-col',
-                    'lg:translate-x-0',
-                    isOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'
+                    'flex-col'
                 )}
                 initial={false}
-                animate={{ x: isOpen ? 0 : undefined }}
+                animate={{ x: 0 }}
                 transition={{ type: 'spring', damping: 30, stiffness: 300 }}
             >
                 {/* Logo */}

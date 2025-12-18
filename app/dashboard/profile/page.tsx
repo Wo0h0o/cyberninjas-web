@@ -30,41 +30,41 @@ export default function ProfilePage() {
     }
 
     return (
-        <div className="space-y-8 max-w-4xl">
+        <div className="space-y-6 sm:space-y-8 max-w-4xl">
             {/* Header */}
             <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
             >
-                <h1 className="text-3xl font-bold text-white mb-2">Моят профил</h1>
-                <p className="text-gray-400">
+                <h1 className="text-2xl sm:text-3xl font-bold text-white mb-1 sm:mb-2">Моят профил</h1>
+                <p className="text-sm sm:text-base text-gray-400">
                     Управлявай акаунта си и преглеждай прогреса.
                 </p>
             </motion.div>
 
             {/* Profile Card */}
             <motion.div
-                className="p-8 rounded-2xl bg-white/[0.03] border border-white/10"
+                className="p-4 sm:p-6 md:p-8 rounded-xl sm:rounded-2xl bg-white/[0.03] border border-white/10"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.1 }}
             >
-                <div className="flex items-start gap-6">
+                <div className="flex flex-col sm:flex-row items-start gap-4 sm:gap-6">
                     {/* Avatar */}
-                    <div className="w-24 h-24 rounded-2xl bg-gradient-to-br from-purple-500 to-fuchsia-500 flex items-center justify-center">
-                        <span className="text-3xl font-bold text-white">{getInitials()}</span>
+                    <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-xl sm:rounded-2xl bg-gradient-to-br from-purple-500 to-fuchsia-500 flex items-center justify-center flex-shrink-0">
+                        <span className="text-2xl sm:text-3xl font-bold text-white">{getInitials()}</span>
                     </div>
 
                     {/* Info */}
-                    <div className="flex-1">
-                        <h2 className="text-2xl font-semibold text-white mb-1">
+                    <div className="flex-1 min-w-0">
+                        <h2 className="text-xl sm:text-2xl font-semibold text-white mb-1">
                             {profile?.name || 'Потребител'}
                         </h2>
-                        <p className="text-gray-400 mb-4">{user?.email || 'Няма имейл'}</p>
+                        <p className="text-sm sm:text-base text-gray-400 mb-3 sm:mb-4 truncate">{user?.email || 'Няма имейл'}</p>
                         <span className={`inline-flex items-center gap-2 px-3 py-1 rounded-full text-sm ${profile?.subscription_tier === 'paid'
-                                ? 'bg-amber-500/20 text-amber-400'
-                                : 'bg-purple-500/20 text-purple-400'
+                            ? 'bg-amber-500/20 text-amber-400'
+                            : 'bg-purple-500/20 text-purple-400'
                             }`}>
                             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                                 <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" />
@@ -83,8 +83,8 @@ export default function ProfilePage() {
                         )}
                     </div>
 
-                    {/* Edit Button */}
-                    <button className="px-4 py-2 rounded-xl bg-white/5 border border-white/10 text-gray-300 hover:text-white hover:border-white/20 transition-colors">
+                    {/* Edit Button - hidden on very small screens */}
+                    <button className="hidden sm:block px-4 py-2 rounded-xl bg-white/5 border border-white/10 text-gray-300 hover:text-white hover:border-white/20 transition-colors">
                         Редактирай
                     </button>
                 </div>
@@ -92,46 +92,46 @@ export default function ProfilePage() {
 
             {/* Stats */}
             <motion.div
-                className="grid grid-cols-1 md:grid-cols-3 gap-6"
+                className="grid grid-cols-3 gap-3 sm:gap-6"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.2 }}
             >
-                <div className="p-6 rounded-2xl bg-white/[0.03] border border-white/10 text-center">
-                    <p className="text-3xl font-bold text-white mb-1">0</p>
-                    <p className="text-gray-400 text-sm">Завършени курса</p>
+                <div className="p-3 sm:p-4 md:p-6 rounded-xl sm:rounded-2xl bg-white/[0.03] border border-white/10 text-center">
+                    <p className="text-2xl sm:text-3xl font-bold text-white mb-1">0</p>
+                    <p className="text-gray-400 text-xs sm:text-sm">Завършени курса</p>
                 </div>
-                <div className="p-6 rounded-2xl bg-white/[0.03] border border-white/10 text-center">
-                    <p className="text-3xl font-bold text-white mb-1">0</p>
-                    <p className="text-gray-400 text-sm">Завършени урока</p>
+                <div className="p-3 sm:p-4 md:p-6 rounded-xl sm:rounded-2xl bg-white/[0.03] border border-white/10 text-center">
+                    <p className="text-2xl sm:text-3xl font-bold text-white mb-1">0</p>
+                    <p className="text-gray-400 text-xs sm:text-sm">Завършени урока</p>
                 </div>
-                <div className="p-6 rounded-2xl bg-white/[0.03] border border-white/10 text-center">
-                    <p className="text-3xl font-bold text-white mb-1">0ч</p>
-                    <p className="text-gray-400 text-sm">Учебно време</p>
+                <div className="p-3 sm:p-4 md:p-6 rounded-xl sm:rounded-2xl bg-white/[0.03] border border-white/10 text-center">
+                    <p className="text-2xl sm:text-3xl font-bold text-white mb-1">0ч</p>
+                    <p className="text-gray-400 text-xs sm:text-sm">Учебно време</p>
                 </div>
             </motion.div>
 
             {/* Upgrade CTA - only show for free users */}
             {profile?.subscription_tier !== 'paid' && (
                 <motion.div
-                    className="p-8 rounded-2xl bg-gradient-to-br from-purple-500/10 to-fuchsia-500/10 border border-purple-500/20"
+                    className="p-4 sm:p-6 md:p-8 rounded-xl sm:rounded-2xl bg-gradient-to-br from-purple-500/10 to-fuchsia-500/10 border border-purple-500/20"
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: 0.3 }}
                 >
-                    <div className="flex items-center gap-6">
-                        <div className="w-16 h-16 rounded-2xl bg-purple-500/20 flex items-center justify-center">
-                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-purple-400">
+                    <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-6">
+                        <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-xl sm:rounded-2xl bg-purple-500/20 flex items-center justify-center flex-shrink-0">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-purple-400 sm:w-8 sm:h-8">
                                 <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
                             </svg>
                         </div>
-                        <div className="flex-1">
-                            <h3 className="text-xl font-semibold text-white mb-1">Надгради до Платен план</h3>
-                            <p className="text-gray-400">
+                        <div className="flex-1 min-w-0">
+                            <h3 className="text-lg sm:text-xl font-semibold text-white mb-1">Надгради до Платен план</h3>
+                            <p className="text-sm sm:text-base text-gray-400">
                                 Получи достъп до всички курсове и ексклузивно съдържание.
                             </p>
                         </div>
-                        <button className="px-6 py-3 rounded-xl bg-gradient-to-r from-purple-500 to-fuchsia-500 text-white font-medium hover:opacity-90 transition-opacity">
+                        <button className="w-full sm:w-auto px-6 py-3 rounded-xl bg-gradient-to-r from-purple-500 to-fuchsia-500 text-white font-medium hover:opacity-90 transition-opacity text-sm sm:text-base">
                             Надгради сега
                         </button>
                     </div>

@@ -2,7 +2,7 @@
 
 import { useEffect } from 'react'
 import { useRouter } from 'next/navigation'
-import { Sidebar } from '@/components/dashboard'
+import { Sidebar, BottomNav } from '@/components/dashboard'
 import { useAuth } from '@/contexts/AuthContext'
 import '@/app/globals.css'
 
@@ -51,12 +51,15 @@ export default function DashboardLayout({
                 <div className="aurora-blob aurora-blob-3" />
             </div>
 
-            {/* Sidebar */}
+            {/* Sidebar - Desktop Only */}
             <Sidebar />
 
+            {/* Bottom Navigation - Mobile Only */}
+            <BottomNav />
+
             {/* Main Content */}
-            <main className="lg:pl-72 min-h-screen">
-                <div className="p-6 lg:p-10 pt-20 lg:pt-10">
+            <main className="lg:pl-72 min-h-screen pb-20 lg:pb-0">
+                <div className="p-4 sm:p-6 lg:p-10 pt-6 lg:pt-10">
                     {children}
                 </div>
             </main>

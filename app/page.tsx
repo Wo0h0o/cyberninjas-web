@@ -111,11 +111,11 @@ export default function Home() {
       </header>
 
       {/* === HERO SECTION === */}
-      <section className="relative z-10 min-h-screen flex items-center justify-center px-8 pt-24">
+      <section className="relative z-10 min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 pt-24">
         <div className="max-w-4xl mx-auto text-center">
           {/* Main Headline with Typing Effect */}
           <motion.h1
-            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight tracking-tight mb-8 relative"
+            className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold leading-tight tracking-tight mb-6 sm:mb-8 relative px-2"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5 }}
@@ -135,7 +135,7 @@ export default function Home() {
 
           {/* Subtitle */}
           <motion.p
-            className="text-xl text-gray-400 max-w-2xl mx-auto mb-12"
+            className="text-base sm:text-lg md:text-xl text-gray-400 max-w-2xl mx-auto mb-8 sm:mb-12 px-4"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: typingComplete ? 1 : 0, y: typingComplete ? 0 : 20 }}
             transition={{ duration: 0.6, delay: 0.3 }}
@@ -177,14 +177,14 @@ export default function Home() {
 
       {/* === WHAT WE OFFER SECTION === */}
       <section className="section">
-        <div className="max-w-6xl mx-auto">
+        <div className="max-w-6xl mx-auto px-4">
           <StaggerReveal>
             <h2 className="section-title">
-              Какво <span className="gradient-text">ще получиш</span>
+              Какво <span className="gradient-text">още получиш</span>
             </h2>
           </StaggerReveal>
 
-          <StaggerContainer className="grid md:grid-cols-3 gap-8" staggerDelay={0.15}>
+          <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8" staggerDelay={0.15}>
             {/* Card 1: Prompt Library */}
             <StaggerItem>
               <div className="group relative h-full rounded-2xl overflow-hidden transition-all duration-500 hover:-translate-y-2">
@@ -400,16 +400,16 @@ export default function Home() {
 
       {/* === CTA SECTION === */}
       <section className="section">
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-4xl mx-auto px-4">
           <StaggerReveal>
-            <div className="glass-card p-12 text-center">
-              <h2 className="text-4xl font-bold mb-6">
+            <div className="glass-card p-6 sm:p-8 md:p-12 text-center">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 sm:mb-6">
                 Готов ли си да <span className="gradient-text">започнеш</span>?
               </h2>
-              <p className="text-xl text-gray-400 mb-10">
+              <p className="text-base sm:text-lg md:text-xl text-gray-400 mb-8 sm:mb-10">
                 Регистрирай се безплатно и получи достъп до всички ресурси.
               </p>
-              <PulseButton href="/register" className="text-xl px-10 py-5">
+              <PulseButton href="/register" className="text-base sm:text-lg md:text-xl px-8 sm:px-10 py-4 sm:py-5">
                 Създай акаунт →
               </PulseButton>
             </div>
@@ -418,30 +418,30 @@ export default function Home() {
       </section>
 
       {/* === FOOTER === */}
-      <footer className="relative z-10 border-t border-white/10 py-16 px-8">
-        <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-8">
+      <footer className="relative z-10 border-t border-white/10 py-12 sm:py-16 px-4 sm:px-8">
+        <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-6 sm:gap-8">
           <motion.nav
-            className="flex gap-8"
+            className="flex flex-wrap justify-center gap-4 sm:gap-8"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
           >
-            <a href="/about" className="text-gray-500 hover:text-white transition-colors">
+            <a href="/about" className="text-gray-500 hover:text-white transition-colors text-sm sm:text-base">
               За нас
             </a>
-            <a href="/privacy" className="text-gray-500 hover:text-white transition-colors">
+            <a href="/privacy" className="text-gray-500 hover:text-white transition-colors text-sm sm:text-base">
               Поверителност
             </a>
-            <a href="/terms" className="text-gray-500 hover:text-white transition-colors">
+            <a href="/terms" className="text-gray-500 hover:text-white transition-colors text-sm sm:text-base">
               Условия
             </a>
-            <a href="/contact" className="text-gray-500 hover:text-white transition-colors">
+            <a href="/contact" className="text-gray-500 hover:text-white transition-colors text-sm sm:text-base">
               Контакт
             </a>
           </motion.nav>
           <motion.p
-            className="text-gray-500"
+            className="text-gray-500 text-sm sm:text-base text-center sm:text-left"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
