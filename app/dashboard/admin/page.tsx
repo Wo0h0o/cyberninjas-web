@@ -7,8 +7,8 @@ import { supabase } from '@/lib/supabase'
 
 export default function AdminDashboard() {
     const [stats, setStats] = useState([
-        { label: 'Библиотеки', value: '-', icon: '📚', href: '/dashboard/admin/libraries' },
-        { label: 'Модули', value: '-', icon: '📦', href: '/dashboard/admin/libraries' },
+        { label: 'Курсове', value: '-', icon: '📚', href: '/dashboard/admin/courses' },
+        { label: 'Библиотеки', value: '-', icon: '📖', href: '/dashboard/admin/libraries' },
         { label: 'Промптове', value: '-', icon: '📝', href: '/dashboard/admin/libraries' },
     ])
     const [loading, setLoading] = useState(true)
@@ -16,14 +16,14 @@ export default function AdminDashboard() {
     useEffect(() => {
         async function fetchStats() {
             try {
+                // Fetch course count
+                const { count: courseCount } = await supabase
+                    .from('courses')
+                    .select('*', { count: 'exact', head: true })
+
                 // Fetch library count
                 const { count: libraryCount } = await supabase
                     .from('prompt_libraries')
-                    .select('*', { count: 'exact', head: true })
-
-                // Fetch module count
-                const { count: moduleCount } = await supabase
-                    .from('library_modules')
                     .select('*', { count: 'exact', head: true })
 
                 // Fetch prompt count
@@ -32,8 +32,8 @@ export default function AdminDashboard() {
                     .select('*', { count: 'exact', head: true })
 
                 setStats([
-                    { label: 'Библиотеки', value: String(libraryCount || 0), icon: '📚', href: '/dashboard/admin/libraries' },
-                    { label: 'Модули', value: String(moduleCount || 0), icon: '📦', href: '/dashboard/admin/libraries' },
+                    { label: 'Курсове', value: String(courseCount || 0), icon: '📚', href: '/dashboard/admin/courses' },
+                    { label: 'Библиотеки', value: String(libraryCount || 0), icon: '📖', href: '/dashboard/admin/libraries' },
                     { label: 'Промптове', value: String(promptCount || 0), icon: '📝', href: '/dashboard/admin/libraries' },
                 ])
             } catch (error) {
