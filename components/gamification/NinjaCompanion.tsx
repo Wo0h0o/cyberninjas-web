@@ -30,10 +30,12 @@ export function NinjaCompanion() {
     useEffect(() => {
         // Show welcome message on first visit
         if (user && !hasShownWelcome) {
-            setTimeout(() => {
+            const timer = setTimeout(() => {
                 showWelcomeMessage()
                 setHasShownWelcome(true)
             }, 2000) // Delay 2 seconds after page load
+
+            return () => clearTimeout(timer)
         }
     }, [user, hasShownWelcome])
 
@@ -234,8 +236,8 @@ export function NinjaCompanion() {
                                             key={index}
                                             onClick={() => handleAction(button.action)}
                                             className={`flex-1 px-6 py-3 rounded-xl font-semibold transition-all ${index === 0
-                                                    ? 'bg-purple-500 hover:bg-purple-600 text-white shadow-lg shadow-purple-500/50'
-                                                    : 'bg-white/10 hover:bg-white/20 text-white'
+                                                ? 'bg-purple-500 hover:bg-purple-600 text-white shadow-lg shadow-purple-500/50'
+                                                : 'bg-white/10 hover:bg-white/20 text-white'
                                                 }`}
                                         >
                                             {button.label}
