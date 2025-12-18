@@ -68,13 +68,13 @@ export function CourseCard({ course, progress }: CourseCardProps) {
                         <div className="space-y-2">
                             <div className="flex justify-between text-xs">
                                 <span className="text-gray-500">Прогрес</span>
-                                <span className="text-purple-400">{progress.percentage}%</span>
+                                <span className="text-purple-400">{progress}%</span>
                             </div>
                             <div className="h-1.5 rounded-full bg-white/10 overflow-hidden">
                                 <motion.div
                                     className="h-full rounded-full bg-gradient-to-r from-purple-500 to-fuchsia-500"
                                     initial={{ width: 0 }}
-                                    animate={{ width: `${progress.percentage}%` }}
+                                    animate={{ width: `${progress}%` }}
                                     transition={{ duration: 1, ease: 'easeOut' }}
                                 />
                             </div>
