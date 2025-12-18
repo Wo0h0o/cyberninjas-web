@@ -2,19 +2,21 @@
 
 import { motion } from 'framer-motion'
 import Link from 'next/link'
-import type { Course } from '@/lib/types'
 
 interface CourseCardProps {
-    course: Course
-    progress?: {
-        completed: number
-        total: number
-        percentage: number
+    course: {
+        id: string
+        slug: string
+        title: string
+        description: string | null
+        thumbnail_url: string | null
+        price_bgn: number
     }
+    progress?: number // 0-100 percentage
 }
 
 export function CourseCard({ course, progress }: CourseCardProps) {
-    const hasProgress = progress && progress.total > 0
+    const hasProgress = progress !== undefined && progress > 0
 
     return (
         <Link href={`/dashboard/courses/${course.slug}`}>

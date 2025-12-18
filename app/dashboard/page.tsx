@@ -3,20 +3,27 @@
 import { motion } from 'framer-motion'
 import { useCourses } from '@/hooks/useCourses'
 import { usePromptLibraries } from '@/hooks/usePrompts'
+import { useUserProgress } from '@/hooks/useUserProgress'
 import { CourseCard, ProgressCircle } from '@/components/dashboard'
 import { useAuth } from '@/contexts/AuthContext'
+import Link from 'next/link'
+import { ArrowRight, Play, CheckCircle2, Clock, Sparkles } from 'lucide-react'
 
-// Stats card component - mobile optimized
+// Stats card component
 function StatCard({
     icon,
     label,
     value,
-    color
+    color,
+    isEmpty = false,
+    emptyMessage,
 }: {
     icon: React.ReactNode
     label: string
     value: string | number
     color: string
+    isEmpty?: boolean
+    emptyMessage?: string
 }) {
     return (
         <motion.div
@@ -29,8 +36,17 @@ function StatCard({
                     <div className="scale-75 sm:scale-100">{icon}</div>
                 </div>
                 <div className="min-w-0">
-                    <p className="text-xl sm:text-2xl font-bold text-white">{value}</p>
-                    <p className="text-xs sm:text-sm text-gray-400 truncate">{label}</p>
+                    {isEmpty && emptyMessage ? (
+                        <>
+                            <p className="text-lg sm:text-xl font-semibold text-purple-300">{emptyMessage}</p>
+                            <p className="text-xs sm:text-sm text-gray-500 truncate">{label}</p>
+                        </>
+                    ) : (
+                        <>
+                            <p className="text-xl sm:text-2xl font-bold text-white">{value}</p>
+                            <p className="text-xs sm:text-sm text-gray-400 truncate">{label}</p>
+                        </>
+                    )}
                 </div>
             </div>
         </motion.div>
@@ -40,10 +56,17 @@ function StatCard({
 export default function DashboardPage() {
     const { courses, loading } = useCourses()
     const { libraries, loading: librariesLoading } = usePromptLibraries()
+    const { courseProgress, totalCompletedLessons, totalTimeWatched, loading: progressLoading } = useUserProgress()
     const { profile } = useAuth()
 
     // Get first name for greeting
     const firstName = profile?.name?.split(' ')[0] || 'там'
+
+    // Check if user is first-time (no progress at all)
+    const isFirstTime = !progressLoading && courseProgress.length === 0 && totalCompletedLessons === 0
+
+    // Get most recent course
+    const continueFrom = courseProgress[0]
 
     return (
         <div className="space-y-6 sm:space-y-10">
@@ -54,10 +77,12 @@ export default function DashboardPage() {
                 transition={{ duration: 0.5 }}
             >
                 <h1 className="text-2xl sm:text-3xl font-bold text-white mb-1 sm:mb-2">
-                    Добре дошъл, {firstName}! 👋
+                    {isFirstTime ? `Добре дошъл в CyberNinjas, ${firstName}! 🎉` : `Здравей отново, ${firstName}! 👋`}
                 </h1>
                 <p className="text-sm sm:text-base text-gray-400">
-                    Продължи своето обучение и развий AI уменията си.
+                    {isFirstTime
+                        ? 'Готов ли си да овладееш AI? Започни с нашия препоръчан път за начинаещи.'
+                        : 'Продължи своето обучение и развий AI уменията си.'}
                 </p>
             </motion.div>
 
@@ -75,8 +100,8 @@ export default function DashboardPage() {
                             <path d="M4 18.5C4 17.12 5.12 16 6.5 16H20" />
                         </svg>
                     }
-                    label="Курса"
-                    value={courses.length}
+                    label="Активни курса"
+                    value={courseProgress.length || courses.length}
                     color="bg-purple-500/20"
                 />
                 <StatCard
@@ -96,8 +121,10 @@ export default function DashboardPage() {
                             <path d="M9 12l2 2 4-4" />
                         </svg>
                     }
-                    label="Завършени урока"
-                    value={0}
+                    label="Завършени лекции"
+                    value={totalCompletedLessons}
+                    isEmpty={isFirstTime}
+                    emptyMessage="Започни!"
                     color="bg-green-500/20"
                 />
                 <StatCard
@@ -107,23 +134,134 @@ export default function DashboardPage() {
                             <path d="M12 6v6l4 2" />
                         </svg>
                     }
-                    label="Часа гледано"
-                    value="0"
+                    label="Часа учене"
+                    value={totalTimeWatched || 0}
+                    isEmpty={isFirstTime}
+                    emptyMessage="Първи стъпки"
                     color="bg-blue-500/20"
                 />
             </motion.div>
 
-            {/* Continue Learning Section */}
+            {/* Continue Learning / First Time CTA */}
+            {isFirstTime ? (
+                <motion.section
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: 0.2 }}
+                    className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-purple-500/20 via-fuchsia-500/10 to-blue-500/20 border border-purple-500/30 p-8"
+                >
+                    <div className="absolute top-0 right-0 w-64 h-64 bg-purple-500/20 rounded-full blur-3xl" />
+                    <div className="relative z-10">
+                        <div className="flex items-center gap-2 mb-3">
+                            <Sparkles className="w-5 h-5 text-purple-400" />
+                            <span className="text-sm font-medium text-purple-300">Препоръчано за начинаещи</span>
+                        </div>
+                        <h2 className="text-2xl sm:text-3xl font-bold text-white mb-3">
+                            Започни своето AI пътуване
+                        </h2>
+                        <p className="text-gray-300 mb-6 max-w-2xl">
+                            Изградихме специален път за начинаещи. Започни с основите на AI и стигни до напреднали техники за автоматизация.
+                        </p>
+                        <Link
+                            href="/dashboard/courses"
+                            className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-purple-500 hover:bg-purple-600 text-white font-semibold transition-all group"
+                        >
+                            <Play className="w-5 h-5" />
+                            Започни първия си курс
+                            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                        </Link>
+                    </div>
+                </motion.section>
+            ) : continueFrom ? (
+                <motion.section
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: 0.2 }}
+                    className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-purple-500/10 to-blue-500/10 border border-purple-500/20 p-6"
+                >
+                    <div className="flex items-center gap-2 mb-4">
+                        <Play className="w-5 h-5 text-purple-400" />
+                        <h2 className="text-xl font-semibold text-white">Продължи откъдето спря</h2>
+                    </div>
+
+                    <div className="flex flex-col md:flex-row gap-6">
+                        <div className="flex-1">
+                            <Link
+                                href={`/dashboard/courses/${continueFrom.course_slug}`}
+                                className="group"
+                            >
+                                <h3 className="text-lg font-semibold text-white group-hover:text-purple-300 transition-colors mb-2">
+                                    {continueFrom.course_title}
+                                </h3>
+                                {continueFrom.last_module_title && continueFrom.last_lesson_title && (
+                                    <p className="text-sm text-gray-400 mb-3">
+                                        {continueFrom.last_module_title} → {continueFrom.last_lesson_title}
+                                    </p>
+                                )}
+                            </Link>
+
+                            {/* Progress Bar */}
+                            <div className="mb-3">
+                                <div className="flex items-center justify-between text-sm mb-2">
+                                    <span className="text-gray-400">
+                                        {continueFrom.completed_lessons} от {continueFrom.total_lessons} лекции
+                                    </span>
+                                    <span className="text-purple-400 font-medium">
+                                        {continueFrom.progress_percentage}%
+                                    </span>
+                                </div>
+                                <div className="h-2 bg-white/5 rounded-full overflow-hidden">
+                                    <motion.div
+                                        initial={{ width: 0 }}
+                                        animate={{ width: `${continueFrom.progress_percentage}%` }}
+                                        transition={{ duration: 1, delay: 0.3 }}
+                                        className="h-full bg-gradient-to-r from-purple-500 to-blue-500 rounded-full"
+                                    />
+                                </div>
+                            </div>
+
+                            {continueFrom.last_accessed_at && (
+                                <div className="flex items-center gap-2 text-xs text-gray-500">
+                                    <Clock className="w-3 h-3" />
+                                    Последно гледано: {new Date(continueFrom.last_accessed_at).toLocaleDateString('bg-BG', {
+                                        month: 'short',
+                                        day: 'numeric',
+                                        hour: '2-digit',
+                                        minute: '2-digit'
+                                    })}
+                                </div>
+                            )}
+                        </div>
+
+                        <Link
+                            href={`/dashboard/courses/${continueFrom.course_slug}`}
+                            className="flex items-center gap-2 px-6 py-3 rounded-xl bg-purple-500 hover:bg-purple-600 text-white font-semibold transition-all group self-start"
+                        >
+                            <Play className="w-5 h-5" />
+                            Продължи
+                            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                        </Link>
+                    </div>
+                </motion.section>
+            ) : null}
+
+            {/* All Courses Section */}
             <motion.section
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.2 }}
+                transition={{ duration: 0.5, delay: 0.3 }}
             >
                 <div className="flex items-center justify-between mb-6">
-                    <h2 className="text-xl font-semibold text-white">Продължи обучението</h2>
-                    <a href="/dashboard/courses" className="text-sm text-purple-400 hover:text-purple-300 transition-colors">
-                        Виж всички →
-                    </a>
+                    <h2 className="text-xl font-semibold text-white">
+                        {isFirstTime ? 'Разгледай курсовете' : (continueFrom ? 'Други курсове' : 'Всички курсове')}
+                    </h2>
+                    <Link
+                        href="/dashboard/courses"
+                        className="text-sm text-purple-400 hover:text-purple-300 transition-colors flex items-center gap-1"
+                    >
+                        Виж всички
+                        <ArrowRight className="w-4 h-4" />
+                    </Link>
                 </div>
 
                 {loading ? (
@@ -137,16 +275,19 @@ export default function DashboardPage() {
                     </div>
                 ) : courses.length > 0 ? (
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                        {courses.slice(0, 3).map((course, index) => (
-                            <motion.div
-                                key={course.id}
-                                initial={{ opacity: 0, y: 20 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                transition={{ duration: 0.3, delay: 0.1 * index }}
-                            >
-                                <CourseCard course={course} />
-                            </motion.div>
-                        ))}
+                        {courses.slice(0, continueFrom ? 2 : 3).map((course, index) => {
+                            const progress = courseProgress.find(cp => cp.course_id === course.id)
+                            return (
+                                <motion.div
+                                    key={course.id}
+                                    initial={{ opacity: 0, y: 20 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    transition={{ duration: 0.3, delay: 0.1 * index }}
+                                >
+                                    <CourseCard course={course} progress={progress?.progress_percentage} />
+                                </motion.div>
+                            )
+                        })}
                     </div>
                 ) : (
                     <div className="text-center py-16 rounded-2xl bg-white/[0.03] border border-white/10">
@@ -168,34 +309,9 @@ export default function DashboardPage() {
                 className="grid grid-cols-1 md:grid-cols-2 gap-6"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.3 }}
+                transition={{ duration: 0.5, delay: 0.4 }}
             >
-                <a
-                    href="/dashboard/courses"
-                    className="group p-6 rounded-2xl bg-gradient-to-br from-purple-500/10 to-fuchsia-500/10 border border-purple-500/20 hover:border-purple-500/40 transition-all"
-                >
-                    <div className="flex items-center gap-4">
-                        <div className="w-12 h-12 rounded-xl bg-purple-500/20 flex items-center justify-center group-hover:scale-110 transition-transform">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-purple-400">
-                                <rect x="3" y="5" width="18" height="14" rx="2" />
-                                <path d="M10 9l5 3-5 3V9z" fill="currentColor" />
-                            </svg>
-                        </div>
-                        <div>
-                            <h3 className="font-semibold text-white group-hover:text-purple-300 transition-colors">
-                                Разгледай курсовете
-                            </h3>
-                            <p className="text-sm text-gray-400">
-                                Открий нови умения и знания
-                            </p>
-                        </div>
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="ml-auto text-gray-500 group-hover:text-purple-400 group-hover:translate-x-1 transition-all">
-                            <path d="M5 12h14M12 5l7 7-7 7" />
-                        </svg>
-                    </div>
-                </a>
-
-                <a
+                <Link
                     href="/dashboard/prompts"
                     className="group p-6 rounded-2xl bg-gradient-to-br from-amber-500/10 to-orange-500/10 border border-amber-500/20 hover:border-amber-500/40 transition-all"
                 >
@@ -205,44 +321,40 @@ export default function DashboardPage() {
                                 <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
                             </svg>
                         </div>
-                        <div>
+                        <div className="flex-1">
                             <h3 className="font-semibold text-white group-hover:text-amber-300 transition-colors">
                                 Промпт библиотеки
                             </h3>
                             <p className="text-sm text-gray-400">
-                                Готови промптове за ChatGPT & AI
+                                150+ готови промпта за ChatGPT & AI
                             </p>
                         </div>
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="ml-auto text-gray-500 group-hover:text-amber-400 group-hover:translate-x-1 transition-all">
-                            <path d="M5 12h14M12 5l7 7-7 7" />
-                        </svg>
+                        <ArrowRight className="w-5 h-5 text-gray-500 group-hover:text-amber-400 group-hover:translate-x-1 transition-all" />
                     </div>
-                </a>
+                </Link>
 
-                <a
-                    href="/dashboard/profile"
+                <Link
+                    href="/dashboard/platforms"
                     className="group p-6 rounded-2xl bg-gradient-to-br from-blue-500/10 to-cyan-500/10 border border-blue-500/20 hover:border-blue-500/40 transition-all"
                 >
                     <div className="flex items-center gap-4">
                         <div className="w-12 h-12 rounded-xl bg-blue-500/20 flex items-center justify-center group-hover:scale-110 transition-transform">
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-blue-400">
-                                <circle cx="12" cy="8" r="4" />
-                                <path d="M4 20c0-3.31 3.58-6 8-6s8 2.69 8 6" strokeLinecap="round" />
+                                <rect x="3" y="3" width="18" height="18" rx="2" />
+                                <path d="M3 9h18M9 21V9" />
                             </svg>
                         </div>
-                        <div>
+                        <div className="flex-1">
                             <h3 className="font-semibold text-white group-hover:text-blue-300 transition-colors">
-                                Моят профил
+                                AI Платформи
                             </h3>
                             <p className="text-sm text-gray-400">
-                                Настройки и прогрес
+                                35 AI инструмента за всяка задача
                             </p>
                         </div>
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="ml-auto text-gray-500 group-hover:text-blue-400 group-hover:translate-x-1 transition-all">
-                            <path d="M5 12h14M12 5l7 7-7 7" />
-                        </svg>
+                        <ArrowRight className="w-5 h-5 text-gray-500 group-hover:text-blue-400 group-hover:translate-x-1 transition-all" />
                     </div>
-                </a>
+                </Link>
             </motion.section>
         </div>
     )

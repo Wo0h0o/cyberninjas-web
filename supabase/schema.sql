@@ -154,6 +154,9 @@ CREATE TABLE IF NOT EXISTS public.user_progress (
   is_completed BOOLEAN DEFAULT false,
   video_position_seconds INTEGER DEFAULT 0,
   completed_at TIMESTAMPTZ,
+  last_accessed_at TIMESTAMPTZ DEFAULT NOW(),
+  created_at TIMESTAMPTZ DEFAULT NOW(),
+  updated_at TIMESTAMPTZ DEFAULT NOW(),
   UNIQUE(user_id, lesson_id)
 );
 
