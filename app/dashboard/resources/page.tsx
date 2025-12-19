@@ -17,7 +17,7 @@ interface BookmarkData {
 
 export default function ResourcesPage() {
     const { user } = useAuth()
-    const { isBookmarked, toggleBookmark, bookmarkCount } = useResourceBookmarks()
+    const { isBookmarked: isResourceBookmarked, toggleBookmark: toggleResourceBookmark, bookmarkCount } = useResourceBookmarks()
     const [sections, setSections] = useState<string[]>([])
     const [currentPage, setCurrentPage] = useState(0)
     const [isFlipping, setIsFlipping] = useState(false)
@@ -38,7 +38,7 @@ export default function ResourcesPage() {
 
         try {
             const { data, error } = await supabase
-                .from('resource_bookmarks')
+                .from('bookmark_data')
                 .select('page_index, page_title')
                 .eq('user_id', user.id)
                 .eq('resource_slug', RESOURCE_SLUG)
@@ -62,7 +62,7 @@ export default function ResourcesPage() {
         try {
             if (isBookmarked) {
                 await supabase
-                    .from('resource_bookmarks')
+                    .from('bookmark_data')
                     .delete()
                     .eq('user_id', user.id)
                     .eq('resource_slug', RESOURCE_SLUG)
@@ -72,7 +72,7 @@ export default function ResourcesPage() {
             } else {
                 const pageTitle = extractPageTitle(sections[currentPage])
                 await supabase
-                    .from('resource_bookmarks')
+                    .from('bookmark_data')
                     .insert({
                         user_id: user.id,
                         resource_slug: RESOURCE_SLUG,

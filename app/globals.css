@@ -110,7 +110,8 @@ body {
   border-radius: 50px;
   background: #0a0a0f;
   overflow: hidden;
-  min-height: 48px; /* Touch-friendly minimum */
+  min-height: 48px;
+  /* Touch-friendly minimum */
 }
 
 .glow-border-animation {
@@ -294,17 +295,17 @@ body {
   .aurora-blob {
     filter: blur(80px);
   }
-  
+
   .aurora-blob-1 {
     width: 600px;
     height: 600px;
   }
-  
+
   .aurora-blob-2 {
     width: 400px;
     height: 400px;
   }
-  
+
   .aurora-blob-3 {
     width: 350px;
     height: 350px;
@@ -350,6 +351,24 @@ body {
 /* Better touch scrolling on iOS */
 .scroll-smooth {
   -webkit-overflow-scrolling: touch;
+}
+
+/* ===== ANIMATED GRADIENT ===== */
+@keyframes gradient-xy {
+
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+.animate-gradient-xy {
+  background-size: 400% 400%;
+  animation: gradient-xy 3s ease infinite;
 }
 
 /* ===== REDUCED MOTION ===== */
