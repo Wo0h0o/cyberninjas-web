@@ -209,6 +209,13 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         }
     }
 
+    // Wrapper for refreshing profile  
+    const refreshProfile = useCallback(async () => {
+        if (user?.id) {
+            await fetchProfile(user.id)
+        }
+    }, [user, fetchProfile])
+
     return (
         <AuthContext.Provider
             value={{
@@ -221,6 +228,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
                 signOut,
                 resetPassword,
                 updateProfile,
+                refreshProfile,
             }}
         >
             {children}
