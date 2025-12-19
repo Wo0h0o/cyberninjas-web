@@ -4,6 +4,8 @@ import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { ExternalLink, Sparkles, Zap, Brain, Video, Mic, Image as ImageIcon, Code, Search, Bot, Terminal, Cpu, FileText, Network, Workflow, Scissors, PenTool, MessageSquare, Monitor, LayoutGrid, LayoutList, Globe, Puzzle } from 'lucide-react'
 import { supabase } from '@/lib/supabase'
+import { useAuth } from '@/contexts/AuthContext'
+import { useUserLevel } from '@/hooks/useUserLevel'
 
 // Map icon string names to React components
 const iconMap: Record<string, any> = {
@@ -56,6 +58,8 @@ const categories = [
 ]
 
 export default function PlatformsPage() {
+    const { user } = useAuth()
+    const { addXP } = useUserLevel()
     const [selectedType, setSelectedType] = useState<'website' | 'software' | 'extension'>('website')
     const [selectedCategory, setSelectedCategory] = useState<string>('all')
     const [platforms, setPlatforms] = useState<Platform[]>([])

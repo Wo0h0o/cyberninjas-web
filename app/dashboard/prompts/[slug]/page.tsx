@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import Link from 'next/link'
 import { clsx } from 'clsx'
 import { usePromptLibrary, useFavorites } from '@/hooks/usePrompts'
+import { useUserLevel } from '@/hooks/useUserLevel'
 import type { Prompt, ModuleSection } from '@/lib/types'
 
 interface LibraryPageProps {
@@ -206,6 +207,7 @@ function PromptModal({
     onToggleFavorite: () => void
 }) {
     const [copied, setCopied] = useState(false)
+    const { addXP } = useUserLevel()
 
     // Close on escape key
     useEffect(() => {
@@ -221,6 +223,9 @@ function PromptModal({
             await navigator.clipboard.writeText(prompt.prompt_text)
             setCopied(true)
             setTimeout(() => setCopied(false), 2000)
+
+            // Award XP for copying prompt
+            await addXP(5, 'Copied prompt')
         } catch (err) {
             console.error('Failed to copy:', err)
         }

@@ -1,0 +1,18 @@
+// ADD THIS TO PLATFORM CARD onClick HANDLER
+
+// Find existing Link/button for platform card (around line 210-350)
+// Replace onClick or href with:
+
+onClick={() => handleVisitPlatform(platform)}
+
+// The handleVisitPlatform function is already added (line ~90)
+// It will:
+// 1. Track visit in database
+// 2. Award +10 XP
+// 3. Open platform URL in new tab
+
+// ALTERNATIVE: If using <Link> component, change to <button>:
+// From:
+<Link href={platform.url} target="_blank">
+// To:
+<button onClick={() => handleVisitPlatform(platform)}>

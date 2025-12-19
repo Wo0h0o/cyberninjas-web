@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react'
 import { supabase } from '@/lib/supabase'
 import { useAuth } from '@/contexts/AuthContext'
+import { useUserLevel } from './useUserLevel'
+import { useAchievements } from './useAchievements'
 
 export interface LessonProgress {
     lesson_id: string
@@ -25,6 +27,8 @@ export interface CourseProgress {
 
 export function useUserProgress() {
     const { user } = useAuth()
+    const { addXP } = useUserLevel()
+    const { autoCheckAchievements } = useAchievements()
     const [courseProgress, setCourseProgress] = useState<CourseProgress[]>([])
     const [loading, setLoading] = useState(true)
     const [totalCompletedLessons, setTotalCompletedLessons] = useState(0)
@@ -153,6 +157,19 @@ export function useUserProgress() {
         if (!user) return
 
         try {
+            // Check if lesson was already completed
+            const { data: existing } = await supabase
+                .from('user_progress')
+                .select('is_completed, lessons(title, modules(title, course_id, courses(title)))')
+                .eq('user_id', user.id)
+                .eq('lesson_id', lessonId)
+                .single()
+
+            const wasAlreadyCompleted = existing?.is_completed || false
+            const lessonData = (existing as any)?.lessons
+            const courseId = lessonData?.modules?.course_id
+
+            // Update progress
             const { error } = await supabase
                 .from('user_progress')
                 .upsert({
@@ -164,6 +181,36 @@ export function useUserProgress() {
                 } as any)
 
             if (error) throw error
+
+            // Award XP if newly completed
+            if (updates.is_completed && !wasAlreadyCompleted) {
+                // +25 XP for lesson completion
+                await addXP(25, `Completed lesson: ${lessonData?.title || 'Unknown'}`)
+
+                // Check if course is now 100% complete
+                if (courseId) {
+                    const { data: courseProgressData } = await supabase
+                        .from('user_progress')
+                        .select('is_completed, lessons!inner(modules!inner(course_id))')
+                        .eq('user_id', user.id)
+                        .eq('lessons.modules.course_id', courseId)
+
+                    const totalLessons = courseProgressData?.length || 0
+                    const completedLessonsInCourse = courseProgressData?.filter((p: any) => p.is_completed).length || 0
+
+                    // If course just reached 100%
+                    if (totalLessons > 0 && completedLessonsInCourse === totalLessons) {
+                        // +100 XP bonus for course completion
+                        await addXP(100, `Course mastered: ${lessonData?.modules?.courses?.title || 'Unknown'}`)
+                    }
+                }
+
+                // Trigger achievement checks
+                await autoCheckAchievements({
+                    completedLessons: totalCompletedLessons + 1,
+                    courseViews: courseProgress.length,
+                })
+            }
 
             // Refresh progress
             await fetchUserProgress()

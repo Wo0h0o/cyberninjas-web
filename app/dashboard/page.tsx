@@ -1,9 +1,11 @@
 'use client'
 
+import { useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { useCourses } from '@/hooks/useCourses'
 import { usePromptLibraries } from '@/hooks/usePrompts'
 import { useUserProgress } from '@/hooks/useUserProgress'
+import { useUserLevel } from '@/hooks/useUserLevel'
 import { CourseCard } from '@/components/dashboard'
 import { LevelHeader, AchievementToast, NinjaCompanion } from '@/components/gamification'
 import { useAuth } from '@/contexts/AuthContext'
