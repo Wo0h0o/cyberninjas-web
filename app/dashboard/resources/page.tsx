@@ -3,9 +3,10 @@
 import { useState, useEffect, useCallback } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import ReactMarkdown from 'react-markdown'
-import { ChevronUp, ChevronDown, BookOpen, Bookmark, BookmarkCheck, ZoomIn, ZoomOut } from 'lucide-react'
+import { ChevronUp, ChevronDown, BookOpen, Bookmark, BookmarkCheck, ZoomIn, ZoomOut, Heart } from 'lucide-react'
 import { useAuth } from '@/contexts/AuthContext'
 import { supabase } from '@/lib/supabase'
+import { useResourceBookmarks } from '@/hooks/useResourceBookmarks'
 
 const RESOURCE_SLUG = 'ai-terminology'
 
@@ -16,6 +17,7 @@ interface BookmarkData {
 
 export default function ResourcesPage() {
     const { user } = useAuth()
+    const { isBookmarked, toggleBookmark, bookmarkCount } = useResourceBookmarks()
     const [sections, setSections] = useState<string[]>([])
     const [currentPage, setCurrentPage] = useState(0)
     const [isFlipping, setIsFlipping] = useState(false)
