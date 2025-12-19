@@ -15,6 +15,7 @@ interface AuthContextType {
     signOut: () => Promise<void>
     resetPassword: (email: string) => Promise<{ error: Error | null }>
     updateProfile: (updates: Partial<Profile>) => Promise<{ error: Error | null }>
+    refreshProfile: () => Promise<void>
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined)

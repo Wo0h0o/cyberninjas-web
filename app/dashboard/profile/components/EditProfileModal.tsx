@@ -4,12 +4,15 @@ import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { X } from 'lucide-react'
 import { supabase } from '@/lib/supabase'
+import { AvatarUpload } from './AvatarUpload'
 
 interface EditProfileModalProps {
     isOpen: boolean
     onClose: () => void
     currentName: string
     currentEmail: string
+    currentAvatar?: string
+    userId: string
     onSuccess: () => void
 }
 
@@ -18,9 +21,12 @@ export function EditProfileModal({
     onClose,
     currentName,
     currentEmail,
+    currentAvatar,
+    userId,
     onSuccess
 }: EditProfileModalProps) {
     const [name, setName] = useState(currentName)
+    const [avatarUrl, setAvatarUrl] = useState(currentAvatar)
     const [loading, setLoading] = useState(false)
     const [error, setError] = useState('')
 
@@ -48,7 +54,7 @@ export function EditProfileModal({
 
             const { error: updateError } = await supabase
                 .from('profiles')
-                .update({ name: name.trim() })
+                .update({ name: name.trim() } as any)
                 .eq('id', user.id)
 
             if (updateError) throw updateError
@@ -108,7 +114,21 @@ export function EditProfileModal({
                             </div>
 
                             {/* Body */}
-                            <div className="p-6 space-y-4">
+                            <div className="p-6 space-y-6">
+                                {/* Avatar Upload */}
+                                <AvatarUpload
+                                    currentAvatar={avatarUrl}
+                                    userId={userId}
+                                    onUploadSuccess={(url) => {
+                                        setAvatarUrl(url)
+                                        setError('')
+                                    }}
+                                    onUploadError={(err) => setError(err)}
+                                />
+
+                                {/* Divider */}
+                                <div className="border-t border-white/10" />
+
                                 {/* Name Input */}
                                 <div>
                                     <label className="block text-sm font-medium text-gray-300 mb-2">

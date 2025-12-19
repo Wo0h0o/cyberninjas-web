@@ -8,7 +8,7 @@ import { EditProfileModal, ChangePasswordModal } from './components'
 import { CheckCircle } from 'lucide-react'
 
 export default function ProfilePage() {
-    const { user, profile, signOut } = useAuth()
+    const { user, profile, signOut, refreshProfile } = useAuth()
     const router = useRouter()
     const [showEditModal, setShowEditModal] = useState(false)
     const [showPasswordModal, setShowPasswordModal] = useState(false)
@@ -213,7 +213,12 @@ export default function ProfilePage() {
                 onClose={() => setShowEditModal(false)}
                 currentName={profile?.name || ''}
                 currentEmail={user?.email || ''}
-                onSuccess={() => showSuccess('Профилът е актуализиран успешно!')}
+                currentAvatar={profile?.avatar_url || undefined}
+                userId={user?.id || ''}
+                onSuccess={async () => {
+                    await refreshProfile()
+                    showSuccess('Профилът е актуализиран успешно!')
+                }}
             />
 
             <ChangePasswordModal
