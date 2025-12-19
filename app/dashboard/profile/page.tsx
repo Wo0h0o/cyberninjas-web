@@ -1,12 +1,19 @@
 'use client'
 
+import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { useAuth } from '@/contexts/AuthContext'
 import { useRouter } from 'next/navigation'
+import { EditProfileModal, ChangePasswordModal } from './components'
+import { CheckCircle } from 'lucide-react'
 
 export default function ProfilePage() {
     const { user, profile, signOut } = useAuth()
     const router = useRouter()
+    const [showEditModal, setShowEditModal] = useState(false)
+    const [showPasswordModal, setShowPasswordModal] = useState(false)
+    const [showSuccessToast, setShowSuccessToast] = useState(false)
+    const [successMessage, setSuccessMessage] = useState('')
 
     // Get user initials
     const getInitials = () => {
@@ -27,6 +34,12 @@ export default function ProfilePage() {
     const handleLogout = async () => {
         await signOut()
         router.push('/')
+    }
+
+    function showSuccess(message: string) {
+        setSuccessMessage(message)
+        setShowSuccessToast(true)
+        setTimeout(() => setShowSuccessToast(false), 3000)
     }
 
     return (
@@ -84,7 +97,10 @@ export default function ProfilePage() {
                     </div>
 
                     {/* Edit Button - hidden on very small screens */}
-                    <button className="hidden sm:block px-4 py-2 rounded-xl bg-white/5 border border-white/10 text-gray-300 hover:text-white hover:border-white/20 transition-colors">
+                    <button
+                        onClick={() => setShowEditModal(true)}
+                        className="hidden sm:block px-4 py-2 rounded-xl bg-white/5 border border-white/10 text-gray-300 hover:text-white hover:border-white/20 transition-colors"
+                    >
                         Редактирай
                     </button>
                 </div>
@@ -146,7 +162,10 @@ export default function ProfilePage() {
             >
                 <h2 className="text-xl font-semibold text-white mb-4">Настройки</h2>
                 <div className="space-y-3">
-                    <button className="w-full flex items-center justify-between p-4 rounded-xl bg-white/[0.03] border border-white/10 hover:border-white/20 transition-colors group">
+                    <button
+                        onClick={() => setShowPasswordModal(true)}
+                        className="w-full flex items-center justify-between p-4 rounded-xl bg-white/[0.03] border border-white/10 hover:border-white/20 transition-colors group"
+                    >
                         <div className="flex items-center gap-3">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-gray-400">
                                 <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
@@ -187,6 +206,34 @@ export default function ProfilePage() {
                     </button>
                 </div>
             </motion.section>
+
+            {/* Modals */}
+            <EditProfileModal
+                isOpen={showEditModal}
+                onClose={() => setShowEditModal(false)}
+                currentName={profile?.name || ''}
+                currentEmail={user?.email || ''}
+                onSuccess={() => showSuccess('Профилът е актуализиран успешно!')}
+            />
+
+            <ChangePasswordModal
+                isOpen={showPasswordModal}
+                onClose={() => setShowPasswordModal(false)}
+                onSuccess={() => showSuccess('Паролата е сменена успешно!')}
+            />
+
+            {/* Success Toast */}
+            {showSuccessToast && (
+                <motion.div
+                    initial={{ opacity: 0, y: 50 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: 50 }}
+                    className="fixed bottom-6 right-6 z-50 flex items-center gap-3 px-6 py-4 bg-green-600 text-white rounded-xl shadow-2xl"
+                >
+                    <CheckCircle className="w-5 h-5" />
+                    <span className="font-medium">{successMessage}</span>
+                </motion.div>
+            )}
         </div>
     )
 }
