@@ -1,10 +1,11 @@
 -- Resource Bookmarks Table
 -- Allows users to bookmark resources for quick access
+-- NOTE: Using TEXT for resource_id since resources table structure is TBD
 
 CREATE TABLE IF NOT EXISTS resource_bookmarks (
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
     user_id UUID REFERENCES auth.users(id) ON DELETE CASCADE NOT NULL,
-    resource_id UUID REFERENCES resources(id) ON DELETE CASCADE NOT NULL,
+    resource_id TEXT NOT NULL,  -- Changed from UUID FK to TEXT
     created_at TIMESTAMPTZ DEFAULT NOW(),
     
     -- One bookmark per resource per user
