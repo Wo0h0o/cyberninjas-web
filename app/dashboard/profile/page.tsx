@@ -4,7 +4,7 @@ import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { useAuth } from '@/contexts/AuthContext'
 import { useRouter } from 'next/navigation'
-import { EditProfileModal, ChangePasswordModal } from './components'
+import { EditProfileModal, ChangePasswordModal, NotificationsModal } from './components'
 import { CheckCircle } from 'lucide-react'
 
 export default function ProfilePage() {
@@ -12,6 +12,7 @@ export default function ProfilePage() {
     const router = useRouter()
     const [showEditModal, setShowEditModal] = useState(false)
     const [showPasswordModal, setShowPasswordModal] = useState(false)
+    const [showNotificationsModal, setShowNotificationsModal] = useState(false)
     const [showSuccessToast, setShowSuccessToast] = useState(false)
     const [successMessage, setSuccessMessage] = useState('')
 
@@ -186,7 +187,10 @@ export default function ProfilePage() {
                         </svg>
                     </button>
 
-                    <button className="w-full flex items-center justify-between p-4 rounded-xl bg-white/[0.03] border border-white/10 hover:border-white/20 transition-colors group">
+                    <button
+                        onClick={() => setShowNotificationsModal(true)}
+                        className="w-full flex items-center justify-between p-4 rounded-xl bg-white/[0.03] border border-white/10 hover:border-white/20 transition-colors group"
+                    >
                         <div className="flex items-center gap-3">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-gray-400">
                                 <path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9" />
@@ -233,6 +237,13 @@ export default function ProfilePage() {
                 isOpen={showPasswordModal}
                 onClose={() => setShowPasswordModal(false)}
                 onSuccess={() => showSuccess('Паролата е сменена успешно!')}
+            />
+
+            <NotificationsModal
+                isOpen={showNotificationsModal}
+                onClose={() => setShowNotificationsModal(false)}
+                userId={user?.id || ''}
+                onSuccess={() => showSuccess('Настройките са запазени!')}
             />
 
             {/* Success Toast */}
