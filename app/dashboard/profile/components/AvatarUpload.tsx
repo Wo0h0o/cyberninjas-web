@@ -5,6 +5,7 @@ import { motion } from 'framer-motion'
 import { Upload, X, Check } from 'lucide-react'
 import { supabase } from '@/lib/supabase'
 import { resizeImage, validateImageFile, getFileExtension } from '@/lib/imageUtils'
+import { useAchievements } from '@/hooks/useAchievements'
 
 interface AvatarUploadProps {
     currentAvatar?: string
@@ -19,6 +20,7 @@ export function AvatarUpload({
     onUploadSuccess,
     onUploadError
 }: AvatarUploadProps) {
+    const { checkAchievement } = useAchievements()
     const [preview, setPreview] = useState<string | null>(currentAvatar || null)
     const [uploading, setUploading] = useState(false)
     const [selectedFile, setSelectedFile] = useState<File | null>(null)
@@ -90,6 +92,13 @@ export function AvatarUpload({
                 .eq('id', userId)
 
             if (updateError) throw updateError
+
+            // Success! Check First Impression achievement if this is first avatar
+            if (!currentAvatar) {
+                await checkAchievement('first_impression', {
+                    hasAvatar: true
+                })
+            }
 
             onUploadSuccess(publicUrl)
             setSelectedFile(null)
