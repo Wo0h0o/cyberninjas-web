@@ -28,14 +28,24 @@ export function NinjaCompanion() {
     const [hasShownWelcome, setHasShownWelcome] = useState(false)
 
     useEffect(() => {
-        // Show welcome message on first visit
+        // Show welcome message once per day (not just once per session)
         if (user && !hasShownWelcome) {
-            const timer = setTimeout(() => {
-                showWelcomeMessage()
-                setHasShownWelcome(true)
-            }, 2000) // Delay 2 seconds after page load
+            const lastShownDate = localStorage.getItem('ninja_welcome_shown')
+            const today = new Date().toDateString()
 
-            return () => clearTimeout(timer)
+            // Show if never shown, or if last shown was a different day
+            if (!lastShownDate || lastShownDate !== today) {
+                const timer = setTimeout(() => {
+                    showWelcomeMessage()
+                    setHasShownWelcome(true)
+                    localStorage.setItem('ninja_welcome_shown', today)
+                }, 2000) // Delay 2 seconds after page load
+
+                return () => clearTimeout(timer)
+            } else {
+                // Already shown today, don't show again
+                setHasShownWelcome(true)
+            }
         }
     }, [user, hasShownWelcome])
 
@@ -79,9 +89,12 @@ export function NinjaCompanion() {
     }
 
     function handleAction(action: string) {
-        setIsVisible(false)
-        // TODO: Implement specific actions (navigate, show content, etc.)
-        // For now, all actions just dismiss
+        if (action === 'dismiss') {
+            setIsVisible(false)
+            // Smooth scroll to welcome section for better UX
+            window.scrollTo({ top: 0, behavior: 'smooth' })
+        }
+        // TODO: Add more actions (navigate to courses, show tutorial, etc.)
     }
 
     function handleDismiss() {
@@ -157,10 +170,11 @@ export function NinjaCompanion() {
                                     className="relative w-24 h-24"
                                 >
                                     <Image
-                                        src="/Content/ninja-companion.png"
+                                        src="/content/ninja-companion.png"
                                         alt="Ninja Companion"
                                         width={96}
                                         height={96}
+                                        unoptimized
                                         className="w-full h-full object-contain drop-shadow-2xl"
                                     />
 
