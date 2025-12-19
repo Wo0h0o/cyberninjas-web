@@ -65,8 +65,16 @@ export default function ProfilePage() {
             >
                 <div className="flex flex-col sm:flex-row items-start gap-4 sm:gap-6">
                     {/* Avatar */}
-                    <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-xl sm:rounded-2xl bg-gradient-to-br from-purple-500 to-fuchsia-500 flex items-center justify-center flex-shrink-0">
-                        <span className="text-2xl sm:text-3xl font-bold text-white">{getInitials()}</span>
+                    <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-xl sm:rounded-2xl bg-gradient-to-br from-purple-500 to-fuchsia-500 flex items-center justify-center flex-shrink-0 overflow-hidden">
+                        {profile?.avatar_url ? (
+                            <img
+                                src={profile.avatar_url}
+                                alt={profile.name || 'Avatar'}
+                                className="w-full h-full object-cover"
+                            />
+                        ) : (
+                            <span className="text-2xl sm:text-3xl font-bold text-white">{getInitials()}</span>
+                        )}
                     </div>
 
                     {/* Info */}
