@@ -107,12 +107,12 @@ function StatCard({
                     {isEmpty && emptyMessage ? (
                         <>
                             <p className="text-base font-semibold text-purple-300">{emptyMessage}</p>
-                            <p className="text-xs text-gray-500 truncate">{label}</p>
+                            <p className="text-xs sm:text-sm text-gray-500">{label}</p>
                         </>
                     ) : (
                         <>
                             {!showCircular && <p className="text-2xl font-bold text-white">{value}</p>}
-                            <p className="text-sm text-gray-400 truncate">{label}</p>
+                            <p className="text-sm text-gray-400">{label}</p>
                         </>
                     )}
                 </div>
@@ -176,7 +176,7 @@ export default function DashboardPage() {
                 transition={{ duration: 0.5, delay: 0.1 }}
             >
                 {/* Left: Stats Grid (8 cols) */}
-                <div className="lg:col-span-8 grid grid-cols-2 gap-4">
+                <div className="lg:col-span-8 grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <StatCard
                         icon={<BookOpen className="w-6 h-6 text-purple-400" />}
                         label="Активни курса"

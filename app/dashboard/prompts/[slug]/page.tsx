@@ -449,13 +449,37 @@ export default function LibraryPage({ params }: LibraryPageProps) {
                     </div>
                 </motion.div>
 
-                {/* Main Layout - Now full width without sidebar prompt detail */}
-                <div className="flex gap-8 min-h-[calc(100vh-220px)]">
-                    {/* Modules Sidebar */}
+                {/* Main Layout - Responsive based on screen size */}
+                <div className="flex flex-col lg:flex-row gap-6 lg:gap-8 min-h-[calc(100vh-220px)]">
+                    {/* Mobile: Dropdown Menu (< 1024px) */}
+                    <div className="lg:hidden">
+                        <div className="relative">
+                            <label className="block text-sm font-medium text-gray-400 mb-2">Изберете модул</label>
+                            <select
+                                value={selectedModuleId || ''}
+                                onChange={(e) => setSelectedModuleId(e.target.value)}
+                                className="w-full px-4 py-3 rounded-xl bg-white/[0.05] border border-purple-500/30 text-white font-medium focus:outline-none focus:ring-2 focus:ring-purple-500/50 focus:border-purple-500/50 transition-all appearance-none cursor-pointer"
+                                style={{
+                                    backgroundImage: `url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M6 9l6 6 6-6' stroke='%23a855f7' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E")`,
+                                    backgroundRepeat: 'no-repeat',
+                                    backgroundPosition: 'right 12px center',
+                                    backgroundSize: '20px',
+                                }}
+                            >
+                                {library.modules.map((module) => (
+                                    <option key={module.id} value={module.id} className="bg-gray-900 text-white">
+                                        {module.icon ? `${module.icon} ` : ''}{module.title}
+                                    </option>
+                                ))}
+                            </select>
+                        </div>
+                    </div>
+
+                    {/* Desktop: Sidebar (≥ 1024px) */}
                     <motion.div
                         initial={{ opacity: 0, x: -20 }}
                         animate={{ opacity: 1, x: 0 }}
-                        className="w-72 shrink-0 rounded-2xl bg-white/[0.03] border border-white/10 overflow-hidden flex flex-col"
+                        className="hidden lg:flex w-72 shrink-0 rounded-2xl bg-white/[0.03] border border-white/10 overflow-hidden flex-col"
                     >
                         <div className="p-5 border-b border-white/10">
                             <h2 className="font-bold text-white text-lg">Модули</h2>

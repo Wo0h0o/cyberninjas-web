@@ -114,6 +114,14 @@ body {
   /* Touch-friendly minimum */
 }
 
+/* Reduce padding on very small screens */
+@media (max-width: 550px) {
+  .glow-border-button {
+    padding: 0.875rem 1.25rem;
+    font-size: 0.95rem;
+  }
+}
+
 .glow-border-animation {
   position: absolute;
   inset: 0;
@@ -137,6 +145,15 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+/* Reduce icon margin on small screens */
+@media (max-width: 550px) {
+  .glow-border-content svg {
+    margin-right: 0.375rem;
+    width: 16px;
+    height: 16px;
+  }
 }
 
 .glow-border-button:hover .glow-border-animation {
