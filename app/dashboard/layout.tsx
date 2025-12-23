@@ -3,7 +3,9 @@
 import { useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import { Sidebar, BottomNav } from '@/components/dashboard'
+import { NinjaCompanion, AchievementToast } from '@/components/gamification'
 import { useAuth } from '@/contexts/AuthContext'
+import { useUserLevel } from '@/hooks/useUserLevel'
 import '@/app/globals.css'
 
 export default function DashboardLayout({
@@ -13,6 +15,7 @@ export default function DashboardLayout({
 }) {
     const router = useRouter()
     const { user, loading } = useAuth()
+    const { userLevel } = useUserLevel()
 
     useEffect(() => {
         if (!loading && !user) {
@@ -63,6 +66,14 @@ export default function DashboardLayout({
                     {children}
                 </div>
             </main>
+
+            {/* Gamification - Only for Level 2+ users */}
+            {userLevel && userLevel.level >= 2 && (
+                <>
+                    <NinjaCompanion />
+                    <AchievementToast />
+                </>
+            )}
         </div>
     )
 }
