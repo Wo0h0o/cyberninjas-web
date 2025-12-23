@@ -64,6 +64,17 @@ const mainNavItems: BottomNavItem[] = [
 
 const moreNavItems: BottomNavItem[] = [
     {
+        label: 'Ръководства',
+        href: '/dashboard/guides',
+        icon: (
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <path d="M4 19.5V4.5C4 3.67 4.67 3 5.5 3H19C19.55 3 20 3.45 20 4V20C20 20.55 19.55 21 19 21H6.5C5.12 21 4 19.88 4 18.5Z" />
+                <path d="M4 18.5C4 17.12 5.12 16 6.5 16H20" />
+                <path d="M8 7H16M8 11H14" strokeLinecap="round" />
+            </svg>
+        ),
+    },
+    {
         label: 'Ресурси',
         href: '/dashboard/resources',
         icon: (

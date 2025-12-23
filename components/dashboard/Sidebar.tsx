@@ -27,8 +27,8 @@ const navItems: NavItem[] = [
         ),
     },
     {
-        label: 'Курсове',
         href: '/dashboard/courses',
+        label: 'Академия',
         icon: (
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                 <path d="M4 19.5V4.5C4 3.67 4.67 3 5.5 3H19C19.55 3 20 3.45 20 4V20C20 20.55 19.55 21 19 21H6.5C5.12 21 4 19.88 4 18.5Z" />
@@ -38,8 +38,8 @@ const navItems: NavItem[] = [
         ),
     },
     {
-        label: 'Промптове',
         href: '/dashboard/prompts',
+        label: 'AI команди',
         icon: (
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                 <path d="M12 3L20 7.5V16.5L12 21L4 16.5V7.5L12 3Z" />
@@ -50,8 +50,18 @@ const navItems: NavItem[] = [
         ),
     },
     {
-        label: 'Ресурси',
+        href: '/dashboard/guides',
+        label: 'Ръководства',
+        icon: (
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" />
+                <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" />
+            </svg>
+        ),
+    },
+    {
         href: '/dashboard/resources',
+        label: 'Ресурси',
         icon: (
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                 <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" />
