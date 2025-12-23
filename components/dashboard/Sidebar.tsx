@@ -195,7 +195,8 @@ export function Sidebar() {
 
                 {/* Navigation */}
                 <nav className="flex-1 p-4 space-y-2">
-                    {navItems.map((item) => {
+                    {/* Main Section */}
+                    {navItems.slice(0, 1).map((item) => {
                         const active = isActive(item.href)
                         return (
                             <Link
@@ -238,6 +239,106 @@ export function Sidebar() {
                             </Link>
                         )
                     })}
+
+                    {/* Separator */}
+                    <div className="h-px bg-white/10 my-4" />
+
+                    {/* Learning Section */}
+                    <div className="mb-2">
+                        {navItems.slice(1, 5).map((item) => {
+                            const active = isActive(item.href)
+                            return (
+                                <Link
+                                    key={item.href}
+                                    href={item.href}
+                                    onClick={() => setIsOpen(false)}
+                                    className={clsx(
+                                        'flex items-center gap-3 px-4 py-3 rounded-xl',
+                                        'transition-all duration-300',
+                                        'group relative overflow-hidden',
+                                        active
+                                            ? 'bg-purple-500/20 text-white'
+                                            : 'text-gray-400 hover:text-white hover:bg-white/5'
+                                    )}
+                                >
+                                    {/* Active indicator */}
+                                    {active && (
+                                        <motion.div
+                                            layoutId="activeIndicator"
+                                            className="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-8 rounded-r-full bg-gradient-to-b from-purple-400 to-fuchsia-400"
+                                            transition={{ type: 'spring', damping: 30, stiffness: 300 }}
+                                        />
+                                    )}
+
+                                    <span className={clsx(
+                                        'transition-colors duration-300',
+                                        active ? 'text-purple-400' : 'text-gray-500 group-hover:text-purple-400'
+                                    )}>
+                                        {item.icon}
+                                    </span>
+                                    <span className="font-medium">{item.label}</span>
+
+                                    {/* Hover glow */}
+                                    <motion.div
+                                        className="absolute inset-0 opacity-0 group-hover:opacity-100 pointer-events-none"
+                                        style={{
+                                            background: 'radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(139, 92, 246, 0.15), transparent 60%)',
+                                        }}
+                                    />
+                                </Link>
+                            )
+                        })}
+                    </div>
+
+                    {/* Separator */}
+                    <div className="h-px bg-white/10 my-4" />
+
+                    {/* Additional Section */}
+                    <div>
+                        {navItems.slice(5).map((item) => {
+                            const active = isActive(item.href)
+                            return (
+                                <Link
+                                    key={item.href}
+                                    href={item.href}
+                                    onClick={() => setIsOpen(false)}
+                                    className={clsx(
+                                        'flex items-center gap-3 px-4 py-3 rounded-xl',
+                                        'transition-all duration-300',
+                                        'group relative overflow-hidden',
+                                        active
+                                            ? 'bg-purple-500/20 text-white'
+                                            : 'text-gray-400 hover:text-white hover:bg-white/5'
+                                    )}
+                                >
+                                    {/* Active indicator */}
+                                    {active && (
+                                        <motion.div
+                                            layoutId="activeIndicator"
+                                            className="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-8 rounded-r-full bg-gradient-to-b from-purple-400 to-fuchsia-400"
+                                            transition={{ type: 'spring', damping: 30, stiffness: 300 }}
+                                        />
+                                    )}
+
+                                    <span className={clsx(
+                                        'transition-colors duration-300',
+                                        active ? 'text-purple-400' : 'text-gray-500 group-hover:text-purple-400'
+                                    )}>
+                                        {item.icon}
+                                    </span>
+                                    <span className="font-medium">{item.label}</span>
+
+                                    {/* Hover glow */}
+                                    <motion.div
+                                        className="absolute inset-0 opacity-0 group-hover:opacity-100 pointer-events-none"
+                                        style={{
+                                            background: 'radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(139, 92, 246, 0.15), transparent 60%)',
+                                        }}
+                                    />
+                                </Link>
+                            )
+                        })}
+                    </div>
 
                     {/* Admin Link - only for admins */}
                     {profile?.role === 'admin' && (

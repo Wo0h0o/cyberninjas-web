@@ -74,7 +74,7 @@ export default function CoursePage({ params }: CoursePageProps) {
                 </Link>
                 <span className="text-gray-600">/</span>
                 <Link href="/dashboard/courses" className="text-gray-500 hover:text-white transition-colors">
-                    Курсове
+                    Академия
                 </Link>
                 <span className="text-gray-600">/</span>
                 <span className="text-white">{course.title}</span>

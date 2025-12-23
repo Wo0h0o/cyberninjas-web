@@ -15,7 +15,7 @@ export default function CoursesPage() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
             >
-                <h1 className="text-3xl font-bold text-white mb-2">Курсове</h1>
+                <h1 className="text-3xl font-bold text-white mb-2">Академия</h1>
                 <p className="text-gray-400">
                     Разгледай всички налични курсове и започни своето обучение.
                 </p>

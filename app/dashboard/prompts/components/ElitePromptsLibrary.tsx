@@ -253,7 +253,7 @@ export default function ElitePromptsLibrary() {
         <div className="space-y-8">
             <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }}>
                 <div className="flex items-center gap-2 text-sm">
-                    <Link href="/dashboard/prompts" className="text-gray-400 hover:text-white transition-colors">Промптове</Link>
+                    <Link href="/dashboard/prompts" className="text-gray-400 hover:text-white transition-colors">AI команди</Link>
                     <span className="text-gray-600">/</span>
                     <span className="text-white font-medium">{data.title}</span>
                 </div>

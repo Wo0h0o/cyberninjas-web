@@ -11,6 +11,7 @@ interface CourseCardProps {
         description: string | null
         thumbnail_url: string | null
         price_bgn: number
+        difficulty: 'beginner' | 'intermediate' | 'advanced' | null
     }
     progress?: number // 0-100 percentage
 }
@@ -49,6 +50,18 @@ export function CourseCard({ course, progress }: CourseCardProps) {
                     <div className="absolute top-3 right-3 px-3 py-1 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-sm font-medium">
                         {course.price_bgn} лв.
                     </div>
+
+                    {/* Difficulty badge */}
+                    {course.difficulty && (
+                        <div className={`absolute top-3 left-3 px-3 py-1 rounded-full text-xs font-medium backdrop-blur-md border ${course.difficulty === 'beginner'
+                            ? 'bg-green-500/20 text-green-300 border-green-500/30'
+                            : course.difficulty === 'intermediate'
+                                ? 'bg-blue-500/20 text-blue-300 border-blue-500/30'
+                                : 'bg-red-500/20 text-red-300 border-red-500/30'
+                            }`}>
+                            {course.difficulty === 'beginner' ? 'Начинаещи' : course.difficulty === 'intermediate' ? 'Средно' : 'Напреднали'}
+                        </div>
+                    )}
                 </div>
 
                 {/* Content */}

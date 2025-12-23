@@ -144,7 +144,7 @@ export default function Home() {
             animate={{ opacity: typingComplete ? 1 : 0, y: typingComplete ? 0 : 20 }}
             transition={{ duration: 0.6, delay: 0.3 }}
           >
-            Ресурси и практични курсове за AI автоматизация.
+            Ресурси и практична академия за AI автоматизация.
           </motion.p>
 
           {/* CTA Button */}
@@ -300,7 +300,7 @@ export default function Home() {
                     </motion.div>
 
                     <h3 className="text-xl font-bold text-white mb-1.5">
-                      Видео Курсове
+                      Видео Академия
                     </h3>
                     {/* Visual separator */}
                     <div className="h-0.5 w-12 bg-gradient-to-r from-violet-500 to-transparent mb-3 mx-auto" />
@@ -435,16 +435,16 @@ export default function Home() {
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
           >
-            <a href="/about" className="text-gray-500 hover:text-white transition-colors text-sm sm:text-base">
+            <a href="/about" className="text-gray-400 hover:text-white transition-colors text-sm sm:text-base">
               За нас
             </a>
-            <a href="/privacy" className="text-gray-500 hover:text-white transition-colors text-sm sm:text-base">
+            <a href="/privacy" className="text-gray-400 hover:text-white transition-colors text-sm sm:text-base">
               Поверителност
             </a>
-            <a href="/terms" className="text-gray-500 hover:text-white transition-colors text-sm sm:text-base">
+            <a href="/terms" className="text-gray-400 hover:text-white transition-colors text-sm sm:text-base">
               Условия
             </a>
-            <a href="/contact" className="text-gray-500 hover:text-white transition-colors text-sm sm:text-base">
+            <a href="/contact" className="text-gray-400 hover:text-white transition-colors text-sm sm:text-base">
               Контакт
             </a>
           </motion.nav>

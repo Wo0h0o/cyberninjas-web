@@ -442,7 +442,7 @@ export default function LibraryPage({ params }: LibraryPageProps) {
                 >
                     <div className="flex items-center gap-2 text-sm">
                         <Link href="/dashboard/prompts" className="text-gray-400 hover:text-white transition-colors">
-                            Промптове
+                            AI команди
                         </Link>
                         <span className="text-gray-600">/</span>
                         <span className="text-white font-medium">{library.title}</span>

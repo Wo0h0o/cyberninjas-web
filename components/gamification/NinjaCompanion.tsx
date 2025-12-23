@@ -55,7 +55,7 @@ export function NinjaCompanion() {
                 id: '1',
                 code: 'welcome_1',
                 trigger_type: 'welcome',
-                message_template: `Здравей {{name}}! 👋\n\nГотов ли си да продължиш приключението?`,
+                message_template: `Здравей {{name}}!\n\nГотов ли си да продължиш приключението?`,
                 avatar_emotion: 'happy' as const,
                 action_buttons: [
                     { label: 'Да започваме!', action: 'dismiss' }
@@ -65,7 +65,7 @@ export function NinjaCompanion() {
                 id: '2',
                 code: 'welcome_2',
                 trigger_type: 'welcome',
-                message_template: `Добре дошъл обратно, {{name}}! 🥷\n\nИмам нещо интересно за теб...`,
+                message_template: `Добре дошъл обратно, {{name}}!\n\nИмам нещо интересно за теб...`,
                 avatar_emotion: 'excited' as const,
                 action_buttons: [
                     { label: 'Покажи ми', action: 'dismiss' },
@@ -155,8 +155,9 @@ export function NinjaCompanion() {
                                 <X className="w-5 h-5 text-gray-300" />
                             </button>
 
-                            {/* Ninja Avatar */}
-                            <div className="flex justify-center mb-4">
+                            {/* Horizontal Layout: Ninja Left, Text Right */}
+                            <div className="flex items-center gap-6 mb-6">
+                                {/* Ninja Avatar - Larger on Left */}
                                 <motion.div
                                     animate={{
                                         y: [0, -8, 0],
@@ -167,75 +168,30 @@ export function NinjaCompanion() {
                                         repeat: Infinity,
                                         ease: 'easeInOut'
                                     }}
-                                    className="relative w-24 h-24"
+                                    className="relative flex-shrink-0 w-32 h-32"
                                 >
                                     <Image
                                         src="/content/ninja-companion.png"
                                         alt="Ninja Companion"
-                                        width={96}
-                                        height={96}
+                                        width={128}
+                                        height={128}
                                         unoptimized
                                         className="w-full h-full object-contain drop-shadow-2xl"
                                     />
+                                </motion.div>
 
-                                    {/* Emotion indicator */}
-                                    {currentMessage.avatar_emotion === 'excited' && (
-                                        <motion.div
-                                            initial={{ scale: 0 }}
-                                            animate={{ scale: [0, 1.2, 1] }}
-                                            transition={{ duration: 0.5, delay: 0.3 }}
-                                            className="absolute -top-2 -right-2 text-2xl"
-                                        >
-                                            ✨
-                                        </motion.div>
-                                    )}
-
-                                    {currentMessage.avatar_emotion === 'happy' && (
-                                        <motion.div
-                                            initial={{ scale: 0 }}
-                                            animate={{ scale: [0, 1.2, 1] }}
-                                            transition={{ duration: 0.5, delay: 0.3 }}
-                                            className="absolute -top-2 -right-2 text-2xl"
-                                        >
-                                            😊
-                                        </motion.div>
-                                    )}
-
-                                    {currentMessage.avatar_emotion === 'mysterious' && (
-                                        <motion.div
-                                            initial={{ scale: 0 }}
-                                            animate={{ scale: [0, 1.2, 1] }}
-                                            transition={{ duration: 0.5, delay: 0.3 }}
-                                            className="absolute -top-2 -right-2 text-2xl"
-                                        >
-                                            🤫
-                                        </motion.div>
-                                    )}
-
-                                    {currentMessage.avatar_emotion === 'supportive' && (
-                                        <motion.div
-                                            initial={{ scale: 0 }}
-                                            animate={{ scale: [0, 1.2, 1] }}
-                                            transition={{ duration: 0.5, delay: 0.3 }}
-                                            className="absolute -top-2 -right-2 text-2xl"
-                                        >
-                                            💪
-                                        </motion.div>
-                                    )}
+                                {/* Message - On Right */}
+                                <motion.div
+                                    initial={{ opacity: 0, x: 20 }}
+                                    animate={{ opacity: 1, x: 0 }}
+                                    transition={{ delay: 0.3 }}
+                                    className="flex-1"
+                                >
+                                    <p className="text-white text-base leading-relaxed whitespace-pre-line">
+                                        {renderMessage(currentMessage.message_template)}
+                                    </p>
                                 </motion.div>
                             </div>
-
-                            {/* Message */}
-                            <motion.div
-                                initial={{ opacity: 0, y: 10 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                transition={{ delay: 0.3 }}
-                                className="text-center mb-6"
-                            >
-                                <p className="text-white text-lg leading-relaxed whitespace-pre-line">
-                                    {renderMessage(currentMessage.message_template)}
-                                </p>
-                            </motion.div>
 
                             {/* Action Buttons */}
                             {currentMessage.action_buttons && currentMessage.action_buttons.length > 0 && (

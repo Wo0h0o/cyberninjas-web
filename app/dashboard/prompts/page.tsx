@@ -15,7 +15,7 @@ export default function PromptsPage() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
             >
-                <h1 className="text-3xl font-bold text-white mb-2">Промптове</h1>
+                <h1 className="text-3xl font-bold text-white mb-2">AI команди</h1>
                 <p className="text-gray-400">
                     Готови промптове за ChatGPT, Claude, Midjourney и други AI инструменти.
                 </p>

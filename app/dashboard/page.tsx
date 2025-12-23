@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
 import { useCourses } from '@/hooks/useCourses'
 import { usePromptLibraries } from '@/hooks/usePrompts'
@@ -10,7 +10,7 @@ import { CourseCard } from '@/components/dashboard'
 import { LevelHeader, AchievementToast, NinjaCompanion } from '@/components/gamification'
 import { useAuth } from '@/contexts/AuthContext'
 import Link from 'next/link'
-import { ArrowRight, Play, CheckCircle2, Clock, Sparkles, BookOpen, Star, Zap, Target } from 'lucide-react'
+import { ArrowRight, Play, CheckCircle2, Clock, Sparkles, BookOpen, Star, Zap, Target, ChevronDown } from 'lucide-react'
 
 // Circular progress component
 function CircularProgress({ value, size = 80, strokeWidth = 8, color = "purple" }: {
@@ -141,6 +141,9 @@ export default function DashboardPage() {
         ? Math.round(courseProgress.reduce((acc, cp) => acc + cp.progress_percentage, 0) / courseProgress.length)
         : 0
 
+    // Mobile stats collapse state
+    const [isStatsExpanded, setIsStatsExpanded] = useState(false)
+
     return (
         <div className="space-y-8">
             {/* Achievement Toast */}
@@ -148,9 +151,6 @@ export default function DashboardPage() {
 
             {/* Ninja Companion */}
             <NinjaCompanion />
-
-            {/* Level Header */}
-            <LevelHeader />
 
             {/* Welcome Header */}
             <motion.div
@@ -168,84 +168,30 @@ export default function DashboardPage() {
                 </p>
             </motion.div>
 
-            {/* Bento Grid Layout - Stats + Featured */}
-            <motion.div
-                className="grid grid-cols-1 lg:grid-cols-12 gap-6"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.1 }}
-            >
-                {/* Left: Stats Grid (8 cols) */}
-                <div className="lg:col-span-8 grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <StatCard
-                        icon={<BookOpen className="w-6 h-6 text-purple-400" />}
-                        label="Активни курса"
-                        value={courseProgress.length || courses.length}
-                        color="bg-purple-500/20"
-                        showCircular={courseProgress.length > 0}
-                        percentage={courseProgress.length > 0 ? Math.min(100, (courseProgress.length / courses.length) * 100) : 0}
-                    />
-                    <StatCard
-                        icon={<Star className="w-6 h-6 text-amber-400" />}
-                        label="Промпт библиотеки"
-                        value={librariesLoading ? '...' : libraries.length + 1}
-                        color="bg-amber-500/20"
-                    />
-                    <StatCard
-                        icon={<CheckCircle2 className="w-6 h-6 text-green-400" />}
-                        label="Завършени лекции"
-                        value={totalCompletedLessons}
-                        isEmpty={isFirstTime}
-                        emptyMessage="Започни!"
-                        color="bg-green-500/20"
-                        showCircular={!isFirstTime && totalCompletedLessons > 0}
-                        percentage={overallProgress}
-                    />
-                    <StatCard
-                        icon={<Clock className="w-6 h-6 text-blue-400" />}
-                        label="Часа учене"
-                        value={totalTimeWatched || 0}
-                        isEmpty={isFirstTime}
-                        emptyMessage="Първи стъпки"
-                        color="bg-blue-500/20"
-                    />
-                </div>
-
-                {/* Right: Quick Insight Card (4 cols) */}
-                <div className="lg:col-span-4">
+            {/* Continue Learning / First Time CTA */}
+            {isFirstTime ? (
+                <div className="grid lg:grid-cols-2 gap-6">
+                    {/* Goal Card */}
                     <motion.div
-                        className="h-full p-6 rounded-3xl bg-gradient-to-br from-purple-500/20 via-fuchsia-500/10 to-purple-500/20 border border-purple-500/30 relative overflow-hidden group"
+                        className="p-6 rounded-3xl bg-gradient-to-br from-purple-500/20 via-fuchsia-500/10 to-purple-500/20 border border-purple-500/30 relative overflow-hidden group"
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.5, delay: 0.2 }}
                         whileHover={{ scale: 1.02 }}
-                        transition={{ duration: 0.2 }}
                     >
                         <div className="absolute top-0 right-0 w-32 h-32 bg-purple-500/30 rounded-full blur-3xl group-hover:scale-150 transition-transform duration-700" />
                         <div className="relative z-10 h-full flex flex-col justify-between">
                             <div>
                                 <div className="flex items-center gap-2 mb-3">
                                     <Target className="w-5 h-5 text-purple-400" />
-                                    <span className="text-sm font-medium text-purple-300">
-                                        {isFirstTime ? 'Твоята цел' : 'Прогрес'}
-                                    </span>
+                                    <span className="text-sm font-medium text-purple-300">Твоята цел</span>
                                 </div>
-                                {isFirstTime ? (
-                                    <>
-                                        <h3 className="text-xl font-bold text-white mb-2">
-                                            Завърши първия урок
-                                        </h3>
-                                        <p className="text-sm text-gray-300">
-                                            90% от студентите завършват първия урок за под 10 минути!
-                                        </p>
-                                    </>
-                                ) : (
-                                    <>
-                                        <div className="text-4xl font-bold text-white mb-2">
-                                            {overallProgress}%
-                                        </div>
-                                        <p className="text-sm text-gray-300">
-                                            Среден прогрес във всички курсове
-                                        </p>
-                                    </>
-                                )}
+                                <h3 className="text-xl font-bold text-white mb-2">
+                                    Завърши първия урок
+                                </h3>
+                                <p className="text-sm text-gray-300">
+                                    90% от студентите завършват първия урок за под 10 минути!
+                                </p>
                             </div>
                             <div className="flex items-center gap-2 text-purple-400 text-sm font-medium mt-4">
                                 <Zap className="w-4 h-4" />
@@ -253,11 +199,37 @@ export default function DashboardPage() {
                             </div>
                         </div>
                     </motion.div>
-                </div>
-            </motion.div>
 
-            {/* Continue Learning / First Time CTA */}
-            {isFirstTime ? (
+                    {/* Beginner Path CTA */}
+                    <motion.section
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.5, delay: 0.3 }}
+                        className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-purple-500/20 via-fuchsia-500/10 to-blue-500/20 border border-purple-500/30 p-8"
+                    >
+                        <div className="flex flex-col justify-center h-full">
+                            <div className="flex items-center gap-2 mb-4">
+                                <Sparkles className="w-5 h-5 text-purple-400" />
+                                <span className="text-sm font-medium text-purple-300">Препоръчано за начинаещи</span>
+                            </div>
+                            <h2 className="text-2xl font-bold text-white mb-3">
+                                Започни своето AI пътуване
+                            </h2>
+                            <p className="text-gray-300 mb-6 text-sm">
+                                Изграждаме специален път за начинаещи. Започни с основите на AI и стигни до напреднали техники за автоматизация.
+                            </p>
+                            <Link
+                                href="/dashboard/courses"
+                                className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-purple-500 hover:bg-purple-600 text-white font-semibold transition-colors w-fit"
+                            >
+                                <Play className="w-5 h-5" />
+                                Започни първия си курс
+                                <ArrowRight className="w-5 h-5" />
+                            </Link>
+                        </div>
+                    </motion.section>
+                </div>
+            ) : (
                 <motion.section
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -266,24 +238,24 @@ export default function DashboardPage() {
                 >
                     <div className="grid lg:grid-cols-2 gap-8 p-8">
                         {/* Left: Content */}
-                        <div className="relative z-10 flex flex-col justify-center">
+                        <div className="flex flex-col justify-center">
                             <div className="flex items-center gap-2 mb-4">
                                 <Sparkles className="w-5 h-5 text-purple-400" />
-                                <span className="text-sm font-medium text-purple-300">Препоръчано за начинаещи</span>
+                                <span className="text-sm font-medium text-purple-300">Препоръчан за начинаещи</span>
                             </div>
                             <h2 className="text-3xl font-bold text-white mb-4">
                                 Започни своето AI пътуване
                             </h2>
-                            <p className="text-gray-300 mb-6 text-lg">
-                                Изградихме специален път за начинаещи. Започни с основите на AI и стигни до напреднали техники за автоматизация.
+                            <p className="text-gray-300 mb-6">
+                                Изграждаме специален път за начинаещи. Започни с основите на AI и стигни до напреднали техники за автоматизация.
                             </p>
                             <Link
                                 href="/dashboard/courses"
-                                className="inline-flex items-center gap-2 px-8 py-4 rounded-2xl bg-purple-500 hover:bg-purple-600 text-white font-semibold transition-all group w-fit"
+                                className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-purple-500 hover:bg-purple-600 text-white font-semibold transition-colors w-fit"
                             >
                                 <Play className="w-5 h-5" />
                                 Започни първия си курс
-                                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                                <ArrowRight className="w-5 h-5" />
                             </Link>
                         </div>
 
@@ -317,7 +289,10 @@ export default function DashboardPage() {
                         </div>
                     </div>
                 </motion.section>
-            ) : continueFrom ? (
+            )}
+
+            {/* Continue Learning Section - for returning users */}
+            {!isFirstTime && continueFrom && (
                 <motion.section
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -392,9 +367,9 @@ export default function DashboardPage() {
                         </div>
                     </div>
                 </motion.section>
-            ) : null}
+            )}
 
-            {/* All Courses Section */}
+            {/* Recommended Courses Section */}
             <motion.section
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}

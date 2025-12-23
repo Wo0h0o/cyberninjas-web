@@ -55,6 +55,7 @@ export default function CourseEditorPage() {
     const [slug, setSlug] = useState('')
     const [description, setDescription] = useState('')
     const [price, setPrice] = useState(299)
+    const [difficulty, setDifficulty] = useState<'beginner' | 'intermediate' | 'advanced' | null>(null)
     const [isPublished, setIsPublished] = useState(false)
     const [thumbnailUrl, setThumbnailUrl] = useState('')
     const [uploadingThumbnail, setUploadingThumbnail] = useState(false)
@@ -104,6 +105,7 @@ export default function CourseEditorPage() {
             setSlug(course.slug)
             setDescription(course.description || '')
             setPrice(course.price_bgn)
+            setDifficulty(course.difficulty)
             setIsPublished(course.is_published)
             setThumbnailUrl(course.thumbnail_url || '')
 
@@ -206,6 +208,7 @@ export default function CourseEditorPage() {
                         slug,
                         description: description || null,
                         price_bgn: price,
+                        difficulty: difficulty,
                         is_published: isPublished,
                         thumbnail_url: thumbnailUrl || null,
                     })
@@ -225,6 +228,7 @@ export default function CourseEditorPage() {
                         slug,
                         description: description || null,
                         price_bgn: price,
+                        difficulty: difficulty,
                         is_published: isPublished,
                         thumbnail_url: thumbnailUrl || null,
                     })
@@ -527,6 +531,22 @@ export default function CourseEditorPage() {
                                 onChange={(e) => setPrice(parseInt(e.target.value) || 0)}
                                 className="w-full px-4 py-2 rounded-lg bg-white/5 border border-white/10 text-white focus:border-purple-500/50 focus:outline-none"
                             />
+                        </div>
+
+                        <div>
+                            <label className="block text-sm font-medium text-gray-400 mb-2">
+                                Ниво на сложност
+                            </label>
+                            <select
+                                value={difficulty || ''}
+                                onChange={(e) => setDifficulty(e.target.value === '' ? null : e.target.value as 'beginner' | 'intermediate' | 'advanced')}
+                                className="w-full px-4 py-2 rounded-lg bg-white/5 border border-white/10 text-white focus:border-purple-500/50 focus:outline-none cursor-pointer"
+                            >
+                                <option value="">Не е зададено</option>
+                                <option value="beginner">Начинаещи</option>
+                                <option value="intermediate">Средно ниво</option>
+                                <option value="advanced">Напреднали</option>
+                            </select>
                         </div>
 
                         <div>

@@ -60,6 +60,23 @@ export default function LessonPage({ params }: LessonPageProps) {
         <div className="grid grid-cols-1 xl:grid-cols-3 gap-8">
             {/* Main Content */}
             <div className="xl:col-span-2 space-y-6">
+                {/* Return to Dashboard */}
+                <motion.div
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.2 }}
+                >
+                    <Link
+                        href="/dashboard"
+                        className="inline-flex items-center gap-2 text-sm text-gray-400 hover:text-white transition-colors group"
+                    >
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="group-hover:-translate-x-1 transition-transform">
+                            <path d="M19 12H5M12 19l-7-7 7-7" />
+                        </svg>
+                        Обратно към началото
+                    </Link>
+                </motion.div>
+
                 {/* Breadcrumb */}
                 <motion.nav
                     className="flex items-center gap-2 text-sm flex-wrap"
@@ -68,7 +85,7 @@ export default function LessonPage({ params }: LessonPageProps) {
                     transition={{ duration: 0.3 }}
                 >
                     <Link href="/dashboard/courses" className="text-gray-500 hover:text-white transition-colors">
-                        Курсове
+                        Академия
                     </Link>
                     <span className="text-gray-600">/</span>
                     <Link
@@ -123,9 +140,9 @@ export default function LessonPage({ params }: LessonPageProps) {
                     )}
                 </motion.div>
 
-                {/* Navigation */}
+                {/* Lesson Navigation - More Prominent */}
                 <motion.div
-                    className="flex items-center justify-between gap-4"
+                    className="flex items-center justify-between gap-4 p-4 rounded-2xl bg-white/[0.03] border border-white/10 sticky top-0 z-10 backdrop-blur-md bg-black/50"
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: 0.2 }}
@@ -133,43 +150,43 @@ export default function LessonPage({ params }: LessonPageProps) {
                     {prevLesson ? (
                         <Link
                             href={`/dashboard/courses/${course.slug}/lesson/${prevLesson.id}`}
-                            className="flex items-center gap-3 px-4 py-3 rounded-xl bg-white/[0.03] border border-white/10 hover:border-purple-500/30 transition-colors group"
+                            className="flex items-center gap-3 px-6 py-4 rounded-xl bg-white/[0.05] border border-white/10 hover:border-purple-500/50 hover:bg-purple-500/10 transition-all group flex-1 max-w-[45%]"
                         >
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-gray-400 group-hover:text-purple-400 transition-colors">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-gray-400 group-hover:text-purple-400 transition-colors flex-shrink-0">
                                 <path d="M19 12H5M12 19l-7-7 7-7" />
                             </svg>
-                            <div className="text-left">
-                                <p className="text-xs text-gray-500">Предишен урок</p>
-                                <p className="text-sm text-white font-medium truncate max-w-[150px]">{prevLesson.title}</p>
+                            <div className="text-left overflow-hidden">
+                                <p className="text-xs text-gray-500 mb-1">Предишен урок</p>
+                                <p className="text-sm text-white font-medium truncate">{prevLesson.title}</p>
                             </div>
                         </Link>
                     ) : (
-                        <div />
+                        <div className="flex-1" />
                     )}
 
                     {nextLesson ? (
                         <Link
                             href={`/dashboard/courses/${course.slug}/lesson/${nextLesson.id}`}
-                            className="flex items-center gap-3 px-4 py-3 rounded-xl bg-white/[0.03] border border-white/10 hover:border-purple-500/30 transition-colors group"
+                            className="flex items-center gap-3 px-6 py-4 rounded-xl bg-gradient-to-r from-purple-500/20 to-fuchsia-500/20 border border-purple-500/50 hover:border-purple-400 hover:from-purple-500/30 hover:to-fuchsia-500/30 transition-all group flex-1 max-w-[45%]"
                         >
-                            <div className="text-right">
-                                <p className="text-xs text-gray-500">Следващ урок</p>
-                                <p className="text-sm text-white font-medium truncate max-w-[150px]">{nextLesson.title}</p>
+                            <div className="text-right overflow-hidden flex-1">
+                                <p className="text-xs text-purple-300 mb-1">Следващ урок</p>
+                                <p className="text-sm text-white font-semibold truncate">{nextLesson.title}</p>
                             </div>
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-gray-400 group-hover:text-purple-400 transition-colors">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-purple-400 group-hover:text-purple-300 transition-colors group-hover:translate-x-1 flex-shrink-0">
                                 <path d="M5 12h14M12 5l7 7-7 7" />
                             </svg>
                         </Link>
                     ) : (
                         <Link
                             href={`/dashboard/courses/${course.slug}`}
-                            className="flex items-center gap-3 px-4 py-3 rounded-xl bg-purple-500/20 border border-purple-500/30 hover:bg-purple-500/30 transition-colors text-purple-400"
+                            className="flex items-center justify-center gap-3 px-6 py-4 rounded-xl bg-gradient-to-r from-green-500/20 to-emerald-500/20 border border-green-500/50 hover:border-green-400 hover:from-green-500/30 hover:to-emerald-500/30 transition-all text-green-400 font-semibold flex-1"
                         >
-                            <span className="text-sm font-medium">Завърши курса</span>
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="flex-shrink-0">
                                 <path d="M9 12l2 2 4-4" />
                                 <circle cx="12" cy="12" r="10" />
                             </svg>
+                            <span>Завърши курса и виж прогреса</span>
                         </Link>
                     )}
                 </motion.div>

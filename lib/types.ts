@@ -57,6 +57,7 @@ export interface Course {
     price_bgn: number
     order_index: number
     is_published: boolean
+    difficulty: 'beginner' | 'intermediate' | 'advanced' | null
     created_at: string
 }
 

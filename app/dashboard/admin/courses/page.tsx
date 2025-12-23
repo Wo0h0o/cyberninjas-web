@@ -15,6 +15,7 @@ interface Course {
     price_bgn: number
     order_index: number
     is_published: boolean
+    difficulty: 'beginner' | 'intermediate' | 'advanced' | null
     created_at: string
     module_count?: number
     lesson_count?: number
@@ -126,7 +127,7 @@ export default function CoursesAdminPage() {
             {/* Header */}
             <div className="flex items-center justify-between">
                 <div>
-                    <h1 className="text-2xl font-bold text-white mb-1">Курсове</h1>
+                    <h1 className="text-2xl font-bold text-white mb-1">Академия</h1>
                     <p className="text-gray-400">Управление на курсове, модули и лекции</p>
                 </div>
                 <Link
@@ -179,6 +180,7 @@ export default function CoursesAdminPage() {
                         <tr className="bg-white/5 border-b border-white/10">
                             <th className="px-6 py-4 text-left text-sm font-semibold text-white">Курс</th>
                             <th className="px-6 py-4 text-left text-sm font-semibold text-white">Статус</th>
+                            <th className="px-6 py-4 text-left text-sm font-semibold text-white">Ниво</th>
                             <th className="px-6 py-4 text-left text-sm font-semibold text-white">Структура</th>
                             <th className="px-6 py-4 text-left text-sm font-semibold text-white">Цена</th>
                             <th className="px-6 py-4 text-right text-sm font-semibold text-white">Действия</th>
@@ -188,7 +190,7 @@ export default function CoursesAdminPage() {
                         <AnimatePresence>
                             {loading ? (
                                 <tr>
-                                    <td colSpan={5} className="px-6 py-12 text-center text-gray-400">
+                                    <td colSpan={6} className="px-6 py-12 text-center text-gray-400">
                                         <div className="flex items-center justify-center gap-2">
                                             <div className="w-5 h-5 border-2 border-purple-500 border-t-transparent rounded-full animate-spin" />
                                             Зареждане...
@@ -197,7 +199,7 @@ export default function CoursesAdminPage() {
                                 </tr>
                             ) : filteredCourses.length === 0 ? (
                                 <tr>
-                                    <td colSpan={5} className="px-6 py-12">
+                                    <td colSpan={6} className="px-6 py-12">
                                         <div className="text-center">
                                             <BookOpen className="w-12 h-12 text-gray-600 mx-auto mb-3" />
                                             <p className="text-gray-400 mb-1">Няма намерени курсове</p>
@@ -260,6 +262,18 @@ export default function CoursesAdminPage() {
                                                     </>
                                                 )}
                                             </span>
+                                        </td>
+                                        <td className="px-6 py-4">
+                                            {course.difficulty && (
+                                                <span className={`inline-flex items-center px-2 py-1 rounded-full text-xs font-medium ${course.difficulty === 'beginner'
+                                                        ? 'bg-green-500/20 text-green-300'
+                                                        : course.difficulty === 'intermediate'
+                                                            ? 'bg-blue-500/20 text-blue-300'
+                                                            : 'bg-red-500/20 text-red-300'
+                                                    }`}>
+                                                    {course.difficulty === 'beginner' ? 'Начинаещи' : course.difficulty === 'intermediate' ? 'Средно' : 'Напреднали'}
+                                                </span>
+                                            )}
                                         </td>
                                         <td className="px-6 py-4">
                                             <div className="text-sm text-gray-400">

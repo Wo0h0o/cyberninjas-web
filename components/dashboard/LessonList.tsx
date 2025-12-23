@@ -27,7 +27,7 @@ export function LessonList({
     courseSlug
 }: LessonListProps) {
     const [expandedModules, setExpandedModules] = useState<string[]>(
-        modules.map(m => m.id) // All expanded by default
+        [modules[0]?.id].filter(Boolean) // Only first module expanded by default
     )
 
     const toggleModule = (moduleId: string) => {
@@ -92,7 +92,7 @@ export function LessonList({
                                     initial={{ height: 0, opacity: 0 }}
                                     animate={{ height: 'auto', opacity: 1 }}
                                     exit={{ height: 0, opacity: 0 }}
-                                    transition={{ duration: 0.2 }}
+                                    transition={{ duration: 0.3 }}
                                     className="overflow-hidden"
                                 >
                                     <div className="px-4 pb-4 space-y-1">

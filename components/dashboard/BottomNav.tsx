@@ -28,7 +28,7 @@ const mainNavItems: BottomNavItem[] = [
         ),
     },
     {
-        label: 'Курсове',
+        label: 'Академия',
         href: '/dashboard/courses',
         icon: (
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -39,7 +39,7 @@ const mainNavItems: BottomNavItem[] = [
         ),
     },
     {
-        label: 'Промптове',
+        label: 'AI команди',
         href: '/dashboard/prompts',
         icon: (
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">

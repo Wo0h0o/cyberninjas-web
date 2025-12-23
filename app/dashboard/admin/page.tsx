@@ -7,9 +7,9 @@ import { supabase } from '@/lib/supabase'
 
 export default function AdminDashboard() {
     const [stats, setStats] = useState([
-        { label: 'Курсове', value: '-', icon: '📚', href: '/dashboard/admin/courses' },
+        { label: 'Академия', value: '-', icon: '📚', href: '/dashboard/admin/courses' },
         { label: 'Библиотеки', value: '-', icon: '📖', href: '/dashboard/admin/libraries' },
-        { label: 'Промптове', value: '-', icon: '📝', href: '/dashboard/admin/libraries' },
+        { label: 'AI команди', value: '-', icon: '📝', href: '/dashboard/admin/libraries' },
     ])
     const [loading, setLoading] = useState(true)
 
@@ -32,9 +32,9 @@ export default function AdminDashboard() {
                     .select('*', { count: 'exact', head: true })
 
                 setStats([
-                    { label: 'Курсове', value: String(courseCount || 0), icon: '📚', href: '/dashboard/admin/courses' },
+                    { label: 'Академия', value: String(courseCount || 0), icon: '📚', href: '/dashboard/admin/courses' },
                     { label: 'Библиотеки', value: String(libraryCount || 0), icon: '📖', href: '/dashboard/admin/libraries' },
-                    { label: 'Промптове', value: String(promptCount || 0), icon: '📝', href: '/dashboard/admin/libraries' },
+                    { label: 'AI команди', value: String(promptCount || 0), icon: '📝', href: '/dashboard/admin/libraries' },
                 ])
             } catch (error) {
                 console.error('Error fetching stats:', error)

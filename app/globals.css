@@ -114,10 +114,11 @@ body {
   /* Touch-friendly minimum */
 }
 
-/* Reduce padding on very small screens */
+/* Ensure minimum touch target size on small screens */
 @media (max-width: 550px) {
   .glow-border-button {
-    padding: 0.875rem 1.25rem;
+    padding: 1rem 1.5rem;
+    /* Increased from 0.875rem to meet 48px touch target */
     font-size: 0.95rem;
   }
 }

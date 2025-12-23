@@ -6,15 +6,21 @@ import { useAuth } from '@/contexts/AuthContext'
 import { useRouter } from 'next/navigation'
 import { EditProfileModal, ChangePasswordModal, NotificationsModal } from './components'
 import { CheckCircle } from 'lucide-react'
+import { LevelHeader } from '@/components/gamification/LevelHeader'
+import { useUserProgress } from '@/hooks/useUserProgress'
 
 export default function ProfilePage() {
     const { user, profile, signOut, refreshProfile } = useAuth()
     const router = useRouter()
+    const { courseProgress, totalCompletedLessons, totalTimeWatched } = useUserProgress()
     const [showEditModal, setShowEditModal] = useState(false)
     const [showPasswordModal, setShowPasswordModal] = useState(false)
     const [showNotificationsModal, setShowNotificationsModal] = useState(false)
     const [showSuccessToast, setShowSuccessToast] = useState(false)
     const [successMessage, setSuccessMessage] = useState('')
+
+    // Calculate completed courses
+    const completedCourses = courseProgress.filter(cp => cp.progress_percentage === 100).length
 
     // Get user initials
     const getInitials = () => {
@@ -115,6 +121,15 @@ export default function ProfilePage() {
                 </div>
             </motion.div>
 
+            {/* Level Header */}
+            <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.15 }}
+            >
+                <LevelHeader />
+            </motion.div>
+
             {/* Stats */}
             <motion.div
                 className="grid grid-cols-3 gap-3 sm:gap-6"
@@ -123,15 +138,15 @@ export default function ProfilePage() {
                 transition={{ duration: 0.5, delay: 0.2 }}
             >
                 <div className="p-3 sm:p-4 md:p-6 rounded-xl sm:rounded-2xl bg-white/[0.03] border border-white/10 text-center">
-                    <p className="text-2xl sm:text-3xl font-bold text-white mb-1">0</p>
+                    <p className="text-2xl sm:text-3xl font-bold text-white mb-1">{completedCourses}</p>
                     <p className="text-gray-400 text-xs sm:text-sm">Завършени курса</p>
                 </div>
                 <div className="p-3 sm:p-4 md:p-6 rounded-xl sm:rounded-2xl bg-white/[0.03] border border-white/10 text-center">
-                    <p className="text-2xl sm:text-3xl font-bold text-white mb-1">0</p>
+                    <p className="text-2xl sm:text-3xl font-bold text-white mb-1">{totalCompletedLessons}</p>
                     <p className="text-gray-400 text-xs sm:text-sm">Завършени урока</p>
                 </div>
                 <div className="p-3 sm:p-4 md:p-6 rounded-xl sm:rounded-2xl bg-white/[0.03] border border-white/10 text-center">
-                    <p className="text-2xl sm:text-3xl font-bold text-white mb-1">0ч</p>
+                    <p className="text-2xl sm:text-3xl font-bold text-white mb-1">{totalTimeWatched}ч</p>
                     <p className="text-gray-400 text-xs sm:text-sm">Учебно време</p>
                 </div>
             </motion.div>
