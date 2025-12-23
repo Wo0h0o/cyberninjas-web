@@ -59,13 +59,13 @@ export function FeatureChoiceCard({
             >
                 {/* Icon Circle */}
                 <div className="icon-circle">
-                    <IconComponent className="w-10 h-10 text-purple-400" strokeWidth={1.5} />
+                    <IconComponent className="w-8 h-8 text-purple-400" strokeWidth={1.5} />
                 </div>
 
                 {/* Content */}
-                <div className="mt-6">
+                <div className="mt-4">
                     <div className="flex items-center justify-between mb-2">
-                        <h3 className="text-xl font-semibold text-white group-hover:text-purple-300 transition-colors">
+                        <h3 className="text-lg font-semibold text-white group-hover:text-purple-300 transition-colors">
                             {label}
                         </h3>
 
@@ -82,7 +82,7 @@ export function FeatureChoiceCard({
                 </div>
 
                 {/* Hover Arrow */}
-                <div className="mt-6 flex items-center text-purple-400 opacity-0 group-hover:opacity-100 transition-opacity">
+                <div className="mt-4 flex items-center text-purple-400 opacity-0 group-hover:opacity-100 transition-opacity">
                     <span className="text-sm font-medium">Разглеждане</span>
                     <svg
                         className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform"

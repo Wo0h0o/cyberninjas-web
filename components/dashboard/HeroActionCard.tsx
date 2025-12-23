@@ -51,13 +51,13 @@ export function HeroActionCard({
                 role="main"
                 aria-label="Choose your starting point"
             >
-                <div className="px-6 py-12 md:px-12 md:py-16">
+                <div className="px-6 py-8 md:px-10 md:py-12">
                     {/* Welcome message */}
-                    <div className="text-center mb-10">
-                        <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
+                    <div className="text-center mb-8">
+                        <h1 className="text-3xl md:text-4xl font-bold text-white mb-3">
                             Добре дошъл, {user.name?.split(' ')[0] || 'там'}!
                         </h1>
-                        <p className="text-lg text-gray-300 max-w-2xl mx-auto">
+                        <p className="text-base text-gray-300 max-w-2xl mx-auto">
                             Избери откъде искаш да започнеш своето AI пътуване
                         </p>
                     </div>
