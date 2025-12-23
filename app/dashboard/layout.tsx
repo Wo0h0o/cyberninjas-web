@@ -7,6 +7,8 @@ import { NinjaCompanion, AchievementToast } from '@/components/gamification'
 import { useAuth } from '@/contexts/AuthContext'
 import { useUserLevel } from '@/hooks/useUserLevel'
 import '@/app/globals.css'
+import '@/app/dashboard-gps.css'
+import '@/app/feature-choice.css'
 
 export default function DashboardLayout({
     children,
