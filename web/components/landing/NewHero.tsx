@@ -4,20 +4,21 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { TypingEffect } from "@/components/effects";
-import ParticleNetwork from "./ParticleNetwork";
+import HexagonGrid from "./HexagonGrid";
 
 export default function NewHero() {
   const [typingComplete, setTypingComplete] = useState(false);
 
   return (
     <section className="relative min-h-[90vh] flex items-center justify-center px-6 bg-black">
-      {/* Particle Network Background */}
+      {/* Hexagon Grid Background */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <ParticleNetwork
-          particleCount={60}
-          connectionDistance={150}
-          particleSpeed={0.3}
-          mouseRadius={180}
+        <HexagonGrid
+          hexSize={45}
+          lineWidth={1}
+          baseColor="rgba(255, 255, 255, 0.06)"
+          glowColor="rgba(255, 255, 0, 0.5)"
+          mouseRadius={200}
         />
       </div>
 
@@ -65,29 +66,6 @@ export default function NewHero() {
         )}
       </div>
 
-      {/* Gradient Fade - stronger */}
-      <div className="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-b from-transparent via-black/80 to-black pointer-events-none" />
-
-      {/* Wave Divider with Gradient */}
-      <div className="absolute bottom-0 left-0 right-0 w-full overflow-hidden leading-none">
-        <svg
-          className="relative block w-full h-[80px] md:h-[100px]"
-          viewBox="0 0 1200 120"
-          preserveAspectRatio="none"
-        >
-          <defs>
-            <linearGradient id="waveGradient" x1="0%" y1="0%" x2="0%" y2="100%">
-              <stop offset="0%" stopColor="#000000" stopOpacity="1" />
-              <stop offset="50%" stopColor="#000000" stopOpacity="1" />
-              <stop offset="100%" stopColor="#000000" stopOpacity="1" />
-            </linearGradient>
-          </defs>
-          <path
-            d="M0,0 C150,80 350,80 600,50 C850,20 1050,20 1200,50 L1200,120 L0,120 Z"
-            fill="url(#waveGradient)"
-          />
-        </svg>
-      </div>
     </section>
   );
 }
