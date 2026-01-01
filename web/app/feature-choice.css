@@ -1,0 +1,103 @@
+/* ===== FEATURE CHOICE CARDS ===== */
+
+.feature-choice-card {
+    position: relative;
+    padding: 1.5rem;
+    border-radius: 1.25rem;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+.feature-choice-card:hover {
+    background: rgba(255, 255, 255, 0.04);
+    border-color: rgba(253, 176, 34, 0.15);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    transform: translateY(-2px);
+}
+
+.feature-choice-card::before {
+    content: '';
+    position: relative;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+            rgba(253, 176, 34, 0.05),
+            transparent 60%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+.feature-choice-card:hover::before {
+    opacity: 1;
+}
+
+.icon-circle {
+    width: 64px;
+    height: 64px;
+    border-radius: 1.25rem;
+    background: rgba(253, 176, 34, 0.05);
+    border: 1px solid rgba(253, 176, 34, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.feature-choice-card:hover .icon-circle {
+    background: rgba(253, 176, 34, 0.12);
+    border-color: rgba(253, 176, 34, 0.25);
+    transform: scale(1.05);
+}
+
+/* Badges */
+.badge {
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.badge-free {
+    background: rgba(16, 185, 129, 0.1);
+    color: #10b981;
+    border: 1px solid rgba(16, 185, 129, 0.3);
+}
+
+.badge-paid {
+    background: rgba(245, 158, 11, 0.1);
+    color: #f59e0b;
+    border: 1px solid rgba(245, 158, 11, 0.3);
+}
+
+/* Choice Grid */
+.choice-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+@media (max-width: 768px) {
+    .choice-grid {
+        grid-template-columns: 1fr;
+        gap: 0.75rem;
+    }
+
+    .feature-choice-card {
+        padding: 1.25rem;
+    }
+
+    .icon-circle {
+        width: 56px;
+        height: 56px;
+    }
+}

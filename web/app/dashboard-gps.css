@@ -1,0 +1,192 @@
+/* ===== GPS DASHBOARD STYLES ===== */
+
+/* Hero Action Card - Central Stage */
+.hero-action-card {
+    position: relative;
+    min-height: 60vh;
+    max-width: 900px;
+    margin: 2rem auto;
+    padding: 3rem;
+    border-radius: 2rem;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 0, 0.3);
+    backdrop-filter: blur(20px);
+
+    /* Subtle shadow without glow */
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+
+    transition: all 0.4s ease;
+}
+
+.hero-action-card:hover {
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+    border-color: rgba(255, 255, 0, 0.5);
+}
+
+.hero-action-card.returning {
+    min-height: auto;
+    padding: 0;
+    overflow: hidden;
+}
+
+/* Primary CTA - THE ONLY dominant button */
+.primary-cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.25rem 3rem;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #18181B;
+    /* text-on-yellow */
+    border-radius: 1rem;
+    background: #FFFF00;
+    /* accent.yellow */
+    text-decoration: none;
+    transition: all 0.3s ease;
+
+    /* Subtle shadow without glow */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+
+    /* Ensure accessibility */
+    min-height: 56px;
+}
+
+.primary-cta:hover {
+    background: #E6E600;
+    /* accent.yellow-hover */
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+}
+
+.primary-cta:active {
+    transform: translateY(-1px) scale(0.98);
+}
+
+.primary-cta:focus-visible {
+    outline: 3px solid rgba(255, 255, 0, 0.8);
+    outline-offset: 4px;
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+    .primary-cta {
+        width: 100%;
+        padding: 1rem 2rem;
+        font-size: 1.125rem;
+    }
+
+    .hero-action-card {
+        margin: 1rem;
+        padding: 2rem 1.5rem;
+        min-height: 50vh;
+    }
+}
+
+/* Focus + Context Areas */
+.focus-area {
+    /* Bright, high contrast for current action */
+    color: #fafafa;
+}
+
+.focus-area .eyebrow {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #FFFF00;
+    /* accent.yellow */
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.context-sidebar {
+    /* Muted, secondary importance */
+    opacity: 0.8;
+    color: #a1a1aa;
+}
+
+.context-sidebar:hover {
+    opacity: 1;
+}
+
+/* Progress Overview - Subtle secondary context */
+.progress-overview {
+    opacity: 0.75;
+    transition: opacity 0.3s ease;
+}
+
+.progress-overview:hover {
+    opacity: 1;
+}
+
+.mini-stat-card {
+    padding: 0.75rem 1rem;
+    border-radius: 0.75rem;
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: all 0.2s ease;
+}
+
+.mini-stat-card:hover {
+    background: rgba(255, 255, 255, 0.02);
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.mini-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 0.5rem;
+    background: rgba(255, 255, 255, 0.03);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Action Menu - Progressive Disclosure */
+.action-menu {
+    margin-top: 4rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.action-link {
+    display: flex;
+    align-items: center;
+    padding: 0.75rem 1rem;
+    border-radius: 0.5rem;
+    background: transparent;
+    border: none;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.action-link:hover {
+    background: rgba(255, 255, 255, 0.03);
+}
+
+.expand-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 0.75rem;
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 0.5rem;
+    color: #71717a;
+    font-size: 0.875rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.expand-button:hover {
+    background: rgba(255, 255, 255, 0.02);
+    border-color: rgba(255, 255, 255, 0.1);
+    color: #a1a1aa;
+}
+
+/* Hide progress overview on mobile for focus */
+@media (max-width: 768px) {
+    .progress-overview {
+        display: none;
+    }
+}

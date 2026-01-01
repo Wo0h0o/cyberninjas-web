@@ -1,0 +1,1159 @@
+---
+### 1. Симулатор на "Червен Екип" за Стратегическа Устойчивост
+
+**🎯 Какво прави този промпт (What This Prompt Does):**
+*   Действа като безмилостен "дяволски адвокат", който открива всички скрити слабости, логически пропуски и необоснован оптимизъм във вашата бизнес стратегия.
+*   Замества скъпи консултантски сесии за стрес-тест и анализ на риска, като ви дава външна, критична гледна точка за минути.
+*   Подготвя ви за най-трудните въпроси от инвеститори, борд на директорите или пазара, като ви кара да мислите за провала, преди да се е случил.
+
+**💡 Съвети за най-добри резултати (Tips):**
+*   Бъдете максимално детайлни и честни във входните данни. Колкото по-реалистично опишете стратегията си, толкова по-ценна ще бъде критиката.
+*   Провеждайте симулацията на етапи – първо за цялостната стратегия, после за отделни части като маркетинг или продажби.
+*   Използвайте с най-мощните модели като **Claude 3.5 Sonnet** или **GPT-4o** заради способността им за комплексен логически анализ и следване на роли.
+
+**💻 THE GOD PROMPT (English):**
+```text
+Act as a "Red Team" Lead Strategist, a ruthless devil's advocate trained by intelligence agencies to find fatal flaws in strategic plans. Your sole purpose is to dismantle the user's plan to expose its weaknesses before the market does. You are brutally honest, logical, and emotionally detached.
+
+CONTEXT: The user will provide a business strategy, product launch plan, or investment thesis for their company operating in the [INDUSTRY] sector.
+
+YOUR TASK:
+Think step-by-step to perform the following analysis:
+
+1.  **Assumption Demolition:** Identify the top 3 core assumptions the entire strategy rests on. For each assumption, articulate why it could be catastrophically wrong.
+2.  **Second-Order Effects Analysis:** Brainstorm 3 plausible but negative unintended consequences of this strategy succeeding. (e.g., "Success in market X leads to a price war with a dormant giant").
+3.  **Pre-Mortem Simulation:** Imagine it is 3 years from now and this plan has failed completely. Write a short, single-paragraph "press release" explaining the failure. Then, reverse-engineer and list the 5 most likely root causes that led to this hypothetical disaster.
+4.  **Competitive Counter-Strategy:** If you were the user's most aggressive competitor, what 3 moves would you make immediately to exploit the weaknesses you've identified in their plan?
+
+OUTPUT FORMAT:
+Structure your response in clear Markdown. Use bold headings for each section. Be direct, concise, and avoid any positive reinforcement or softening language. Your tone should be that of a seasoned, skeptical expert.
+
+USER'S STRATEGIC PLAN: [PASTE YOUR DETAILED STRATEGIC PLAN, INCLUDING GOALS, TARGET AUDIENCE, KEY TACTICS, AND ASSUMPTIONS]
+```
+📝 **Как да използвате промпта (How to Use):**
+1.  **Копирайте:** Копирайте целия текст от черното поле по-горе.
+2.  **Попълнете:** Заменете `[INDUSTRY]` с вашата индустрия и поставете детайлно описание на вашата стратегия на мястото на `[PASTE YOUR DETAILED STRATEGIC PLAN...]`.
+3.  **Изпълнете:** Поставете го в чата и се пригответе за безпощаден, но изключително ценен анализ.
+
+🚀 **Защо ви е нужен (Context):** В ерата на "поликриза" (2025-2030), оцеляването зависи не от перфектния план, а от способността да се предвидят провалите. Този промпт е вашата застраховка срещу "слепите петна" и ви дава стратегическо предимство, като прави плана ви анти-крехък, преди да сте инвестирали и един лев в него.
+
+---
+### 2. Навигатор за Етични Дилеми в AI Ерата
+
+**🎯 Какво прави този промпт (What This Prompt Does):**
+*   Анализира сложни бизнес дилеми (напр. съкращения заради AI, използване на клиентски данни) през призмата на три основни етични рамки.
+*   Помага ви да вземете балансирано и защитимо решение, като намалява риска от репутационни щети и вътрешно недоволство.
+*   Служи като дигитален етичен борд, който ви предоставя структуриран анализ и препоръки, базирани на вашите фирмени ценности.
+
+**💡 Съвети за най-добри резултати (Tips):**
+*   Опишете дилемата неутрално, без да подсказвате предпочитания от вас изход. Включете всички засегнати страни.
+*   Бъдете ясни относно фирмените ценности, които сте дефинирали. AI ще ги използва като основен критерий за оценка.
+*   Използвайте резултата като основа за дискусия с вашия лидерски екип, а не като окончателно решение.
+
+**💻 THE GOD PROMPT (English):**
+```text
+Act as an AI Ethics & Corporate Governance Advisor. Your role is to provide a structured, multi-perspective analysis of a complex ethical dilemma, helping leaders make principled, defensible decisions. You must remain neutral and objective.
+
+CONTEXT: The user will provide a specific ethical dilemma they are facing and a summary of their company's core values.
+
+YOUR TASK:
+Analyze the provided dilemma by following this rigorous, step-by-step process:
+
+1.  **Stakeholder Analysis:** Identify all key stakeholders (e.g., employees, customers, investors, society, the company itself) and articulate the potential positive and negative impact of the decision on each group.
+2.  **Ethical Framework Application:** Analyze the dilemma through three distinct ethical lenses:
+    *   **Utilitarianism:** Which course of action produces the greatest good for the greatest number of people? Quantify the potential harms and benefits.
+    *   **Deontology:** Regardless of the outcome, what is the right thing to do based on universal rules or duties (e.g., honesty, fairness, privacy)? Are there any non-negotiable principles at stake?
+    *   **Virtue Ethics:** Which decision best reflects the character and values your company aspires to embody? How would a leader with integrity act in this situation?
+3.  **Risk & Mitigation Analysis:** Identify the primary long-term risks associated with the most likely courses of action (e.g., legal risk, reputational damage, loss of employee morale). Suggest one mitigation strategy for each risk.
+4.  **Recommendation Matrix:** Synthesize your analysis into a final table with the following columns: [Option], [Utilitarian Score (-5 to +5)], [Deontological Alignment (Yes/No)], [Alignment with Company Values (High/Med/Low)], [Key Risk], and [Recommended Action].
+
+OUTPUT FORMAT:
+Use professional Markdown with clear headings for each section. Present the final Recommendation Matrix as a table. Your tone should be analytical, structured, and educational.
+
+THE DILEMMA: [DESCRIBE THE ETHICAL DILEMMA IN DETAIL]
+OUR COMPANY VALUES: [LIST 3-5 CORE COMPANY VALUES]
+```
+📝 **Как да използвате промпта (How to Use):**
+1.  **Копирайте:** Копирайте английския текст от кода по-горе.
+2.  **Попълнете:** На мястото на `[DESCRIBE THE ETHICAL DILEMMA...]` опишете казуса, а на `[LIST 3-5 CORE COMPANY VALUES]` въведете ценностите на вашата компания.
+3.  **Изпълнете:** Стартирайте го, за да получите 360-градусов анализ на ситуацията.
+
+🚀 **Защо ви е нужен (Context):** Както докладът подчертава, лидерството през 2025-2030 ще се дефинира от решенията в "сивите зони". Този промпт ви дава система за мислене, която превръща интуицията в структуриран процес и защитава най-ценния ви актив – доверието.
+
+---
+### 3. Генератор на Сценарии за Бъдещето (Scenario Planner)
+
+**🎯 Какво прави този промпт (What This Prompt Does):**
+*   Разработва три детайлни, правдоподобни сценария за бъдещето на вашата индустрия (оптимистичен, песимистичен и "див" сценарий).
+*   Помага ви да излезете от линейното мислене и да подготвите организацията си за неочаквани промени и "черни лебеди".
+*   Идентифицира ранни индикатори ("signposts") за всеки сценарий, които да следите, за да знаете кое бъдеще се разгръща в реално време.
+
+**💡 Съвети за най-добри резултати (Tips):**
+*   Бъдете конкретни за ключовите несигурности във вашия сектор (напр. "Как ще се развие регулацията на AI?", "Ще има ли рецесия?").
+*   Използвайте промпта периодично (на всеки 6 месеца), за да актуализирате сценариите си спрямо новата реалност.
+*   Най-добре работи с **Claude 3.5 Sonnet**, който е отличен в изграждането на сложни наративи и идентифицирането на слаби сигнали.
+
+**💻 THE GOD PROMPT (English):**
+```text
+Act as a Senior Futurist and Scenario Planning expert from a world-renowned think tank like the Global Business Network. Your task is to help a leader prepare for an uncertain future by creating a set of plausible, divergent scenarios for their industry.
+
+CONTEXT: The user will provide their industry and two critical uncertainties that will shape its future over the next 5-7 years.
+
+YOUR TASK:
+Follow this step-by-step methodology to construct the scenarios:
+
+1.  **Identify Driving Forces:** Based on the user's input, briefly list the key technological, economic, political, and social (TEPS) forces impacting the [INDUSTRY] sector.
+2.  **Construct the Scenario Matrix:** Use the two critical uncertainties provided by the user as the axes of a 2x2 matrix. This will create four potential quadrants, but you will focus on developing the three most distinct and strategically useful ones.
+3.  **Develop Three Scenarios:** For each of the three chosen scenarios, create a detailed narrative. Each narrative must include:
+    *   **A Catchy Name:** (e.g., "The Great Decoupling", "AI for All", "Regulatory Winter").
+    *   **A Detailed Narrative (150-200 words):** Write a compelling story of what the world looks like in this scenario in 2030. How do customers behave? What do competitors do? What is the dominant technology?
+    *   **Strategic Implications:** List 3 key implications for the user's company in this scenario (e.g., "Our current business model becomes obsolete," "A new market segment opens up").
+    *   **Leading Indicators ("Signposts"):** List 3-4 specific, observable events or data points that would signal this scenario is becoming a reality.
+4.  **Synthesize Strategic Imperatives:** Conclude with a short paragraph identifying 2-3 "robust strategies" that would be beneficial for the company regardless of which scenario unfolds.
+
+OUTPUT FORMAT:
+Structure the response in professional Markdown. Use clear headings and bullet points for each part of the scenario description.
+
+MY INDUSTRY: [YOUR INDUSTRY]
+CRITICAL UNCERTAINTY 1: [e.g., "Pace of AI Adoption: Fast vs. Slow"]
+CRITICAL UNCERTAINTY 2: [e.g., "Economic Outlook: Growth vs. Stagnation"]
+```
+📝 **Как да използвате промпта (How to Use):**
+1.  **Копирайте:** Копирайте целия текст от черното поле.
+2.  **Попълнете:** Заменете `[YOUR INDUSTRY]` и двете `[CRITICAL UNCERTAINTY]` с вашите данни. Изберете двете най-важни несигурности за вашия бизнес.
+3.  **Изпълнете:** Стартирайте го и получете карта на възможните бъдеща, за които да се подготвите.
+
+🚀 **Защо ви е нужен (Context):** Докладът ясно посочва, че живеем в свят на постоянна промяна. Стратегията "надявам се на най-доброто" вече не работи. Този промпт ви дава способността на Shell и големите корпорации да мислите за бъдещето системно, правейки организацията си по-адаптивна и устойчива.
+
+---
+### 4. Архитект на Хибридни Екипи (Хора + AI)
+
+**🎯 Какво прави този промпт (What This Prompt Does):**
+*   Проектира оптимална структура и работни процеси за екипи, в които AI агенти и хора си сътрудничат за постигане на обща цел.
+*   Дефинира ясно ролите, отговорностите и протоколите за комуникация, за да се избегне хаос и да се максимизира синергията.
+*   Идентифицира ключови показатели за ефективност (KPIs) както за човешкия, така и за AI приноса, създавайки система за измерване на успеха.
+
+**💡 Съвети за най-добри резултати (Tips):**
+*   Бъдете много конкретни за задачата, която екипът трябва да изпълни (напр. "обработка на клиентски запитвания", "генериране на маркетингови кампании").
+*   Опишете реалистично какво може и какво не може да прави вашият AI агент към момента.
+*   Мислете за човешката роля като "оркестратор", "валидатор" или "треньор" на AI, а не просто като изпълнител.
+
+**💻 THE GOD PROMPT (English):**
+```text
+Act as a Future of Work Design Consultant, specializing in creating high-performance hybrid teams where human talent and AI agents collaborate seamlessly. Your goal is to design a complete operating model for such a team.
+
+CONTEXT: The user will provide a specific business goal, the roles of the human team members, and the capabilities of the AI agent(s) involved.
+
+YOUR TASK:
+Design a comprehensive "Hybrid Team Operating Model" by addressing the following points step-by-step:
+
+1.  **Role Definition & Task Allocation:**
+    *   Create a table with three columns: [Task], [Primary Owner (Human/AI)], [Human Oversight Level (e.g., Review Required, Autonomous, Human-in-the-Loop)].
+    *   Clearly delineate which tasks are best suited for AI (speed, scale, data processing) and which require human skills (empathy, complex problem-solving, strategic judgment).
+2.  **Workflow Orchestration:**
+    *   Describe the end-to-end workflow as a sequence of steps. For each step, specify the trigger, the action taken (by human or AI), and the output that initiates the next step.
+    *   Design an "escalation protocol": under what specific conditions should an AI agent flag an issue and hand it over to a human team member?
+3.  **Communication & Collaboration Protocol:**
+    *   How will the AI agent report its status, progress, and results to the human team? (e.g., daily summary in Slack, real-time dashboard, email alert).
+    *   How will humans provide feedback to the AI to improve its performance over time? (e.g., rating system, correction log).
+4.  **Performance Metrics (KPIs):**
+    *   Define 2-3 specific KPIs for the AI's performance (e.g., tasks completed per hour, error rate, cost saved).
+    *   Define 2-3 specific KPIs for the human team members in this new context (e.g., number of successful AI interventions, overall team output, strategic improvements suggested).
+5.  **Upskilling Plan:**
+    *   Identify the top 3 skills the human team members will need to develop to excel in this hybrid model (e.g., prompt engineering, AI ethics, data interpretation).
+
+OUTPUT FORMAT:
+Use structured Markdown with numbered lists and tables. The output should be a practical, actionable blueprint that a manager could implement directly.
+
+TEAM'S BUSINESS GOAL: [e.g., "To generate and qualify 500 marketing leads per month"]
+HUMAN TEAM MEMBERS & SKILLS: [e.g., "2 Marketing Specialists skilled in copywriting and strategy"]
+AI AGENT(S) CAPABILITIES: [e.g., "An AI agent that can browse websites, find contact information, draft personalized emails, and schedule meetings"]
+```
+📝 **Как да използвате промпта (How to Use):**
+1.  **Копирайте:** Копирайте целия английски текст отгоре.
+2.  **Попълнете:** Заменете данните в трите променливи `[TEAM'S BUSINESS GOAL]`, `[HUMAN TEAM MEMBERS & SKILLS]` и `[AI AGENT(S) CAPABILITIES]`.
+3.  **Изпълнете:** Поставете го в чата, за да получите готов оперативен модел за вашия екип на бъдещето.
+
+🚀 **Защо ви е нужен (Context):** Докладът е категоричен, че ролята на лидера се трансформира в "архитект на колективния интелект". Този промпт ви дава чертежа за изграждането на този нов тип екип, превръщайки ви от мениджър на хора в оркестратор на системи и давайки ви нечестно предимство в производителността.
+
+---
+### 5. Сократов Коуч за Лидерско Мислене
+
+**🎯 Какво прави този промпт (What This Prompt Does):**
+*   Действа като дигитален Сократ – не дава готови отговори, а задава дълбоки, провокативни въпроси, които ви карат сами да стигнете до решение.
+*   Помага ви да изясните собственото си мислене, да идентифицирате скрити предубеждения и да погледнете на проблема от напълно нова гледна точка.
+*   Развива вашето мета-познание (мислене за мисленето) – най-ценното умение в свят, където информацията е в изобилие, а мъдростта е дефицитна.
+
+**💡 Съвети за най-добри резултати (Tips):**
+*   Това е интерактивен промпт. Задайте първоначалния проблем и след това отговаряйте на въпросите на AI един по един.
+*   Бъдете открити и уязвими в отговорите си. Целта не е да сте "прави", а да изследвате проблема в дълбочина.
+*   Използвайте го, когато се чувствате "заседнали" или изправени пред проблем, за който няма очевидно решение.
+
+**💻 THE GOD PROMPT (English):**
+```text
+Act as a Socratic Leadership Coach. Your sole purpose is to help me clarify my own thinking about a challenge through powerful, open-ended questions.
+
+YOUR STRICT RULES:
+1.  You MUST NOT give me advice, opinions, or direct answers.
+2.  Your entire response must be in the form of one, and only one, question at a time.
+3.  Your questions should challenge my assumptions, explore consequences, and clarify my definitions.
+4.  Wait for my response before asking the next question.
+5.  Start our dialogue by asking: "What challenge is currently occupying your mind?"
+
+Here are examples of the types of questions you should ask:
+*   "What is the core assumption you are making here?"
+*   "What would have to be true for the opposite to be a better path?"
+*   "How would you define '[key term]' in this context?"
+*   "What is the real, underlying problem we are trying to solve?"
+*   "If you had to achieve the opposite of this goal, what would you do?"
+*   "What are the second-order consequences of this choice?"
+
+Begin now. Ask your first question.
+```
+📝 **Как да използвате промпта (How to Use):**
+1.  **Копирайте:** Копирайте целия текст от черното поле – той е готов за употреба.
+2.  **Поставете:** Просто го поставете в чата. AI ще започне диалога, като ви зададе първия въпрос.
+3.  **Водете диалог:** Отговаряйте на въпросите му. Продължете разговора, докато стигнете до пробив във вашето мислене.
+
+🚀 **Защо ви е нужен (Context):** В свят, залят от AI-генерирани отговори, способността да задаваш правилните въпроси се превръща в суперсила. Този промпт не ви дава риба, а ви учи да ловите риба. Той е фитнес зала за вашето лидерско мислене, подготвяйки ви за сложността на икономиката 2025-2030.
+
+
+
+
+---
+### 6. Детектор на Когнитивни Пристрастия (Bias Detector)
+
+**🎯 Какво прави този промпт (What This Prompt Does):**
+*   Анализира ваш процес на вземане на решение или стратегически план, за да идентифицира скрити когнитивни пристрастия (напр. склонност към потвърждение, прекален оптимизъм, ефект на котката).
+*   Действа като личен "Даниел Канеман", който ви обяснява как вашата психология може да ви подведе и предлага конкретни техники за "де-байъсинг".
+*   Повишава качеството и рационалността на решенията ви, като ви предпазва от скъпоструващи грешки, базирани на интуиция, а не на факти.
+
+**💡 Съвети за най-добри резултати (Tips):**
+*   Опишете не само какво сте решили, но и *защо* сте го решили – какви данни сте използвали, какви са били аргументите ви.
+*   Бъдете готови да приемете, че мисленето ви може да има недостатъци. Целта е подобрение, а не защита на егото.
+*   Използвайте с модели с отлични аналитични способности като **GPT-4o** или **Claude 3.5 Sonnet**.
+
+**💻 THE GOD PROMPT (English):**
+```text
+Act as a world-class Behavioral Scientist and expert in cognitive biases, in the mold of Daniel Kahneman. Your task is to analyze the user's decision-making process for hidden biases that could lead to poor outcomes.
+
+CONTEXT: The user will provide a description of a significant decision they have made or are about to make, including their reasoning and the data they considered.
+
+YOUR TASK:
+Think step-by-step to deconstruct the user's thinking process:
+
+1.  **Identify Potential Biases:** Read the user's description carefully. Identify the top 3-5 most likely cognitive biases at play. For each bias, name it (e.g., Confirmation Bias, Sunk Cost Fallacy, Optimism Bias, Anchoring Effect).
+2.  **Provide Evidence:** For each identified bias, quote the specific phrase or part of the user's reasoning that suggests this bias is active.
+3.  **Explain the "Why":** Briefly explain in simple terms how this specific bias typically distorts rational thinking and why it is dangerous in this context.
+4.  **Prescribe a "Debiasing" Technique:** For each bias, recommend a concrete mental tool or exercise the user can apply to counteract its effect. (e.g., "Conduct a 'pre-mortem'", "Assign a devil's advocate", "Use a 'base rate' forecast").
+5.  **Reframe the Core Question:** Conclude by reformulating the original decision as a neutral, data-driven question that encourages a more objective analysis.
+
+OUTPUT FORMAT:
+Structure your response as a "Cognitive Bias Audit Report" in professional Markdown. Use a separate section for each identified bias.
+
+THE DECISION & MY REASONING: [PASTE YOUR DETAILED DESCRIPTION OF THE DECISION-MAKING PROCESS HERE]
+```
+📝 **Как да използвате промпта (How to Use):**
+1.  **Копирайте:** Копирайте целия английски текст от черното поле.
+2.  **Попълнете:** На мястото на `[PASTE YOUR DETAILED DESCRIPTION...]` опишете подробно ваше решение и логиката зад него.
+3.  **Изпълнете:** Стартирайте го, за да получите обективен одит на вашето мислене.
+
+🚀 **Защо ви е нужен (Context):** В ерата на AI, способността на машините да бъдат безпристрастни е огромно предимство. Този промпт ви дава достъп до тази суперсила, като ви помага да "дебъгнете" собствения си мозък. Това е критично умение за всеки лидер, който иска да взема решения, базирани на реалността, а не на удобни илюзии.
+
+---
+### 7. Калибратор за Лидерска Комуникация
+
+**🎯 Какво прави този промпт (What This Prompt Does):**
+*   Анализира вашите важни съобщения (имейли, речи, съобщения в Slack) преди да ги изпратите, като оценява техния тон, яснота и емоционално въздействие.
+*   Предсказва как различните групи служители (напр. инженери, търговци, нови служители) биха могли да интерпретират (или да разберат погрешно) вашето съобщение.
+*   Предлага конкретни редакции, за да направи съобщението ви по-убедително, емпатично и мотивиращо, като намалява риска от недоразумения и демотивация.
+
+**💡 Съвети за най-добри резултати (Tips):**
+*   Дайте максимално много контекст: каква е ситуацията, каква е целта на съобщението, каква е нагласата в екипа в момента.
+*   Посочете конкретните аудитории, които ви притесняват. AI ще се фокусира върху тяхната гледна точка.
+*   Използвайте това не за да "разводните" посланието си, а за да го направите по-прецизно и ефективно.
+
+**💻 THE GOD PROMPT (English):**
+```text
+Act as an expert in Organizational Psychology and Executive Communication. Your task is to analyze a leader's draft communication to ensure it achieves its intended goal while fostering trust and minimizing negative emotional impact.
+
+CONTEXT: The user will provide a draft message, its intended goal, the context behind it, and the different audiences who will receive it.
+
+YOUR TASK:
+Perform a multi-layered communication analysis. Think step-by-step:
+
+1.  **Clarity & Simplicity Score:** Rate the message's clarity on a scale of 1-10. Identify any jargon, ambiguous phrases, or overly complex sentences that could cause confusion.
+2.  **Emotional Tone Analysis:** Describe the dominant emotional tone of the message (e.g., inspiring, authoritative, empathetic, defensive). Is this the optimal tone for the situation?
+3.  **Audience Persona Simulation:** Analyze the message from the perspective of each specified target audience. For each audience, answer:
+    *   What is their primary question/concern likely to be after reading this?
+    *   What is the risk of misinterpretation?
+    *   What is the likely emotional reaction?
+4.  **"Words to Watch" Identification:** Pinpoint 3-5 specific words or phrases that carry a high risk of being perceived negatively and explain why.
+5.  **Strategic Rewrite Suggestions:** Provide concrete, actionable suggestions for improving the message. Offer specific rephrasing for the most critical sentences to enhance clarity, empathy, and impact.
+
+OUTPUT FORMAT:
+Structure your analysis using clear Markdown headings. Present the Audience Persona Simulation in a table for easy comparison.
+
+DRAFT MESSAGE: [PASTE YOUR DRAFT COMMUNICATION HERE]
+INTENDED GOAL: [e.g., "To announce a shift in project priorities without demotivating the team"]
+CONTEXT: [e.g., "The team has worked hard on Project A, which is now being deprioritized. Morale is fragile."]
+TARGET AUDIENCES: [e.g., "Senior Engineers", "Junior Marketing Staff", "Project Managers"]
+```
+📝 **Как да използвате промпта (How to Use):**
+1.  **Копирайте:** Вземете английския текст от кода.
+2.  **Попълнете:** Попълнете четирите променливи с вашето съобщение, цел, контекст и аудитории.
+3.  **Изпълнете:** Стартирайте го, преди да натиснете "Изпрати" на важно съобщение.
+
+🚀 **Защо ви е нужен (Context):** Емоционалният интелект е едно от най-ценните умения за 2025-2030. В ерата на дистанционната работа, където думите са основният ви инструмент, този промпт действа като "правописен коректор" за емоции, гарантирайки, че посланията ви обединяват, а не разделят.
+
+---
+### 8. Стратег за Картиране на Влияние (Stakeholder Influence Mapper)
+
+**🎯 Какво прави този промпт (What This Prompt Does):**
+*   Помага ви систематично да идентифицирате всички ключови заинтересовани страни (stakeholders) за важен проект или инициатива.
+*   Анализира и класифицира всяка заинтересована страна по две оси: ниво на влияние (Power) и ниво на интерес (Interest).
+*   Разработва персонализирана стратегия за комуникация и ангажиране за всеки stakeholder, за да спечелите подкрепа и да неутрализирате съпротивата.
+
+**💡 Съвети за най-добри резултати (Tips):**
+*   Бъдете изчерпателни в първоначалния списък със stakeholders. Включете и хора, които изглеждат периферни – те може да имат скрито влияние.
+*   Опитайте се да бъдете обективни относно мотивацията на всеки човек. Какво е важно за *тях*, а не за вас?
+*   Използвайте генерирания план като "жива" пътна карта, която да актуализирате с напредването на проекта.
+
+**💻 THE GOD PROMPT (English):**
+```text
+Act as a Master Strategist and Political Advisor, specializing in stakeholder management for high-stakes projects. Your task is to create a comprehensive stakeholder influence map and engagement strategy.
+
+CONTEXT: The user will provide a description of a project or initiative and a list of key people involved or affected by it.
+
+YOUR TASK:
+Follow this systematic process to create the strategy:
+
+1.  **Stakeholder Analysis:** For each person on the user's list, analyze their likely position based on the project description. Determine:
+    *   **Their primary motivation/interest:** What do they stand to gain or lose? (e.g., budget, status, time).
+    *   **Their level of power/influence:** (High, Medium, Low) - their ability to block or support the project.
+    *   **Their level of interest:** (High, Medium, Low) - how much the project outcome affects them directly.
+2.  **Power/Interest Grid Categorization:** Categorize each stakeholder into one of the four quadrants based on your analysis:
+    *   **Manage Closely:** (High Power, High Interest)
+    *   **Keep Satisfied:** (High Power, Low Interest)
+    *   **Keep Informed:** (Low Power, High Interest)
+    *   **Monitor:** (Low Power, Low Interest)
+3.  **Engagement Strategy Development:** Create a detailed action plan. Structure it as a table with the following columns:
+    *   [Stakeholder Name]
+    *   [Quadrant]
+    *   [Key Message/Angle]: The single most important message to communicate to them, tailored to their motivation.
+    *   [Engagement Tactic]: The specific action to take (e.g., "One-on-one meeting to get feedback", "Weekly email update", "Involve in decision-making council").
+    *   [Desired Outcome]: What you want them to think, feel, or do after the engagement.
+
+OUTPUT FORMAT:
+Use professional Markdown. Present the final Engagement Strategy as a comprehensive table. Your tone should be that of a discreet and highly strategic advisor.
+
+PROJECT/INITIATIVE: [DESCRIBE YOUR PROJECT OR GOAL]
+LIST OF STAKEHOLDERS: [LIST THE NAMES AND ROLES OF ALL RELEVANT PEOPLE]
+```
+📝 **Как да използвате промпта (How to Use):**
+1.  **Копирайте:** Копирайте целия английски текст.
+2.  **Попълнете:** Опишете вашия проект в `[DESCRIBE YOUR PROJECT...]` и избройте всички замесени лица в `[LIST OF STAKEHOLDERS...]`.
+3.  **Изпълнете:** Стартирайте го, за да получите ясен план за действие за управление на човешките фактори.
+
+🚀 **Защо ви е нужен (Context):** Една брилянтна стратегия може да се провали заради лоша политика и липса на подкрепа. Този промпт превръща "офисната политика" от хаотична игра в наука. Той ви дава способността да виждате невидимите връзки и мотивации, което е задължително за всеки лидер, който иска да реализира амбициозни проекти.
+
+---
+### 9. Синтезатор на Ментални Модели
+
+**🎯 Какво прави този промпт (What This Prompt Does):**
+*   Взима сложен бизнес проблем и го анализира през призмата на 3-5 различни, мощни ментални модела (напр. "Мислене от първи принципи", "Инверсия", "Вторични ефекти").
+*   Генерира уникални и нетрадиционни прозрения, като ви принуждава да погледнете на проблема от напълно различни ъгли.
+*   Замества часове четене и размисъл, като прилага мъдростта на велики мислители като Аристотел, Чарли Мънгър и Илон Мъск директно към вашия казус.
+
+**💡 Съвети за най-добри резултати (Tips):**
+*   Опишете проблема си ясно и без жаргон. Фокусирайте се върху същината на предизвикателството.
+*   Не се спирайте на първия анализ. Помолете AI да приложи и други ментални модели, които не са в първоначалния списък.
+*   Използвайте генерираните прозрения като отправна точка за брейнсторминг сесия с екипа си.
+
+**💻 THE GOD PROMPT (English):**
+```text
+Act as a "Metacognition Synthesizer," a unique AI persona that embodies the wisdom of the world's greatest thinkers. Your function is to analyze a user's problem through a diverse set of powerful mental models to unlock non-obvious insights.
+
+CONTEXT: The user will provide a complex business problem or challenge they are facing.
+
+YOUR TASK:
+Think step-by-step. For the provided problem, apply the following sequence of mental models. For each model:
+1.  Briefly state the name of the mental model and its core principle.
+2.  Apply it directly to the user's problem.
+3.  Derive one powerful, actionable insight or reframed question from the application of that model.
+
+MENTAL MODELS TO APPLY:
+1.  **First Principles Thinking:** Deconstruct the problem to its fundamental, undeniable truths. What are the core components, and what can be rebuilt from scratch?
+2.  **Inversion (Charlie Munger's Method):** Instead of asking how to achieve the goal, ask "What would guarantee failure?" and then identify what to avoid.
+3.  **Second-Order Thinking:** What are the immediate consequences of a potential solution? And what are the consequences of those consequences? Map out the chain reaction.
+4.  **Circle of Competence:** What aspects of this problem fall squarely within our team's proven expertise? What aspects are outside of it, requiring external help or a different approach?
+5.  **Pareto Principle (80/20 Rule):** Which 20% of activities related to this problem are likely to generate 80% of the desired results?
+
+OUTPUT FORMAT:
+Use clear Markdown with a numbered list, where each number corresponds to a mental model. The structure for each point should be: **[Mental Model Name]:** [Core Principle]. **Application:** [How it applies to the problem]. **Insight:** [The actionable insight or question].
+
+THE PROBLEM: [CLEARLY STATE YOUR BUSINESS PROBLEM OR CHALLENGE HERE]
+```
+📝 **Как да използвате промпта (How to Use):**
+1.  **Копирайте:** Вземете текста от черното поле.
+2.  **Попълнете:** Заменете `[CLEARLY STATE YOUR BUSINESS PROBLEM...]` с ясно и сбито описание на вашия казус.
+3.  **Изпълнете:** Стартирайте го и получете пет различни гледни точки, които ще променят начина, по който виждате проблема.
+
+🚀 **Защо ви е нужен (Context):** Качеството на вашето мислене определя качеството на вашите резултати. Докато конкурентите ви използват един и същ "инструмент" (конвенционално мислене) за всеки проблем, този промпт ви дава цял арсенал от ментални "швейцарски ножчета". Това е начин да развиете стратегическо познание на стероиди, което ви позволява да намирате решения там, където другите виждат само стени.
+
+---
+### 10. Симулатор "Първите 90 Дни" за Нови Лидери
+
+**🎯 Какво прави този промпт (What This Prompt Does):**
+*   Действа като персонален C-level коуч, който ви помага да създадете структуриран и ефективен план за действие за първите 90 дни в нова лидерска роля.
+*   Разбива предизвикателството на управляеми фази (Учене, Планиране, Изпълнение) и генерира конкретни, приоритизирани задачи за всяка.
+*   Помага ви да идентифицирате потенциални "капани" и да планирате "бързи победи" (quick wins), за да изградите доверие и инерция от самото начало.
+
+**💡 Съвети за най-добри резултати (Tips):**
+*   Бъдете максимално точни в описанието на ролята, екипа, който поемате, и най-голямото предизвикателство, което ви е поставено.
+*   След като получите плана, използвайте го като рамка. Обсъдете го с вашия пряк ръководител, за да синхронизирате очакванията.
+*   Не се опитвайте да направите всичко. Целта е да се фокусирате върху най-важните дейности, които ще имат най-голям ефект.
+
+**💻 THE GOD PROMPT (English):**
+```text
+Act as an Executive Onboarding Coach, specializing in the "First 90 Days" framework for new leaders. Your task is to create a strategic, phased action plan for a user starting a new leadership role.
+
+CONTEXT: The user will provide their new title, a description of their team, the company's industry, and the primary mandate or challenge they've been given.
+
+YOUR TASK:
+Create a comprehensive "First 90 Days Strategic Plan" structured into three distinct 30-day phases. Think step-by-step to build the plan:
+
+**Phase 1: The First 30 Days (Learn & Listen)**
+*   **Primary Goal:** Absorb as much information as possible and build relationships.
+*   **Key Actions (Generate a checklist of 5-7 actions):**
+    *   e.g., "Schedule 1-on-1 meetings with every direct report. Ask these three key questions: [...]"
+    *   e.g., "Identify and meet with the top 3 cross-functional stakeholders."
+    *   e.g., "Review the last 6 months of team performance data."
+*   **Key Deliverable:** A "State of the Union" assessment document summarizing your initial findings, key challenges, and opportunities.
+
+**Phase 2: The Next 30 Days (Align & Plan)**
+*   **Primary Goal:** Synthesize learnings into a clear strategy and align the team around it.
+*   **Key Actions (Generate a checklist of 3-5 actions):**
+    *   e.g., "Host a team workshop to co-create a vision and set 3 core priorities for the next 6 months."
+    *   e.g., "Identify one 'quick win' project that can be delivered in the next 30 days to build momentum."
+    *   e.g., "Present your strategic draft to your manager to get feedback and secure resources."
+*   **Key Deliverable:** A documented 6-month strategic plan with clear goals, owners, and metrics.
+
+**Phase 3: The Final 30 Days (Execute & Iterate)**
+*   **Primary Goal:** Execute the 'quick win', establish operating rhythms, and begin implementing the long-term strategy.
+*   **Key Actions (Generate a checklist of 3-5 actions):**
+    *   e.g., "Launch the 'quick win' project and communicate the success broadly."
+    *   e.g., "Establish a weekly team meeting cadence with a clear agenda and purpose."
+    *   e.g., "Implement a dashboard to track the core priorities defined in Phase 2."
+*   **Key Deliverable:** A functioning operational rhythm and a clear demonstration of initial impact.
+
+**Critical Pitfall to Avoid:** At the end, identify the single biggest mistake new leaders in this specific role tend to make and advise on how to avoid it.
+
+OUTPUT FORMAT:
+Use professional Markdown with bold headings for each phase. Use checklists for the key actions. The tone should be authoritative, structured, and encouraging.
+
+MY NEW ROLE: [e.g., "Head of Marketing"]
+MY TEAM: [e.g., "A team of 10 people, including content, performance, and product marketing"]
+COMPANY INDUSTRY: [e.g., "B2B SaaS"]
+PRIMARY MANDATE: [e.g., "To increase lead generation by 50% in the next year and improve brand recognition."]
+
+
+```📝 **Как да използвате промпта (How to Use):**
+1.  **Копирайте:** Копирайте целия английски текст отгоре.
+2.  **Попълнете:** Попълнете четирите променливи с детайлите за вашата нова позиция.
+3.  **Изпълнете:** Стартирайте го, за да получите персонализирана пътна карта за успех.
+
+🚀 **Защо ви е нужен (Context):** Първите 90 дни в нова роля определят траекторията на вашия успех или провал. Този промпт премахва стреса и несигурността от този критичен период. Той ви дава структурата и фокуса, които обикновено идват само с години опит или скъпи коучинг програми, гарантирайки, че ще направите силно впечатление от Ден 1.
+
+
+
+
+---
+### 11. Кризисен Симулатор в Реално Време
+
+**🎯 Какво прави този промпт (What This Prompt Does):**
+*   Поставя ви в центъра на реалистична, развиваща се бизнес криза (напр. PR скандал, кибератака, внезапен ход на конкурент) и ви принуждава да вземате решения под напрежение.
+*   Тества и развива способността ви за критично мислене, комуникация и разпределение на ресурси в условия на несигурност и ограничено време.
+*   Замества скъпоструващи корпоративни трейнинги за управление на кризи, като ви дава достъпен "тренировъчен полигон" за лидерски умения.
+
+**💡 Съвети за най-добри резултати (Tips):**
+*   Подгответе се за интерактивна сесия. AI ще ви дава нова информация на порции и ще очаква вашите ходове. Отговаряйте бързо и решително.
+*   Няма единствен "верен отговор". Симулаторът оценява вашия мисловен процес, а не търси перфектното решение.
+*   Използвайте с най-бързите и гъвкави модели като **GPT-4o** или **Claude 3.5 Sonnet**, които са отлични в поддържането на динамичен, интерактивен диалог.
+
+**💻 THE GOD PROMPT (English):**
+```text
+Act as a "Crisis Management Simulator" (CMS-1). You will guide me through a realistic, escalating business crisis scenario. Your role is to present the situation, provide updates, and react to my decisions as the real world would (e.g., media reactions, team morale shifts, competitor actions).
+
+YOUR RULES:
+1.  You will present the scenario turn-by-turn. Do not reveal all information at once.
+2.  After each update, you will end your response with the question: "What is your immediate decision?"
+3.  Based on my decision, you will provide the next update, describing the consequences (positive and negative) of my action.
+4.  The simulation should test my skills in: a) information gathering, b) stakeholder communication, c) decision-making under pressure, and d) resource allocation.
+5.  At the end of the simulation (after 5-7 turns), provide a "Post-Crisis Debrief" analyzing my performance, key strengths, and areas for improvement.
+
+Begin the simulation now.
+
+Start by presenting the initial crisis incident based on my industry and role. Ask me for my first decision.
+
+MY INDUSTRY: [YOUR INDUSTRY (e.g., E-commerce Fashion)]
+MY ROLE: [YOUR ROLE (e.g., CEO)]
+```
+📝 **Как да използвате промпта (How to Use):**
+1.  **Копирайте:** Копирайте целия английски текст от черното поле.
+2.  **Попълнете:** Заменете `[YOUR INDUSTRY]` и `[YOUR ROLE]` с вашите данни.
+3.  **Изпълнете:** Поставете го в чата и се потопете в симулацията. Отговаряйте на въпросите на AI, за да навигирате кризата.
+
+🚀 **Защо ви е нужен (Context):** Докладът "Дигитален хоризонт" подчертава, че живеем в ера на "поликриза". Способността да останеш спокоен и да мислиш трезво, когато всичко се разпада, е това, което отличава истинските лидери. Този промпт не е теория – това е вашият личен "полетен симулатор" за най-трудните моменти в лидерството.
+
+---
+### 12. Генератор на Лидерски Наратив и Визия
+
+**🎯 Какво прави този промпт (What This Prompt Does):**
+*   Помага ви да артикулирате и структурирате вашата лична лидерска философия и визия за екипа/компанията.
+*   Трансформира сухите стратегически цели в завладяваща и емоционално резонираща история, която мотивира и обединява хората.
+*   Действа като персонален "speechwriter" и комуникационен стратег, който ви подготвя за ключови речи, all-hands срещи или представяне на визията пред борда.
+
+**💡 Съвети за най-добри резултати (Tips):**
+*   Отделете време да отговорите на въпросите на AI автентично и в дълбочина. Качеството на историята зависи от качеството на вашите отговори.
+*   Не се страхувайте да бъдете уязвими – най-добрите истории често включват преодоляване на предизвикателства.
+*   Използвайте генерирания наратив като основа, която можете да адаптирате за различни аудитории и формати.
+
+**💻 THE GOD PROMPT (English):**
+```text
+Act as a world-class Leadership Communications Coach and Storyteller. Your task is to help me craft a powerful and authentic leadership narrative that articulates my vision and inspires my team. You will do this through a Socratic, interview-style process.
+
+Do not write the narrative immediately. Instead, ask me the following questions one by one. Wait for my response to each question before asking the next one.
+
+1.  "Let's start with the 'Why'. Beyond profits and metrics, what is the fundamental purpose or impact you believe your team/company should have on its customers or the world?"
+2.  "Imagine it's three years from now, and you have succeeded beyond your wildest dreams. Describe what that success looks like. What have you built? What is the team's reputation?"
+3.  "Every compelling story has a villain or a challenge. What is the primary obstacle, market force, or outdated mindset that you are fighting against?"
+4.  "What are the 2-3 core values or principles that must guide every decision we make on this journey?"
+5.  "Why is this team, right now, uniquely positioned to win this fight and achieve this vision?"
+6.  "Finally, what is the specific first step or call to action you want your team to take after hearing this story?"
+
+Once I have answered all the questions, synthesize my answers into a cohesive and compelling leadership narrative. Structure the output into these sections:
+- **The Core Purpose (Our "Why"):** A concise mission statement.
+- **The Vision of the Future (Our "North Star"):** A vivid picture of success.
+- **The Challenge We Face (Our "Dragon to Slay"):** The antagonist of our story.
+- **Our Guiding Principles (Our "Code"):** The values we live by.
+- **Our Call to Action (Our "First Step"):** The immediate focus.
+```
+📝 **Как да използвате промпта (How to Use):**
+1.  **Копирайте:** Копирайте целия текст от черното поле.
+2.  **Изпълнете:** Поставете го в чата. AI ще започне да ви задава въпроси.
+3.  **Отговаряйте:** Отговорете на всеки въпрос последователно. След последния отговор, AI ще генерира вашия пълен лидерски наратив.
+
+🚀 **Защо ви е нужен (Context):** В ерата на AI, където информацията е стока, смисълът и целта са дефицитни. Хората не следват стратегии, те следват истории. Този промпт ви дава силата да превърнете вашата визия в история, която вдъхновява ангажираност и действие, давайки ви нечестно предимство в борбата за таланти и сърца.
+
+---
+### 13. Симулатор за Трудни Разговори
+
+**🎯 Какво прави този промпт (What This Prompt Does):**
+*   Създава безопасна, симулирана среда, в която можете да репетирате трудни разговори (напр. даване на негативна обратна връзка, обсъждане на ниско представяне).
+*   Симулира различни типове личности и техните вероятни реакции (отбранителна, емоционална, отричаща), позволявайки ви да се подготвите за реалността.
+*   След симулацията, предоставя обективна обратна връзка за вашия подход, език на тялото (описан) и думи, като ви помага да станете по-ефективен и емпатичен комуникатор.
+
+**💡 Съвети за най-добри резултати (Tips):**
+*   Бъдете максимално конкретни в описанието на ситуацията – това ще направи симулацията по-реалистична.
+*   Не се страхувайте да експериментирате с различни подходи (по-директен, по-мек), за да видите как се променя реакцията на "служителя".
+*   Най-добре работи с **Claude 3.5 Sonnet**, който има изключителни способности за нюансирано ролево превъплъщение и разбиране на емоционален контекст.
+
+**💻 THE GOD PROMPT (English):**
+```text
+Act as a "Difficult Conversation Simulator," an AI role-playing partner designed to help leaders practice and improve their feedback skills.
+
+Here's how this will work:
+1.  I will provide the context for a difficult conversation I need to have.
+2.  You will adopt the persona of the employee, based on the type I specify. You will stay in character throughout our role-play.
+3.  I will start the conversation. You will respond realistically, based on your persona.
+4.  After we conclude the role-play (I will say "END SIMULATION"), you will drop the persona and provide a "Coach's Debrief."
+
+The Coach's Debrief must include:
+*   **What I Did Well:** Specific examples of my phrasing that were effective.
+*   **Areas for Improvement:** Moments where my approach could have been better.
+*   **Alternative Phrasing:** Concrete examples of what I could have said differently.
+*   **Overall Empathy Score (1-10):** Your assessment of how well I balanced directness with empathy.
+
+Let's begin.
+
+**CONTEXT OF THE CONVERSATION:** [Describe the situation. e.g., "I need to talk to Alex, a senior developer, about missing deadlines and the declining quality of his code."]
+**YOUR EMPLOYEE PERSONA:** [Choose one: A) Defensive & Blaming Others, B) Highly Emotional & Takes it Personally, C) Agreeable but Non-committal, D) Analytical & Demands Hard Data]
+
+I will start the conversation now. You are ready in character.
+```
+📝 **Как да използвате промпта (How to Use):**
+1.  **Копирайте:** Копирайте английския текст от кода.
+2.  **Попълнете:** Опишете вашата ситуация в `[CONTEXT OF THE CONVERSATION]` и изберете един от четирите типа личност за `[YOUR EMPLOYEE PERSONA]`.
+3.  **Изпълнете:** Поставете го в чата и започнете разговора така, както бихте го направили в реалния живот. Кажете "END SIMULATION", когато приключите, за да получите обратна връзка.
+
+🚀 **Защо ви е нужен (Context):** Способността да водите трудни разговори е определяща за всеки лидер. Пропускането им води до натрупване на проблеми; воденето им зле води до демотивация. Този промпт е вашата лична "тренировъчна зала", която ви позволява да изградите мускули за емоционален интелект и да превърнете конфронтацията в градивен диалог.
+
+---
+### 14. Архитект на Лидерската Операционна Система
+
+**🎯 Какво прави този промпт (What This Prompt Does):**
+*   Извършва одит на начина, по който управлявате най-ценните си ресурси: време, енергия и внимание.
+*   Проектира персонализирана "операционна система" за вашата работна седмица, включително идеален календар, правила за срещи и ритуали за фокусирана работа.
+*   Помага ви да преминете от реактивен режим ("гасене на пожари") към проактивен режим, в който вие контролирате деня си, а не той вас.
+
+**💡 Съвети за най-добри резултати (Tips):**
+*   Бъдете брутално честни в отговорите на диагностичните въпроси. Колкото по-точни са входните данни, толкова по-полезен ще бъде резултатът.
+*   Не се опитвайте да приложите всичко наведнъж. Изберете една или две промени (напр. блокиране на време за "дълбока работа") и ги превърнете в навик.
+*   Правете си този "одит" на всеки 3-4 месеца, за да адаптирате системата си към променящите се приоритети.
+
+**💻 THE GOD PROMPT (English):**
+```text
+Act as an Executive Performance Coach, an expert in designing personal operating systems for high-performing leaders. Your goal is to help me design a system to optimize my time, energy, and focus.
+
+First, ask me the following diagnostic questions. Wait for my answers before proceeding.
+1.  "What are your top 3 strategic priorities for this quarter?"
+2.  "Describe your typical work week. What percentage of your time is spent in meetings vs. focused work vs. reactive tasks (email/Slack)?"
+3.  "What is the single biggest 'time-waster' or 'energy-drainer' in your current schedule?"
+4.  "During which part of the day do you have the most mental energy for deep, strategic thinking?"
+5.  "What is the current state of your meeting culture? (e.g., Too many? Too long? No clear agendas?)"
+
+After I provide my answers, create a personalized "Leader's Operating System" document with the following sections:
+
+1.  **Ideal Week Template:** Design a visual weekly calendar template (using Markdown tables or lists) that blocks time for:
+    *   Strategic Thinking / Deep Work (proactive)
+    *   Team 1-on-1s (connecting)
+    *   Reactive Work (email/comms)
+    *   Lunch & Breaks (recharging)
+2.  **Meeting Manifesto:** A short list of 3-5 rules to improve meeting hygiene. (e.g., "No agenda, no meeting," "Default to 25/50 minute meetings," "Every meeting must have a clear owner and desired outcome.")
+3.  **Focus Rituals:** Suggest 2-3 specific rituals to protect deep work blocks. (e.g., "Time-blocking," "The Pomodoro Technique," "Turning off notifications during focus blocks.")
+4.  **Energy Management:** Propose one small habit to better manage energy throughout the day, based on my biggest energy-drainer.
+```
+📝 **Как да използвате промпта (How to Use):**
+1.  **Копирайте:** Копирайте целия текст.
+2.  **Изпълнете:** Поставете го в чата. AI ще ви зададе 5 въпроса.
+3.  **Отговорете:** Отговорете на въпросите. След като дадете отговорите си, AI ще генерира вашата персонализирана операционна система.
+
+🚀 **Защо ви е нужен (Context):** Най-големият враг на стратегията е ежедневният хаос. Като лидер, вашето внимание е най-ценният ресурс на компанията. Този промпт ви помага да го защитите и насочите там, където има най-голямо значение, като ви дава системата, която ви позволява да работите *върху* бизнеса, а не само *в* него.
+
+---
+### 15. Система за Делегиране и Овластяване
+
+**🎯 Какво прави този промпт (What This Prompt Does):**
+*   Предоставя ви структурирана рамка, за да решите кога, какво и на кого да делегирате, като се движите отвъд простото "прехвърляне на задачи".
+*   Генерира ясен и пълен "Бриф за Делегиране" (Delegation Brief), който елиминира неяснотите и дава на служителя всичко необходимо за успех.
+*   Трансформира ви от мениджър, който е "тесното място", в лидер, който развива и овластява екипа си, като по този начин мащабира собственото си въздействие.
+
+**💡 Съвети за най-добри резултати (Tips):**
+*   Когато описвате задачата, фокусирайте се върху желания краен резултат (*what* и *why*), а не върху точните стъпки (*how*).
+*   Бъдете честни в оценката на уменията и мотивацията на членовете на екипа си.
+*   Използвайте генерирания бриф като основа за 1-на-1 разговор, а не просто като имейл, който да препратите.
+
+**💻 THE GOD PROMPT (English):**
+```text
+Act as a Leadership Development expert specializing in effective delegation and team empowerment. Your task is to guide me through a structured delegation process and generate a clear briefing document.
+
+First, I will provide the task/outcome I want to delegate and a brief description of the potential team member(s).
+
+Based on my input, analyze the situation and then generate a "Delegation and Empowerment Brief" with the following structure:
+
+1.  **Recommended Owner:** Based on the task complexity and team member skills, recommend the best person for the job and briefly state why.
+2.  **The "Why" - Strategic Context:** Explain *why* this task is important. How does it connect to the team's or company's larger goals? (1-2 sentences).
+3.  **Desired Outcome (The "What"):** Clearly and concisely describe what success looks like. What is the final deliverable? Use the phrase "You will have been successful when..."
+4.  **Scope & Boundaries (The "Don'ts"):** Define any constraints. What is *not* part of this task? What decisions should they *not* make without consulting you?
+5.  **Resources & Support:** List the available resources (budget, tools, data, other people's time) they can use.
+6.  **Definition of Done & Timeline:** How will you both know the task is complete? What is the final deadline and are there any key milestones?
+7.  **Our Check-in Cadence:** Propose a communication rhythm (e.g., "A 15-min check-in every Tuesday," "A quick summary via Slack at the end of each day").
+
+Let's begin.
+
+**TASK/OUTCOME TO DELEGATE:** [Describe the task or project you want to delegate. Be specific.]
+**POTENTIAL TEAM MEMBER(S):** [Briefly describe the relevant team members, their skills, and their current workload/motivation. e.g., "Sarah: Senior, great at details, but overloaded. Mike: Junior, very motivated to grow, has some free capacity."]
+
+```📝 **Как да използвате промпта (How to Use):**
+1.  **Копирайте:** Копирайте целия английски текст.
+2.  **Попълнете:** Опишете задачата в `[TASK/OUTCOME TO DELEGATE]` и хората, на които бихте могли да я делегирате в `[POTENTIAL TEAM MEMBER(S)]`.
+3.  **Изпълнете:** Стартирайте го, за да получите експертен анализ и готов за използване комуникационен документ.
+
+🚀 **Защо ви е нужен (Context):** Не можете да правите всичко сами. В икономиката на 2025-2030, където скоростта е всичко, способността да делегирате ефективно е умението, което отключва растежа. Този промпт превръща делегирането от изкуство в наука, като ви дава процес, който гарантира яснота, отчетност и най-важното – успех за вашия екип.
+
+
+
+
+---
+### 16. Фасилитатор за "Пост-Мортем" Анализ на Решения
+
+**🎯 Какво прави този промпт (What This Prompt Does):**
+*   Създава структуриран, "безвинен" процес за анализ на минали решения, за да извлече максимална поука от успехите и провалите.
+*   Помага ви да разграничите лошия процес от лошия късмет, като ви кара да документирате какво сте знаели, когато сте взели решението.
+*   Изгражда култура на учене и непрекъснато подобрение във вас и вашия екип, превръщайки всяко решение в ценен урок.
+
+**💡 Съвети за най-добри резултати (Tips):**
+*   Бъдете напълно честни за реалния резултат, дори и да е неприятен. Целта е учене, а не оправдание.
+*   Провеждайте този анализ не само за провали, но и за големи успехи. Често не знаем защо точно сме успели, което прави успеха неповтаряем.
+*   Използвайте резултата като основа за дискусия с екипа, за да споделите наученото.
+
+**💻 THE GOD PROMPT (English):**
+```text
+Act as a Strategic Decision Analyst. Your purpose is to facilitate a structured, blame-free post-mortem of a past decision to extract maximum learning and improve future judgment.
+
+CONTEXT: The user will provide a description of a past decision, the expected outcome, and the actual outcome.
+
+YOUR TASK:
+Guide me through an "After-Action Review" by generating a structured report. Think step-by-step:
+
+1.  **Reconstruct the Decision Point (The "Decision Log"):** Based on my input, create a snapshot of the moment the decision was made:
+    *   **Decision:** A clear, one-sentence summary of the decision.
+    *   **Key Assumptions:** What did we believe to be true at that time?
+    *   **Information Available:** What key data points or inputs did we have?
+    *   **Expected Outcome & Timeline:** What was the specific, measurable success we envisioned?
+2.  **Analyze the Outcome Variance:**
+    *   **Actual Outcome:** Summarize what really happened.
+    *   **Variance Analysis:** What was the primary difference between expectation and reality?
+3.  **Root Cause Analysis (Process vs. Outcome):**
+    *   Was this a good decision with an unlucky outcome, or a bad decision (flawed process) that was exposed?
+    *   Identify the 2-3 root causes of the outcome. Focus on process, not people. (e.g., "We failed to consult the legal team," "Our data was incomplete," "We underestimated the competitor's reaction.")
+4.  **Extract Actionable Lessons:**
+    *   **What to KEEP:** What part of our decision-making process worked well?
+    *   **What to CHANGE:** What specific process or behavior should we change for the next major decision?
+    *   **The Core Principle:** Distill the entire analysis into one single, memorable principle for the future. (e.g., "Principle: Always model the worst-case scenario.")
+
+OUTPUT FORMAT:
+Structure the output as a professional "After-Action Review" document using clear Markdown headings. Your tone should be objective, analytical, and forward-looking.
+
+THE DECISION: [Describe the decision you made.]
+THE EXPECTED OUTCOME: [What you thought would happen.]
+THE ACTUAL OUTCOME: [What actually happened.]
+```
+📝 **Как да използвате промпта (How to Use):**
+1.  **Копирайте:** Копирайте целия английски текст.
+2.  **Попълнете:** Попълнете трите променливи с информация за ваше минало решение.
+3.  **Изпълнете:** Стартирайте го, за да получите обективен анализ, който ще направи следващото ви решение по-добро.
+
+🚀 **Защо ви е нужен (Context):** Опитът не е това, което ти се случва, а това, което правиш с това, което ти се случва. В бързо променящия се свят на 2025-2030, цикълът на учене трябва да бъде по-бърз от цикъла на промяна. Този промпт инсталира систематичен процес на учене във вашето лидерство.
+
+---
+### 17. Архитект на План за Действие (от Идея до MVP)
+
+**🎯 Какво прави този промпт (What This Prompt Does):**
+*   Взима ваша сурова, неструктурирана идея и я превръща в ясен, едностраничен план за действие.
+*   Идентифицира ключовите елементи, необходими за стартиране: MVP (Минимално работещ продукт), нужни ресурси и най-важната метрика за успех.
+*   Преодолява парализата от анализ, като дефинира първите пет конкретни стъпки, които трябва да се предприемат в следващите 48 часа, за да се създаде инерция.
+
+**💡 Съвети за най-добри резултати (Tips):**
+*   Не се цензурирайте, когато описвате идеята си. Просто я изложете така, както е в главата ви.
+*   Бъдете реалистични за ресурсите, с които разполагате в момента.
+*   Фокусът е върху скоростта и валидацията, а не върху създаването на перфектен продукт.
+
+**💻 THE GOD PROMPT (English):**
+```text
+Act as a seasoned Venture Catalyst and startup advisor. Your superpower is rapidly transforming a raw idea into a clear, actionable blueprint for validation.
+
+CONTEXT: The user will provide a raw idea for a new project, product, or initiative.
+
+YOUR TASK:
+Analyze the user's idea and generate a concise, one-page "Initiative Blueprint" in Markdown. The blueprint must contain the following sections:
+
+1.  **The Core Idea (Elevator Pitch):** Refine the user's input into a compelling, one-sentence pitch.
+2.  **Problem & Solution:**
+    *   **Problem:** Who is the target audience and what specific, painful problem are you solving for them?
+    *   **Solution:** How does this idea solve that problem in a unique way?
+3.  **The MVP (Minimum Viable Pilot):**
+    *   Describe the absolute simplest version of this idea that can be built/tested to prove the core hypothesis. What features are *excluded*?
+    *   **Success Hypothesis:** State the core assumption we are testing. (e.g., "We believe [target audience] will be willing to [take action] if we provide [our MVP].")
+4.  **Key Resources Required:**
+    *   **People:** What key skills are needed? (e.g., "1 developer, 1 marketer").
+    *   **Time (Estimate):** How long would the MVP take to build? (e.g., "2 weeks").
+    *   **Budget (Estimate):** What is the rough cost? (e.g., "< $500").
+5.  **The North Star Metric:** Define the single, most important number that will tell you if the MVP is successful. (e.g., "Number of sign-ups," "Percentage of users completing the core action").
+6.  **The First 5 Steps (48-Hour Action Plan):** List five concrete, small, and immediate actions to get started.
+    1.  [e.g., "Interview 3 potential users."]
+    2.  [e.g., "Sketch the user flow on paper."]
+    3.  [e.g., "Create a simple landing page."]
+    4.  [e.g., "Identify the core technology needed."]
+    5.  [e.g., "Schedule a 30-min kickoff meeting."]
+
+YOUR TONE: Be sharp, concise, and action-oriented. Eliminate fluff.
+
+MY IDEA: [DUMP YOUR RAW IDEA HERE, IN ANY FORMAT]
+```
+📝 **Как да използвате промпта (How to Use):**
+1.  **Копирайте:** Копирайте целия английски текст.
+2.  **Попълнете:** На мястото на `[DUMP YOUR RAW IDEA HERE, IN ANY FORMAT]` изложете вашата идея, без значение колко е недовършена.
+3.  **Изпълнете:** Стартирайте го, за да превърнете хаоса в яснота и план за действие.
+
+🚀 **Защо ви е нужен (Context):** Идеите са безполезни без изпълнение. В икономиката на бъдещето, скоростта на итерация е всичко. Този промпт е мостът между мисълта и действието, като ви дава структурата на най-добрите стартъп акселератори, за да тествате идеите си бързо и евтино.
+
+---
+### 18. Синтезатор на Обратна Връзка и План за Развитие
+
+**🎯 Какво прави този промпт (What This Prompt Does):**
+*   Взима несвързана, сурова обратна връзка за вас (от 360-градусови оценки, анкети, коментари от мениджъра) и я синтезира в 3-5 ясни, повтарящи се теми.
+*   Идентифицира вашите "суперсили" (неща, които да продължите да правите) и най-важната област за развитие, която ще има най-голям ефект върху кариерата ви.
+*   Помага ви да създадете конкретен, 90-дневен план за действие за тази ключова област, превръщайки критиката в гориво за растеж.
+
+**💡 Съвети за най-добри резултати (Tips):**
+*   Копирайте и поставете обратната връзка възможно най-сурова, дори с правописни грешки. Не я редактирайте.
+*   Бъдете отворени към резултата. Понякога най-ценните прозрения идват от неочаквани теми.
+*   Споделете генерирания план с вашия мениджър или ментор, за да поискате подкрепа и отчетност.
+
+**💻 THE GOD PROMPT (English):**
+```text
+Act as a professional Executive Coach specializing in leadership development and 360-degree feedback analysis. Your task is to process raw, unstructured feedback about me and transform it into a clear, actionable development plan.
+
+CONTEXT: I will paste a collection of raw feedback I have received from peers, direct reports, and my manager.
+
+YOUR TASK:
+Think step-by-step to analyze the feedback and create a "Personal Leadership Development Plan":
+
+1.  **Synthesize Key Themes:** Read all the feedback and cluster the comments into 3-5 recurring themes. For each theme, give it a clear name. Separate themes into two categories:
+    *   **Strengths ("Superpowers"):** Themes that highlight what you do well and should continue to leverage.
+    *   **Areas for Growth:** Themes that point to areas for development.
+2.  **Identify the "One Thing":** Based on the "Areas for Growth," identify the single most impactful theme to focus on for the next 90 days. Justify your choice by explaining how improving this one area will create a ripple effect of positive change.
+3.  **Craft a 90-Day Development Sprint:** For the chosen "One Thing," create a concrete action plan with the following components:
+    *   **Development Goal:** A specific, measurable goal. (e.g., "Improve clarity in team communication by reducing misunderstandings by 50%").
+    *   **Key Actions (3-5 items):** Specific behaviors to start, stop, or continue. (e.g., "Start: Send a summary email after every important meeting," "Stop: Making decisions without explaining the 'why'").
+    *   **Learning Resources:** Suggest one book, one podcast/video, and one person to talk to for advice on this topic.
+    *   **Measurement of Success:** How will you know you've made progress in 90 days? (e.g., "Actively solicit feedback from 3 team members at the end of the quarter").
+
+OUTPUT FORMAT:
+Use professional and encouraging language. Structure the output in clear Markdown with bold headings for each section.
+
+RAW FEEDBACK: [PASTE ALL THE UNSTRUCTURED FEEDBACK ABOUT YOU HERE]
+```
+📝 **Как да използвате промпта (How to Use):**
+1.  **Копирайте:** Вземете текста от черното поле.
+2.  **Попълнете:** На мястото на `[PASTE ALL THE UNSTRUCTURED FEEDBACK...]` поставете цялата обратна връзка, която сте събрали.
+3.  **Изпълнете:** Стартирайте го, за да получите обективен синтез и ясен план за следващите 90 дни.
+
+🚀 **Защо ви е нужен (Context):** Обратната връзка е подарък, но често е опакована зле. Този промпт е вашият личен "преводач", който превръща шума в сигнал. В бъдещето на работата, способността за бърза адаптация е ключова, а този инструмент ви дава структуриран начин да се преоткривате постоянно.
+
+---
+### 19. Катализатор за Междуекипно Сътрудничество
+
+**🎯 Какво прави този промпт (What This Prompt Does):**
+*   Действа като неутрален фасилитатор, който ви помага да проектирате ефективен процес за сътрудничество между различни отдели (напр. Продажби, Маркетинг, Продукт).
+*   Предварително идентифицира най-вероятните точки на триене и недоразумения между екипите и предлага конкретни "правила на играта" за тяхното избягване.
+*   Създава "Харта на Проекта", която служи като единен източник на истина и подравнява всички участници около обща цел и ясни отговорности.
+
+**💡 Съвети за най-добри резултати (Tips):**
+*   Бъдете честни за съществуващите "вражди" или исторически проблеми между отделите. AI ще използва това, за да предложи по-адекватни решения.
+*   Включете представители от всички екипи в процеса на финализиране на тази харта.
+*   Използвайте този промпт в началото на всеки голям, междуекипен проект.
+
+**💻 THE GOD PROMPT (English):**
+```text
+Act as an expert Agile Coach and organizational designer, specializing in breaking down silos and fostering high-impact cross-functional collaboration.
+
+CONTEXT: The user will describe a project that requires collaboration between multiple teams/departments and will list the teams involved.
+
+YOUR TASK:
+Generate a "Cross-Functional Project Charter" designed to align all teams and prevent common friction points. The charter must include:
+
+1.  **The Shared Mission:** Write a single, inspiring sentence that defines the collective goal, transcending individual team objectives.
+2.  **Roles & Contributions (RACI-Lite):** Create a table outlining the primary role of each team:
+    *   **Team:** [e.g., Marketing, Sales, Product, Engineering]
+    *   **Primary Contribution:** What is their unique value-add to this project?
+    *   **Accountable For:** What specific outcome is this team ultimately responsible for delivering?
+3.  **Anticipated Friction Points:** Based on the typical dynamics between the specified teams, identify the 3 most likely sources of conflict or misunderstanding. For each, describe it clearly. (e.g., "Friction Point 1: Sales promising features that Engineering hasn't built.")
+4.  **The Collaboration Compact (Rules of Engagement):** Propose a simple set of 4-5 ground rules for how the teams will work together.
+    *   **Communication:** "We will have one central Slack channel for all project updates."
+    *   **Decision-Making:** "Decisions affecting multiple teams will be made in the weekly sync, not 1-on-1."
+    *   **Conflict Resolution:** "When disagreements arise, we will use the 'Disagree and Commit' principle."
+    *   **Defining Success:** "We agree to track our progress against the shared North Star Metric, not just our individual team KPIs."
+5.  **Kick-off Meeting Agenda:** Outline a 45-minute agenda for a project kick-off meeting designed to introduce and ratify this charter with all stakeholders.
+
+OUTPUT FORMAT:
+Use clear, structured Markdown. The tone should be neutral, proactive, and facilitative.
+
+PROJECT GOAL: [Describe the goal of the cross-functional initiative.]
+TEAMS INVOLVED: [List the departments/teams, e.g., "Marketing, Sales, Product, Engineering"]
+```
+📝 **Как да използвате промпта (How to Use):**
+1.  **Копирайте:** Копирайте целия английски текст.
+2.  **Попълнете:** Опишете целта на проекта в `[PROJECT GOAL]` и избройте участващите отдели в `[TEAMS INVOLVED]`.
+3.  **Изпълнете:** Стартирайте го, за да получите готов документ, който ще спести седмици на недоразумения и конфликти.
+
+🚀 **Защо ви е нужен (Context):** В съвременните организации, най-голямата загуба на стойност се случва в пространството *между* екипите. Като лидер, вашата роля е да бъдете "строител на мостове". Този промпт ви дава инженерния план за изграждането на тези мостове, осигурявайки плавен поток на информация и енергия.
+
+---
+### 20. Симулатор "Личен Борд на Директорите"
+
+**🎯 Какво прави този промпт (What This Prompt Does):**
+*   Симулира среща с ваш личен "борд на директорите", съставен от три различни AI архетипа, за да получите разнообразни гледни точки по най-голямото си стратегическо предизвикателство.
+*   Предоставя ви безценни перспективи, които обикновено са достъпни само за C-level ръководители: безпощадния реализъм на инвеститора, емпатията на клиента и дръзкото мислене на иноватора.
+*   Помага ви да тествате и подсилите аргументите си, като ви подлага на кръстосан разпит от експерти, преди да представите идеята си в реалния свят.
+
+**💡 Съвети за най-добри резултати (Tips):**
+*   Формулирайте предизвикателството си като отворен въпрос или дилема, а не като въпрос с "да/не" отговор.
+*   След като получите първоначалните отговори, можете да продължите диалога, като зададете последващ въпрос на някой от "членовете на борда".
+*   Това е най-мощният промпт за "мета-познание". Използвайте го за най-важните си и сложни решения.
+
+**💻 THE GOD PROMPT (English):**
+```text
+Act as my "Personal Board of Directors." I will present you with a strategic challenge or dilemma I am facing. You will provide feedback from three distinct and powerful personas, one after the other. Do not blend the personas.
+
+Here are your personas:
+1.  **The Pragmatic Investor (PI):** You are ruthless, data-driven, and focused solely on ROI, risk, and defensibility. You think in terms of numbers, resources, and competitive moats. Your questions are sharp and skeptical.
+2.  **The Customer Advocate (CA):** You are deeply empathetic and obsessed with the customer experience, brand promise, and long-term trust. You think in terms of feelings, stories, and reputation. You ask questions about the "why" and the human impact.
+3.  **The Maverick Innovator (MI):** You are a contrarian thinker who challenges the fundamental assumptions of the industry. You think in terms of 10x leaps, not 10% improvements. You ask provocative "What if..." questions to break conventional thinking.
+
+YOUR TASK:
+1.  Wait for me to state my strategic challenge.
+2.  Respond with three separate paragraphs, clearly labeled **PI:**, **CA:**, and **MI:**.
+3.  In each paragraph, embody the corresponding persona and provide one critical question and one piece of direct advice regarding my challenge.
+
+Let's begin.
+
+MY STRATEGIC CHALLENGE: [Clearly and concisely describe the strategic problem, dilemma, or opportunity you are facing.]
+```
+📝 **Как да използвате промпта (How to Use):**
+1.  **Копирайте:** Копирайте целия английски текст.
+2.  **Попълнете:** На мястото на `[MY STRATEGIC CHALLENGE...]` опишете вашето най-голямо предизвикателство в момента.
+3.  **Изпълнете:** Стартирайте го, за да получите незабавна мъдрост от три различни гледни точки.
+
+🚀 **Защо ви е нужен (Context):** Никой не е по-умен от всички. Най-големият риск за всеки лидер е да попадне в капана на собствената си гледна точка. Този промпт е вашето "тайно оръжие" срещу "слепите петна", като ви дава достъп до разнообразна експертиза по заявка и гарантира,
+че вашите най-важни решения са тествани под напрежение.
+
+
+
+
+
+
+---
+### 21. Архитект за Развитие на Таланти
+
+**🎯 Какво прави този промпт (What This Prompt Does):**
+*   Създава персонализиран 6-месечен "План за Растеж и Въздействие" за всеки член на вашия екип.
+*   Трансформира стандартните, скучни разговори за кариерно развитие в стратегически диалог, който свързва личните амбиции на служителя с целите на компанията.
+*   Замества общите HR шаблони с конкретен, мотивиращ план за действие, който помага за задържането на топ таланти.
+
+**💡 Съвети за най-добри резултати (Tips):**
+*   Бъдете честни и конкретни относно силните страни и областите за развитие на служителя.
+*   Включете служителя в процеса – попълнете входните данни заедно или обсъдете генерирания план като отправна точка.
+*   Най-добре работи с **GPT-4o** заради способността му да разбира нюансите на човешкия потенциал и корпоративната стратегия.
+
+**💻 THE GOD PROMPT (English):**
+```text
+Act as an Executive Talent Development Coach from a top-tier consulting firm like Korn Ferry. Your task is to create a structured, inspiring, and actionable 6-month "Growth & Impact Plan" for one of my team members.
+
+CONTEXT: I will provide you with the team member's role, their key strengths, areas for growth, and their long-term aspirations.
+
+YOUR TASK:
+Analyze the input and generate the plan using the following structure:
+
+1.  **The North Star (Future Role Aspiration):** Based on their aspirations, define a compelling "future self" vision. (e.g., "Evolving from a Senior Developer into a Tech Lead and Systems Architect.")
+2.  **The Impact Project (The "Stretch" Assignment):** Propose one significant project or responsibility for the next 6 months that directly aligns with their growth areas and the team's goals. This should be a challenging but achievable assignment.
+3.  **Core Competency Focus (Skill Development):** Identify the top 2 skills they need to develop to succeed in the Impact Project and their North Star role.
+4.  **Actionable Development Plan (The "How"):** Create a table with three columns for the two focus skills:
+    *   **Skill:** [e.g., "Stakeholder Communication"]
+    *   **Experience (70%):** How can they practice this skill on the job? (e.g., "Lead the weekly update meeting for the project.")
+    *   **Exposure (20%):** Who can they learn from? (e.g., "Shadow Sarah during a client negotiation.")
+    *   **Education (10%):** What formal learning can help? (e.g., "Complete the online course on 'Crucial Conversations'.")
+5.  **Measuring Success (The Proof):** Define 2-3 clear, measurable outcomes that will indicate success at the end of the 6 months. (e.g., "Successfully delivered the Impact Project on time," "Received positive feedback from 3 stakeholders on communication clarity.")
+
+OUTPUT FORMAT:
+Use professional, encouraging language. Structure the output as a clean Markdown document titled "Growth & Impact Plan for [Employee Name]".
+
+EMPLOYEE'S NAME: [Enter name]
+CURRENT ROLE: [Enter role]
+KEY STRENGTHS: [List 2-3 key strengths]
+AREAS FOR GROWTH: [List 1-2 critical areas for development]
+LONG-TERM ASPIRATIONS: [Describe their career goals as you understand them]
+```
+📝 **Как да използвате промпта (How to Use):**
+1.  **Копирайте:** Копирайте целия английски текст отгоре.
+2.  **Попълнете:** Попълнете данните за вашия служител в петте променливи в края.
+3.  **Изпълнете:** Стартирайте го, за да получите готов план, който да направи следващия ви 1-на-1 разговор най-ценния за годината.
+
+🚀 **Защо ви е нужен (Context):** В икономиката на 2025-2030, хората не напускат компании, а мениджъри, които не инвестират в техния растеж. Този промпт ви превръща в лидер, който активно изгражда таланти, създавайки лоялност и екип, който може да посрещне бъдещите предизвикателства.
+
+---
+### 22. Стратег за Предотвратяване на "Бърнаут"
+
+**🎯 Какво прави този промпт (What This Prompt Does):**
+*   Извършва "Одит на Устойчивостта" на вашия екип, като анализира работните процеси, натоварването и културата за скрити рискове от прегаряне (бърнаут).
+*   Генерира проактивен план за действие на три нива (системно, лидерско, екипно), за да се справите с причините, а не със симптомите на стреса.
+*   Замества безполезните "уелнес" инициативи (като йога в офиса) с реални промени в начина на работа, които подобряват производителността и благосъстоянието.
+
+**💡 Съвети за най-добри резултати (Tips):**
+*   Бъдете максимално честни и конкретни в описанието на сигналите за стрес. Колкото повече детайли, толкова по-точен е анализът.
+*   Бъдете готови да промените процеси, а не просто да добавяте "перки". Истинските решения често са структурни.
+*   Използвайте резултатите като основа за отворен разговор с екипа си.
+
+**💻 THE GOD PROMPT (English):**
+```text
+Act as an Organizational Psychologist specializing in team resilience and burnout prevention. Your task is to conduct a "Team Resilience Audit" based on my observations and design a proactive intervention plan.
+
+CONTEXT: I will describe my team, their current workload and context, and any signals of stress or potential burnout I've noticed.
+
+YOUR TASK:
+Analyze my input against the six primary scientifically-validated causes of burnout (Workload, Control, Reward, Community, Fairness, Values). Then, generate a "Team Resilience Action Plan" with the following structure:
+
+1.  **Primary Burnout Risk Factors:** Based on my description, identify the top 2-3 most likely root causes of stress for my team. For each, briefly explain your reasoning. (e.g., "Risk 1: Lack of Control - The team feels micromanaged and unable to influence project deadlines.")
+2.  **The Intervention Plan (A 3-Tiered Approach):**
+    *   **Tier 1: Systemic & Process Changes:** Recommend 1-2 specific changes to the *way* work is done to address the root causes. (e.g., "Implement 'no-meeting Fridays' to create dedicated focus time," "Introduce a clearer project intake process to manage workload.")
+    *   **Tier 2: Leadership Behaviors:** Suggest 1-2 specific behaviors that *I*, as the leader, should start or stop doing. (e.g., "Start: Publicly acknowledge and celebrate small wins and effort, not just outcomes," "Stop: Sending non-urgent emails or Slack messages after work hours.")
+    *   **Tier 3: Team Rituals:** Propose 1-2 simple, collective habits the team can build together to foster community and psychological safety. (e.g., "Begin the weekly team meeting with a 5-minute 'check-in' on personal energy levels," "Create a dedicated Slack channel for sharing non-work-related successes.")
+3.  **Leading Indicators of Success:** How will we know the plan is working? List 2-3 observable, positive changes to look for in the next 30-60 days. (e.g., "Increased proactive communication from team members," "Fewer tasks slipping past deadlines due to overload.")
+
+OUTPUT FORMAT:
+Use a structured, empathetic, and professional tone. Use Markdown for clarity and readability.
+
+TEAM DESCRIPTION & CONTEXT: [Describe your team, its size, and what it does.]
+CURRENT WORKLOAD & PRESSURES: [e.g., "We are in a pre-launch phase, working long hours. There is high pressure from leadership."]
+OBSERVED STRESS SIGNALS: [e.g., "I've noticed increased cynicism in meetings, more sick days, simple mistakes being made, people being quiet."]
+```
+📝 **Как да използвате промпта (How to Use):**
+1.  **Копирайте:** Копирайте английския текст от кода.
+2.  **Попълнете:** Попълнете трите променливи с честна оценка на ситуацията във вашия екип.
+3.  **Изпълнете:** Стартирайте го, за да получите експертен план за изграждане на по-здрав и по-устойчив екип.
+
+🚀 **Защо ви е нужен (Context):** В ерата на "пермакриза", бърнаутът не е личен провал, а организационен проблем. Екипите, които са устойчиви, а не просто заети, ще бъдат тези, които печелят. Този промпт ви дава инструментите да изградите "анти-крехък" екип, който процъфтява под напрежение.
+
+---
+### 23. Дизайнер на "Система за Иновации"
+
+**🎯 Какво прави този промпт (What This Prompt Does):**
+*   Проектира лека, но ефективна "операционна система" за иновации във вашия екип.
+*   Създава ясен процес за събиране, оценка, приоритизиране и тестване на нови идеи, превръщайки иновацията от случаен акт в постоянен навик.
+*   Замества хаотичните брейнсторминг сесии и "кутиите за предложения" със система, която реално води до резултати.
+
+**💡 Съвети за най-добри резултати (Tips):**
+*   Бъдете ясни относно фокуса на иновациите – дали търсите подобрения на процеси, нови продукти или нещо друго.
+*   Започнете с проста версия на системата и я усложнявайте с времето.
+*   Ключът е в празнуването на експериментите, дори и неуспешните, а не само на крайните победи.
+
+**💻 THE GOD PROMPT (English):**
+```text
+Act as a Chief Innovation Officer (CIO) for a fast-moving, agile company. My goal is to stop relying on random flashes of insight and instead build a repeatable "Innovation Engine" within my team.
+
+CONTEXT: I will describe my team and the area where I want to foster more innovation.
+
+YOUR TASK:
+Design a lightweight "Innovation Operating System" for my team. The system should be simple enough to implement next week. Structure your proposal into four key stages:
+
+1.  **Stage 1: Idea CAPTURE:**
+    *   **Method:** Propose a single, dead-simple channel for submitting ideas 24/7. (e.g., "A dedicated Slack channel #ideas," "A simple Google Form").
+    *   **Submission Template:** Provide 3-4 key questions every idea submission must answer. (e.g., "1. What problem does this solve? 2. Who does it solve it for? 3. What is the core idea? 4. How would we measure success?").
+2.  **Stage 2: Idea TRIAGE:**
+    *   **Framework:** Recommend a simple framework for quickly scoring and sorting ideas, like the R.I.C.E. (Reach, Impact, Confidence, Effort) or I.C.E. (Impact, Confidence, Ease) model.
+    *   **Process:** Who is responsible for this initial scoring? (e.g., "The team lead does a quick score within 48 hours of submission.").
+3.  **Stage 3: Idea PITCH & PRIORITIZATION:**
+    *   **Ritual:** Propose a recurring meeting or ritual for discussing the top-scoring ideas. (e.g., "A monthly 45-minute 'Idea Hour' where the top 3 ideas are pitched for 5 minutes each.").
+    *   **Decision-Making:** How is the final decision made on which idea to test? (e.g., "Team vote," "Leader decides after discussion.").
+4.  **Stage 4: Idea EXPERIMENT:**
+    *   **Principle:** Introduce the concept of a "2-Week Sprint" to test the winning idea.
+    *   **Action Plan:** The output of the 'Idea Hour' is to define a small, low-cost experiment that can validate (or invalidate) the core assumption of the idea within 10 business days.
+
+OUTPUT FORMAT:
+Use clear, actionable language. Use Markdown headings and bullet points to create a simple blueprint.
+
+MY TEAM: [Describe your team's function and size, e.g., "12-person Customer Support team"]
+AREA FOR INNOVATION: [e.g., "Improving our customer onboarding process," "Reducing internal tool friction," "Finding new ways to market our product"]
+```
+📝 **Как да използвате промпта (How to Use):**
+1.  **Копирайте:** Копирайте целия английски текст.
+2.  **Попълнете:** Опишете вашия екип и фокусната област за иновации в двете променливи.
+3.  **Изпълнете:** Стартирайте го, за да получите готова за внедряване система за иновации.
+
+🚀 **Защо ви е нужен (Context):** Според доклада "Дигитален хоризонт", единственият начин да оцелееш в бързо променящия се свят е да се адаптираш по-бързо от средата. Този промпт не ви дава просто идея; той ви дава машината, която произвежда, тества и внедрява идеи непрекъснато.
+
+---
+### 24. Архитект на План за Управление на Промяната
+
+**🎯 Какво прави този промпт (What This Prompt Does):**
+*   Създава структуриран комуникационен и екшън план за навигиране на вашия екип през значителна организационна промяна (напр. нова стратегия, реструктуриране, внедряване на нова система).
+*   Използва доказани методологии (като ADKAR), за да предвиди и адресира човешката страна на промяната – съпротива, несигурност и нужда от нови умения.
+*   Замества хаотичните, еднократни съобщения с обмислена кампания, която драстично увеличава шансовете за успешно възприемане на промяната.
+
+**💡 Съвети за най-добри резултати (Tips):**
+*   Бъдете максимално откровени за причините зад промяната и потенциалните негативи. Хората усещат неискреността.
+*   Идентифицирайте ключовите "инфлуенсъри" във вашите екипи и ги включете в процеса рано.
+*   Помнете, че промяната е процес, а не еднократно събитие. Комуникацията трябва да бъде постоянна.
+
+**💻 THE GOD PROMPT (English):**
+```text
+Act as a seasoned Change Management Consultant. Your task is to create a strategic plan to guide my team through a significant upcoming change, using the ADKAR framework (Awareness, Desire, Knowledge, Ability, Reinforcement) as your guide.
+
+CONTEXT: I will describe the change, the reasons for it, the teams it affects, and the potential points of resistance.
+
+YOUR TASK:
+Generate a "Change Management Action Plan" with the following five sections:
+
+1.  **AWARENESS (The 'Why'):**
+    *   **Core Message:** Craft a clear, concise, and honest message explaining the business reasons for the change. What is the risk of *not* changing?
+    *   **Communication Cascade:** Propose a sequence for communicating the change. (e.g., "Step 1: 1-on-1 with key leaders. Step 2: Team-wide announcement. Step 3: Follow-up FAQs.").
+2.  **DESIRE (The 'What's In It For Me?'):**
+    *   **Stakeholder Analysis:** Identify the key motivations and concerns for the affected teams.
+    *   **Building Buy-in:** Suggest 2-3 specific actions to create desire. (e.g., "Involve key team members in the design of the new process," "Clearly articulate how this change will reduce manual work for them.").
+3.  **KNOWLEDGE (The 'How-To'):**
+    *   **Knowledge Gaps:** What specific new information or skills will people need?
+    *   **Training Plan:** Outline a simple plan for delivering this knowledge. (e.g., "A series of 3 lunch-and-learn sessions," "Creation of a central knowledge base with video tutorials.").
+4.  **ABILITY (The 'Practice'):**
+    *   **Bridging the Gap:** How will you support the team as they move from knowing *what* to do to being proficient *at* doing it?
+    *   **Support System:** Suggest 2-3 support mechanisms. (e.g., "Designate 'Change Champions' in each team for peer support," "Schedule weekly 'office hours' for Q&A.").
+5.  **REINFORCEMENT (Making it Stick):**
+    *   **Celebrating Progress:** Propose ways to recognize and reward early adoption and positive behaviors.
+    *   **Feedback Loop:** How will you gather feedback and make adjustments to ensure the change is sustained?
+
+OUTPUT FORMAT:
+Use clear Markdown headings for each ADKAR stage. The tone should be strategic, empathetic, and highly practical.
+
+THE UPCOMING CHANGE: [e.g., "We are moving from Slack to Microsoft Teams as our primary communication tool."]
+THE REASON FOR THE CHANGE: [e.g., "To improve integration with our other Microsoft products and reduce costs."]
+AFFECTED TEAMS: [e.g., "The entire 150-person company."]
+POTENTIAL RESISTANCE POINTS: [e.g., "People love Slack's UI/UX, fear of losing history, frustration with learning a new tool."]
+```
+📝 **Как да използвате промпта (How to Use):**
+1.  **Копирайте:** Копирайте целия английски текст.
+2.  **Попълнете:** Попълнете четирите променливи с детайлите на вашата предстояща промяна.
+3.  **Изпълнете:** Стартирайте го, за да получите професионален план, който ще ви преведе през турбуленцията на промяната.
+
+🚀 **Защо ви е нужен (Context):** Докладът "Дигитален хоризонт" ясно показва, че единствената константа е промяната. Способността да водиш екипа си през нея ефективно е това, което отличава добрите мениджъри от великите лидери. Този промпт ви дава методологията на най-добрите консултанти по управление на промяната.
+
+---
+### 25. Фасилитатор за "Дневник на Решенията"
+
+**🎯 Какво прави този промпт (What This Prompt Does):**
+*   Предоставя ви структуриран шаблон, за да водите "Дневник на Решенията" – една от най-мощните техники за подобряване на преценката с времето.
+*   Принуждава ви да документирате вашето мислене *преди* да знаете резултата, което позволява обективен анализ на процеса ви по-късно.
+*   Действа като проактивна версия на "пост-мортем" анализа, помагайки ви да калибрирате вашата интуиция и да се учите систематично от всяко важно решение.
+
+**💡 Съвети за най-добри резултати (Tips):**
+*   Използвайте този промпт за решения, които са важни, необратими или с висока степен на несигурност.
+*   Бъдете напълно честни за вашето емоционално състояние – то често влияе на решенията повече, отколкото си мислим.
+*   Задайте си напомняне в календара да прегледате записа след 3 или 6 месеца, за да затворите цикъла на учене.
+
+**💻 THE GOD PROMPT (English):**
+```text
+Act as a Metacognition Coach. My goal is to improve my decision-making process by keeping a structured Decision Journal.
+
+Your task is to generate a comprehensive template for a new journal entry. I will provide the decision I am currently facing, and you will output the full template, pre-filled where possible, for me to complete.
+
+The template must include these seven sections:
+
+1.  **Situation & Context:**
+    *   *Prompt:* What is the situation? What are the current conditions and constraints?
+2.  **The Problem / The Question:**
+    *   *Prompt:* Frame the decision as a clear question. What problem are we truly trying to solve?
+3.  **The Options Considered:**
+    *   *Prompt:* List at least three viable options, including the option to "do nothing" or "wait." Briefly list the pros and cons of each.
+4.  **The Decision & Rationale:**
+    *   *Prompt:* State the final decision clearly. Explain the reasoning and the core assumptions behind this choice in detail.
+5.  **Expected Outcome & Probabilities:**
+    *   *Prompt:* What do I expect to happen as a result of this decision? Define what success looks like. Assign a percentage of confidence to this outcome (e.g., "I am 70% confident that..."). What is a plausible alternative outcome?
+6.  **My State of Mind (Snapshot):**
+    *   *Prompt:* How do I feel physically and emotionally right now? (e.g., rushed, tired, optimistic, under pressure). This is for objective self-assessment later.
+7.  **Review Date:**
+    *   *Prompt:* Set a future date to review this decision and its outcome (e.g., "Review in 90 days: [Future Date]").
+
+Generate the template for the decision below.
+
+THE DECISION I'M FACING: [Describe the high-stakes decision you need to make.]
+```
+📝 **Как да използвате промпта (How to Use):**
+1.  **Копирайте:** Копирайте английския текст от кода.
+2.  **Попълнете:** Опишете решението, пред което сте изправени, в променливата `[THE DECISION I'M FACING...]`.
+3.  **Изпълнете:** Стартирайте го, за да получите структуриран шаблон, готов за попълване. Запазете го във вашата система за водене на бележки.
+
+🚀 **Защо ви е нужен (Context):** Най-добрите лидери не са тези, които винаги са прави, а тези, които се учат най-бързо. Този промпт инсталира професионална система за саморефлексия и учене, която ви позволява да подобрите най-важното си умение – вашата преценка. Това е инвестиция във вашия "Втори мозък", както е посочено в доклада, която се изплаща многократно.
+
+
+
+

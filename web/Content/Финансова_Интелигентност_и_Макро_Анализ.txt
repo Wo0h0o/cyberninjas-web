@@ -1,0 +1,1226 @@
+---
+### 1. Макроикономически Симулатор за Бизнес Риск
+
+**🎯 Какво прави този промпт (What This Prompt Does):**
+*   "Превежда" големи, плашещи макроикономически новини (напр. инфлация, промяна в лихвените проценти, геополитически конфликт) в конкретни, измерими рискове и възможности за *вашия* бизнес.
+*   Замества скъпоплатен икономически консултант, като ви дава 1-ви, 2-ри и 3-ти ред ефекти от дадено събитие върху вашите приходи, разходи и клиенти.
+*   Дава ви стратегическо предимство, като ви позволява да реагирате проактивно на промените в средата, вместо да бъдете тяхна жертва.
+
+**💡 Съвети за най-добри резултати (Tips):**
+*   Подайте линк към конкретна новинарска статия или анализ за най-добри резултати.
+*   Бъдете максимално детайлни в описанието на вашия бизнес – индустрия, тип клиенти (B2B/B2C), основни разходи.
+*   Използвайте с най-мощните модели като **GPT-4o** или **Claude 3.5 Sonnet** заради способността им да анализират сложни причинно-следствени връзки.
+
+**💻 THE GOD PROMPT (English):**
+```text
+Act as a Senior Economist and Strategic Advisor for a Fortune 500 company. Your task is to analyze a major macroeconomic event and translate it into a specific risk/opportunity assessment for a user's business.
+
+CONTEXT: The user will provide a description of a macroeconomic event and a brief profile of their business.
+
+YOUR TASK:
+Think step-by-step to create a "Macro-to-Micro Impact Brief."
+
+1.  **Deconstruct the Macro Event:** Briefly explain the core mechanics of the event. What is actually happening and why does it matter on a global/national scale?
+2.  **Identify Transmission Channels:** How does this macro event "travel" to the user's industry? (e.g., through consumer spending, borrowing costs, supply chain disruptions, currency fluctuations).
+3.  **Impact Analysis (1st, 2nd, and 3rd Order Effects):**
+    *   **1st Order:** What is the immediate, direct impact on the business? (e.g., "Increased cost of raw materials").
+    *   **2nd Order:** What is the impact on the business's customers and suppliers? (e.g., "Your customers have less disposable income," "Your key supplier might face bankruptcy").
+    *   **3rd Order:** What is the likely strategic response from your competitors? (e.g., "Competitors might start a price war to capture market share").
+4.  **Strategic Recommendations (Defensive & Offensive):**
+    *   **Defensive:** Propose 2 concrete actions the business can take *now* to mitigate the identified risks.
+    *   **Offensive:** Propose 1-2 actions the business can take to exploit any new opportunities created by this event.
+
+OUTPUT FORMAT:
+Structure the response as a professional, concise briefing memo in Markdown.
+
+MACRO-ECONOMIC EVENT: [Describe the event or paste a news article URL. e.g., "The US Federal Reserve just raised interest rates by 0.5%."]
+MY BUSINESS PROFILE: [Describe your company, industry, customer type, and key cost drivers. e.g., "We are a D2C e-commerce brand selling luxury home goods. Our customers are high-income individuals. Our main costs are marketing on Facebook and inventory."]
+```
+📝 **Как да използвате промпта (How to Use):**
+1.  **Копирайте:** Копирайте целия текст от черното поле по-горе.
+2.  **Попълнете:** Опишете новината в `[MACRO-ECONOMIC EVENT]` и вашия бизнес в `[MY BUSINESS PROFILE]`.
+3.  **Изпълнете:** Стартирайте го, за да получите ясен анализ и план за действие.
+
+🚀 **Защо ви е нужен (Context):** В глобализирания свят на 2025-2030, вашият бизнес е листо в реката на световната икономика. Този промпт не може да спре течението, но ви дава рул и карта, за да навигирате, вместо да се носите безпомощно.
+
+---
+### 2. AI Инвестиционен Анализатор "a la Buffett"
+
+**🎯 Какво прави този промпт (What This Prompt Does):**
+*   Извършва фундаментален анализ на публично търгувана компания, като комбинира принципите за стойностно инвестиране на Уорън Бъфет с технологичната визия на Кейти Ууд.
+*   Анализира бизнес модела, финансовото здраве, конкурентния "ров" (moat), мениджмънта и оценката на компанията.
+*   Замества часове на проучване и четене на финансови отчети, като ви дава структуриран, обективен инвестиционен меморандум за минути.
+
+**💡 Съвети за най-добри резултати (Tips):**
+*   За най-добри резултати използвайте модели, свързани с интернет, които могат да изтеглят актуални финансови данни. Ако не, подайте му скорошен финансов отчет.
+*   Бъдете ясни във вашата първоначална инвестиционна теза – защо изобщо обмисляте тази компания?
+*   Използвайте промпта не само за компании, които искате да купите, но и за тези, които вече притежавате, за да проверите дали тезата ви все още е валидна.
+
+**💻 THE GOD PROMPT (English):**
+```text
+Act as a world-class investment analyst, a unique hybrid persona combining the value investing discipline of Warren Buffett with the technological foresight of Cathie Wood. Your task is to conduct a rigorous, fundamental analysis of a publicly traded company.
+
+CONTEXT: The user will provide a company name or stock ticker and their initial investment thesis.
+
+YOUR TASK:
+Generate a structured "Investment Memo" by analyzing the company through these five lenses:
+
+1.  **Business Model & Competitive Moat:**
+    *   How does this company make money?
+    *   What is its primary competitive advantage (the "moat")? (e.g., Network Effects, High Switching Costs, Brand, Low-Cost Production). Is the moat widening or shrinking?
+2.  **Financial Health (The Numbers):**
+    *   Analyze key financial metrics from recent reports (Revenue Growth, Profit Margins, Debt-to-Equity Ratio, Free Cash Flow).
+    *   Provide a "health score" from 1-10 and a brief justification.
+3.  **Management & Capital Allocation:**
+    *   Assess the leadership team. Are they founders? Do they have a clear vision?
+    *   How do they allocate capital? (e.g., Reinvestment in the business, stock buybacks, dividends, acquisitions).
+4.  **Valuation:**
+    *   Is the company currently trading at a price that seems reasonable, cheap, or expensive relative to its intrinsic value and growth prospects? Briefly explain why.
+5.  **Bull Case vs. Bear Case (The Verdict):**
+    *   **Bull Case:** Summarize the single strongest argument *for* investing in this company.
+    *   **Bear Case:** What are the 2-3 biggest risks that could derail the investment thesis?
+    *   **Final Recommendation:** Based on the analysis, would you "Buy," "Hold," or "Avoid" this stock at its current price?
+
+OUTPUT FORMAT:
+Use professional Markdown with clear, bold headings for each section.
+
+COMPANY NAME / TICKER: [e.g., "Tesla Inc. (TSLA)"]
+MY INITIAL INVESTMENT THESIS: [e.g., "I believe their dominance in EVs and advancements in AI and robotics make them undervalued long-term."]
+```
+📝 **Как да използвате промпта (How to Use):**
+1.  **Копирайте:** Копирайте английския текст от кода.
+2.  **Попълнете:** Въведете името на компанията в `[COMPANY NAME / TICKER]` и вашата кратка теза в `[MY INITIAL INVESTMENT THESIS]`.
+3.  **Изпълнете:** Стартирайте го, за да получите обективен анализ, който ще ви помогне да избегнете скъпи грешки.
+
+🚀 **Защо ви е нужен (Context):** Инвестирането в ерата на AI изисква разбиране както на традиционните бизнес основи, така и на експоненциалните технологии. Този промпт ви дава хибриден AI анализатор, който разбира и двата свята, помагайки ви да вземате интелигентни, дългосрочни финансови решения.
+
+---
+### 3. DeFi Протокол Детектив
+
+**🎯 Какво прави този промпт (What This Prompt Does):**
+*   Анализира сложни крипто проекти и децентрализирани финанси (DeFi), като "превежда" техническите им бели книги (whitepapers) на разбираем език.
+*   Извършва одит на "токеномиката" на проекта – най-важният фактор за неговия дългосрочен успех.
+*   Идентифицира потенциални "червени флагове" (red flags) като нереалистични обещания, лоша структура на токена или анонимен екип, за да ви предпази от измами (scams).
+
+**💡 Съвети за най-добри резултати (Tips):**
+*   Подайте на AI целия текст на бялата книга или линк към нея за най-добър анализ.
+*   Никога не приемайте резултата за финансов съвет. Използвайте го като инструмент за проучване и филтриране.
+*   Сравнете анализите на 2-3 подобни проекта, за да добиете представа за стандарта в индустрията.
+
+**💻 THE GOD PROMPT (English):**
+```text
+Act as a specialized Web3 and DeFi research analyst. You are highly skeptical and your primary job is to cut through marketing hype and analyze a crypto project's fundamental viability based on its whitepaper and tokenomics.
+
+CONTEXT: The user will provide the name of a crypto project and the text of its whitepaper (or a link).
+
+YOUR TASK:
+Generate a "DeFi Protocol Audit Report." Your analysis must be structured into the following sections:
+
+1.  **Problem & Solution:**
+    *   In simple terms, what real-world problem does this project claim to solve?
+    *   Is blockchain technology actually necessary to solve this problem, or is it just hype?
+2.  **Tokenomics Analysis (The Core):**
+    *   **Token Utility:** What is the actual *use* of the project's native token? (e.g., Governance, Staking, Gas Fees, Medium of Exchange). Is the utility compelling?
+    *   **Token Supply:** Is the supply fixed (deflationary) or inflationary? What is the vesting schedule for the team and early investors? (Look for long vesting periods).
+    *   **Value Accrual:** How does value flow back to the token holders? (e.g., via buybacks, fee sharing).
+3.  **Team & Community:**
+    *   Is the team public or anonymous? What is their prior experience?
+    *   Assess the health and engagement of their community (e.g., on Discord, Twitter).
+4.  **Risk Assessment:**
+    *   Identify the top 3 risks associated with this project (e.g., "Smart Contract Risk," "Regulatory Risk," "Competition Risk," "Centralization Risk").
+5.  **Final Verdict (Red Flag Score):**
+    *   Provide a final summary verdict with a score from 1 to 5 Red Flags (🚩).
+    *   **1 🚩:** Seems promising.
+    *   **5 🚩:** High probability of being a scam or a poorly designed project. Avoid.
+
+OUTPUT FORMAT:
+Use a clear, structured Markdown report format. Be objective and critical in your tone.
+
+CRYPTO PROJECT NAME: [e.g., "Nexus Protocol"]
+WHITEPAPER TEXT / URL: [Paste the full text of the whitepaper or provide a direct link.]
+```
+📝 **Как да използвате промпта (How to Use):**
+1.  **Копирайте:** Копирайте целия английски текст.
+2.  **Попълнете:** Въведете името на проекта и поставете текста или линка към неговата бяла книга.
+3.  **Изпълнете:** Стартирайте го, за да получите дълбок анализ, който ще ви спести време и потенциално много пари.
+
+🚀 **Защо ви е нужен (Context):** Както докладът подчертава, DeFi и токенизацията са ключова тенденция за 2025-2030. Този нов свят е пълен с възможности, но и с огромни рискове. Този промпт е вашият филтър, който ви помага да отделите иновативните проекти от опасните спекулации.
+
+---
+### 4. Преводач от Финансов на Човешки Език
+
+**🎯 Какво прави този промпт (What This Prompt Does):**
+*   Взима сурови финансови данни (като отчет за приходи и разходи) и ги превръща в ясен, убедителен наратив.
+*   "Разказва историята" зад числата – какво се е случило, защо се е случило и какво означава това за бъдещето.
+*   Помага на лидери и предприемачи да комуникират финансовите резултати по начин, който е разбираем и мотивиращ за различни аудитории – служители, инвеститори или борд на директорите.
+
+**💡 Съвети за най-добри резултати (Tips):**
+*   Бъдете ясни коя е целевата аудитория. Историята за инвеститорите (фокус върху ROI) е различна от тази за служителите (фокус върху растеж и сигурност).
+*   Включете и някакъв качествен контекст – напр. "пуснахме нов продукт през Q2", за да може AI да свърже числата със събитията.
+*   Използвайте генерирания наратив като основа за вашата презентация или имейл.
+
+**💻 THE GOD PROMPT (English):**
+```text
+Act as a "Financial Storyteller," a hybrid of a CFO and a Corporate Communications expert. Your skill is translating dry financial statements into a compelling narrative that tells the story behind the numbers.
+
+CONTEXT: The user will provide raw financial data (e.g., a simplified P&L statement) and the target audience for the story.
+
+YOUR TASK:
+Analyze the provided data and generate a "Quarterly Business Narrative."
+
+1.  **The Headline:** Write a single, powerful sentence that summarizes the key takeaway from the period.
+2.  **The Plot (The "What"):** In one paragraph, describe the main results in plain English. What were the biggest wins and challenges? (e.g., "This quarter, we saw strong revenue growth of 20%, primarily driven by the launch of Product X, though our marketing costs also increased as we pushed for market share.").
+3.  **The "Why" (The Drivers):** In bullet points, explain the key drivers behind the numbers. Connect the financial data to specific business activities.
+    *   **What went right?**
+    *   **What went wrong (or could be better)?**
+4.  **The Foreshadowing (The Outlook):** In a final paragraph, explain what these results mean for the upcoming quarter. What is the key focus area moving forward?
+5.  **Tailored Tone:** Adjust the tone and emphasis based on the specified [TARGET_AUDIENCE]. (e.g., For investors, focus on profitability and efficiency. For employees, focus on growth, mission, and team contributions).
+
+OUTPUT FORMAT:
+Structure the output as a clean, easy-to-read memo in Markdown.
+
+**RAW FINANCIAL DATA:**
+[Paste your financial data here. e.g.,
+- **Period:** Q3 2025
+- **Revenue:** $500,000 (vs. $400,000 in Q2)
+- **COGS:** $100,000
+- **Gross Profit:** $400,000
+- **Marketing Spend:** $150,000 (vs. $80,000 in Q2)
+- **Salaries:** $200,000
+- **Net Profit:** $50,000]
+**TARGET AUDIENCE:** [e.g., "All Employees," "The Board of Directors," "Potential Investors"]
+```
+📝 **Как да използвате промпта (How to Use):**
+1.  **Копирайте:** Копирайте целия английски текст.
+2.  **Попълнете:** Поставете вашите финансови данни и посочете за кого е предназначен разказът.
+3.  **Изпълнете:** Стартирайте го, за да превърнете числата от отчет в инструмент за лидерство.
+
+🚀 **Защо ви е нужен (Context):** Числата не мотивират, историите го правят. Като лидер, вашата работа е да дадете смисъл на данните. Този промпт ви дава способността да го правите ефективно, като подравнявате целия екип около общото разбиране за това къде се намирате и накъде отивате.
+
+---
+### 5. Финансов Шпионин за Конкурентен Анализ
+
+**🎯 Какво прави този промпт (What This Prompt Does):**
+*   Действа като финансов анализатор от ЦРУ, който "чете" финансовите отчети (като 10-K) на вашите публично търгувани конкуренти.
+*   Извлича скрита стратегическа информация от числата – къде инвестират, кои продуктови линии растат най-бързо, къде маржовете им се свиват.
+*   Замества екип от анализатори, като ви дава достъп до същото ниво на конкурентно разузнаване, което използват големите инвестиционни фондове.
+
+**💡 Съвети за най-добри резултати (Tips):**
+*   Подайте на AI текста от секциите "Management's Discussion and Analysis" (MD&A) и "Risk Factors" от годишния отчет на конкурента за най-добри резултати.
+*   Фокусирайте се върху промените спрямо предходната година – те често разкриват промяна в стратегията.
+*   Използвайте този анализ, за да идентифицирате слабите места на конкурента, които можете да атакувате.
+
+**💻 THE GOD PROMPT (English):**
+```text
+Act as a "Competitive Intelligence Analyst" with a background in forensic accounting. Your specialty is reading between the lines of public financial reports (like 10-K filings) to uncover a competitor's hidden strategy.
+
+CONTEXT: The user will provide the text from a competitor's financial report (or a link to it).
+
+YOUR TASK:
+Analyze the provided report and generate a "Strategic Intelligence Brief." Do not just summarize the numbers; interpret what they *mean*.
+
+1.  **Capital Allocation Strategy:**
+    *   Where is the company placing its bets? Analyze their spending on R&D, Capital Expenditures (CapEx), and recent acquisitions. Is it increasing or decreasing? What does this tell you about their future priorities?
+2.  **Operational Efficiency & Margin Analysis:**
+    *   Are their gross margins and operating margins expanding or contracting?
+    *   Identify the business segment or product line with the highest growth or best margins. Where is their "cash cow"?
+3.  **Identified Risks & "Reading Between the Lines":**
+    *   Summarize the top 2-3 risks the company identifies in its "Risk Factors" section.
+    *   Identify one potential "hidden" risk that the company might be downplaying.
+4.  **Strategic Vulnerability:**
+    *   Based on your entire analysis, what is this competitor's single biggest strategic vulnerability that a smaller, more agile company could exploit?
+
+OUTPUT FORMAT:
+Structure the output as a confidential memo in Markdown. Your tone should be that of an intelligence analyst presenting findings to a CEO.
+
+**COMPETITOR'S FINANCIAL REPORT TEXT/URL:** [Paste key sections of the 10-K report, especially the MD&A, or provide a link to the SEC filing.]
+```
+📝 **Как да използвате промпта (How to Use):**
+1.  **Копирайте:** Копирайте целия английски текст отгоре.
+2.  **Попълнете:** Поставете текста или линка към финансовия отчет на ваш конкурент.
+3.  **Изпълнете:** Стартирайте го, за да получите разузнавателна информация, която не се вижда на повърхността.
+
+🚀 **Защо ви е нужен (Context):** Вашите конкуренти ви казват какво планират да правят, но не с думи, а с начина, по който харчат парите си. Този промпт ви дава способността да разчетете този език, предоставяйки ви нечестно предимство в разбирането на пазарната динамика и планирането на вашите собствени ходове.
+
+
+
+
+
+
+---
+### 6. AI Мениджър на Инвестиционно Портфолио
+
+**🎯 Какво прави този промпт (What This Prompt Does):**
+*   Извършва цялостен "преглед на здравето" на вашето инвестиционно портфолио, като анализира неговата диверсификация, разпределение на активите и концентрация на риска.
+*   Идентифицира потенциални слабости, като например прекомерна експозиция към един сектор, недостатъчна диверсификация или активи с висока корелация.
+*   Предлага конкретни, базирани на вашата рискова толерантност, стратегии за ребалансиране и оптимизация, за да се постигне по-добро съотношение риск/възвръщаемост.
+
+**💡 Съвети за най-добри резултати (Tips):**
+*   Не е нужно да споделяте точните суми. Можете да използвате процентно разпределение на активите (напр. "AAPL: 20%, MSFT: 15%, VOO: 40%").
+*   Бъдете максимално честни за вашата рискова толерантност. Това е най-важният фактор за правилните препоръки.
+*   Използвайте този промпт периодично (напр. на всеки 6 месеца), за да се уверите, че портфолиото ви все още отговаря на вашите цели.
+
+**💻 THE GOD PROMPT (English):**
+```text
+Act as an AI Portfolio Manager and Fiduciary Advisor. Your task is to analyze a user's investment portfolio based on modern portfolio theory (MPT) and provide an unbiased, data-driven assessment and recommendations for optimization. You must not give direct financial advice, but rather provide a strategic framework for thinking about the portfolio.
+
+CONTEXT: The user will provide a list of their portfolio holdings (tickers or asset classes) with their respective percentage allocations, along with their investment horizon and risk tolerance.
+
+YOUR TASK:
+Generate a "Portfolio Health Check" report.
+
+1.  **Asset Allocation Analysis:**
+    *   Categorize the holdings into major asset classes (e.g., US Equities, International Equities, Bonds, Crypto, Cash).
+    *   Display the current asset allocation as a percentage breakdown.
+2.  **Diversification & Concentration Risk Score:**
+    *   **Sector Concentration:** Identify if there is an over-exposure to a single market sector (e.g., "Technology sector represents 65% of your equity holdings, which is a significant concentration risk.").
+    *   **Single-Stock Concentration:** Identify if any single stock represents a dangerously high percentage of the portfolio.
+    *   Provide an overall "Diversification Score" from 1 (poor) to 10 (excellent).
+3.  **Alignment with Stated Goals:**
+    *   Assess whether the current portfolio's risk profile aligns with the user's stated risk tolerance and investment horizon. (e.g., "For a 'Conservative' risk tolerance and a 5-year horizon, your 20% allocation to crypto is unusually high.").
+4.  **Rebalancing & Optimization Strategies:**
+    *   Based on the analysis, propose 2-3 strategic principles for rebalancing. Frame these as educational suggestions, not direct advice.
+        *   **Example 1:** "Consider trimming positions in the [over-concentrated sector] and reallocating towards [under-represented sector] to improve diversification."
+        *   **Example 2:** "For your stated goal of [goal], consider increasing your allocation to a broad-market index fund like VTI to reduce single-stock risk."
+
+OUTPUT FORMAT:
+Structure the output as a professional, easy-to-read report in Markdown. Use a disclaimer at the end: "This analysis is for educational purposes only and is not financial advice."
+
+MY PORTFOLIO HOLDINGS (%): [e.g., "AAPL: 20%, TSLA: 15%, VOO: 30%, BTC-USD: 10%, VXUS: 15%, Cash: 10%"]
+MY INVESTMENT HORIZON: [e.g., "10-15 years"]
+MY RISK TOLERANCE: [e.g., "Moderate," "Aggressive," "Conservative"]
+```📝 **Как да използвате промпта (How to Use):**
+1.  **Копирайте:** Копирайте целия английски текст от черното поле.
+2.  **Попълнете:** Избройте активите си и техния дял в `[MY PORTFOLIO HOLDINGS]` и дефинирайте вашите цели и толерантност към риск.
+3.  **Изпълнете:** Стартирайте го, за да получите обективен "втори поглед" върху вашите инвестиции.
+
+🚀 **Защо ви е нужен (Context):** Управлението на портфолио е сложно и емоциите често пречат на добрите решения. Този промпт ви дава безпристрастен, базиран на данни анализатор, който ви помага да видите "голямата картина" и да се уверите, че вашите пари работят за вас по най-оптималния начин.
+
+---
+### 7. Анализатор на Пазарни Настроения (Sentiment Analysis)
+
+**🎯 Какво прави този промпт (What This Prompt Does):**
+*   Анализира в реално време потока от новини, коментари в социалните мрежи (като Twitter/X) или финансови статии, за да определи цялостното настроение (позитивно, негативно, неутрално) към даден актив или компания.
+*   Идентифицира ключовите теми и аргументи, които движат настроенията, като ви дава представа "за какво говори пазарът".
+*   Замества скъпи инструменти за медиен мониторинг, като ви позволява да "усетите пулса" на пазара и да вземате решения, информирани от настроенията на тълпата.
+
+**💡 Съвети за най-добри резултати (Tips):**
+*   За най-добри резултати използвайте модели, които могат да достъпват интернет, за да анализират последните новини. Алтернативно, можете да копирате и поставите текстове от различни източници.
+*   Помнете, че пазарните настроения често са контра-индикатор. Екстремният оптимизъм може да е знак за връх, а екстремният песимизъм – за дъно.
+*   Филтрирайте шума. Фокусирайте се върху повтарящите се теми, а не върху единични, крайни мнения.
+
+**💻 THE GOD PROMPT (English):**
+```text
+Act as an AI-powered "Sentiment Analyst" and quantitative researcher for a hedge fund. Your job is to analyze a body of text (news articles, social media posts, etc.) to gauge the prevailing market sentiment surrounding a specific asset or company.
+
+CONTEXT: The user will provide a company/asset name and a body of text or ask you to search for recent news.
+
+YOUR TASK:
+Perform a "Market Sentiment Analysis" and deliver a concise report.
+
+1.  **Overall Sentiment Score:**
+    *   Read through all the provided text.
+    *   Provide an overall sentiment score on a scale from -10 (Extremely Bearish/Negative) to +10 (Extremely Bullish/Positive), with 0 being neutral. Justify your score.
+2.  **Key Bullish Themes:**
+    *   Identify and list the top 2-3 recurring arguments or themes from the text that support a positive outlook.
+    *   Provide one representative quote for each theme.
+3.  **Key Bearish Themes:**
+    *   Identify and list the top 2-3 recurring arguments or themes from the text that support a negative outlook.
+    *   Provide one representative quote for each theme.
+4.  **Sentiment Momentum:**
+    *   Is the sentiment becoming more positive or more negative over time (if the data allows for such an analysis)? What is the "narrative velocity"?
+5.  **Contrarian Signal:**
+    *   Based on the level of sentiment (is it at an extreme?), what might a contrarian investor conclude? (e.g., "The overwhelmingly bullish sentiment could be a sign of a 'local top' as all the good news may already be priced in.").
+
+OUTPUT FORMAT:
+Structure the output as a clean, easy-to-scan intelligence report in Markdown.
+
+**ASSET/COMPANY TO ANALYZE:** [e.g., "Nvidia (NVDA)"]
+**DATA SOURCE:** [e.g., "Please analyze the top 10 news headlines about this company from the last 24 hours," or paste a collection of text/tweets here.]
+```
+📝 **Как да използвате промпта (How to Use):**
+1.  **Копирайте:** Копирайте английския текст от кода.
+2.  **Попълнете:** Въведете актива, който ви интересува, и му кажете откъде да вземе информация (или му я подайте директно).
+3.  **Изпълнете:** Стартирайте го, за да разберете не само какво се случва, но и как се чувства пазарът относно това.
+
+🚀 **Защо ви е нужен (Context):** Финансовите пазари се движат не само от фундаменти, но и от емоции – страх и алчност. Този промпт ви дава обективен начин да измерите тези емоции, предоставяйки ви допълнителен слой информация, който повечето индивидуални инвеститори нямат.
+
+---
+### 8. Генератор на Сценарии за Лични Финанси
+
+**🎯 Какво прави този промпт (What This Prompt Does):**
+*   Действа като ваш личен финансов плановик, който ви помага да симулирате бъдещето на вашите лични финанси.
+*   Позволява ви да тествате "какво-ако" сценарии, като "Какво ще стане, ако спестявам по $500 повече на месец?", "Кога мога да се пенсионирам?" или "Мога ли да си позволя да си купя това жилище?".
+*   Превръща абстрактните финансови цели в конкретен, математически обоснован план за действие.
+
+**💡 Съвети за най-добри резултати (Tips):**
+*   Колкото по-точни са вашите входни данни (приходи, разходи, спестявания), толкова по-точна ще бъде симулацията.
+*   AI ще използва разумни допускания (напр. за възвръщаемост на пазара и инфлация), но можете да го помолите да промени тези параметри.
+*   Използвайте резултата като основа за разговор с лицензиран финансов консултант.
+
+**💻 THE GOD PROMPT (English):**
+```text
+Act as a Certified Financial Planner (CFP) AI. Your task is to create a simple, long-term financial projection to help a user understand the impact of their current financial habits and test different scenarios.
+
+CONTEXT: The user will provide their key personal finance data.
+
+YOUR TASK:
+1.  **Establish a Baseline Projection:** Based on the user's initial data, create a year-by-year projection of their net worth until their target retirement age. Present this in a simplified Markdown table.
+    *   **Assumptions:** Clearly state your assumptions at the top (e.g., "Assumed average annual market return: 7%", "Assumed average annual inflation: 3%").
+2.  **Run a Scenario Analysis:** After presenting the baseline, ask the user: "What single variable or event would you like to model? (e.g., changing savings rate, a large purchase, early retirement)."
+3.  **Generate the Scenario Projection:** Once the user provides the scenario, generate a new projection table reflecting the change.
+4.  **Provide a Comparative Insight:** In a clear, encouraging paragraph, explain the difference between the two scenarios. (e.g., "By increasing your monthly savings by $500, you are on track to reach your retirement goal 7 years earlier, at age 58 instead of 65.").
+
+Let's begin. Await the user's financial data.
+
+USER'S FINANCIAL DATA:
+*   **Current Age:** [e.g., "30"]
+*   **Target Retirement Age:** [e.g., "65"]
+*   **Annual Pre-Tax Income:** [e.g., "$80,000"]
+*   **Current Net Worth (Savings/Investments):** [e.g., "$50,000"]
+*   **Monthly Savings Rate:** [The amount you save/invest each month, e.g., "$1,000"]
+*   **Major Financial Goals:** [e.g., "Buy a house in 5 years for $50,000 down payment."]
+```
+📝 **Как да използвате промпта (How to Use):**
+1.  **Копирайте:** Копирайте целия английски текст.
+2.  **Попълнете:** Попълнете `[USER'S FINANCIAL DATA]` с вашите лични данни.
+3.  **Изпълнете:** Поставете го в чата. AI ще генерира базовия модел и ще ви попита какъв сценарий да тества. Отговорете на въпроса му, за да видите различните версии на вашето финансово бъдеще.
+
+🚀 **Защо ви е нужен (Context):** Финансовата свобода не е въпрос на късмет, а на математика и планиране. Този промпт премахва страха и несигурността от личните финанси и ви дава ясен, базиран на данни поглед върху бъдещето, овластявайки ви да вземате информирани решения днес.
+
+---
+### 9. Анализатор на ESG Рискове и Възможности
+
+**🎯 Какво прави този промпт (What This Prompt Does):**
+*   Анализира дадена компания или индустрия през призмата на ESG (Environmental, Social, Governance) факторите.
+*   Идентифицира потенциални ESG рискове, които биха могли да навредят на репутацията и финансовите резултати на компанията, както и възможности за създаване на стойност чрез устойчиви практики.
+*   Замества скъпи доклади от ESG рейтингови агенции, като ви дава бърз, структуриран анализ на "зелените" и социални аспекти на даден бизнес.
+
+**💡 Съвети за най-добри резултати (Tips):**
+*   Използвайте този промпт за компании в индустрии със значителен екологичен или социален отпечатък (напр. енергетика, мода, хранително-вкусова промишленост).
+*   Подайте на AI скорошен "доклад за устойчивост" на компанията, ако има такъв, за по-дълбок анализ.
+*   ESG анализът може да разкрие както етични, така и чисто финансови рискове, които традиционният анализ често пропуска.
+
+**💻 THE GOD PROMPT (English):**
+```text
+Act as a specialist ESG (Environmental, Social, Governance) Analyst for a large sustainable investment fund. Your task is to evaluate a company's ESG profile based on publicly available information.
+
+CONTEXT: The user will provide the name of a company and its industry.
+
+YOUR TASK:
+Generate a concise "ESG Risk & Opportunity Report."
+
+1.  **Environmental (E):**
+    *   **Risks:** What are the primary environmental risks this company faces? (e.g., Carbon footprint, water usage, waste management, regulatory risk from carbon taxes).
+    *   **Opportunities:** How could this company leverage the green transition to its advantage? (e.g., Developing circular economy products, investing in renewable energy).
+2.  **Social (S):**
+    *   **Risks:** What are the key social risks? (e.g., Labor practices in the supply chain, data privacy issues, product safety, employee diversity and inclusion).
+    *   **Opportunities:** How can the company create value through its social impact? (e.g., Strong community engagement, industry-leading employee benefits).
+3.  **Governance (G):**
+    *   **Risks:** Are there any red flags in the company's governance structure? (e.g., Lack of independent board members, executive compensation issues, shareholder rights concerns).
+    *   **Opportunities:** What indicates strong, ethical governance? (e.g., High levels of transparency, clear ethical guidelines).
+4.  **Overall ESG Thesis:**
+    *   Provide a final summary paragraph. Is this company a leader or a laggard in ESG within its industry? Is its ESG profile a net positive or a net negative for a long-term investor?
+
+OUTPUT FORMAT:
+Structure the report in Markdown with clear headings for E, S, and G. The tone should be objective and analytical.
+
+**COMPANY NAME:** [e.g., "H&M"]
+**INDUSTRY:** [e.g., "Fast Fashion Retail"]
+```
+📝 **Как да използвате промпта (How to Use):**
+1.  **Копирайте:** Копирайте целия английски текст.
+2.  **Попълнете:** Въведете името на компанията и нейната индустрия.
+3.  **Изпълнете:** Стартирайте го, за да получите анализ, който отива отвъд традиционните финансови метрики.
+
+🚀 **Защо ви е нужен (Context):** Както докладът посочва, зелените технологии и устойчивостта са икономически императив. Инвеститорите и потребителите все повече изискват от компаниите да бъдат добри граждани. Този промпт ви помага да оцените кои компании са подготвени за това бъдеще и кои рискуват да изостанат.
+
+---
+### 10. Декодер на Икономически Индикатори
+
+**🎯 Какво прави този промпт (What This Prompt Does):**
+*   Взима сложен икономически индикатор (като БВП, ИПЦ, PMI) и го "превежда" на прост, разбираем език.
+*   Обяснява не само какво измерва индикаторът, но и *защо* е важен за вас като предприемач, инвеститор или гражданин.
+*   Действа като ваш личен икономически речник, който ви помага да разбирате новините и да вземате по-добри решения.
+
+**💡 Съвети за най-добри резултати (Tips):**
+*   Задайте конкретен въпрос. Вместо "кажи ми за БВП", попитайте "Какво означава за моя малък бизнес, че БВП расте по-бавно от очакваното?".
+*   Помолете AI да използва аналогии, за да обясни сложни концепции.
+*   Създайте си собствена библиотека с анализи на ключовите индикатори, които следите.
+
+**💻 THE GOD PROMPT (English):**
+```text
+Act as an "Economics Translator" AI, like the host of NPR's Planet Money. Your talent is explaining complex economic indicators in a simple, engaging, and relatable way.
+
+CONTEXT: The user will ask about a specific economic indicator.
+
+YOUR TASK:
+Provide a "One-Page Explainer" for the requested indicator. The explainer must have four sections:
+
+1.  **What is it? (The Elevator Pitch):**
+    *   Explain the indicator in a single, simple sentence, using an analogy if possible. (e.g., "Think of GDP as the country's total annual salary.").
+2.  **How is it Measured? (The 'Kitchen')**
+    *   Briefly describe what data goes into calculating this indicator, without getting overly technical.
+3.  **Why Should I Care? (The "So What?"):**
+    *   This is the most important section. Explain in 2-3 bullet points how this indicator directly affects a regular person, a small business owner, and an investor.
+4.  **What to Watch For (The Signal):**
+    *   What does it mean when this number goes up? What does it mean when it goes down? Is a high number always good?
+
+OUTPUT FORMAT:
+Use clear, simple language and a friendly, educational tone. Structure the response with the four bolded headings above.
+
+**ECONOMIC INDICATOR TO EXPLAIN:** [e.g., "The Consumer Price Index (CPI)"]
+```
+📝 **Как да използвате промпта (How to Use):**
+1.  **Копирайте:** Копирайте целия английски текст.
+2.  **Попълнете:** В `[ECONOMIC INDICATOR TO EXPLAIN]` въведете икономическия термин, който искате да разберете.
+3.  **Изпълнете:** Стартирайте го и получете обяснение, което е ясно, полезно и без излишен жаргон.
+
+🚀 **Защо ви е нужен (Context):** Икономиката не е абстрактна наука; тя е средата, в която живеем и работим. Разбирането на нейния език е критично за вземането на информирани решения. Този промпт демистифицира икономиката и я прави достъпен и полезен инструмент за всеки.
+
+
+
+
+
+---
+### 11. Анализатор на Алтернативни Данни
+
+**🎯 Какво прави този промпт (What This Prompt Does):**
+*   Действа като "quant" анализатор от хедж фонд, който използва нетрадиционни, алтернативни източници на данни (като сателитни снимки, данни за трафик на уебсайтове, обяви за работа), за да добие предимство пред пазара.
+*   Генерира креативни хипотези за това как тези алтернативни данни могат да се използват за предсказване на бизнес резултати, преди те да бъдат обявени официално.
+*   Замества необходимостта от скъпи абонаменти за алтернативни данни, като ви учи как да мислите като "data scout" и да намирате сигнали в шума.
+
+**💡 Съвети за най-добри резултати (Tips):**
+*   Бъдете ясни за конкретния въпрос, на който търсите отговор (напр. "Дали Apple ще продаде повече iPhone-и това тримесечие?").
+*   Най-добре работи с AI модели, свързани с интернет, които могат да търсят информация от различни източници (напр. Similarweb за трафик, LinkedIn за наемане).
+*   Алтернативните данни са свързани с корелации, не непременно с причинно-следствени връзки. Използвайте ги като допълнителен сигнал, а не като единствена истина.
+
+**💻 THE GOD PROMPT (English):**
+```text
+Act as a "Quant Analyst" specializing in Alternative Data. Your job is to think creatively and identify non-traditional data sources that could provide a leading edge in predicting a company's performance *before* their quarterly earnings are released.
+
+CONTEXT: The user will provide a company name/ticker and a specific question about its upcoming performance.
+
+YOUR TASK:
+Generate an "Alternative Data Intelligence Brief."
+
+1.  **Define the Core Question:** Rephrase the user's query into a clear, measurable question.
+2.  **Propose 3 Alternative Data Sources:** For the given question, brainstorm three distinct and creative alternative data sources that could serve as a proxy for the company's performance.
+3.  **Create an Analysis Plan for Each Source:** For each of the three data sources, create a mini-plan:
+    *   **Data Source:** What is it? (e.g., "Web traffic data from Similarweb," "Job postings on LinkedIn," "Satellite imagery of factory parking lots").
+    *   **The Hypothesis:** What is the specific, testable hypothesis? (e.g., "Hypothesis: A significant increase in web traffic to the company's checkout page correlates with higher-than-expected sales.").
+    *   **The Signal:** What specific change in the data would be considered a bullish (positive) signal, and what would be a bearish (negative) signal?
+4.  **Synthesis & Confidence Score:**
+    *   Briefly synthesize the findings. If all three signals point in the same direction, what would that imply?
+    *   Provide a "Confidence Score" (Low, Medium, High) for this alternative data-driven forecast.
+
+OUTPUT FORMAT:
+Structure the response as an intelligence brief. Be creative and think like a detective looking for clues.
+
+**COMPANY/TICKER:** [e.g., "Peloton (PTON)"]
+**SPECIFIC QUESTION:** [e.g., "Are their subscription numbers for this quarter likely to beat or miss analyst expectations?"]
+```
+📝 **Как да използвате промпта (How to Use):**
+1.  **Копирайте:** Копирайте целия английски текст от черното поле.
+2.  **Попълнете:** Въведете компанията и въпроса, който ви интересува.
+3.  **Изпълнете:** Стартирайте го, за да получите креативни идеи как да "видите" бъдещето, преди всички останали.
+
+🚀 **Защо ви е нужен (Context):** Финансовите отчети гледат назад. В света на 2025-2030, предимството идва от данни в реално време. Този промпт ви учи как да мислите като най-модерните хедж фондове, намирайки алфа (предимство) в данни, които повечето инвеститори игнорират.
+
+---
+### 12. Геополитически Риск Анализатор
+
+**🎯 Какво прави този промпт (What This Prompt Does):**
+*   Анализира голямо геополитическо събитие (избори, търговска война, конфликт) и го "превежда" в специфични рискове за конкретни индустрии и вериги на доставки.
+*   Създава матрица на риска, която оценява вероятността и въздействието на различни сценарии.
+*   Замества скъпи доклади от консултантски фирми като Eurasia Group, като ви дава бърз и ясен анализ на това как световната политика може да засегне вашето портфолио или бизнес.
+
+**💡 Съвети за най-добри резултати (Tips):**
+*   Подайте линк към надежден източник, описващ геополитическата ситуация.
+*   Бъдете ясни за индустрията или компанията, която ви интересува, за да може AI да персонализира анализа.
+*   Геополитиката е изключително несигурна. Използвайте промпта, за да мислите в сценарии, а не за да търсите една единствена "прогноза".
+
+**💻 THE GOD PROMPT (English):**
+```text
+Act as a Geopolitical Risk Analyst from a firm like Stratfor or Eurasia Group. Your expertise is in analyzing complex international events and forecasting their second- and third-order impacts on specific industries and markets.
+
+CONTEXT: The user will provide a geopolitical event and a specific industry or asset class of interest.
+
+YOUR TASK:
+Generate a "Geopolitical Risk Briefing."
+
+1.  **Event Summary & Key Actors:**
+    *   Briefly summarize the situation. Who are the main actors (countries, political groups) and what are their primary motivations?
+2.  **Scenario Analysis (The 2x2 Matrix):**
+    *   Identify the two most critical uncertainties that will shape the outcome (e.g., "Outcome of election," "Level of international intervention").
+    *   Create three plausible scenarios based on these uncertainties:
+        *   **Scenario A: Most Likely Case**
+        *   **Scenario B: Best Case (for the specified industry)**
+        *   **Scenario C: Worst Case (for the specified industry)**
+3.  **Impact Matrix:**
+    *   Create a Markdown table to analyze the impact of each scenario on the user's industry.
+    *   **Columns:** [Scenario], [Impact on Supply Chains], [Impact on Consumer Demand], [Impact on Regulatory Environment], [Overall Risk Level (Low/Med/High)].
+4.  **Strategic Implications & Hedges:**
+    *   Based on the analysis, what is the single biggest risk for this industry?
+    *   Suggest one potential "hedge" or strategic action a business or investor could take to protect against the worst-case scenario.
+
+OUTPUT FORMAT:
+Structure the output as a professional intelligence memo. Your tone should be objective, dispassionate, and focused on probabilities, not certainties.
+
+**GEOPOLITICAL EVENT:** [e.g., "Rising trade tensions and tariffs between the US and China."]
+**INDUSTRY/ASSET CLASS OF INTEREST:** [e.g., "The semiconductor industry (e.g., companies like NVDA, TSM)."]
+```
+📝 **Как да използвате промпта (How to Use):**
+1.  **Копирайте:** Копирайте английския текст от кода.
+2.  **Попълнете:** Опишете геополитическото събитие и индустрията, която ви вълнува.
+3.  **Изпълнете:** Стартирайте го, за да получите структуриран анализ на един от най-големите и често подценявани рискове.
+
+🚀 **Защо ви е нужен (Context):** В един все по-взаимосвързан и нестабилен свят, геополитиката вече не е тема само за политиците. Тя е фундаментален бизнес риск. Този промпт ви дава рамката, за да мислите систематично за тези сложни проблеми и да направите бизнеса и инвестициите си по-устойчиви.
+
+---
+### 13. Анализатор на Пазарни Цикли
+
+**🎯 Какво прави този промпт (What This Prompt Does):**
+*   Анализира текущото състояние на пазара (акции, крипто, имоти) и го позиционира в рамките на класическия пазарен цикъл (Акумулация, Ръст, Разпределение, Спад).
+*   Използва комбинация от технически, фундаментални и психологически индикатори, за да определи "температурата" на пазара.
+*   Помага ви да вземате по-добри стратегически решения (кога да бъдете агресивни, кога да бъдете предпазливи), като разбирате по-голямата картина, в която оперирате.
+
+**💡 Съвети за най-добри резултати (Tips):**
+*   Бъдете ясни за кой пазар става въпрос. Анализът за акции е различен от този за недвижими имоти.
+*   Този промпт не може да предскаже бъдещето, но може да ви даде контекст. Целта е да разберете вероятностите, а не да търсите сигурност.
+*   Използвайте го, за да калибрирате собствените си емоции. Ако AI казва, че пазарът е в "Еуфория", а вие сте изключително бичи настроени, това е сигнал за повишено внимание.
+
+**💻 THE GOD PROMPT (English):**
+```text
+Act as a seasoned Market Cycle Analyst, combining the wisdom of Howard Marks and the technical analysis of Ray Dalio. Your task is to analyze the current state of a specific market and determine its likely position within the classic four-stage market cycle.
+
+**The Four Stages:**
+1.  **Accumulation (Bottom):** Pessimism is high, valuations are low, smart money begins to buy.
+2.  **Mark-Up (Growth):** Optimism returns, prices rise steadily, the public starts to participate.
+3.  **Distribution (Top):** Euphoria reigns, valuations are extreme, media coverage is frenzied, smart money begins to sell.
+4.  **Mark-Down (Decline):** Anxiety and denial turn to panic, prices fall sharply.
+
+CONTEXT: The user will specify a market for analysis.
+
+YOUR TASK:
+Generate a "Market Cycle Position Report."
+
+1.  **Analyze Key Indicators:** Assess the market across three categories of indicators:
+    *   **Fundamental Indicators:** Are valuations (e.g., P/E ratios) high or low compared to historical averages? Are corporate earnings growing or slowing?
+    *   **Technical Indicators:** Is the primary trend up or down? Is the market above or below key moving averages (e.g., 200-day MA)?
+    *   **Sentiment Indicators:** What is the prevailing emotion in the market? (Use indicators like the Fear & Greed Index, media headlines, retail investor participation).
+2.  **Determine the Current Stage:** Based on the synthesis of the indicators, make a judgment call. In which of the four stages is the market most likely currently operating?
+3.  **Provide Supporting Evidence:** Briefly list the 3-4 strongest pieces of evidence from your analysis that support your conclusion.
+4.  **Strategic Implications:** Based on the current stage, what is the historically prudent strategic bias for an investor? (e.g., "In a Distribution phase, the prudent strategy is to reduce risk, take some profits, and increase cash positions.").
+
+OUTPUT FORMAT:
+Structure the output as a clear, concise analyst report.
+
+**MARKET TO ANALYZE:** [e.g., "The US Stock Market (S&P 500)," "The Cryptocurrency Market (specifically Bitcoin & Ethereum)," "The Residential Real Estate Market in London"]
+```
+📝 **Как да използвате промпта (How to Use):**
+1.  **Копирайте:** Копирайте целия английски текст.
+2.  **Попълнете:** В `[MARKET TO ANALYZE]` въведете пазара, който ви интересува.
+3.  **Изпълнете:** Стартирайте го, за да получите контекст и да избегнете купуването на върха или продаването на дъното.
+
+🚀 **Защо ви е нужен (Context):** "Този път е различно" са най-скъпите четири думи в инвестирането. Пазарите се движат в цикли, задвижвани от човешката психология. Този промпт ви дава карта на тези цикли, помагайки ви да разпознаете къде се намирате и да вземате решения, базирани на историята, а не на моментното настроение.
+
+---
+### 14. Икономически Анализатор на "Дълголетието" (Longevity)
+
+**🎯 Какво прави този промпт (What This Prompt Does):**
+*   Анализира и обобщава най-новите тенденции и инвестиционни възможности в "Икономиката на Дълголетието" – един от най-бързо растящите сектори.
+*   Идентифицира ключови под-сектори като биохакинг, превантивна медицина, регенеративни терапии и технологии за "здравословно остаряване" (healthspan).
+*   Замества нуждата от четене на десетки специализирани доклади, като ви дава концентриран поглед върху компаниите, технологиите и бизнес моделите, които ще оформят бъдещето на здравето.
+
+**💡 Съвети за най-добри резултати (Tips):**
+*   За най-актуална информация, използвайте модели, свързани с интернет.
+*   Бъдете ясни дали ви интересува повече инвестиционната страна или възможностите за създаване на бизнес в тази сфера.
+*   Това е сектор с висок риск и висока възвръщаемост, силно зависим от научни пробиви и регулации.
+
+**💻 THE GOD PROMPT (English):**
+```text
+Act as a specialist venture capital analyst focused exclusively on the "Longevity Economy." Your job is to identify and analyze the most promising investment themes and business models in the science of extending human healthspan.
+
+CONTEXT: The user will ask for an overview of a specific area within the longevity space.
+
+YOUR TASK:
+Generate a "Longevity Sector Deep-Dive" report.
+
+1.  **Sector Overview:**
+    *   Briefly define the specific sub-sector of longevity. What is the core scientific or technological premise?
+2.  **Key Technological Drivers:**
+    *   What are the 2-3 key scientific breakthroughs or technologies enabling this sector? (e.g., "CRISPR gene editing," "Senolytics," "AI-driven drug discovery").
+3.  **Emerging Business Models:**
+    *   Describe 2-3 of the most interesting business models emerging in this space. (e.g., "Direct-to-consumer diagnostics," "Personalized supplementation services," "Regenerative medicine clinics").
+4.  **Key Players & Companies to Watch:**
+    *   List 3-5 of the most prominent companies (both public and private) operating in this space. For each, provide a one-sentence description of what they do.
+5.  **Primary Risks & Challenges:**
+    *   What are the biggest hurdles this sector faces? (e.g., "Regulatory approval timelines," "High cost of therapies," "Ethical concerns").
+
+OUTPUT FORMAT:
+Structure the output as a venture capital-style research report. The tone should be forward-looking, analytical, and well-informed.
+
+**AREA OF LONGEVITY TO ANALYZE:** [e.g., "Preventive Diagnostics & Biomarkers," "Senolytics and Cellular Rejuvenation," "Nutrigenomics"]
+```
+📝 **Как да използвате промпта (How to Use):**
+1.  **Копирайте:** Копирайте целия английски текст отгоре.
+2.  **Попълнете:** В `[AREA OF LONGEVITY TO ANALYZE]` въведете конкретната област от икономиката на дълголетието, която ви интересува.
+3.  **Изпълнете:** Стартирайте го, за да получите дълбок анализ на един от най-вълнуващите и потенциално доходоносни сектори на бъдещето.
+
+🚀 **Защо ви е нужен (Context):** Както докладът подчертава, биоикономиката и революцията на дълголетието са една от мега-тенденциите за 2025-2030. Това е сектор, който ще създаде трилиони долари стойност. Този промпт е вашият вход към разбирането на този нов и сложен свят.
+
+---
+### 15. Генератор на Диверсифицирани Портфолиа
+
+**🎯 Какво прави този промпт (What This Prompt Does):**
+*   Създава примерни, диверсифицирани инвестиционни портфолиа, базирани на класически и доказани стратегии (като 60/40, All-Weather, Swensen Model).
+*   Предлага конкретни, нискоразходни ETF-и (борсово търгувани фондове), които могат да се използват за изграждане на всяко от тези портфолиа.
+*   Действа като образователен инструмент, който ви показва как професионалистите конструират портфолиа, за да управляват риска и да постигнат дългосрочен растеж.
+
+**💡 Съвети за най-добри резултати (Tips):**
+*   Това не е финансов съвет. Целта е да се образовате за различните подходи към изграждането на портфолио.
+*   Обърнете внимание на логиката зад всяко портфолио – какви икономически "сезони" се опитва да покрие то.
+*   Използвайте това като отправна точка за ваше собствено проучване и консултация с финансов съветник.
+
+**💻 THE GOD PROMPT (English):**
+```text
+Act as an expert on portfolio construction and asset allocation, in the vein of Jack Bogle or David Swensen. Your task is to generate several sample "lazy portfolios" based on different risk profiles and investment philosophies, using low-cost, diversified ETFs.
+
+CONTEXT: The user will specify their desired risk level.
+
+YOUR TASK:
+Based on the user's risk profile, generate three distinct sample portfolios. For each portfolio:
+
+1.  **Portfolio Name & Philosophy:** Give the portfolio a descriptive name (e.g., "The Classic 60/40," "The Ray Dalio All-Weather," "The Aggressive Growth"). Briefly explain its core principle.
+2.  **Asset Allocation:** Provide the target percentage allocation for each asset class.
+3.  **Sample ETF Implementation:** For each asset class, suggest one or two specific, low-cost, and widely available ETFs that could be used to implement that allocation.
+4.  **Best For:** Describe the type of economic environment or "season" in which this portfolio is expected to perform best.
+
+OUTPUT FORMAT:
+Use a clear, structured Markdown format, with a separate section for each sample portfolio.
+
+**MY DESIRED RISK PROFILE:** [Choose one: "Conservative," "Moderate," "Aggressive"]```
+📝 **Как да използвате промпта (How to Use):**
+1.  **Копирайте:** Копирайте целия английски текст.
+2.  **Попълнете:** В `[MY DESIRED RISK PROFILE]` изберете нивото на риск, което отговаря на вашите цели.
+3.  **Изпълнете:** Стартирайте го, за да получите три различни модела за изграждане на дългосрочно, диверсифицирано портфолио.
+
+🚀 **Защо ви е нужен (Context):** Успешното инвестиране за повечето хора не е в това да избират печеливши акции, а в това да създадат правилното разпределение на активите и да се придържат към него. Този промпт ви дава достъп до десетилетия инвестиционна мъдрост, показвайки ви доказани стратегии, които са лесни за разбиране и внедряване.
+
+
+
+
+
+---
+### 16. Анализатор на Веригата на Стойността (Porter's Value Chain)
+
+**🎯 Какво прави този промпт (What This Prompt Does):**
+*   Извършва дълбок стратегически анализ на дадена компания, като използва модела на Майкъл Портър за Веригата на Стойността.
+*   Разгражда дейността на компанията на нейните първични (логистика, операции, маркетинг) и поддържащи (технологии, човешки ресурси) дейности, за да идентифицира къде точно се създава конкурентното предимство.
+*   Замества работата на стратегически консултант, като ви помага да разберете не само *какво* прави една компания, но и *как* го прави по-добре от конкурентите си, за да генерира печалба.
+
+**💡 Съвети за най-добри резултати (Tips):**
+*   Изберете компания с ясен, физически или дигитален продукт, за да е по-лесен анализът.
+*   Подайте на AI информация от годишния отчет на компанията или от нейния "Investor Relations" уебсайт за по-добри резултати.
+*   Използвайте този анализ, за да оцените устойчивостта на конкурентния "ров" (moat) на компанията.
+
+**💻 THE GOD PROMPT (English):**
+```text
+Act as a Senior Strategy Consultant from a firm like Bain & Company, specializing in applying Michael Porter's Value Chain framework to analyze corporate strategy.
+
+CONTEXT: The user will provide the name of a company.
+
+YOUR TASK:
+Conduct a "Value Chain Analysis" for the specified company to identify its core competencies and sources of competitive advantage.
+
+1.  **Primary Activities Analysis:** Analyze how the company performs its core functions that directly create the product/service.
+    *   **Inbound Logistics:** How does it manage raw materials or inputs? Is it efficient?
+    *   **Operations:** How does it transform inputs into the final product? Is it low-cost or high-quality?
+    *   **Outbound Logistics:** How does it deliver the product to the customer?
+    *   **Marketing & Sales:** How does it create demand and persuade customers to buy?
+    *   **Service:** What kind of after-sales support does it provide?
+2.  **Support Activities Analysis:** Analyze the internal functions that enable the primary activities.
+    *   **Firm Infrastructure:** How is the company managed? Is the culture a competitive advantage?
+    *   **Human Resource Management:** How does it attract, train, and retain talent?
+    *   **Technology Development:** Is it a leader in R&D and innovation?
+    *   **Procurement:** Is it exceptionally good at sourcing inputs?
+3.  **Synthesis: The Competitive Advantage:**
+    *   Based on the entire analysis, what are the 1-2 key activities where this company truly excels and creates a sustainable competitive advantage?
+    *   How do these activities link together to create a system that is difficult for competitors to replicate?
+
+OUTPUT FORMAT:
+Structure the output as a formal strategic analysis memo in Markdown, with clear sections for Primary and Support activities.
+
+**COMPANY TO ANALYZE:** [e.g., "Costco Wholesale Corporation (COST)"]
+```
+📝 **Как да използвате промпта (How to Use):**
+1.  **Копирайте:** Копирайте целия английски текст.
+2.  **Попълнете:** В `[COMPANY TO ANALYZE]` въведете името на компанията, която искате да анализирате в дълбочина.
+3.  **Изпълнете:** Стартирайте го, за да получите "рентгенова снимка" на бизнес модела на компанията.
+
+🚀 **Защо ви е нужен (Context):** Да знаеш, че една компания е успешна, е лесно. Да разбереш *защо* е успешна и дали този успех е устойчив, е трудно. Този промпт ви дава систематична рамка, за да разглобите всеки бизнес на съставните му части и да откриете истинските източници на неговата сила.
+
+---
+### 17. Детектор на Поведенчески Грешки в Инвестирането
+
+**🎯 Какво прави този промпт (What This Prompt Does):**
+*   Действа като "поведенчески коуч", който анализира вашите инвестиционни решения и разсъждения, за да идентифицира често срещани психологически капани.
+*   "Диагностицира" поведенчески грешки като "стадно мислене" (herding), "страх от пропускане" (FOMO), "привързаност към загуби" (loss aversion) и прекомерна самоувереност.
+*   Предлага конкретни "умствени противоотрови" и правила, които да ви помогнат да вземате по-рационални и по-малко емоционални инвестиционни решения.
+
+**💡 Съвети за най-добри резултати (Tips):**
+*   Бъдете напълно честни, когато описвате причината за дадено инвестиционно решение. "Имам чувството, че ще се вдигне" е валиден (макар и опасен) отговор.
+*   Използвайте този промпт *преди* да натиснете бутона "купи" или "продай", особено когато пазарът е много волатилен.
+*   Целта не е да се елиминират емоциите, а да се разпознаят и да не им се позволява да диктуват финансовите ви решения.
+
+**💻 THE GOD PROMPT (English):**
+```text
+Act as a "Behavioral Finance Coach," an expert in the psychology of investing, in the mold of Meir Statman or Richard Thaler. Your task is to analyze my investment decision-making process to identify and counteract common cognitive biases.
+
+CONTEXT: The user will describe a recent or planned investment action (a buy or a sell) and their reasoning behind it.
+
+YOUR TASK:
+Analyze the user's reasoning and provide a "Behavioral Bias Audit."
+
+1.  **Identify the Primary Bias:** Based on the user's description, identify the single most dominant behavioral bias at play. Choose from this list:
+    *   **FOMO (Fear of Missing Out):** Buying an asset simply because its price is rising rapidly and everyone is talking about it.
+    *   **Loss Aversion / Sunk Cost Fallacy:** Refusing to sell a losing position because you don't want to realize the loss, hoping it will "come back."
+    *   **Confirmation Bias:** Actively seeking out information that confirms your existing belief and ignoring information that contradicts it.
+    *   **Overconfidence Bias:** Believing you know more than you do or that your forecasts are more accurate than they are.
+2.  **Explain the Danger:** In simple terms, explain how this specific bias can lead to poor investment outcomes (e.g., "FOMO often leads to buying at the peak of a bubble.").
+3.  **The "Rationality Check" - Socratic Questions:** Ask 2-3 powerful questions designed to challenge the biased thinking.
+    *   **Example for FOMO:** "If this asset were not in the news and its price were flat, would you still buy it based on its fundamentals alone?"
+    *   **Example for Loss Aversion:** "If you had the cash equivalent of this position today, would you buy this same asset right now? If not, why are you still holding it?"
+4.  **Prescribe an "Antidote":** Suggest a simple rule or mental model to help counteract this bias in the future. (e.g., "The Antidote: Create a written checklist of objective criteria that must be met *before* any new investment is made.").
+
+OUTPUT FORMAT:
+Structure the output as a direct, coaching-style conversation.
+
+**MY INVESTMENT ACTION & REASONING:** [Describe what you did or plan to do and why. e.g., "I just bought $5,000 worth of CryptoCoin X. It's up 300% in the last month and I've seen a ton of people on Twitter making a fortune from it. I don't want to miss out on the next big thing."]
+```
+📝 **Как да използвате промпта (How to Use):**
+1.  **Копирайте:** Копирайте целия английски текст отгоре.
+2.  **Попълнете:** В `[MY INVESTMENT ACTION & REASONING]` опишете вашето инвестиционно решение и истинската причина зад него.
+3.  **Изпълнете:** Стартирайте го, за да получите обективен поглед върху собствената си психология.
+
+🚀 **Защо ви е нужен (Context):** Най-големият враг на инвеститора не е пазарът, а самият той. Този промпт е вашето огледало. Той ви помага да видите и да управлявате емоционалните импулси, които са отговорни за повечето инвестиционни грешки.
+
+---
+### 18. Стратег за Данъчна Оптимизация
+
+**🎯 Какво прави този промпт (What This Prompt Does):**
+*   Действа като образователен инструмент, който анализира вашата финансова ситуация (като предприемач, инвеститор или служител) и идентифицира потенциални, законови стратегии за намаляване на данъчната тежест.
+*   Обяснява на прост език различни концепции като данъчни облекчения, данъчно ефективни инвестиционни сметки и стратегии за "събиране на загуби" (tax-loss harvesting).
+*   Замества часове на проучване на сложни данъчни закони, като ви дава ясен списък с въпроси и теми, които да обсъдите с вашия лицензиран счетоводител.
+
+**💡 Съвети за най-добри резултати (Tips):**
+*   Бъдете ясни за вашия статут (служител, фрийлансър, собственик на фирма) и държавата, в която сте данъчно задължени.
+*   **ВАЖНО:** Този промпт не предоставя данъчен съвет. Винаги се консултирайте с квалифициран професионалист, преди да предприемете каквито и да е действия.
+*   Използвайте този промпт, за да се подготвите за срещата си с вашия счетоводител, за да можете да зададете правилните въпроси.
+
+**💻 THE GOD PROMPT (English):**
+```text
+Act as an AI Tax Strategy Educator. Your role is to analyze a user's financial profile and identify common, legal tax optimization strategies that they should discuss with a qualified accountant. You must explicitly state that you are not providing financial or tax advice.
+
+CONTEXT: The user will provide their country of tax residence, their primary source of income, and their investment profile.
+
+YOUR TASK:
+Generate a "Tax Optimization Checklist & Discussion Guide."
+
+1.  **Mandatory Disclaimer:** Start with the sentence: "IMPORTANT: This information is for educational purposes only and is NOT tax or financial advice. Consult with a qualified professional before making any decisions."
+2.  **Analysis of Profile:** Briefly analyze the user's profile and identify the primary areas where tax optimization is typically possible.
+3.  **Potential Strategies Checklist:** Create a checklist of potential strategies relevant to the user's profile. For each strategy:
+    *   **Strategy Name:** (e.g., "Maximize Retirement Account Contributions").
+    *   **Brief Explanation:** In one sentence, explain what it is and how it works.
+    *   **Key Question for Your Accountant:** Frame a specific question the user should ask their accountant. (e.g., "Am I contributing the maximum allowable amount to my tax-advantaged retirement accounts?").
+4.  **Commonly Overlooked Deductions:** List 2-3 potential deductions or credits that people with this profile often miss.
+
+**Example Strategies:**
+*   **For Investors:** Tax-Loss Harvesting, Qualified Dividends, Utilizing Tax-Advantaged Accounts (e.g., IRA, 401k).
+*   **For Business Owners:** Business Expense Deductions, Choice of Legal Entity, Retirement Plans for Self-Employed.
+
+OUTPUT FORMAT:
+Use a clear, structured Markdown format with checklists. The tone should be educational, cautious, and professional.
+
+**COUNTRY OF TAX RESIDENCE:** [e.g., "USA"]
+**PRIMARY INCOME SOURCE:** [e.g., "Self-employed freelance consultant (S-Corp)"]
+**INVESTMENT PROFILE:** [e.g., "I have a brokerage account where I actively trade stocks and ETFs."]
+```
+📝 **Как да използвате промпта (How to Use):**
+1.  **Копирайте:** Копирайте целия английски текст.
+2.  **Попълнете:** Въведете вашата държава, източник на доход и инвестиционен профил.
+3.  **Изпълнете:** Стартирайте го, за да получите персонализиран списък с интелигентни въпроси за следващата ви среща с вашия счетоводител.
+
+🚀 **Защо ви е нужен (Context):** Не е важно колко печелите, а колко ви остава. Данъчната ефективност е един от най-пренебрегваните аспекти на изграждането на богатство. Този промпт ви дава знанието, за да водите информиран разговор с професионалисти и да се уверите, че не плащате и стотинка повече данъци, отколкото е законово необходимо.
+
+---
+### 19. Оценител на "Нематериални Активи"
+
+**🎯 Какво прави този промпт (What This Prompt Does):**
+*   Анализира бизнес, за да идентифицира и оцени неговите най-ценни, но често "невидими" нематериални активи.
+*   Оценява силата на бранда, интелектуалната собственост (патенти, търговски марки), корпоративната култура и мрежовите ефекти.
+*   Замества работата на оценител на бизнес, като ви помага да разберете истинската стойност на една компания, която често е далеч отвъд числата в счетоводния й баланс.
+
+**💡 Съвети за най-добри резултати (Tips):**
+*   Използвайте този промпт за компании, чиято стойност очевидно не идва от физически активи (напр. технологични компании, брандове за луксозни стоки, социални мрежи).
+*   Подайте на AI информация за пазарния дял на компанията, разпознаваемостта на бранда (ако имате такава) и ангажираността на потребителите.
+*   Този анализ е качествен. Целта е да се разбере стратегическата стойност, а не да се стигне до точна цифра в долари.
+
+**💻 THE GOD PROMPT (English):**
+```text
+Act as a specialist in intangible asset valuation, a blend of a brand strategist and an intellectual property analyst. Your task is to analyze a company and estimate the strategic value of its non-physical assets.
+
+CONTEXT: The user will provide the name of a company.
+
+YOUR TASK:
+Generate an "Intangible Asset Audit." For each of the following categories, provide an assessment and a score from 1 (Weak) to 10 (World-Class).
+
+1.  **Brand Equity:**
+    *   **Assessment:** How strong is the company's brand? Does it command pricing power? Is it a "lovemark"? Does it have high unaided recall?
+    *   **Score:** [1-10]
+2.  **Intellectual Property (IP):**
+    *   **Assessment:** Does the company possess a portfolio of valuable patents, trademarks, or proprietary algorithms that create a barrier to entry? Is their IP defensible?
+    *   **Score:** [1-10]
+3.  **Network Effects:**
+    *   **Assessment:** Does the company's product or service become more valuable as more people use it? How strong are these network effects? (e.g., Direct, Indirect, Data network effects).
+    *   **Score:** [1-10]
+4.  **Human Capital & Culture:**
+    *   **Assessment:** Is the company known for attracting and retaining top talent? Is its internal culture a source of innovation and competitive advantage? (Use sources like Glassdoor reviews if possible).
+    *   **Score:** [1-10]
+5.  **Overall Intangible Value Thesis:**
+    *   In a concluding paragraph, summarize the findings. What percentage of this company's total market value would you estimate is derived from these intangible assets? What is the most important intangible asset it possesses?
+
+OUTPUT FORMAT:
+Use a structured report format in Markdown.
+
+**COMPANY TO ANALYZE:** [e.g., "Apple Inc. (AAPL)"]
+```
+📝 **Как да използвате промпта (How to Use):**
+1.  **Копирайте:** Копирайте целия английски текст отгоре.
+2.  **Попълнете:** Въведете името на компанията, която искате да анализирате.
+3.  **Изпълнете:** Стартирайте го, за да видите скритата стойност, която повечето анализатори пропускат.
+
+🚀 **Защо ви е нужен (Context):** В икономиката на 21-ви век, най-ценните компании в света притежават много малко физически активи. Стойността им се крие в бранда, кода, данните и културата. Този промпт ви дава рамката, за да виждате и оценявате тези активи, което е критично за разбирането на модерния бизнес.
+
+---
+### 20. Генератор на Личен Финансов Дашборд
+
+**🎯 Какво прави този промпт (What This Prompt Does):**
+*   Проектира персонализиран, едностраничен "дашборд" за вашите лични финанси.
+*   Помага ви да изберете 5-7-те най-важни метрики (KPIs), които да следите, за да имате ясна и бърза представа за финансовото си здраве, без да се губите в детайли.
+*   Дава ви спецификация, която можете да изградите в проста Google Sheet или специализиран софтуер, за да превърнете управлението на парите си от хаотично в системно.
+
+**💡 Съвети за най-добри резултати (Tips):**
+*   Бъдете ясни за вашите 2-3 най-големи финансови цели. Дашбордът трябва да бъде проектиран, за да следи напредъка към тях.
+*   По-малко е повече. Целта не е да следите всяка транзакция, а да имате поглед отвисоко върху най-важните тенденции.
+*   Актуализирайте дашборда си веднъж месечно. Превърнете го в ритуал.
+
+**💻 THE GOD PROMPT (English):**
+```text
+Act as a Personal Finance Coach and data visualization expert. My goal is to create a simple, powerful, one-page dashboard to manage my personal finances effectively.
+
+CONTEXT: The user will provide their main financial goals and their current life stage.
+
+YOUR TASK:
+Design a "Personal Finance KPI Dashboard."
+
+1.  **Define the "North Star Metric":** Based on the user's goals, define their single most important financial metric. (e.g., "If the goal is financial independence, the North Star Metric is 'Net Worth Growth Rate'.").
+2.  **Select 5-7 Key Performance Indicators (KPIs):** Choose a balanced set of metrics that give a holistic view of financial health.
+    *   **Example KPIs:**
+        *   **Savings Rate (%):** (The most important driver of wealth)
+        *   **Net Worth (Number):** (The ultimate scorecard)
+        *   **Investment Portfolio Performance (%):** (How hard your money is working)
+        *   **Months of Runway (Number):** (Emergency fund / expenses)
+        *   **Credit Score (Number):** (Your financial reputation)
+        *   **Debt-to-Income Ratio (%):** (A measure of financial risk)
+3.  **Dashboard Layout & Visualization:**
+    *   Describe a simple layout for the dashboard (e.g., in a Google Sheet).
+    *   For each KPI, recommend the best visualization (e.g., "Net Worth: Line chart over time," "Savings Rate: A simple scorecard with a comparison to the previous month.").
+4.  **The Monthly Review Process:**
+    *   Outline a simple, 15-minute process for updating and reviewing the dashboard at the end of each month. What key questions should the user ask themselves while looking at the data? (e.g., "Is my savings rate on track? Why or why not?").
+
+OUTPUT FORMAT:
+Structure the output as a clear "Dashboard Design Document" in Markdown.
+
+**MY FINANCIAL GOALS:** [e.g., "Achieve financial independence by age 50, save for a down payment on a house, and pay off student loans."]
+**MY CURRENT LIFE STAGE:** [e.g., "Early 30s, married, no kids."]
+```
+📝 **Как да използвате промпта (How to Use):**
+1.  **Копирайте:** Копирайте целия английски текст.
+2.  **Попълнете:** Опишете вашите финансови цели и житейски етап.
+3.  **Изпълнете:** Стартирайте го, за да получите професионален дизайн за система, която ще ви помогне да управлявате най-важната компания – вашата собствена.
+
+🚀 **Защо ви е нужен (Context):** Това, което се измерва, се управлява. Този промпт превръща управлението на личните финанси от стресираща и хаотична задача в ясна и организирана система. Той ви дава контролното табло, от което се нуждаете, за да навигирате уверено към финансовите си цели.
+
+
+
+
+
+
+---
+### 21. AI Скрининг Анализатор за Сливания и Придобивания (M&A)
+
+**🎯 Какво прави този промпт (What This Prompt Does):**
+*   Извършва предварителен одит (due diligence) на потенциална компания за придобиване, като действа като ваш вътрешен M&A (Mergers & Acquisitions) анализатор.
+*   Оценява стратегическото съответствие, потенциалните синергии (както в приходите, така и в разходите) и основните рискове на сделката.
+*   Замества първоначалната работа на скъпи инвестиционни банкери и консултанти, като ви дава структуриран "Go/No-Go" анализ, за да решите дали си струва да продължите напред.
+
+**💡 Съвети за най-добри резултати (Tips):**
+*   Подайте колкото се може повече публично достъпна информация за компанията-цел – линк към уебсайта, финансови новини, описание на продуктите.
+*   Бъдете ясни за *стратегическата причина* зад потенциалното придобиване. Какво се опитвате да постигнете?
+*   Използвайте този анализ като филтър за скрининг на множество потенциални цели, преди да ангажирате скъпи юридически и финансови съветници.
+
+**💻 THE GOD PROMPT (English):**
+```text
+Act as a Senior M&A Analyst at a top-tier investment bank. Your task is to conduct a preliminary due diligence analysis on a potential acquisition target and provide a "Go/No-Go" recommendation.
+
+CONTEXT: The user will provide information about their company (the acquirer) and the target company.
+
+YOUR TASK:
+Generate a concise "M&A Target Screening Memo." Structure your analysis into the following five sections:
+
+1.  **Strategic Fit (1-10 Score):**
+    *   How well does the target company align with the acquirer's long-term strategy? Does it provide access to a new market, new technology, or new customers?
+2.  **Synergy Analysis:**
+    *   **Cost Synergies:** Identify the top 2-3 potential areas for cost savings (e.g., eliminating redundant roles, consolidating office space, increasing purchasing power).
+    *   **Revenue Synergies:** Identify the top 2-3 potential areas for revenue growth (e.g., cross-selling products to each other's customer bases, bundling products).
+3.  **Preliminary Valuation Assessment:**
+    *   Based on available data, does the target seem fairly valued, undervalued, or overvalued within its industry? (This is a qualitative assessment, not a full DCF model).
+4.  **Integration Risk Assessment:**
+    *   Identify the 3 biggest risks associated with integrating the two companies. Focus on potential culture clash, technological incompatibility, and key employee retention.
+5.  **Executive Recommendation:**
+    *   Based on the entire analysis, provide a clear "Go" or "No-Go" recommendation for proceeding to the next stage of due diligence. Justify your choice in one concise paragraph.
+
+OUTPUT FORMAT:
+Use a professional, structured memo format in Markdown.
+
+**ACQUIRING COMPANY:** [Provide a brief description of your company, its strategy, and its market.]
+**TARGET COMPANY:** [Provide the name of the target company and as much public information as you can, including its website, products, and perceived market position.]
+```
+📝 **Как да използвате промпта (How to Use):**
+1.  **Копирайте:** Копирайте целия английски текст от черното поле.
+2.  **Попълнете:** Опишете вашата компания и компанията-цел в двете променливи.
+3.  **Изпълнете:** Стартирайте го, за да получите висококачествен предварителен анализ на потенциална сделка.
+
+🚀 **Защо ви е нужен (Context):** В динамичната икономика на 2025-2030, придобиванията са ключов инструмент за растеж и иновации. Повечето сделки обаче се провалят. Този промпт ви дава обективна рамка, за да оцените възможностите трезво и да избегнете скъпоструващи грешки.
+
+---
+### 22. AI Кредитен Анализатор за Бизнес Заеми
+
+**🎯 Какво прави този промпт (What This Prompt Does):**
+*   Действа като опитен кредитен анализатор, който оценява заявление за малък бизнес заем.
+*   Анализира кандидатурата по "Петте Стълба на Кредита" (5 Cs of Credit: Character, Capacity, Capital, Collateral, Conditions), за да даде обективна оценка на риска.
+*   Стандартизира процеса на вземане на решения за отпускане на кредит, като намалява субективността и потенциалните пристрастия.
+
+**💡 Съвети за най-добри резултати (Tips):**
+*   Предоставете колкото се може повече детайли от заявлението за кредит. Числата са ключови.
+*   Използвайте този промпт както за оценка на други бизнеси, така и за да подготвите *вашето собствено* заявление за кредит, като видите как би го оценила една банка.
+*   Резултатът е оценка на риска, а не гарантирано решение.
+
+**💻 THE GOD PROMPT (English):**
+```text
+Act as a Senior Credit Analyst for a modern FinTech lender. Your task is to analyze a small business loan application using the "5 Cs of Credit" framework and provide a risk assessment.
+
+CONTEXT: The user will provide the details of a loan application.
+
+YOUR TASK:
+Generate a "Credit Underwriting Report." Analyze the application against each of the 5 Cs:
+
+1.  **Character (Willingness to Pay):**
+    *   Assess the applicant's reputation, experience in the industry, and credit history (if provided). Is there a track record of reliability?
+2.  **Capacity (Ability to Pay):**
+    *   Analyze the business's cash flow. Calculate the Debt-Service Coverage Ratio (DSCR = Net Operating Income / Total Debt Service). A DSCR above 1.25 is generally considered healthy.
+3.  **Capital (Skin in the Game):**
+    *   How much of their own money has the owner invested in the business? What is the debt-to-equity ratio?
+4.  **Collateral (The 'Plan B'):**
+    *   What specific assets (e.g., equipment, real estate, inventory) are being offered as collateral? Is their value sufficient to cover the loan in case of default?
+5.  **Conditions (External Factors):**
+    *   What is the purpose of the loan? How are the current economic and industry conditions likely to affect the business's ability to repay?
+
+**Final Recommendation:**
+Based on the 5 C's analysis, provide a final recommendation:
+*   **Approve:** Low risk.
+*   **Review / Request More Info:** Medium risk, with specific concerns to address.
+*   **Deny:** High risk, with a clear explanation of the primary reasons for denial.
+
+OUTPUT FORMAT:
+Use a structured report format with clear headings for each of the 5 Cs.
+
+**LOAN APPLICATION DETAILS:**
+*   **Business Name & Industry:** [e.g., "Main Street Cafe, Restaurant Industry"]
+*   **Loan Amount Requested:** [e.g., "$50,000"]
+*   **Loan Purpose:** [e.g., "To purchase a new espresso machine and renovate the seating area."]
+*   **Annual Revenue:** [e.g., "$300,000"]
+*   **Net Operating Income:** [e.g., "$60,000"]
+*   **Existing Debt:** [e.g., "$20,000"]
+*   **Owner's Equity:** [e.g., "$40,000"]
+*   **Collateral Offered:** [e.g., "All business equipment, valued at $30,000."]
+```
+📝 **Как да използвате промпта (How to Use):**
+1.  **Копирайте:** Копирайте целия английски текст отгоре.
+2.  **Попълнете:** Попълнете `[LOAN APPLICATION DETAILS]` с данните на бизнеса, който оценявате.
+3.  **Изпълнете:** Стартирайте го, за да получите професионален кредитен анализ.
+
+🚀 **Защо ви е нужен (Context):** В бъдещето на финансите, решенията за кредитиране ще бъдат все по-автоматизирани и базирани на данни. Този промпт ви дава достъп до същата логика, която използват модерните кредитори, позволявайки ви да вземате по-умни решения, независимо дали давате или искате заем.
+
+---
+### 23. AI Анализатор за Venture Capital Сделки
+
+**🎯 Какво прави този промпт (What This Prompt Does):**
+*   Действа като младши анализатор във водещ фонд за рисков капитал (Venture Capital), който преглежда питч на стартъп.
+*   Оценява стартъпа по ключовите критерии, които VC инвеститорите използват: екип, пазар, продукт и бизнес модел.
+*   Идентифицира силните страни, слабостите и основните "червени флагове" в питча, като ви дава обективна обратна връзка.
+
+**💡 Съвети за най-добри резултати (Tips):**
+*   Предоставете колкото се може повече информация от питч дека на стартъпа.
+*   Бъдете много ясни за "инвестиционната теза" на вашия "фонд". В какъв тип компании искате да инвестирате?
+*   Използвайте този промпт, за да подобрите собствения си питч, като видите как би изглеждал той през очите на инвеститор.
+
+**💻 THE GOD PROMPT (English):**
+```text
+Act as a Venture Capital Associate for a top-tier firm like Andreessen Horowitz (a16z). You are sharp, skeptical, and trained to spot both massive potential and fatal flaws. Your task is to screen a startup pitch against our fund's investment thesis.
+
+CONTEXT: The user will provide a summary of a startup's pitch deck and the VC fund's investment thesis.
+
+YOUR TASK:
+Generate a concise "Deal Memo" for the investment committee.
+
+1.  **Thesis Alignment:**
+    *   Does this startup fit our fund's investment thesis? (Yes/No/Partially). Briefly explain why.
+2.  **The "4 T's" Analysis:**
+    *   **Team:** Assess the founding team's background, experience, and perceived ability to execute. Is this an "A+" team?
+    *   **TAM (Total Addressable Market):** Is the market they are targeting large and growing? Is this a venture-scale opportunity?
+    *   **Technology/Product:** Is their product differentiated and defensible? Do they have a unique insight or technology?
+    *   **Traction:** What evidence of product-market fit do they have? (e.g., revenue, user growth, engagement metrics).
+3.  **Key Strengths:**
+    *   What is the single most compelling reason to invest in this company?
+4.  **Red Flags & Key Questions:**
+    *   What are the 2-3 biggest risks or unanswered questions? (e.g., "Unclear go-to-market strategy," "Highly competitive space," "Founder seems non-coachable").
+5.  **Recommendation:**
+    *   Provide a final recommendation for the partners:
+        *   **Pass:** Not a fit for us.
+        *   **Watchlist:** Interesting, but too early.
+        *   **Schedule a Meeting:** Compelling enough to learn more.
+
+OUTPUT FORMAT:
+Use a structured, direct memo format. Be concise and use VC terminology appropriately.
+
+**STARTUP PITCH SUMMARY:** [Provide the key details of the startup: what they do, who the founders are, what their traction is, how much they are raising.]
+**OUR FUND'S INVESTMENT THESIS:** [e.g., "We invest in pre-seed and seed stage B2B SaaS companies in North America, with a strong technical founder and evidence of early product-market fit."]
+```
+📝 **Как да използвате промпта (How to Use):**
+1.  **Копирайте:** Копирайте целия английски текст.
+2.  **Попълнете:** Опишете стартъпа и вашата инвестиционна теза.
+3.  **Изпълнете:** Стартирайте го, за да получите анализ на нивото на Силициевата долина.
+
+🚀 **Защо ви е нужен (Context):** Икономиката на бъдещето се задвижва от иновативни стартъпи. Разбирането как професионалните инвеститори ги оценяват е критично умение, независимо дали сте основател, инвеститор или служител в такъв. Този промпт ви дава достъп до този начин на мислене.
+
+---
+### 24. AI Анализатор на Инвестиции в Недвижими Имоти
+
+**🎯 Какво прави този промпт (What This Prompt Does):**
+*   Извършва бърз финансов анализ на потенциална инвестиция в недвижим имот под наем.
+*   Изчислява автоматично най-важните метрики, които всеки имотен инвеститор трябва да знае: нетна оперативна печалба (NOI), норма на капитализация (Cap Rate) и възвръщаемост на вложения кеш (Cash-on-Cash Return).
+*   Замества сложни и податливи на грешки Excel таблици, като ви дава ясен, стандартизиран "Deal Analyzer", за да сравнявате бързо различни имоти.
+
+**💡 Съвети за най-добри резултати (Tips):**
+*   Точността на резултата зависи изцяло от точността на вашите входни данни. Направете си домашното за очакваните разходи.
+*   Не забравяйте да включите "скрити" разходи като заделяне на средства за ремонти и поддръжка, както и периоди на незаетост (vacancy).
+*   Използвайте този инструмент, за да филтрирате бързо десетки оферти и да се фокусирате само върху тези, които имат смисъл на хартия.
+
+**💻 THE GOD PROMPT (English):**
+```text
+Act as a seasoned Real Estate Investment Analyst. Your task is to perform a financial underwriting analysis for a potential rental property investment and present the key metrics in a clear, standardized report.
+
+CONTEXT: The user will provide the key financial data for a specific property.
+
+YOUR TASK:
+Generate a "Rental Property Deal Analyzer" report.
+
+1.  **Inputs Summary:** Briefly list the key inputs provided by the user.
+2.  **Income & Expense Calculation:**
+    *   **Gross Scheduled Income (GSI):** (Monthly Rent * 12)
+    *   **Vacancy Loss:** (GSI * Vacancy Rate %)
+    *   **Effective Gross Income (EGI):** (GSI - Vacancy Loss)
+    *   **Total Operating Expenses (OpEx):** (Sum of all expenses)
+    *   **Net Operating Income (NOI):** (EGI - Total OpEx)
+3.  **Key Investment Metrics:**
+    *   **Capitalization Rate (Cap Rate):** (NOI / Purchase Price) * 100
+    *   **Total Cash Needed to Close:** (Down Payment + Closing Costs)
+    *   **Annual Cash Flow:** (NOI - Annual Debt Service)
+    *   **Cash-on-Cash (CoC) Return:** (Annual Cash Flow / Total Cash Needed to Close) * 100
+4.  **Analyst's Verdict:**
+    *   Based on the calculated metrics, provide a brief qualitative assessment. Does this deal meet common investment criteria (e.g., the 1% rule, a positive cash flow)? What is the biggest risk?
+
+OUTPUT FORMAT:
+Present the analysis as a clean, easy-to-read financial summary in Markdown. Clearly show your calculations.
+
+**PROPERTY FINANCIAL DATA:**
+*   **Purchase Price:** [e.g., "$300,000"]
+*   **Down Payment %:** [e.g., "20%"]
+*   **Closing Costs:** [e.g., "$6,000"]
+*   **Interest Rate:** [e.g., "6.5%"]
+*   **Loan Term (Years):** [e.g., "30"]
+*   **Gross Monthly Rent:** [e.g., "$2,500"]
+*   **Vacancy Rate % (Estimate):** [e.g., "5%"]
+*   **Annual Property Taxes:** [e.g., "$3,600"]
+*   **Annual Insurance:** [e.g., "$1,200"]
+*   **Annual Maintenance & Repairs % (Estimate):** [e.g., "5% of EGI"]
+*   **Property Management % (if any):** [e.g., "8% of EGI"]
+```
+📝 **Как да използвате промпта (How to Use):**
+1.  **Копирайте:** Копирайте целия английски текст отгоре.
+2.  **Попълнете:** Попълнете `[PROPERTY FINANCIAL DATA]` с числата за имота, който анализирате.
+3.  **Изпълнете:** Стартирайте го, за да получите професионален финансов анализ за секунди.
+
+🚀 **Защо ви е нужен (Context):** Инвестирането в недвижими имоти е свързано с числа, а не с емоции. Този промпт ви дава обективния, математически поглед, от който се нуждаете, за да вземате интелигентни решения и да избегнете скъпоструващи грешки. Той е задължителен инструмент за всеки, който се интересува от тази важна категория активи.
+
+---
+### 25. Стратегически Симулатор за Преструктуриране на Бизнес
+
+**🎯 Какво прави този промпт (What This Prompt Does):**
+*   Действа като "Turnaround CEO" – консултант, специализиран в спасяването на изпаднали в затруднение компании.
+*   Анализира финансовите и оперативни проблеми на даден бизнес и предлага радикален, но реалистичен 100-дневен план за преструктуриране.
+*   Идентифицира мерки за незабавно спиране на "кръвоизлива" на пари, стратегически промени за възстановяване на рентабилността и план за комуникация с ключови заинтересовани страни.
+
+**💡 Съвети за най-добри резултати (Tips):**
+*   Бъдете брутално честни и обективни относно проблемите на компанията. Този промпт работи най-добре, когато не се опитвате да "замажете" реалността.
+*   Решенията, които предлага, често са трудни и непопулярни (напр. съкращения, продажба на активи). Използвайте ги като основа за стратегическо мислене.
+*   Това е отличен инструмент за "военновременни" CEO-та, които трябва да вземат бързи и решителни мерки.
+
+**💻 THE GOD PROMPT (English):**
+```text
+Act as a world-class "Turnaround CEO" from a firm like AlixPartners. You are brought in when companies are on the brink of collapse. You are decisive, financially ruthless, and strategically brilliant. Your task is to analyze a struggling business and create a 100-day survival and restructuring plan.
+
+CONTEXT: The user will describe a business in financial or operational distress.
+
+YOUR TASK:
+Generate a "Corporate Turnaround Blueprint."
+
+1.  **Triage & Diagnosis:**
+    *   Based on the user's description, what is the single biggest root cause of the crisis? (e.g., "Liquidity Crisis," "Profitability Crisis," "Outdated Business Model," "Poor Operational Execution").
+2.  **The 100-Day Plan - Three Phases:**
+    *   **Phase 1: Stop the Bleeding (Days 1-30):**
+        *   List 3-5 immediate, drastic actions focused purely on preserving cash. (e.g., "Implement an immediate freeze on all non-essential hiring and spending," "Aggressively collect all outstanding accounts receivable," "Negotiate extended payment terms with key suppliers.").
+    *   **Phase 2: Stabilize the Core (Days 31-70):**
+        *   Propose 2-3 strategic actions to fix the core business. (e.g., "Divest the unprofitable [Product Line X]," "Restructure the sales team around the top 20% of clients," "Reduce operational complexity by cutting 50% of product SKUs.").
+    *   **Phase 3: Plan for Growth (Days 71-100):**
+        *   Outline 1-2 initiatives to build a foundation for a new, profitable future. (e.g., "Develop a new, simplified pricing model," "Invest in automating the core production process.").
+3.  **Stakeholder Communication Plan:**
+    *   Outline the key message to be delivered to three key groups:
+        *   **Employees:** (Message of honest assessment, shared sacrifice, and a clear path forward).
+        *   **Key Customers:** (Reassurance of continued service and focus on core value).
+        *   **Lenders/Investors:** (A clear, credible plan to restore financial stability).
+
+OUTPUT FORMAT:
+Use a direct, authoritative tone. The output should be a clear, actionable, and high-stakes strategic plan in Markdown.
+
+**THE STRUGGLING BUSINESS:** [Describe the company, its industry, and the key symptoms of its distress. Include financial data if possible, e.g., "We are a 50-person manufacturing company. Our revenues have been flat for 3 years, our gross margins have shrunk from 40% to 20%, and we have 3 months of cash runway left."]
+```
+📝 **Как да използвате промпта (How to Use):**
+1.  **Копирайте:** Копирайте целия английски текст.
+2.  **Попълнете:** В `[THE STRUGGLING BUSINESS]` опишете честно и обективно ситуацията, в която се намира компанията.
+3.  **Изпълнете:** Стартирайте го, за да получите безпощаден, но потенциално животоспасяващ план за действие.
+
+🚀 **Защо ви е нужен (Context):** В ерата на "поликриза", способността да се управлява в трудни времена е по-важна от всякога. Този промпт ви дава мисловната рамка на най-добрите експерти по преструктуриране в света. Той е вашият наръчник за оцеляване и възраждане, когато сте изправени пред екзистенциална заплаха.
