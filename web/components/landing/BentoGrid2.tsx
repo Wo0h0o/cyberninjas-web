@@ -12,7 +12,7 @@ export default function BentoGrid2() {
     ];
 
     return (
-        <section className="py-24 px-6">
+        <section id="about" className="py-24 px-6">
             <FadeUpSection className="max-w-[1400px] mx-auto">
                 {/* 3x3 Grid - stacked on mobile, 3-col on desktop */}
                 <div className="grid grid-cols-1 md:grid-cols-3 md:grid-rows-3 gap-4 md:gap-6">

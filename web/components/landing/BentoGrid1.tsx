@@ -48,7 +48,7 @@ export default function BentoGrid1() {
     ];
 
     return (
-        <section className="py-24 px-6">
+        <section id="materials" className="py-24 px-6">
             <div className="max-w-[1400px] mx-auto space-y-6">
 
                 {/* Main 2-Column Layout: Left (1fr) | Right (2fr) */}

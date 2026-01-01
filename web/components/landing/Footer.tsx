@@ -14,6 +14,7 @@ export default function Footer() {
         ],
         company: [
             { label: "За нас", href: "#about" },
+            { label: "FAQ", href: "#faq" },
             { label: "Блог", href: "/blog" },
             { label: "Контакти", href: "/contact" },
         ],
@@ -31,7 +32,7 @@ export default function Footer() {
     ];
 
     return (
-        <footer className="bg-[#09090b] border-t border-white/10">
+        <footer id="faq" className="bg-[#09090b] border-t border-white/10">
             {/* Main Footer Content */}
             <div className="max-w-[1400px] mx-auto px-6 py-12 lg:py-16">
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-8">
@@ -44,6 +45,10 @@ export default function Footer() {
                                 alt="CyberNinjas Logo"
                                 className="h-10 w-auto"
                             />
+                            <span className="text-xl font-bold">
+                                <span className="text-white">Cyber</span>
+                                <span className="text-accent-yellow">Ninjas</span>
+                            </span>
                         </a>
                         <p className="text-gray-400 text-sm leading-relaxed mb-5 max-w-sm">
                             Най-голямата образователна платформа за AI в България.

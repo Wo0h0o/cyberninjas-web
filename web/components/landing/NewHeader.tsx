@@ -24,7 +24,10 @@ export default function NewHeader() {
                             alt="CyberNinjas Logo"
                             className="h-10 w-auto transition-transform group-hover:scale-105"
                         />
-
+                        <span className="text-xl font-bold">
+                            <span className="text-white">Cyber</span>
+                            <span className="text-accent-yellow">Ninjas</span>
+                        </span>
                     </a>
 
                     {/* Center: Navigation Links (Desktop) */}
