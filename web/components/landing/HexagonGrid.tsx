@@ -162,10 +162,12 @@ export default function HexagonGrid({
 
         const handleMouseMove = (e: MouseEvent) => {
             const rect = canvas.getBoundingClientRect();
-            mouse.current = {
-                x: e.clientX - rect.left,
-                y: e.clientY - rect.top,
-            };
+            // Mouse position in CSS pixels (matches our drawing coordinate system)
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            mouse.current = { x, y };
+            // Debug: uncomment to see coordinates
+            // console.log('Mouse:', x, y, 'Rect left:', rect.left, 'clientX:', e.clientX);
         };
 
         const handleMouseLeave = () => {
@@ -195,6 +197,7 @@ export default function HexagonGrid({
 
             for (let col = -1; col < cols; col++) {
                 for (let row = -1; row < rows; row++) {
+                    // Column-based offset: odd columns shift down
                     // Column-based offset: odd columns shift down
                     const centerX = col * colSpacing;
                     const centerY = row * rowSpacing + (col % 2 === 1 ? rowSpacing / 2 : 0);

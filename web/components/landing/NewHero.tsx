@@ -28,8 +28,8 @@ export default function NewHero() {
 
   return (
     <motion.section
-      initial={{ opacity: 0, scale: 0.95 }}
-      animate={{ opacity: 1, scale: 1 }}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
       transition={{ duration: 1.5, ease: "easeOut" }}
       className="relative min-h-[90vh] flex items-center justify-center px-6 bg-black overflow-hidden"
     >
@@ -39,7 +39,7 @@ export default function NewHero() {
           hexSize={45}
           lineWidth={1}
           baseOpacity={0.15}
-          mouseRadius={40}
+          mouseRadius={35}
           showLogo={true}
           logoOffsetX={0.65}
           logoOffsetY={0.5}
