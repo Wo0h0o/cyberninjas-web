@@ -298,32 +298,66 @@
     border-radius: 6px;
 }
 
-.complete-button {
+/* Action Buttons Grid - Side by Side */
+.action-buttons-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-top: 40px;
+    width: 100%;
+}
+
+.action-button {
     display: flex;
     align-items: center;
-    gap: 0.75rem;
-    padding: 1rem 2rem;
-    font-size: 1rem;
+    justify-content: center;
+    gap: 10px;
+    padding: 16px 24px;
+    font-size: 0.95rem;
     font-weight: 600;
-    color: #fff;
-    background: linear-gradient(135deg, #7C3AED 0%, #A855F7 100%);
     border: none;
     border-radius: 12px;
     cursor: pointer;
-    box-shadow: 0 4px 20px rgba(139, 92, 246, 0.3);
-    transition: all 0.3s ease;
+    transition: all 0.2s ease;
 }
 
-.complete-button:hover {
-    box-shadow: 0 6px 30px rgba(139, 92, 246, 0.5);
-    transform: translateY(-2px);
+.action-button-primary {
+    background: #FFFF00;
+    color: #18181B;
 }
 
-.complete-button .xp-badge {
-    padding: 0.25rem 0.5rem;
+.action-button-primary:hover {
+    background: #E6E600;
+}
+
+.action-button-secondary {
+    background: #242424;
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.action-button-secondary:hover {
+    background: #2a2a2a;
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+.action-button .xp-badge {
+    padding: 4px 10px;
     font-size: 0.75rem;
-    background: rgba(255, 255, 255, 0.2);
+    font-weight: 700;
+    background: rgba(0, 0, 0, 0.15);
     border-radius: 6px;
+}
+
+.action-button-secondary .xp-badge {
+    background: rgba(255, 255, 0, 0.2);
+    color: #FFFF00;
+}
+
+@media (max-width: 640px) {
+    .action-buttons-grid {
+        grid-template-columns: 1fr;
+    }
 }
 
 /* ===== RESPONSIVE ===== */

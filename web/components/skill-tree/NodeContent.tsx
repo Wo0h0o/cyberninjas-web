@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import { motion } from 'framer-motion'
-import { ArrowLeft, Play, Clock, Zap, Gamepad2, BookOpen, ChevronDown, ChevronUp } from 'lucide-react'
+import { ArrowLeft, Play, Clock, Zap, Sparkles, BookOpen, ChevronDown, ChevronUp, CheckCircle } from 'lucide-react'
 import { SkillNodeData } from './SkillNode'
 import { AIPlayground } from './AIPlayground'
 import { RichContent } from './RichContent'
@@ -168,14 +168,15 @@ export function NodeContent({ node, onBack, onComplete }: NodeContentProps) {
                 {/* Key Takeaways */}
                 {content?.keyTakeaways && (
                     <div style={{
-                        backgroundColor: `${BRAND.yellow}10`,
+                        backgroundColor: BRAND.surface,
                         borderRadius: '12px',
                         padding: '24px',
-                        marginTop: '28px',
-                        border: `1px solid ${BRAND.yellow}30`
+                        marginTop: '16px',
+                        border: `1px solid ${BRAND.yellow}40`,
+                        borderLeft: `4px solid ${BRAND.yellow}`
                     }}>
-                        <h3 style={{ margin: '0 0 16px', color: BRAND.yellow, fontSize: '1.1rem' }}>
-                            🎯 Ключови изводи
+                        <h3 style={{ margin: '0 0 16px', color: BRAND.yellow, fontSize: '1.1rem', fontWeight: 600 }}>
+                            Ключови изводи
                         </h3>
                         <ul style={{ margin: 0, paddingLeft: '24px', color: '#E0E0E0' }}>
                             {content.keyTakeaways.map((takeaway, i) => (
@@ -185,31 +186,26 @@ export function NodeContent({ node, onBack, onComplete }: NodeContentProps) {
                     </div>
                 )}
 
-                {/* Action Buttons */}
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', marginTop: '40px' }}>
+                {/* Action Buttons - Side by Side */}
+                <div className="action-buttons-grid">
                     <motion.button
                         onClick={() => setShowPlayground(true)}
-                        className="complete-button"
-                        style={{
-                            background: `linear-gradient(135deg, ${BRAND.yellow} 0%, ${BRAND.yellowHover} 100%)`,
-                            color: BRAND.textOnYellow,
-                        }}
+                        className="action-button action-button-primary"
                         whileHover={{ scale: 1.02 }}
                         whileTap={{ scale: 0.98 }}
                     >
-                        <Gamepad2 className="w-5 h-5" />
-                        <span>🎮 AI Предизвикателство</span>
+                        <Sparkles className="w-5 h-5" />
+                        <span>Практическа Задача</span>
                         <span className="xp-badge">+50 XP</span>
                     </motion.button>
 
                     <motion.button
                         onClick={onComplete}
-                        className="complete-button"
-                        style={{ background: BRAND.elevated }}
+                        className="action-button action-button-secondary"
                         whileHover={{ scale: 1.02 }}
                         whileTap={{ scale: 0.98 }}
                     >
-                        <Play className="w-5 h-5" />
+                        <CheckCircle className="w-5 h-5" />
                         <span>Маркирай като завършен</span>
                         <span className="xp-badge">+{node.xpReward} XP</span>
                     </motion.button>
