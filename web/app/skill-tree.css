@@ -1,0 +1,355 @@
+/* ===== SKILL TREE STYLES - OLED VOID DESIGN ===== */
+
+/* Main Container - True black for OLED */
+.skill-tree-container {
+    position: relative;
+    width: 100%;
+    height: calc(100vh - 80px);
+    min-height: 600px;
+    background: #050505;
+    overflow: hidden;
+}
+
+/* Viewport for tree */
+.skill-tree-viewport {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* SVG Canvas */
+.skill-tree-svg {
+    max-width: 100%;
+    max-height: 100%;
+    transition: transform 0.3s ease;
+}
+
+/* ===== TREE CONTROLS ===== */
+.tree-controls {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 0.5rem;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    z-index: 20;
+}
+
+.tree-control-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #a1a1aa;
+    transition: all 0.2s ease;
+    cursor: pointer;
+}
+
+.tree-control-btn:hover {
+    background: rgba(139, 92, 246, 0.2);
+    border-color: rgba(139, 92, 246, 0.4);
+    color: #fff;
+}
+
+.tree-control-divider {
+    height: 1px;
+    background: rgba(255, 255, 255, 0.1);
+    margin: 0.25rem 0;
+}
+
+/* ===== LEGEND ===== */
+.skill-tree-legend {
+    position: absolute;
+    bottom: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 1.5rem;
+    padding: 0.75rem 1.5rem;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 100px;
+    z-index: 20;
+}
+
+/* Hint text */
+.skill-tree-hint {
+    position: absolute;
+    top: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 0.5rem 1rem;
+    font-size: 0.75rem;
+    color: #71717a;
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 100px;
+    z-index: 10;
+    pointer-events: none;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.75rem;
+    color: #a1a1aa;
+}
+
+.legend-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+}
+
+.legend-dot.available {
+    background: transparent;
+    border: 1.5px solid #00D4FF;
+    box-shadow: 0 0 6px rgba(0, 212, 255, 0.4);
+}
+
+.legend-dot.current {
+    background: rgba(0, 212, 255, 0.2);
+    border: 1.5px solid #00D4FF;
+    box-shadow: 0 0 8px rgba(0, 212, 255, 0.6);
+}
+
+.legend-dot.completed {
+    background: rgba(0, 212, 255, 0.3);
+    border: 1.5px solid #00D4FF;
+}
+
+.legend-dot.locked {
+    background: transparent;
+    border: 1px solid #1a1a1a;
+}
+
+/* ===== NODE CONTENT VIEW ===== */
+.node-content {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.95) 0%, rgba(9, 9, 11, 1) 100%);
+    z-index: 30;
+    overflow-y: auto;
+}
+
+.node-content-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.5rem 2rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.back-button {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+    color: #a1a1aa;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.back-button:hover {
+    color: #fff;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.branch-badge {
+    padding: 0.375rem 0.75rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    border-radius: 100px;
+}
+
+.node-content-main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 2rem clamp(1.5rem, 5vw, 4rem);
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: left;
+    width: 100%;
+}
+
+.node-icon-large {
+    width: 100px;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+    background: rgba(139, 92, 246, 0.1);
+    border: 2px solid rgba(139, 92, 246, 0.3);
+    border-radius: 24px;
+    margin-bottom: 1.5rem;
+}
+
+/* 3D Orb style */
+.node-orb-large {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-bottom: 1.5rem;
+    box-shadow:
+        0 10px 40px rgba(139, 92, 246, 0.4),
+        0 0 60px rgba(139, 92, 246, 0.2),
+        inset 0 -10px 30px rgba(0, 0, 0, 0.4);
+}
+
+.node-orb-large .orb-shine {
+    position: absolute;
+    top: 10%;
+    left: 15%;
+    width: 35%;
+    height: 20%;
+    background: rgba(255, 255, 255, 0.4);
+    border-radius: 50%;
+    filter: blur(8px);
+}
+
+.node-orb-large .orb-highlight {
+    position: absolute;
+    top: 8%;
+    left: 20%;
+    width: 25%;
+    height: 12%;
+    background: rgba(255, 255, 255, 0.6);
+    border-radius: 50%;
+}
+
+.node-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 0.5rem;
+}
+
+.node-subtitle {
+    font-size: 1rem;
+    color: #a1a1aa;
+    margin-bottom: 1.5rem;
+}
+
+.node-stats {
+    display: flex;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.node-stat {
+    display: flex;
+    align-items: center;
+    gap: 0.375rem;
+    font-size: 0.875rem;
+    color: #71717a;
+}
+
+.node-stat.reward {
+    color: #8B5CF6;
+}
+
+.node-lesson-content {
+    width: 100%;
+    padding: 2rem;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    margin-bottom: 2rem;
+}
+
+.lesson-placeholder {
+    text-align: left;
+}
+
+.lesson-preview-bars {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.lesson-preview-bars .bar {
+    height: 12px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 6px;
+}
+
+.complete-button {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1rem 2rem;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #fff;
+    background: linear-gradient(135deg, #7C3AED 0%, #A855F7 100%);
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    box-shadow: 0 4px 20px rgba(139, 92, 246, 0.3);
+    transition: all 0.3s ease;
+}
+
+.complete-button:hover {
+    box-shadow: 0 6px 30px rgba(139, 92, 246, 0.5);
+    transform: translateY(-2px);
+}
+
+.complete-button .xp-badge {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.75rem;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 6px;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+    .skill-tree-container {
+        height: calc(100vh - 120px);
+    }
+
+    .skill-tree-legend {
+        flex-wrap: wrap;
+        gap: 0.75rem;
+        padding: 0.5rem 1rem;
+        font-size: 0.65rem;
+    }
+
+    .node-content-main {
+        padding: 2rem 1rem;
+    }
+
+    .node-title {
+        font-size: 1.5rem;
+    }
+
+    .node-icon-large {
+        width: 80px;
+        height: 80px;
+        font-size: 2.5rem;
+    }
+}

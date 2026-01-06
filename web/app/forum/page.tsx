@@ -299,12 +299,14 @@ export default function ForumPage() {
             {/* Header with Search in Top Right */}
             <header className={styles.forumHeader}>
                 <div className={styles.headerLeft}>
-                    <h1 className={styles.forumTitle}>
-                        <span className={styles.gradientText}>Форум</span>
-                    </h1>
-                    <p className={styles.forumSubtitle}>
-                        Общността на CyberNinjas – споделяй, питай, учи
-                    </p>
+                    <div className={styles.headerTitleGroup}>
+                        <h1 className={styles.forumTitle}>
+                            <span className={styles.gradientText}>Форум</span>
+                        </h1>
+                        <p className={styles.forumSubtitle}>
+                            Общността на CyberNinjas – споделяй, питай, учи
+                        </p>
+                    </div>
                 </div>
 
                 <div className={styles.headerRight}>
@@ -402,9 +404,12 @@ export default function ForumPage() {
                                 <div className={styles.dropdownHeader}>
                                     <span className={styles.dropdownName}>{profile.name || 'Потребител'}</span>
                                     <span className={styles.dropdownLevel}>
-                                        {TRUST_ICONS[1]} Ниво 1
+                                        Ниво 1
                                     </span>
                                 </div>
+                                <Link href="/dashboard" className={styles.dropdownLink}>
+                                    Към платформата
+                                </Link>
                                 <button onClick={() => signOut()} className={styles.dropdownLogout}>
                                     <LogOut size={16} />
                                     Изход
@@ -604,9 +609,6 @@ export default function ForumPage() {
                             Бързи връзки
                         </h3>
                         <div className={styles.quickLinks}>
-                            <Link href="/dashboard" className={styles.primaryQuickLink}>
-                                <Rocket size={16} /> ← Обратно в платформата
-                            </Link>
                             <Link href="/forum/topic/rules">
                                 <FileText size={16} /> Правила
                             </Link>
