@@ -59,7 +59,7 @@ export function RichContent({ content }: RichContentProps) {
 }
 
 interface ContentBlockData {
-    type: 'paragraph' | 'good' | 'bad' | 'tip' | 'heading' | 'subheading' | 'list' | 'quote' | 'code'
+    type: 'paragraph' | 'good' | 'bad' | 'tip' | 'heading' | 'subheading' | 'fullGradient' | 'list' | 'quote' | 'code'
     content: string
     subtitle?: string
     items?: string[]
@@ -122,14 +122,30 @@ function parseContent(content: string): ContentBlockData[] {
                 .trim()
             blocks.push({ type: 'tip', content: cleanContent || line })
         }
-        // Code/Prompt block - yellow block (only explicit prompt markers)
+        // Code/Prompt block - yellow block (multi-line support)
         else if (line.startsWith('Промпт:') || line.startsWith('Пример Промпт:')) {
             flushList()
-            const cleanContent = line
+            let promptContent = line
                 .replace(/^Промпт:\s*/i, '')
                 .replace(/^Пример Промпт:\s*/i, '')
                 .trim()
-            blocks.push({ type: 'code', content: cleanContent })
+
+            // Collect multi-line prompt content until КРАЙ_ПРОМПТ or empty line followed by non-prompt content
+            let j = i + 1
+            while (j < lines.length) {
+                const nextLine = lines[j].trim()
+                if (nextLine === 'КРАЙ_ПРОМПТ' || nextLine === '') {
+                    if (nextLine === 'КРАЙ_ПРОМПТ') {
+                        i = j // Skip the end marker
+                    }
+                    break
+                }
+                promptContent += '\n' + nextLine
+                i = j
+                j++
+            }
+
+            blocks.push({ type: 'code', content: promptContent })
         }
         // Bullet list
         else if (line.startsWith('•') || line.match(/^\d+\./)) {
@@ -176,10 +192,14 @@ function parseContent(content: string): ContentBlockData[] {
             blocks.push({ type: 'subheading', content: cleanLine, subtitle: '' })
         }
         // Simple heading (specific patterns for section titles)
-        else if (line.match(/^(Роля|Контекст|Задача|Ограничения|Примери|Процес|Алгоритъм|Метрики|Видове|Ниво \d)/) ||
-            (line.endsWith(':') && line.length < 60 && !line.includes('.'))) {
+        else if (line.endsWith(':') && line.length < 60 && !line.includes('.')) {
             flushList()
             blocks.push({ type: 'heading', content: line.replace(/:$/, '') })
+        }
+        // Full gradient line (lines with em-dash like "Роля — ...")
+        else if (line.includes(' — ') && line.length < 100 && !line.startsWith('•')) {
+            flushList()
+            blocks.push({ type: 'fullGradient', content: line })
         }
         // Quote (line in quotes - usually prompts)
         else if (line.startsWith('"') && line.endsWith('"') && line.length > 20) {
@@ -315,6 +335,26 @@ function ContentBlock({ block }: { block: ContentBlockData }) {
                 }}>
                     {block.content}
                 </h4>
+            )
+
+        case 'fullGradient':
+            return (
+                <div style={{
+                    marginTop: '20px',
+                    marginBottom: '12px',
+                }}>
+                    <span style={{
+                        background: `linear-gradient(135deg, ${BRAND.yellow} 0%, #FFD700 50%, #FFA500 100%)`,
+                        WebkitBackgroundClip: 'text',
+                        WebkitTextFillColor: 'transparent',
+                        backgroundClip: 'text',
+                        fontSize: '1.05rem',
+                        fontWeight: 600,
+                        letterSpacing: '0.3px',
+                    }}>
+                        {block.content}
+                    </span>
+                </div>
             )
 
         case 'list':

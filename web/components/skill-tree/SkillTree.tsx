@@ -7,11 +7,13 @@ import { SkillPath } from './SkillPath'
 import { TreeControls } from './TreeControls'
 import { NodeContent } from './NodeContent'
 import {
-    Brain,           // Science - AI thinking/hallucinations
+    Brain,           // Prompt Architect - structured thinking
     Cpu,             // Technology - tools/systems  
     MessageSquareCode, // Engineering - prompting
     Palette,         // Arts - creativity
-    Target           // Mindset - strategy/goals
+    Target,          // Mindset - strategy/goals
+    Wand2,           // Science - AI illusions/magic
+    Link             // Consciousness Chain - chain of thought
 } from 'lucide-react'
 
 // 5 Core STEAM-AI Modules - Vertical Tree (grows upward)
@@ -25,7 +27,7 @@ const STEAM_MODULES: SkillNodeData[] = [
         status: 'completed',
         position: { x: 0, y: 200 },
         xpReward: 150,
-        icon: Brain,
+        icon: Wand2,
     },
 
     // === MODULE 2: TECHNOLOGY ===
@@ -52,6 +54,32 @@ const STEAM_MODULES: SkillNodeData[] = [
         xpReward: 300,
         prerequisites: ['technology'],
         icon: MessageSquareCode,
+    },
+
+    // === BRANCH: PROMPT ARCHITECT (from Engineering) ===
+    {
+        id: 'prompt-architect',
+        title: 'Архитектът на Мисълта',
+        subtitle: 'PROMPT ENGINEERING: Структура & Контрол',
+        type: 'lesson',
+        status: 'locked',
+        position: { x: 150, y: -40 },  // Right of engineering
+        xpReward: 250,
+        prerequisites: ['engineering'],
+        icon: Brain,
+    },
+
+    // === BRANCH: CONSCIOUSNESS CHAIN (from Prompt Architect) ===
+    {
+        id: 'consciousness-chain',
+        title: 'Веригата на Съзнанието',
+        subtitle: 'CHAIN OF THOUGHT: Логика & Мулти-агенти',
+        type: 'lesson',
+        status: 'locked',
+        position: { x: 270, y: -120 },  // 45° up-right from prompt-architect
+        xpReward: 300,
+        prerequisites: ['prompt-architect'],
+        icon: Link,
     },
 
     // === MODULE 4: ARTS ===

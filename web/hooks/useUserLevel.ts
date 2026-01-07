@@ -189,7 +189,6 @@ export function useUserLevel() {
 
             // Check for level up
             if (newLevel > oldLevel) {
-                // Trigger level up event (companion message, etc.)
                 console.log(`🎉 Level up! ${oldLevel} → ${newLevel}`)
             }
 

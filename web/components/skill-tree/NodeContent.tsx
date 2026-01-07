@@ -1,12 +1,12 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
-import { ArrowLeft, Play, Clock, Zap, Sparkles, BookOpen, ChevronDown, ChevronUp, CheckCircle } from 'lucide-react'
+import { ArrowLeft, Play, Clock, Zap, Sparkles, BookOpen, ChevronDown, ChevronUp, CheckCircle, Loader2 } from 'lucide-react'
 import { SkillNodeData } from './SkillNode'
 import { AIPlayground } from './AIPlayground'
 import { RichContent } from './RichContent'
-import { MODULE_CONTENT_BG } from './ModuleContentBG'
+import { useModuleContent, getStaticModuleContent } from './useModuleContent'
 
 interface NodeContentProps {
     node: SkillNodeData
@@ -24,12 +24,15 @@ const BRAND = {
     textOnYellow: '#18181B',
 }
 
-// Use Bulgarian content
-const MODULE_CONTENT = MODULE_CONTENT_BG
-
 export function NodeContent({ node, onBack, onComplete }: NodeContentProps) {
     const [showPlayground, setShowPlayground] = useState(false)
-    const content = MODULE_CONTENT[node.id]
+
+    // Try Supabase first, fallback to static
+    const { content: supabaseContent, loading, source } = useModuleContent(node.id)
+
+    // Use static content immediately for SSR, then switch to Supabase if available
+    const staticContent = getStaticModuleContent(node.id)
+    const content = loading ? staticContent : (supabaseContent || staticContent)
 
     // Initialize all sections as expanded
     const [expandedSections, setExpandedSections] = useState<Record<number, boolean>>(() => {
