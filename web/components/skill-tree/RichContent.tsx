@@ -279,9 +279,10 @@ function ContentBlock({ block }: { block: ContentBlockData }) {
                     marginBottom: '12px',
                     fontFamily: 'monospace',
                     fontSize: '14px',
-                    color: BRAND.yellow,
+                    color: '#FFFFFF',
                     overflowX: 'auto',
                     lineHeight: 1.6,
+                    whiteSpace: 'pre-wrap',
                 }}>
                     <span style={{ color: BRAND.textSecondary, fontSize: '12px', display: 'block', marginBottom: '8px' }}>
                         📝 Промпт

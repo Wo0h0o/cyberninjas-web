@@ -49,6 +49,8 @@ function NodeIcon({ node, cx, cy, color }: { node: SkillNodeData; cx: number; cy
 
 // OLED Void Design - Monochromatic with Electric Blue accent
 const ACCENT_COLOR = '#00D4FF' // Electric Blue
+const GOLD_COLOR = '#FFD700'   // Gold for completed
+const GOLD_GLOW = '#FFA500'    // Orange-gold for glow
 const NODE_SIZE = 32
 
 // Generate hexagon points
@@ -72,16 +74,17 @@ export function SkillNode({ node, cx, cy, onClick }: SkillNodeProps) {
     const glowId = `glow-${node.id}`
     const hexPoints = getHexagonPoints(cx, cy, size)
 
-    // Status-based styling (minimal, monochromatic)
+    // Status-based styling with clear visual distinction
     const getNodeStyle = () => {
         switch (node.status) {
             case 'locked':
                 return {
-                    stroke: '#3a3a3a',
+                    stroke: '#2a2a2a',
                     strokeWidth: 1.5,
-                    fill: 'rgba(30, 30, 30, 0.8)',
+                    fill: 'rgba(20, 20, 20, 0.9)',
                     glowColor: 'none',
-                    textColor: '#ffffff',
+                    textColor: '#555555',
+                    iconColor: '#3a3a3a',
                 }
             case 'available':
                 return {
@@ -89,24 +92,27 @@ export function SkillNode({ node, cx, cy, onClick }: SkillNodeProps) {
                     strokeWidth: 1.5,
                     fill: 'rgba(0, 212, 255, 0.05)',
                     glowColor: ACCENT_COLOR,
-                    textColor: '#ffffff',
+                    textColor: '#AAAAAA',
+                    iconColor: ACCENT_COLOR,
                 }
             case 'current':
                 return {
                     stroke: ACCENT_COLOR,
-                    strokeWidth: 2,
-                    fill: 'rgba(0, 212, 255, 0.1)',
+                    strokeWidth: 2.5,
+                    fill: 'rgba(0, 212, 255, 0.15)',
                     glowColor: ACCENT_COLOR,
-                    textColor: '#ffffff',
+                    textColor: '#FFFFFF',
+                    iconColor: ACCENT_COLOR,
                 }
             case 'completed':
             case 'mastered':
                 return {
-                    stroke: ACCENT_COLOR,
-                    strokeWidth: 1.5,
-                    fill: 'rgba(0, 212, 255, 0.15)',
-                    glowColor: ACCENT_COLOR,
-                    textColor: '#ffffff',
+                    stroke: GOLD_COLOR,
+                    strokeWidth: 2,
+                    fill: 'rgba(255, 215, 0, 0.15)',
+                    glowColor: GOLD_GLOW,
+                    textColor: GOLD_COLOR,
+                    iconColor: GOLD_COLOR,
                 }
             default:
                 return {
@@ -115,6 +121,7 @@ export function SkillNode({ node, cx, cy, onClick }: SkillNodeProps) {
                     fill: 'rgba(30, 30, 30, 0.8)',
                     glowColor: 'none',
                     textColor: '#ffffff',
+                    iconColor: '#666',
                 }
         }
     }
@@ -166,13 +173,7 @@ export function SkillNode({ node, cx, cy, onClick }: SkillNodeProps) {
                     node={node}
                     cx={cx}
                     cy={cy}
-                    color={
-                        node.status === 'completed' || node.status === 'mastered'
-                            ? ACCENT_COLOR  // Bright for completed
-                            : node.status === 'available' || node.status === 'current'
-                                ? ACCENT_COLOR
-                                : '#666'
-                    }
+                    color={style.iconColor}
                 />
             )}
 
@@ -275,24 +276,46 @@ export function SkillNode({ node, cx, cy, onClick }: SkillNodeProps) {
                 {node.title}
             </text>
 
-            {/* Completed modules now show their icon instead of checkmark */}
+            {/* Checkmark badge for completed modules */}
+            {(node.status === 'completed' || node.status === 'mastered') && (
+                <g>
+                    {/* Badge circle */}
+                    <circle
+                        cx={cx + size - 8}
+                        cy={cy - size + 8}
+                        r="8"
+                        fill="#1a1a1a"
+                        stroke={GOLD_COLOR}
+                        strokeWidth="1.5"
+                    />
+                    {/* Checkmark */}
+                    <path
+                        d={`M ${cx + size - 12} ${cy - size + 8} l 3 3 l 5 -5`}
+                        fill="none"
+                        stroke={GOLD_COLOR}
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                    />
+                </g>
+            )}
 
-            {/* Lock icon for locked nodes - minimal */}
+            {/* Lock icon for locked nodes - more visible */}
             {node.status === 'locked' && (
-                <g opacity={0.3}>
+                <g opacity={0.5}>
                     <rect
-                        x={cx - 4}
+                        x={cx - 5}
                         y={cy}
-                        width="8"
-                        height="6"
-                        rx="1"
-                        fill="#333"
+                        width="10"
+                        height="8"
+                        rx="1.5"
+                        fill="#444"
                     />
                     <path
-                        d={`M ${cx - 2.5} ${cy} v -2 a 2.5 2.5 0 0 1 5 0 v 2`}
+                        d={`M ${cx - 3} ${cy} v -3 a 3 3 0 0 1 6 0 v 3`}
                         fill="none"
-                        stroke="#333"
-                        strokeWidth="1"
+                        stroke="#444"
+                        strokeWidth="1.5"
                         strokeLinecap="round"
                     />
                 </g>
