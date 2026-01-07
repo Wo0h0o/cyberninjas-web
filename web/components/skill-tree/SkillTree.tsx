@@ -300,6 +300,7 @@ export function SkillTree({ onNodeSelect }: SkillTreeProps) {
                                             }}
                                             isActive={fromNode.status === 'completed' || fromNode.status === 'current'}
                                             isCompleted={fromNode.status === 'completed'}
+                                            isGoldPath={fromNode.status === 'completed' && (toNode.status === 'completed' || toNode.status === 'mastered')}
                                         />
                                     )
                                 })}

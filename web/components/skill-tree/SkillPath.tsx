@@ -7,11 +7,13 @@ interface SkillPathProps {
     to: { x: number; y: number }
     isActive: boolean
     isCompleted?: boolean
+    isGoldPath?: boolean  // Both nodes are completed (gold to gold)
     branch?: 'visual' | 'personal' | 'code' | 'writing'
 }
 
 // OLED Void Design - Single accent color
 const ACCENT_COLOR = '#00D4FF'
+const GOLD_COLOR = '#FFD700'
 const INACTIVE_COLOR = '#1a1a1a'
 
 // Sample points along quadratic bezier curve
@@ -52,11 +54,13 @@ function sampleBezierCurve(from: { x: number, y: number }, to: { x: number, y: n
 function Comet({
     curvePoints,
     delay = 0,
-    duration = 2.5
+    duration = 2.5,
+    color = ACCENT_COLOR
 }: {
     curvePoints: { x: number, y: number }[]
     delay?: number
     duration?: number
+    color?: string
 }) {
     const xPoints = curvePoints.map(p => p.x)
     const yPoints = curvePoints.map(p => p.y)
@@ -69,6 +73,10 @@ function Comet({
         return 1
     })
 
+    // Determine glow colors based on main color
+    const isGold = color === GOLD_COLOR
+    const glowRgba = isGold ? 'rgba(255, 215, 0, ' : 'rgba(0, 212, 255, '
+
     return (
         <g>
             {/* Comet Trail - Multiple circles with decreasing opacity */}
@@ -76,7 +84,7 @@ function Comet({
                 <motion.circle
                     key={`trail-${trailIndex}`}
                     r={4 - trailIndex * 0.5}
-                    fill={ACCENT_COLOR}
+                    fill={color}
                     opacity={0}
                     animate={{
                         cx: xPoints,
@@ -92,8 +100,8 @@ function Comet({
                     }}
                     style={{
                         filter: trailIndex === 0
-                            ? 'drop-shadow(0 0 12px rgba(0, 212, 255, 1)) drop-shadow(0 0 6px rgba(255, 255, 255, 0.8))'
-                            : `drop-shadow(0 0 ${6 - trailIndex}px rgba(0, 212, 255, ${0.8 - trailIndex * 0.12}))`,
+                            ? `drop-shadow(0 0 12px ${glowRgba}1)) drop-shadow(0 0 6px rgba(255, 255, 255, 0.8))`
+                            : `drop-shadow(0 0 ${6 - trailIndex}px ${glowRgba}${0.8 - trailIndex * 0.12}))`,
                     }}
                 />
             ))}
@@ -101,7 +109,7 @@ function Comet({
             {/* Bright photon head */}
             <motion.circle
                 r={2}
-                fill="#ffffff"
+                fill={isGold ? '#FFFACD' : '#ffffff'}
                 opacity={0}
                 animate={{
                     cx: xPoints,
@@ -116,20 +124,27 @@ function Comet({
                     repeatDelay: 2,
                 }}
                 style={{
-                    filter: 'drop-shadow(0 0 8px rgba(255, 255, 255, 1)) drop-shadow(0 0 4px rgba(0, 212, 255, 1))',
+                    filter: isGold
+                        ? 'drop-shadow(0 0 8px rgba(255, 255, 255, 1)) drop-shadow(0 0 6px rgba(255, 215, 0, 1))'
+                        : 'drop-shadow(0 0 8px rgba(255, 255, 255, 1)) drop-shadow(0 0 4px rgba(0, 212, 255, 1))',
                 }}
             />
         </g>
     )
 }
 
-export function SkillPath({ from, to, isActive, isCompleted }: SkillPathProps) {
+export function SkillPath({ from, to, isActive, isCompleted, isGoldPath }: SkillPathProps) {
     const midY = (from.y + to.y) / 2
     const midX = (from.x + to.x) / 2
     const pathD = `M ${from.x} ${from.y} Q ${from.x} ${midY}, ${midX} ${midY} T ${to.x} ${to.y}`
 
     // Sample curve points for animation
     const curvePoints = sampleBezierCurve(from, to, 24)
+
+    // Determine comet color based on path type
+    const cometColor = isGoldPath ? GOLD_COLOR : ACCENT_COLOR
+    const pathColor = isGoldPath ? GOLD_COLOR : ACCENT_COLOR
+    const pathGlowRgba = isGoldPath ? 'rgba(255, 215, 0, 0.4)' : 'rgba(0, 212, 255, 0.4)'
 
     return (
         <g>
@@ -142,12 +157,12 @@ export function SkillPath({ from, to, isActive, isCompleted }: SkillPathProps) {
                 strokeLinecap="round"
             />
 
-            {/* Active path - Electric Blue glow */}
+            {/* Active path - Blue or Gold glow */}
             {isActive && (
                 <motion.path
                     d={pathD}
                     fill="none"
-                    stroke={ACCENT_COLOR}
+                    stroke={pathColor}
                     strokeWidth="1"
                     strokeLinecap="round"
                     initial={{ pathLength: 0, opacity: 0 }}
@@ -157,7 +172,7 @@ export function SkillPath({ from, to, isActive, isCompleted }: SkillPathProps) {
                         ease: 'easeOut',
                     }}
                     style={{
-                        filter: 'drop-shadow(0 0 2px rgba(0, 212, 255, 0.4))',
+                        filter: `drop-shadow(0 0 2px ${pathGlowRgba})`,
                     }}
                 />
             )}
@@ -165,9 +180,9 @@ export function SkillPath({ from, to, isActive, isCompleted }: SkillPathProps) {
             {/* Multiple comets with staggered timing for traffic effect */}
             {isCompleted && (
                 <>
-                    <Comet curvePoints={curvePoints} delay={0} duration={2.2} />
-                    <Comet curvePoints={curvePoints} delay={1.5} duration={2.4} />
-                    <Comet curvePoints={curvePoints} delay={3.2} duration={2.0} />
+                    <Comet curvePoints={curvePoints} delay={0} duration={2.2} color={cometColor} />
+                    <Comet curvePoints={curvePoints} delay={1.5} duration={2.4} color={cometColor} />
+                    <Comet curvePoints={curvePoints} delay={3.2} duration={2.0} color={cometColor} />
                 </>
             )}
         </g>
