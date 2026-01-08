@@ -7,12 +7,14 @@ interface BentoCardProps {
   children: ReactNode;
   className?: string;
   hover?: boolean;
+  showGradient?: boolean;
 }
 
 export default function BentoCard({
   children,
   className = "",
   hover = true,
+  showGradient = true,
 }: BentoCardProps) {
   // Extract debug color from className for borders
   const debugColors: Record<string, string> = {
@@ -38,12 +40,12 @@ export default function BentoCard({
       whileHover={hover ? { y: -4 } : {}}
       transition={{ duration: 0.3 }}
       style={{
-        background: '#000000',
+        background: showGradient
+          ? 'linear-gradient(135deg, rgba(28, 28, 35, 1) 0%, rgba(12, 12, 15, 1) 100%)'
+          : '#000000',
         border: borderStyle,
-        backdropFilter: 'none',
       }}
     >
-      {/* Card Content */}
       {children}
     </motion.div>
   );

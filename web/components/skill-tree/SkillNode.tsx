@@ -155,7 +155,24 @@ export function SkillNode({ node, cx, cy, onClick }: SkillNodeProps) {
                             <feMergeNode in="SourceGraphic" />
                         </feMerge>
                     </filter>
+                    {/* Ambient glow filter - larger blur for background glow */}
+                    <filter id={`ambient-${node.id}`} x="-100%" y="-100%" width="300%" height="300%">
+                        <feGaussianBlur stdDeviation="25" result="ambientBlur" />
+                    </filter>
                 </defs>
+            )}
+
+            {/* Ambient background glow - large blurred circle behind the node */}
+            {style.glowColor !== 'none' && (
+                <circle
+                    cx={cx}
+                    cy={cy}
+                    r={size * 1.5}
+                    fill={style.glowColor}
+                    opacity={0.08}
+                    filter={`url(#ambient-${node.id})`}
+                    style={{ pointerEvents: 'none' }}
+                />
             )}
 
             {/* Main hexagon - outline style */}

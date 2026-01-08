@@ -20,8 +20,8 @@ import {
 
 export default function BentoGrid1() {
     const libraryFeatures = [
-        { icon: Copy, label: "Готови AI команди", description: "500+ готови за използване" },
-        { icon: Play, label: "Видео Уроци", description: "Над 10 видео курса" },
+        { icon: Sparkles, label: "AI Playground", description: "Тествай наученото с твоя персонализиран AI учител" },
+        { icon: Lightbulb, label: "Интерактивно обучение", description: "По STEAM методологията" },
     ];
 
     const resourceLinks = [
@@ -41,9 +41,9 @@ export default function BentoGrid1() {
             description: "Последни AI новини и анализи"
         },
         {
-            label: "YouTube Канали",
-            icon: Youtube,
-            description: "Топ образователни канали за AI"
+            label: "Готови AI команди",
+            icon: Copy,
+            description: "250+ промпта готови за ползване"
         },
     ];
 
@@ -102,7 +102,7 @@ export default function BentoGrid1() {
                                             <Book className="h-7 w-7 text-accent-yellow" />
                                         </div>
                                         <h3 className="text-3xl lg:text-4xl font-bold text-white">
-                                            Библиотека с промптове
+                                            Твоето Обучение
                                         </h3>
                                     </div>
 
@@ -117,16 +117,12 @@ export default function BentoGrid1() {
                                                     <feature.icon className="h-8 w-8 text-accent-yellow" />
                                                 </div>
                                                 <div className="text-center">
-                                                    <div className="text-base font-semibold text-white mb-1">{feature.label}</div>
-                                                    <div className="text-sm text-gray-400">{feature.description}</div>
+                                                    <div className="text-base font-semibold text-accent-yellow mb-1">{feature.label}</div>
+                                                    <div className="text-sm text-white">{feature.description}</div>
                                                 </div>
                                             </div>
                                         ))}
                                     </div>
-
-                                    <button className="w-full px-6 py-4 rounded-full bg-accent-yellow/10 hover:bg-accent-yellow/15 border border-accent-yellow/20 text-accent-yellow font-semibold transition-all">
-                                        Разгледай
-                                    </button>
                                 </div>
                             </BentoCard>
 
@@ -157,10 +153,10 @@ export default function BentoGrid1() {
                                                     <link.icon className="h-4 w-4 lg:h-5 lg:w-5 text-accent-yellow" />
                                                 </div>
                                                 <div className="min-w-0">
-                                                    <span className="text-sm font-semibold text-white group-hover:text-accent-yellow transition-colors block">
+                                                    <span className="text-sm font-semibold text-accent-yellow group-hover:text-white transition-colors block">
                                                         {link.label}
                                                     </span>
-                                                    <p className="text-xs text-gray-400 truncate lg:whitespace-normal">
+                                                    <p className="text-xs text-white truncate lg:whitespace-normal">
                                                         {link.description}
                                                     </p>
                                                 </div>

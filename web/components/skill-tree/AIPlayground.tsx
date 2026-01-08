@@ -127,7 +127,7 @@ export function AIPlayground({ moduleId, moduleTitle, onComplete, onBack }: AIPl
 
     const handleRetry = () => {
         setEvaluation(null)
-        setUserResponse('')
+        // Keep userResponse - don't clear it so user can retry with their previous answer
     }
 
     return (

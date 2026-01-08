@@ -18,7 +18,7 @@ export default function BentoGrid2() {
                 <div className="grid grid-cols-1 md:grid-cols-3 md:grid-rows-3 gap-4 md:gap-6">
 
                     {/* Cell 1: Video */}
-                    <BentoCard className="relative overflow-hidden min-h-[200px] md:min-h-[280px] md:row-span-1 md:col-span-1">
+                    <BentoCard showGradient={false} className="relative overflow-hidden min-h-[200px] md:min-h-[280px] md:row-span-1 md:col-span-1">
                         <video
                             autoPlay
                             loop
@@ -58,7 +58,7 @@ export default function BentoGrid2() {
                     </BentoCard>
 
                     {/* Cell 4: Video */}
-                    <BentoCard className="relative overflow-hidden min-h-[200px] md:min-h-0 md:row-span-1 md:col-span-1">
+                    <BentoCard showGradient={false} className="relative overflow-hidden min-h-[200px] md:min-h-0 md:row-span-1 md:col-span-1">
                         <div className="absolute inset-0">
                             <video
                                 autoPlay
@@ -96,14 +96,14 @@ export default function BentoGrid2() {
                                 <h3 className="text-[44px] lg:text-[56px] font-black text-white text-center leading-tight tracking-tight relative">
                                     {/* Main text */}
                                     <span className="relative z-10 group-hover:animate-[shake_0.5s_ease-in-out]">
-                                        Счупи<br />Лимитациите
+                                        СЧУПИ<br />БАРИЕРИТЕ
                                     </span>
                                     {/* Glitch layers */}
                                     <span className="absolute inset-0 text-fuchsia-400 opacity-0 group-hover:opacity-70 group-hover:animate-[glitch1_0.3s_infinite] z-0" aria-hidden="true">
-                                        Счупи<br />Лимитациите
+                                        СЧУПИ<br />БАРИЕРИТЕ
                                     </span>
                                     <span className="absolute inset-0 text-cyan-400 opacity-0 group-hover:opacity-70 group-hover:animate-[glitch2_0.3s_infinite] z-0" aria-hidden="true">
-                                        Счупи<br />Лимитациите
+                                        СЧУПИ<br />БАРИЕРИТЕ
                                     </span>
                                 </h3>
                             </div>
@@ -134,7 +134,7 @@ export default function BentoGrid2() {
                     </BentoCard>
 
                     {/* Cell 6: Video */}
-                    <BentoCard className="relative overflow-hidden min-h-[200px] md:min-h-0 md:row-span-1 md:col-span-1">
+                    <BentoCard showGradient={false} className="relative overflow-hidden min-h-[200px] md:min-h-0 md:row-span-1 md:col-span-1">
                         <div className="absolute inset-0">
                             <video
                                 autoPlay
@@ -162,7 +162,7 @@ export default function BentoGrid2() {
                                 <div className="p-2 rounded-lg bg-accent-yellow/10">
                                     <Users className="h-6 w-6 text-accent-yellow" />
                                 </div>
-                                <p className="text-xl text-accent-yellow font-semibold">
+                                <p className="text-xl text-white font-semibold">
                                     Над 3000 души са пробвали методологията
                                 </p>
                             </div>
@@ -170,7 +170,7 @@ export default function BentoGrid2() {
                     </BentoCard>
 
                     {/* Cell 9: Image */}
-                    <BentoCard className="relative overflow-hidden min-h-[200px] md:min-h-0 md:row-span-1 md:col-span-1">
+                    <BentoCard showGradient={false} className="relative overflow-hidden min-h-[200px] md:min-h-0 md:row-span-1 md:col-span-1">
                         <div className="absolute inset-0">
                             <img
                                 src="/images/placeholder-grid.jpg"

@@ -74,13 +74,13 @@ export default function Footer() {
 
                     {/* Platform Links */}
                     <div>
-                        <h4 className="text-white font-semibold mb-4">Платформа</h4>
+                        <h4 className="text-accent-yellow font-semibold mb-4 border-b border-accent-yellow/50 pb-2 inline-block">Платформа</h4>
                         <ul className="space-y-2.5">
                             {footerLinks.platform.map((link) => (
                                 <li key={link.href}>
                                     <a
                                         href={link.href}
-                                        className="text-sm text-gray-400 hover:text-accent-yellow transition-colors"
+                                        className="text-sm text-white hover:text-accent-yellow transition-colors"
                                     >
                                         {link.label}
                                     </a>
@@ -91,13 +91,13 @@ export default function Footer() {
 
                     {/* Company Links */}
                     <div>
-                        <h4 className="text-white font-semibold mb-4">Компания</h4>
+                        <h4 className="text-accent-yellow font-semibold mb-4 border-b border-accent-yellow/50 pb-2 inline-block">Компания</h4>
                         <ul className="space-y-2.5">
                             {footerLinks.company.map((link) => (
                                 <li key={link.href}>
                                     <a
                                         href={link.href}
-                                        className="text-sm text-gray-400 hover:text-accent-yellow transition-colors"
+                                        className="text-sm text-white hover:text-accent-yellow transition-colors"
                                     >
                                         {link.label}
                                     </a>
@@ -108,13 +108,13 @@ export default function Footer() {
 
                     {/* Legal Links */}
                     <div>
-                        <h4 className="text-white font-semibold mb-4">Правна информация</h4>
+                        <h4 className="text-accent-yellow font-semibold mb-4 border-b border-accent-yellow/50 pb-2 inline-block">Правна информация</h4>
                         <ul className="space-y-2.5">
                             {footerLinks.legal.map((link) => (
                                 <li key={link.href}>
                                     <a
                                         href={link.href}
-                                        className="text-sm text-gray-400 hover:text-accent-yellow transition-colors"
+                                        className="text-sm text-white hover:text-accent-yellow transition-colors"
                                     >
                                         {link.label}
                                     </a>

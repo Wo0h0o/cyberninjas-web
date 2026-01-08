@@ -1,13 +1,38 @@
-/* ===== SKILL TREE STYLES - OLED VOID DESIGN ===== */
-
-/* Main Container - True black for OLED */
+/* Main Container - Transparent to show global grid from body */
 .skill-tree-container {
     position: relative;
     width: 100%;
     height: calc(100vh - 80px);
     min-height: 600px;
-    background: #050505;
+    background: transparent;
     overflow: hidden;
+}
+
+/* Vignette effect - darkens edges to focus attention on center */
+.skill-tree-container::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 90% 80% at center,
+            transparent 0%,
+            transparent 50%,
+            rgba(0, 0, 0, 0.2) 75%,
+            rgba(0, 0, 0, 0.5) 90%,
+            rgba(0, 0, 0, 0.8) 100%);
+    pointer-events: none;
+    z-index: 2;
+}
+
+/* Film grain texture overlay */
+.skill-tree-container::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+    opacity: 0.025;
+    pointer-events: none;
+    z-index: 6;
+    mix-blend-mode: overlay;
 }
 
 /* Viewport for tree */

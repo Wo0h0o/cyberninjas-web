@@ -378,7 +378,7 @@ function ContentBlock({ block }: { block: ContentBlockData }) {
                                 left: '-16px',
                                 color: BRAND.textSecondary,
                             }}>•</span>
-                            {highlightTerms(item)}
+                            {highlightTerms(item, true)}
                         </li>
                     ))}
                 </ul>
@@ -407,37 +407,95 @@ function ContentBlock({ block }: { block: ContentBlockData }) {
                     lineHeight: 1.85,
                     marginBottom: '16px',
                 }}>
-                    {highlightTerms(block.content)}
+                    {highlightTerms(block.content, false)}
                 </p>
             )
     }
 }
 
-function highlightTerms(text: string): React.ReactNode {
-    if (HIGHLIGHT_TERMS.length === 0) return text
+function highlightTerms(text: string, isInline: boolean = false): React.ReactNode {
+    // First, process markdown bold (**text**) patterns
+    const boldRegex = /\*\*([^*]+)\*\*/g
+    const segments: { text: string; isBold: boolean }[] = []
+    let lastIndex = 0
+    let match
 
-    const pattern = HIGHLIGHT_TERMS.map(term =>
-        term.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
-    ).join('|')
+    while ((match = boldRegex.exec(text)) !== null) {
+        // Add text before the match
+        if (match.index > lastIndex) {
+            segments.push({ text: text.slice(lastIndex, match.index), isBold: false })
+        }
+        // Add the bold text (without asterisks)
+        segments.push({ text: match[1], isBold: true })
+        lastIndex = match.index + match[0].length
+    }
+    // Add remaining text
+    if (lastIndex < text.length) {
+        segments.push({ text: text.slice(lastIndex), isBold: false })
+    }
 
-    const regex = new RegExp(`(${pattern})`, 'gi')
-    const parts = text.split(regex)
+    // If no bold patterns found, use original text
+    if (segments.length === 0) {
+        segments.push({ text, isBold: false })
+    }
 
-    return parts.map((part, i) => {
-        const isHighlighted = HIGHLIGHT_TERMS.some(term =>
-            part.toLowerCase() === term.toLowerCase()
-        )
-
-        if (isHighlighted) {
+    // Now process each segment for highlight terms
+    return segments.map((segment, segIndex) => {
+        if (segment.isBold) {
+            // Render bold text with gradient
+            // For inline (list items), use smaller styling
+            // For standalone (paragraphs), use heading styling
+            const style = isInline ? {
+                background: `linear-gradient(135deg, ${BRAND.yellow} 0%, #FFD700 50%, #FFA500 100%)`,
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                backgroundClip: 'text',
+                fontWeight: 700,
+            } : {
+                display: 'block' as const,
+                background: `linear-gradient(135deg, ${BRAND.yellow} 0%, #FFD700 50%, #FFA500 100%)`,
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                backgroundClip: 'text',
+                fontWeight: 700,
+                fontSize: '1.15rem',
+                marginTop: '24px',
+                marginBottom: '12px',
+                letterSpacing: '0.3px',
+            }
             return (
-                <span key={i} style={{
-                    color: BRAND.yellow,
-                    fontWeight: 700,
-                }}>
-                    {part}
+                <span key={`bold-${segIndex}`} style={style}>
+                    {segment.text}
                 </span>
             )
         }
-        return part
+
+        // For non-bold text, apply highlight terms
+        if (HIGHLIGHT_TERMS.length === 0) return segment.text
+
+        const pattern = HIGHLIGHT_TERMS.map(term =>
+            term.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+        ).join('|')
+
+        const regex = new RegExp(`(${pattern})`, 'gi')
+        const parts = segment.text.split(regex)
+
+        return parts.map((part, i) => {
+            const isHighlighted = HIGHLIGHT_TERMS.some(term =>
+                part.toLowerCase() === term.toLowerCase()
+            )
+
+            if (isHighlighted) {
+                return (
+                    <span key={`${segIndex}-${i}`} style={{
+                        color: BRAND.yellow,
+                        fontWeight: 700,
+                    }}>
+                        {part}
+                    </span>
+                )
+            }
+            return part
+        })
     })
 }
